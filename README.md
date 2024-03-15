@@ -3,6 +3,8 @@ erp-api
 
 ### Enterprise resource planning application's backend.
 
+[![Continuous integration](https://github.com/Netsurfclub/erp-api/actions/workflows/build.yml/badge.svg)](https://github.com/Netsurfclub/erp-api/actions/workflows/build.yml)
+
 [Contributing Guide](.github/CONTRIBUTING.md)
 
 Prerequisites
