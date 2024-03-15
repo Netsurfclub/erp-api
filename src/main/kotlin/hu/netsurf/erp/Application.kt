@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ErpApiApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<ErpApiApplication>(*args)
+    runApplication<Application>(*args)
 }
