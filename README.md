@@ -23,3 +23,5 @@ mvn clean package
 
 mvn spring-boot:run -Dspring-boot.run.profiles=default
 ```
+
+To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in the browser.
