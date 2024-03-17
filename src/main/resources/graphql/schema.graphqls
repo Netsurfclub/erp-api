@@ -1,11 +1,5 @@
 type Query {
-    getMessage: Message
     getProducts: [Product]
-}
-
-type Message {
-    id: ID!
-    text: String
 }
 
 type Product {
