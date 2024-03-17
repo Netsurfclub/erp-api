@@ -4,6 +4,16 @@ spring:
   config:
     activate:
       on-profile: default
+  datasource:
+    url: jdbc:h2:mem:erp
+    username: default_user
+    password: 12345
+    driverClassName: org.h2.Driver
+  jpa:
+    open-in-view: off
+  h2:
+    console:
+      enabled: true
   graphql:
     graphiql:
       enabled: true
