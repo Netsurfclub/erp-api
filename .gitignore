@@ -33,3 +33,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local database secrets
+src/main/resources/database-secrets.yml
