@@ -24,6 +24,9 @@
 
         <!-- Project dependency versions -->
         <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
+
+        <!-- Maven plugin versions -->
+        <ktlint.version>1.6.1</ktlint.version>
     </properties>
 
     <dependencies>
@@ -69,6 +72,19 @@
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 
         <plugins>
+            <plugin>
+                <groupId>com.github.gantsign.maven</groupId>
+                <artifactId>ktlint-maven-plugin</artifactId>
+                <version>${ktlint.version}</version>
+                <executions>
+                    <execution>
+                        <id>check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
