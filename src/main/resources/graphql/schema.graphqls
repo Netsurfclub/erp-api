@@ -1,8 +1,24 @@
 type Query {
     getMessage: Message
+    getProducts: [Product]
 }
 
 type Message {
     id: ID!
     text: String
+}
+
+type Product {
+    id: ID!
+    name: String
+    supplier: Supplier
+    price: Float
+    unit: String
+    photo: String
+    onStock: Int
+}
+
+type Supplier {
+    id: ID!
+    name: String
 }
