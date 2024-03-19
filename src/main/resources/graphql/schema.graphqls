@@ -1,5 +1,5 @@
 type Query {
-    getProducts: [Product]
+    products: [Product]
 }
 
 type Product {
