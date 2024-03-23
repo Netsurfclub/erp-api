@@ -10,8 +10,10 @@ import jakarta.persistence.Table
 @Entity
 @Table(name = SUPPLIERS)
 data class Supplier(
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
+
     val name: String = "",
 )
