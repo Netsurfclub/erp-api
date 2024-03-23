@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class ProductController(private val productRepository: ProductRepository) {
 
-    @QueryMapping
+    @QueryMapping(name = "products")
     fun products(): List<Product> {
         return productRepository.findAll()
     }
