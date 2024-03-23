@@ -12,7 +12,7 @@ class ProductPhotoService : PhotoService<MultipartFile, ProductPhoto> {
             name = file.name,
             originalName = file.originalFilename,
             size = file.size,
-            contentType = file.contentType
+            contentType = file.contentType,
         )
     }
 }
