@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller
 
 @Controller
 class ProductController(private val productRepository: ProductRepository) {
+
     @QueryMapping(name = "products")
     fun products(): List<Product> {
         return productRepository.findAll()

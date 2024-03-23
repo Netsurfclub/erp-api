@@ -14,15 +14,22 @@ import jakarta.persistence.Table
 @Entity
 @Table(name = PRODUCTS)
 data class Product(
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
+
     val name: String = "",
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = SUPPLIER_ID)
     val supplier: Supplier = Supplier(),
+
     val price: Double = 0.0,
+
     val unit: String = "",
+
     val photo: String? = null,
+
     val onStock: Int = 0,
 )
