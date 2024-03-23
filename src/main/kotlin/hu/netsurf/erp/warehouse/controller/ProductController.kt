@@ -1,15 +1,15 @@
 package hu.netsurf.erp.warehouse.controller
 
 import hu.netsurf.erp.warehouse.model.Product
-import hu.netsurf.erp.warehouse.repository.ProductRepository
+import hu.netsurf.erp.warehouse.service.ProductService
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class ProductController(private val productRepository: ProductRepository) {
+class ProductController(private val productService: ProductService) {
 
     @QueryMapping(name = "products")
     fun products(): List<Product> {
-        return productRepository.findAll()
+        return productService.getProducts()
     }
 }
