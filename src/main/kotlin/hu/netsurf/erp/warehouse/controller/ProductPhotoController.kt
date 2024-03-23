@@ -1,11 +1,9 @@
 package hu.netsurf.erp.warehouse.controller
 
-import org.springframework.web.bind.annotation.PostMapping
+import hu.netsurf.erp.warehouse.constants.EndpointConstants.PRODUCT_PHOTOS_ENDPOINT
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class ProductPhotoController {
-
-    @PostMapping
-    fun uploadProductPhoto() {}
-}
+@RequestMapping(path = [PRODUCT_PHOTOS_ENDPOINT])
+class ProductPhotoController
