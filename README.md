@@ -31,7 +31,7 @@ Before you start, make sure you set up a MySQL database locally on your machine,
 - The `database-secrets.yml` configuration file is excluded from git tracking, not to accidentally committing secrets to the GitHub repository.
 - For local development don't use the **default** Spring profile, it is configured with an H2 in-memory database for passing the Continuous integration GitHub check.
 
-### Start application
+### Start application with Spring Boot Maven plugin
 
 ```bash
 mvn clean package
@@ -39,4 +39,12 @@ mvn clean package
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
+### Start application with Docker:
+
+```bash
+mvn clean install
+docker build -t <image-name>:<tag> .
+docker run <image-name>:<tag> 8080:8080
+```
+
+#### To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
