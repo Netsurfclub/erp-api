@@ -18,7 +18,7 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
     @PostMapping(path = [PATH_VARIABLE_PRODUCT_ID])
     fun uploadProductPhoto(
         @PathVariable productId: Int,
-        @RequestParam(REQUEST_PARAM_FILE) file: MultipartFile
+        @RequestParam(REQUEST_PARAM_FILE) file: MultipartFile,
     ): Int {
         productPhotoService.uploadPhoto(file)
         return productId
