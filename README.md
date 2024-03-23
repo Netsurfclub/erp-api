@@ -31,7 +31,7 @@ Before you start, make sure you set up a MySQL database locally on your machine,
 - The `database-secrets.yml` configuration file is excluded from git tracking, not to accidentally committing secrets to the GitHub repository.
 - For local development don't use the **default** Spring profile, it is configured with an H2 in-memory database for passing the Continuous integration GitHub check.
 
-### Start application with Spring Boot Maven plugin
+### Start application with Spring Boot Maven plugin:
 
 ```bash
 mvn clean package
