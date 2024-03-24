@@ -5,6 +5,8 @@ import hu.netsurf.erp.warehouse.constants.EndpointConstants.PATH_VARIABLE_PRODUC
 import hu.netsurf.erp.warehouse.constants.EndpointConstants.REQUEST_PARAM_FILE
 import hu.netsurf.erp.warehouse.exception.NotFoundException
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile
 @RestController
 @RequestMapping(path = [CONTROLLER_PATH_PRODUCT_PHOTOS])
 class ProductPhotoController(private val productPhotoService: ProductPhotoService) {
+    val logger: Logger = LoggerFactory.getLogger(ProductPhotoController::class.java)
 
     @PostMapping(path = [PATH_VARIABLE_PRODUCT_ID])
     fun uploadProductPhoto(
