@@ -1,6 +1,7 @@
 package hu.netsurf.erp.warehouse.controller
 
 import hu.netsurf.erp.warehouse.model.Product
+import hu.netsurf.erp.warehouse.model.ProductInput
 import hu.netsurf.erp.warehouse.service.ProductService
 import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.MutationMapping
@@ -16,7 +17,8 @@ class ProductController(private val productService: ProductService) {
     }
 
     @MutationMapping(name = "createProduct")
-    fun createProduct(@Argument input: Product): Product {
-        return productService.createProduct(input)
+    fun createProduct(@Argument input: ProductInput): Product {
+        val product = productService.createProduct(input)
+        return productService.getProduct(product.id)
     }
 }
