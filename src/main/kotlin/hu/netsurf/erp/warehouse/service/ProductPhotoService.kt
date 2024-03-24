@@ -23,7 +23,7 @@ class ProductPhotoService(
 
         product.photo = fileUtils.storePhoto(
             file = file,
-            directoriesPath = fileUtils.createUploadsDirectoryStructureIfNotExists(PRODUCTS_SUBDIRECTORY_NAME),
+            directoriesPath = fileUtils.createPhotoUploadsDirectoryStructure(PRODUCTS_SUBDIRECTORY_NAME),
         )
         productService.updateProduct(product)
 
