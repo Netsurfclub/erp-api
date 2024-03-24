@@ -15,7 +15,7 @@ import java.util.UUID
 class FileSystemUtils : FileUtils {
     val logger: Logger = LoggerFactory.getLogger(FileSystemUtils::class.java)
 
-    override fun createUploadsDirectoryStructureIfNotExists(customSubdirectoryName: String): String {
+    override fun createPhotoUploadsDirectoryStructure(customSubdirectoryName: String): String {
         val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(
             UPLOADS_DIRECTORY_NAME,
             PHOTOS_SUBDIRECTORY_NAME,

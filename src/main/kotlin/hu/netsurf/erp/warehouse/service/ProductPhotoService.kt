@@ -25,10 +25,8 @@ class ProductPhotoService(
             throw ProductAlreadyHasPhotoUploadedException(id)
         }
 
-        product.photo = fileUtils.storePhoto(
-            file = file,
-            directoriesPath = fileUtils.createUploadsDirectoryStructureIfNotExists(PRODUCTS_SUBDIRECTORY_NAME),
-        )
+        val directoriesPath = fileUtils.createPhotoUploadsDirectoryStructure(PRODUCTS_SUBDIRECTORY_NAME)
+        product.photo = fileUtils.storePhoto(file, directoriesPath)
         productService.updateProduct(product)
 
         return product.photo
