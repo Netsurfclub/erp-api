@@ -5,7 +5,6 @@ import hu.netsurf.erp.warehouse.constants.FileConstants.UPLOADS_DIRECTORY_NAME
 import hu.netsurf.erp.warehouse.extension.getExtensions
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
-import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.UUID
@@ -31,9 +30,7 @@ class FileSystemUtils : FileUtils {
         val fileName = "${UUID.randomUUID()}.${file.getExtensions()}"
         val pathWithFileName = Paths.get(directoriesPath, fileName)
 
-        val stream = FileOutputStream(pathWithFileName.toFile())
-        Files.copy(pathWithFileName, stream) // TODO: Image is corrupted.
-        stream.close()
+        Files.copy(file.inputStream, pathWithFileName)
 
         return fileName
     }
