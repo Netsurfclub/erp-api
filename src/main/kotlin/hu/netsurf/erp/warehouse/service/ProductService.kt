@@ -2,6 +2,8 @@ package hu.netsurf.erp.warehouse.service
 
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
 import hu.netsurf.erp.warehouse.model.Product
+import hu.netsurf.erp.warehouse.model.ProductInput
+import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.repository.ProductRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -25,7 +27,24 @@ class ProductService(private val productRepository: ProductRepository) {
         return product.get()
     }
 
+    fun createProduct(productInput: ProductInput): Product {
+        val product = Product(
+            name = productInput.name,
+            supplier = Supplier(
+                id = productInput.supplierId,
+            ),
+            price = productInput.price,
+            unit = productInput.unit,
+            onStock = productInput.onStock,
+        )
+        return saveProduct(product)
+    }
+
     fun updateProduct(product: Product): Product {
+        return saveProduct(product)
+    }
+
+    private fun saveProduct(product: Product): Product {
         return productRepository.save(product)
     }
 }

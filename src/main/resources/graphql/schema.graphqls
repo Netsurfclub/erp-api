@@ -2,14 +2,18 @@ type Query {
     products: [Product]
 }
 
+type Mutation {
+    createProduct(input: ProductInput!): Product!
+}
+
 type Product {
     id: ID!
-    name: String
-    supplier: Supplier
-    price: Float
-    unit: String
+    name: String!
+    supplier: Supplier!
+    price: Float!
+    unit: String!
     photo: String
-    onStock: Int
+    onStock: Int!
 }
 
 type Supplier {
@@ -17,4 +21,12 @@ type Supplier {
     name: String!
     phone: String
     email: String
+}
+
+input ProductInput {
+    name: String
+    supplierId: Int
+    price: Float
+    unit: String
+    onStock: Int
 }
