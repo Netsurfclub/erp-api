@@ -3,6 +3,8 @@
 import hu.netsurf.erp.warehouse.constants.FileConstants.PHOTOS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.constants.FileConstants.UPLOADS_DIRECTORY_NAME
 import hu.netsurf.erp.warehouse.extension.getExtension
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 import java.nio.file.Files
@@ -11,6 +13,7 @@ import java.util.UUID
 
 @Component
 class FileSystemUtils : FileUtils {
+    val logger: Logger = LoggerFactory.getLogger(FileSystemUtils::class.java)
 
     override fun createUploadsDirectoryStructureIfNotExists(customSubdirectoryName: String): String {
         val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(

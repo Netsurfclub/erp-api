@@ -4,6 +4,8 @@ import hu.netsurf.erp.warehouse.constants.FileConstants.PRODUCTS_SUBDIRECTORY_NA
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 
@@ -13,6 +15,8 @@ class ProductPhotoService(
     private val fileUtils: FileUtils,
     private val fileValidator: FileValidator,
 ) {
+    val logger: Logger = LoggerFactory.getLogger(ProductPhotoService::class.java)
+
     fun uploadPhoto(id: Int, file: MultipartFile): String? {
         fileValidator.validate(file)
 
