@@ -25,7 +25,7 @@ class ProductPhotoService(
         }
 
         val directoriesPath = fileUtils.createUploadsDirectoryStructureIfNotExists(
-            customSubdirectoryName = PRODUCTS_SUBDIRECTORY_NAME
+            customSubdirectoryName = PRODUCTS_SUBDIRECTORY_NAME,
         )
 
         val photoFileName = fileUtils.storePhoto(file, directoriesPath)

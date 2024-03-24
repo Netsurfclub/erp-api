@@ -9,7 +9,6 @@ import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.UUID
-import kotlin.io.path.readBytes
 
 @Component
 class FileSystemUtils : FileUtils {
@@ -18,7 +17,7 @@ class FileSystemUtils : FileUtils {
         val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(
             UPLOADS_DIRECTORY_NAME,
             PHOTOS_SUBDIRECTORY_NAME,
-            customSubdirectoryName
+            customSubdirectoryName,
         )
 
         if (!Files.exists(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)) {
