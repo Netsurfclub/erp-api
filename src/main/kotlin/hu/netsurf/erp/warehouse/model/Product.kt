@@ -17,19 +17,19 @@ data class Product(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0,
+    var id: Int = 0,
 
-    val name: String = "",
+    var name: String = "",
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = COLUMN_NAME_SUPPLIER_ID)
-    val supplier: Supplier = Supplier(),
+    var supplier: Supplier = Supplier(),
 
-    val price: Double = 0.0,
+    var price: Double = 0.0,
 
-    val unit: String = "",
+    var unit: String = "",
 
-    val photo: String? = null,
+    var photo: String? = null,
 
-    val onStock: Int = 0,
+    var onStock: Int = 0,
 )

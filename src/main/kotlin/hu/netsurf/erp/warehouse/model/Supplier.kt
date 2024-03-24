@@ -13,7 +13,7 @@ data class Supplier(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0,
+    var id: Int = 0,
 
-    val name: String = "",
+    var name: String = "",
 )
