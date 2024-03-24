@@ -2,8 +2,6 @@ package hu.netsurf.erp.warehouse.service
 
 import hu.netsurf.erp.warehouse.constants.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
-import hu.netsurf.erp.warehouse.model.Product
-import hu.netsurf.erp.warehouse.model.ProductPhoto
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator
 import org.springframework.stereotype.Service
@@ -15,23 +13,20 @@ class ProductPhotoService(
     private val fileUtils: FileUtils,
     private val fileValidator: FileValidator,
 ) {
-    fun upload(file: MultipartFile, id: Int): ProductPhoto {
+    fun uploadPhoto(id: Int, file: MultipartFile): String? {
         fileValidator.validate(file)
 
         val product = productService.getProduct(id)
-
         if (product.photo != null) {
             throw ProductAlreadyHasPhotoUploadedException(id)
         }
 
-        val directoriesPath = fileUtils.createUploadsDirectoryStructureIfNotExists(
-            customSubdirectoryName = PRODUCTS_SUBDIRECTORY_NAME,
+        product.photo = fileUtils.storePhoto(
+            file = file,
+            directoriesPath = fileUtils.createUploadsDirectoryStructureIfNotExists(PRODUCTS_SUBDIRECTORY_NAME),
         )
+        productService.updateProduct(product)
 
-        val photoFileName = fileUtils.storePhoto(file, directoriesPath)
-        // product.InitializePhoto(fileName)
-
-        // return product.photo
-        return ProductPhoto(1, "", "", 1L, "", 1, Product()) // TODO: Remove this.
+        return product.photo
     }
 }

@@ -21,4 +21,8 @@ class ProductService(private val productRepository: ProductRepository) {
 
         return product.get()
     }
+
+    fun updateProduct(product: Product): Product {
+        return productRepository.save(product)
+    }
 }

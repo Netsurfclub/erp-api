@@ -23,7 +23,7 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
         @RequestParam(REQUEST_PARAM_FILE) file: MultipartFile,
     ): ResponseEntity<String> {
         try {
-            val photoFileName = productPhotoService.upload(file, productId).name
+            val photoFileName = productPhotoService.uploadPhoto(productId, file)
             return ResponseEntity(photoFileName, HttpStatus.OK)
         } catch (exception: Exception) {
             return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
