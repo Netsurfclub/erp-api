@@ -15,7 +15,7 @@ class FileValidator(val fileExtensionsConfig: FileExtensionsConfig) {
             throw EmptyFileException()
         }
 
-        if (fileExtensionsConfig.allowedExtensions.all { it != file.getExtension().lowercase() }) {
+        if (fileExtensionsConfig.allowedExtensions.all { it != file.getExtension() }) {
             throw InvalidFileTypeException()
         }
     }

@@ -27,7 +27,7 @@ class FileSystemUtils : FileUtils {
     }
 
     override fun storePhoto(file: MultipartFile, directoriesPath: String): String {
-        val fileName = "${UUID.randomUUID()}.${file.getExtension()}"
+        val fileName = "${UUID.randomUUID()}${file.getExtension()}"
         val pathWithFileName = Paths.get(directoriesPath, fileName)
 
         Files.copy(file.inputStream, pathWithFileName)
