@@ -16,4 +16,8 @@ data class Supplier(
     var id: Int = 0,
 
     var name: String = "",
+
+    var phone: String? = null,
+
+    var email: String? = null,
 )
