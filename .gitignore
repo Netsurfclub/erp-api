@@ -36,3 +36,6 @@ build/
 
 ### Local database secrets
 src/main/resources/database-secrets.yml
+
+### Photo uploads directory
+uploads/
