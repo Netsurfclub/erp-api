@@ -14,7 +14,7 @@ type Product {
 
 type Supplier {
     id: ID!
-    name: String
+    name: String!
     phone: String
     email: String
 }
