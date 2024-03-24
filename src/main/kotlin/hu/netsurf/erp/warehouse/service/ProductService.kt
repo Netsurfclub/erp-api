@@ -22,7 +22,15 @@ class ProductService(private val productRepository: ProductRepository) {
         return product.get()
     }
 
+    fun createProduct(product: Product): Product {
+        return saveProduct(product)
+    }
+
     fun updateProduct(product: Product): Product {
+        return saveProduct(product)
+    }
+
+    private fun saveProduct(product: Product): Product {
         return productRepository.save(product)
     }
 }
