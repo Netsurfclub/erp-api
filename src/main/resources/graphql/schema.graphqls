@@ -8,12 +8,12 @@ type Mutation {
 
 type Product {
     id: ID!
-    name: String
-    supplier: Supplier
-    price: Float
-    unit: String
+    name: String!
+    supplier: Supplier!
+    price: Float!
+    unit: String!
     photo: String
-    onStock: Int
+    onStock: Int!
 }
 
 type Supplier {
