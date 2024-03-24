@@ -3,8 +3,9 @@ package hu.netsurf.erp.warehouse.controller
 import hu.netsurf.erp.warehouse.constants.EndpointConstants.CONTROLLER_PATH_PRODUCT_PHOTOS
 import hu.netsurf.erp.warehouse.constants.EndpointConstants.PATH_VARIABLE_PRODUCT_ID
 import hu.netsurf.erp.warehouse.constants.EndpointConstants.REQUEST_PARAM_FILE
-import hu.netsurf.erp.warehouse.model.ProductPhoto
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,7 +21,12 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
     fun uploadProductPhoto(
         @PathVariable productId: Int,
         @RequestParam(REQUEST_PARAM_FILE) file: MultipartFile,
-    ): ProductPhoto {
-        return productPhotoService.uploadPhoto(file)
+    ): ResponseEntity<String> {
+        try {
+            val photoFileName = productPhotoService.upload(file, productId).name
+            return ResponseEntity(photoFileName, HttpStatus.OK)
+        } catch (exception: Exception) {
+            return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
+        }
     }
 }
