@@ -1,9 +1,11 @@
 type Query {
     products: [Product]
+    suppliers: [Supplier]
 }
 
 type Mutation {
     createProduct(input: ProductInput!): Product!
+    createSupplier(input: SupplierInput!): Supplier!
 }
 
 type Product {
@@ -29,4 +31,10 @@ input ProductInput {
     price: Float
     unit: String
     onStock: Int
+}
+
+input SupplierInput {
+    name: String
+    phone: String
+    email: String
 }
