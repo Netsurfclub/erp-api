@@ -1,0 +1,8 @@
+query {
+    suppliers {
+        id
+        name
+        phone
+        email
+    }
+}

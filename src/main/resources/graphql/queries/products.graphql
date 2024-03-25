@@ -1,0 +1,16 @@
+query {
+    products {
+        id
+        name
+        supplier {
+            id
+            name
+            phone
+            email
+        }
+        price
+        onStock
+        unit
+        photo
+    }
+}
