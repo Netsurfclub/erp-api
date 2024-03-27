@@ -1,6 +1,7 @@
 package hu.netsurf.erp.common.logging.extension
 
 import hu.netsurf.erp.common.logging.constants.warehouse.LogEventConstants
+import hu.netsurf.erp.common.logging.constants.warehouse.LoggerConstants.EMPTY_STRING
 import org.slf4j.Logger
 
 fun Logger.logInfo(
@@ -10,7 +11,7 @@ fun Logger.logInfo(
     val additionalPropertiesFormatted = if (additionalProperties.isNotEmpty()) {
         "${additionalProperties.map { it.key + " = " + it.value }}"
     } else {
-        ""
+        EMPTY_STRING
     }
 
     this.info("${logEventConstants.eventName} ${logEventConstants.eventMessage} $additionalPropertiesFormatted")
