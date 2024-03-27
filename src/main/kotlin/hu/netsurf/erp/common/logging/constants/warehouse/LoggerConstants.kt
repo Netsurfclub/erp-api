@@ -1,4 +1,4 @@
-package hu.netsurf.erp.common.logging.constants
+package hu.netsurf.erp.common.logging.constants.warehouse
 
 object LoggerConstants {
     const val PRODUCT_ID = "ProductId"
