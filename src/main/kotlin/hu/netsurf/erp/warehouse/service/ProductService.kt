@@ -5,10 +5,13 @@ import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.ProductInput
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.repository.ProductRepository
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class ProductService(private val productRepository: ProductRepository) {
+    val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
 
     fun getProducts(): List<Product> {
         return productRepository.findAll()
