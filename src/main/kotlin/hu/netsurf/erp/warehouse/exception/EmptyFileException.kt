@@ -1,3 +1,3 @@
 ﻿package hu.netsurf.erp.warehouse.exception
 
-class EmptyFileException : Exception("Empty file.")
+class EmptyFileException(fileName: String?) : Exception("Empty file: $fileName")
