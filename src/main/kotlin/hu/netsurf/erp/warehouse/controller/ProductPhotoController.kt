@@ -1,10 +1,10 @@
 package hu.netsurf.erp.warehouse.controller
 
-import hu.netsurf.erp.common.logging.constants.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE
-import hu.netsurf.erp.common.logging.constants.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED
-import hu.netsurf.erp.common.logging.constants.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE
-import hu.netsurf.erp.common.logging.constants.warehouse.LoggerConstants.PHOTO_FILE_NAME
-import hu.netsurf.erp.common.logging.constants.warehouse.LoggerConstants.PRODUCT_ID
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE
+import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PRODUCT_ID
 import hu.netsurf.erp.common.logging.extension.logError
 import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.EndpointConstants.CONTROLLER_PATH_PRODUCT_PHOTOS

@@ -1,7 +1,7 @@
 package hu.netsurf.erp.warehouse.controller
 
-import hu.netsurf.erp.common.logging.constants.warehouse.LogEventConstants.CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED
-import hu.netsurf.erp.common.logging.constants.warehouse.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_RECEIVED
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.model.SupplierInput

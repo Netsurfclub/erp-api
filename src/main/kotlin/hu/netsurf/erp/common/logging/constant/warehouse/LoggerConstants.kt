@@ -1,4 +1,4 @@
-package hu.netsurf.erp.common.logging.constants.warehouse
+package hu.netsurf.erp.common.logging.constant.warehouse
 
 object LoggerConstants {
     const val EMPTY_STRING = ""

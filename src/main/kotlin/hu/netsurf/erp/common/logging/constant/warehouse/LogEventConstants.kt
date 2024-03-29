@@ -1,4 +1,4 @@
-package hu.netsurf.erp.common.logging.constants.warehouse
+package hu.netsurf.erp.common.logging.constant.warehouse
 
 enum class LogEventConstants(
     val eventName: String,
