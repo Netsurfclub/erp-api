@@ -1,7 +1,7 @@
 ﻿package hu.netsurf.erp.warehouse.util
 
-import hu.netsurf.erp.warehouse.constants.FileConstants.PHOTOS_SUBDIRECTORY_NAME
-import hu.netsurf.erp.warehouse.constants.FileConstants.UPLOADS_DIRECTORY_NAME
+import hu.netsurf.erp.warehouse.constant.FileConstants.PHOTOS_SUBDIRECTORY_NAME
+import hu.netsurf.erp.warehouse.constant.FileConstants.UPLOADS_DIRECTORY_NAME
 import hu.netsurf.erp.warehouse.extension.getExtension
 import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
