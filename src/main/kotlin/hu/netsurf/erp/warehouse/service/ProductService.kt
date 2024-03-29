@@ -1,10 +1,10 @@
 package hu.netsurf.erp.warehouse.service
 
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
+import hu.netsurf.erp.warehouse.extension.toProduct
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.ProductInput
 import hu.netsurf.erp.warehouse.repository.ProductRepository
-import hu.netsurf.erp.warehouse.util.mapToProduct
 import org.springframework.stereotype.Service
 
 @Service
@@ -25,9 +25,8 @@ class ProductService(private val productRepository: ProductRepository) {
     }
 
     fun createProduct(productInput: ProductInput): Product {
-        val product = mapToProduct(productInput)
-        val savedProduct = productRepository.save(product)
-        return getProduct(savedProduct.id)
+        val product = productRepository.save(productInput.toProduct())
+        return getProduct(product.id)
     }
 
     fun updateProduct(product: Product): Product {
