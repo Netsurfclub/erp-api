@@ -18,7 +18,6 @@ class SupplierController(private val supplierService: SupplierService) {
 
     @MutationMapping(name = "createSupplier")
     fun createSupplier(@Argument input: SupplierInput): Supplier {
-        val supplier = supplierService.createSupplier(input)
-        return supplierService.getSupplier(supplier.id)
+        return supplierService.createSupplier(input)
     }
 }

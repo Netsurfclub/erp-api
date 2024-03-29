@@ -1,4 +1,4 @@
-package hu.netsurf.erp.warehouse.constants
+package hu.netsurf.erp.warehouse.constant
 
 object EndpointConstants {
     const val CONTROLLER_PATH_PRODUCT_PHOTOS = "/api/product/photos"

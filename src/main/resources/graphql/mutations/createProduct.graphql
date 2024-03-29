@@ -1,0 +1,18 @@
+mutation {
+    createProduct(
+        input: {name: "", supplierId: 0, price: 0, unit: "", onStock: 0}
+    ) {
+        id
+        name
+        supplier {
+            id
+            name
+            phone
+            email
+        }
+        price
+        onStock
+        unit
+        photo
+    }
+}

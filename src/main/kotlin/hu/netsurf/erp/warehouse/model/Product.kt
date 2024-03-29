@@ -1,7 +1,7 @@
 package hu.netsurf.erp.warehouse.model
 
-import hu.netsurf.erp.warehouse.constants.TableSchemaConstants.COLUMN_NAME_SUPPLIER_ID
-import hu.netsurf.erp.warehouse.constants.TableSchemaConstants.TABLE_NAME_PRODUCTS
+import hu.netsurf.erp.warehouse.constant.TableSchemaConstants.COLUMN_NAME_SUPPLIER_ID
+import hu.netsurf.erp.warehouse.constant.TableSchemaConstants.TABLE_NAME_PRODUCTS
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue

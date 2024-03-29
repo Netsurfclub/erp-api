@@ -1,4 +1,4 @@
-package hu.netsurf.erp.warehouse.constants
+package hu.netsurf.erp.warehouse.constant
 
 object TableSchemaConstants {
     const val TABLE_NAME_PRODUCTS = "products"
