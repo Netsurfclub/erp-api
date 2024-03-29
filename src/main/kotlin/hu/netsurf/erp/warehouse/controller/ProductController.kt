@@ -18,7 +18,6 @@ class ProductController(private val productService: ProductService) {
 
     @MutationMapping(name = "createProduct")
     fun createProduct(@Argument input: ProductInput): Product {
-        val product = productService.createProduct(input)
-        return productService.getProduct(product.id)
+        return productService.createProduct(input)
     }
 }

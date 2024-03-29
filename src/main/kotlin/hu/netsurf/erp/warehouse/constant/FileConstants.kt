@@ -1,4 +1,4 @@
-package hu.netsurf.erp.warehouse.constants
+package hu.netsurf.erp.warehouse.constant
 
 object FileConstants {
     const val UPLOADS_DIRECTORY_NAME = "uploads"
