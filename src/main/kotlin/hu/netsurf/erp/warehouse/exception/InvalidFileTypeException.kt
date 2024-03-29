@@ -1,3 +1,3 @@
 ﻿package hu.netsurf.erp.warehouse.exception
 
-class InvalidFileTypeException : Exception("Invalid file type.")
+class InvalidFileTypeException(fileType: String) : Exception("Invalid file type: $fileType")

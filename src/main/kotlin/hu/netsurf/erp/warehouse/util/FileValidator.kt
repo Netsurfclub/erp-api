@@ -12,11 +12,11 @@ class FileValidator(val fileExtensionsConfig: FileExtensionsConfig) {
 
     fun validate(file: MultipartFile) {
         if (file.isEmpty) {
-            throw EmptyFileException()
+            throw EmptyFileException(fileName = file.originalFilename)
         }
 
         if (fileExtensionsConfig.allowedExtensions.all { it != file.getExtension() }) {
-            throw InvalidFileTypeException()
+            throw InvalidFileTypeException(fileType = file.getExtension())
         }
     }
 }
