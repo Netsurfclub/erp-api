@@ -15,8 +15,10 @@ class FileValidator(val fileExtensionsConfig: FileExtensionsConfig) {
             throw EmptyFileException(fileName = file.originalFilename)
         }
 
-        if (fileExtensionsConfig.allowedExtensions.all { it != file.getExtension() }) {
-            throw InvalidFileExtensionException(extension = file.getExtension())
+        val fileExtension = file.getExtension()
+
+        if (fileExtensionsConfig.allowedExtensions.all { it != fileExtension }) {
+            throw InvalidFileExtensionException(extension = fileExtension)
         }
     }
 }
