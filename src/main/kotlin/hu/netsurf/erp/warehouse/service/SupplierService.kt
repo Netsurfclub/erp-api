@@ -1,5 +1,8 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIER_RETRIEVED_FROM_DATABASE
+import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.SUPPLIER
+import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.exception.SupplierNotFoundException
 import hu.netsurf.erp.warehouse.extension.toSupplier
 import hu.netsurf.erp.warehouse.model.Supplier
@@ -23,6 +26,11 @@ class SupplierService(private val supplierRepository: SupplierRepository) {
         if (supplier.isEmpty) {
             throw SupplierNotFoundException(id)
         }
+
+        logger.logInfo(
+            SUPPLIER_RETRIEVED_FROM_DATABASE,
+            mapOf(SUPPLIER to supplier.get()),
+        )
 
         return supplier.get()
     }

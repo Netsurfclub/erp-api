@@ -1,5 +1,8 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_RETRIEVED_FROM_DATABASE
+import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PRODUCT
+import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
 import hu.netsurf.erp.warehouse.extension.toProduct
 import hu.netsurf.erp.warehouse.model.Product
@@ -23,6 +26,11 @@ class ProductService(private val productRepository: ProductRepository) {
         if (product.isEmpty) {
             throw ProductNotFoundException(id)
         }
+
+        logger.logInfo(
+            PRODUCT_RETRIEVED_FROM_DATABASE,
+            mapOf(PRODUCT to product.get()),
+        )
 
         return product.get()
     }

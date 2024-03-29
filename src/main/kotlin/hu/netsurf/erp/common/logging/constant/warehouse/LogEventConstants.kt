@@ -32,4 +32,12 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierController:createSupplier:MutationReceived",
         eventMessage = "Create supplier GraphQL mutation received",
     ),
+    PRODUCT_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:productService:getProduct",
+        eventMessage = "Product retrieved from database",
+    ),
+    SUPPLIER_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:supplierService:getSupplier",
+        eventMessage = "Supplier retrieved from database",
+    ),
 }
