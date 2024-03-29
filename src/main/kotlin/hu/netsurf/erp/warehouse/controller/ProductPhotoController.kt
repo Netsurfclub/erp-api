@@ -7,9 +7,9 @@ import hu.netsurf.erp.common.logging.constants.warehouse.LoggerConstants.PHOTO_F
 import hu.netsurf.erp.common.logging.constants.warehouse.LoggerConstants.PRODUCT_ID
 import hu.netsurf.erp.common.logging.extension.logError
 import hu.netsurf.erp.common.logging.extension.logInfo
-import hu.netsurf.erp.warehouse.constants.EndpointConstants.CONTROLLER_PATH_PRODUCT_PHOTOS
-import hu.netsurf.erp.warehouse.constants.EndpointConstants.PATH_VARIABLE_PRODUCT_ID
-import hu.netsurf.erp.warehouse.constants.EndpointConstants.REQUEST_PARAM_FILE
+import hu.netsurf.erp.warehouse.constant.EndpointConstants.CONTROLLER_PATH_PRODUCT_PHOTOS
+import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_VARIABLE_PRODUCT_ID
+import hu.netsurf.erp.warehouse.constant.EndpointConstants.REQUEST_PARAM_FILE
 import hu.netsurf.erp.warehouse.exception.NotFoundException
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
 import org.slf4j.Logger

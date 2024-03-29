@@ -28,7 +28,6 @@ class ProductController(private val productService: ProductService) {
     fun createProduct(@Argument input: ProductInput): Product {
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED)
 
-        val product = productService.createProduct(input)
-        return productService.getProduct(product.id)
+        return productService.createProduct(input)
     }
 }

@@ -28,7 +28,6 @@ class SupplierController(private val supplierService: SupplierService) {
     fun createSupplier(@Argument input: SupplierInput): Supplier {
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
-        val supplier = supplierService.createSupplier(input)
-        return supplierService.getSupplier(supplier.id)
+        return supplierService.createSupplier(input)
     }
 }

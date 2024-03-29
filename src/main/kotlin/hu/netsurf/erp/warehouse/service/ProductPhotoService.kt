@@ -1,6 +1,6 @@
 package hu.netsurf.erp.warehouse.service
 
-import hu.netsurf.erp.warehouse.constants.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
+import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator

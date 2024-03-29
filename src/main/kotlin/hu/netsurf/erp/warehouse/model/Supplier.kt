@@ -1,6 +1,6 @@
 package hu.netsurf.erp.warehouse.model
 
-import hu.netsurf.erp.warehouse.constants.TableSchemaConstants.TABLE_NAME_SUPPLIERS
+import hu.netsurf.erp.warehouse.constant.TableSchemaConstants.TABLE_NAME_SUPPLIERS
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
