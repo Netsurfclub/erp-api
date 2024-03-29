@@ -8,7 +8,7 @@ fun ProductInput.toProduct(): Product {
     return Product(
         name = this.name,
         supplier = Supplier(
-            id = this.supplierId
+            id = this.supplierId,
         ),
         price = this.price,
         unit = this.unit,
