@@ -40,4 +40,12 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierService:getSupplier",
         eventMessage = "Supplier retrieved from database",
     ),
+    PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED(
+        eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
+        eventMessage = "Product photo uploads directory successfully created on file system",
+    ),
+    PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:storePhoto",
+        eventMessage = "Product photo stored successfully in product photos uploads directory on file system",
+    ),
 }
