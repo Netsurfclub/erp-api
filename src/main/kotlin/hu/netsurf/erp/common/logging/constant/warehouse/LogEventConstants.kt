@@ -36,9 +36,17 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierController:suppliers:QueryReceived",
         eventMessage = "Suppliers GraphQL query received",
     ),
+    SUPPLIERS_GRAPHQL_QUERY_SUCCESS_RESPONSE(
+        eventName = "erp-api:supplierController:suppliers:SuccessResponse",
+        eventMessage = "Suppliers GraphQL query success response",
+    ),
     CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED(
         eventName = "erp-api:supplierController:createSupplier:MutationReceived",
         eventMessage = "Create supplier GraphQL mutation received",
+    ),
+    CREATE_SUPPLIER_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:supplierController:createSupplier:SuccessResponse",
+        eventMessage = "Create supplier GraphQL mutation success response",
     ),
     PRODUCT_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:productService:getProduct",
