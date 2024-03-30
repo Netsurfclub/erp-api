@@ -8,9 +8,17 @@ enum class LogEventConstants(
         eventName = "erp-api:productController:products:QueryReceived",
         eventMessage = "Products GraphQL query received",
     ),
+    PRODUCTS_GRAPHQL_QUERY_SUCCESS_RESPONSE(
+        eventName = "erp-api:productController:products:SuccessResponse",
+        eventMessage = "Products GraphQL query success response",
+    ),
     CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED(
         eventName = "erp-api:productController:createProducts:MutationReceived",
         eventMessage = "Create product GraphQL mutation received",
+    ),
+    CREATE_PRODUCT_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:productController:createProducts:SuccessResponse",
+        eventMessage = "Create product GraphQL mutation success response",
     ),
     UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED(
         eventName = "erp-api:productPhotoController:uploadPhoto:RequestReceived",
