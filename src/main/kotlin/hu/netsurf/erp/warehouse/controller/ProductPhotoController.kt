@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.controller
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE
@@ -34,14 +35,14 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
         @RequestParam(REQUEST_PARAM_FILE) file: MultipartFile,
     ): ResponseEntity<String> {
         try {
-            logger.logInfo(
+            logInfo(
                 UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED,
                 mapOf(PRODUCT_ID to productId),
             )
 
             val photoFileName = productPhotoService.uploadPhoto(productId, file)
 
-            logger.logInfo(
+            logInfo(
                 UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE,
                 mapOf(
                     PRODUCT_ID to productId,
@@ -51,19 +52,22 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
 
             return ResponseEntity(photoFileName, HttpStatus.OK)
         } catch (exception: NotFoundException) {
-            logger.logError(
-                UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE,
-                exception,
-            )
-
+            logError(exception)
             return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
         } catch (exception: Exception) {
-            logger.logError(
-                UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE,
-                exception,
-            )
-
+            logError(exception)
             return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
         }
+    }
+
+    private fun logInfo(
+        logEventConstants: LogEventConstants,
+        additionalProperties: Map<String, Any>,
+    ) {
+        logger.logInfo(logEventConstants, additionalProperties)
+    }
+
+    private fun logError(exception: Exception) {
+        logger.logError(UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
     }
 }
