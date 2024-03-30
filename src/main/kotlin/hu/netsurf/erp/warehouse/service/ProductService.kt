@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_INPUT_MAPPED_TO_PRODUCT
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_UPDATED_IN_DATABASE
@@ -31,7 +32,7 @@ class ProductService(private val productRepository: ProductRepository) {
             throw ProductNotFoundException(id)
         }
 
-        logger.logInfo(
+        logInfo(
             PRODUCT_RETRIEVED_FROM_DATABASE,
             mapOf(PRODUCT to product.get()),
         )
@@ -42,7 +43,7 @@ class ProductService(private val productRepository: ProductRepository) {
     fun createProduct(productInput: ProductInput): Product {
         val product = productInput.toProduct()
 
-        logger.logInfo(
+        logInfo(
             PRODUCT_INPUT_MAPPED_TO_PRODUCT,
             mapOf(
                 PRODUCT_INPUT to productInput,
@@ -57,7 +58,7 @@ class ProductService(private val productRepository: ProductRepository) {
     fun updateProduct(product: Product): Product {
         val updatedProduct = productRepository.save(product)
 
-        logger.logInfo(
+        logInfo(
             PRODUCT_UPDATED_IN_DATABASE,
             mapOf(
                 PRODUCT to product,
@@ -66,5 +67,12 @@ class ProductService(private val productRepository: ProductRepository) {
         )
 
         return updatedProduct
+    }
+
+    private fun logInfo(
+        logEventConstants: LogEventConstants,
+        additionalProperties: Map<String, Any>,
+    ) {
+        logger.logInfo(logEventConstants, additionalProperties)
     }
 }
