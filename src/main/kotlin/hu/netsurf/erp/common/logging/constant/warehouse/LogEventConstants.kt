@@ -44,6 +44,10 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierService:getSupplier",
         eventMessage = "Supplier retrieved from database",
     ),
+    MULTIPART_FILE_VALIDATED_SUCCESSFULLY(
+        eventName = "erp-api:productPhotoService:uploadPhoto",
+        eventMessage = "Multipart file validated successfully",
+    ),
     PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED(
         eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
         eventMessage = "Product photo uploads directory successfully created on file system",

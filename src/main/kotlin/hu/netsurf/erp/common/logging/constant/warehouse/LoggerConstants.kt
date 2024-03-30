@@ -9,6 +9,7 @@ object LoggerConstants {
     const val PHOTO_FILE_NAME = "PhotoFileName"
     const val SUPPLIER = "Supplier"
     const val SUPPLIER_INPUT = "SupplierInput"
+    const val MULTIPART_FILE = "MultipartFile"
     const val UPLOADS_DIRECTORY_PATH = "UploadsDirectoryPath"
     const val PATH_WITH_FILE_NAME = "PathWithFileName"
 }
