@@ -1,6 +1,5 @@
 package hu.netsurf.erp.warehouse.controller
 
-import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.common.logging.extension.logInfo
@@ -20,19 +19,15 @@ class SupplierController(private val supplierService: SupplierService) {
 
     @QueryMapping(name = "suppliers")
     fun products(): List<Supplier> {
-        logInfo(SUPPLIERS_GRAPHQL_QUERY_RECEIVED)
+        logger.logInfo(SUPPLIERS_GRAPHQL_QUERY_RECEIVED)
 
         return supplierService.getSuppliers()
     }
 
     @MutationMapping(name = "createSupplier")
     fun createSupplier(@Argument input: SupplierInput): Supplier {
-        logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
+        logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
         return supplierService.createSupplier(input)
-    }
-
-    private fun logInfo(logEventConstants: LogEventConstants) {
-        logger.logInfo(logEventConstants)
     }
 }

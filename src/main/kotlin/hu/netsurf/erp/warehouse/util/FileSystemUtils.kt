@@ -1,6 +1,5 @@
 ﻿package hu.netsurf.erp.warehouse.util
 
-import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PATH_WITH_FILE_NAME
@@ -32,7 +31,7 @@ class FileSystemUtils : FileUtils {
         if (!Files.exists(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)) {
             Files.createDirectories(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
 
-            logInfo(
+            logger.logInfo(
                 PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED,
                 mapOf(UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory),
             )
@@ -47,18 +46,11 @@ class FileSystemUtils : FileUtils {
 
         Files.copy(file.inputStream, pathWithFileName)
 
-        logInfo(
+        logger.logInfo(
             PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM,
             mapOf(PATH_WITH_FILE_NAME to pathWithFileName),
         )
 
         return fileName
-    }
-
-    private fun logInfo(
-        logEventConstants: LogEventConstants,
-        additionalProperties: Map<String, Any>,
-    ) {
-        logger.logInfo(logEventConstants, additionalProperties)
     }
 }
