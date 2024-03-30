@@ -3,6 +3,7 @@ package hu.netsurf.erp.warehouse.controller
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE
+import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.MULTIPART_FILE
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PRODUCT_ID
 import hu.netsurf.erp.common.logging.extension.logError
@@ -11,6 +12,7 @@ import hu.netsurf.erp.warehouse.constant.EndpointConstants.CONTROLLER_PATH_PRODU
 import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_VARIABLE_PRODUCT_ID
 import hu.netsurf.erp.warehouse.constant.EndpointConstants.REQUEST_PARAM_FILE
 import hu.netsurf.erp.warehouse.exception.NotFoundException
+import hu.netsurf.erp.warehouse.extension.asString
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -36,7 +38,10 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
         try {
             logger.logInfo(
                 UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED,
-                mapOf(PRODUCT_ID to productId),
+                mapOf(
+                    PRODUCT_ID to productId,
+                    MULTIPART_FILE to file.asString(),
+                ),
             )
 
             val photoFileName = productPhotoService.uploadPhoto(productId, file)
