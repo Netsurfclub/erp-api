@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIERS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIER_INPUT_MAPPED_TO_SUPPLIER
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIER_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.SUPPLIER
@@ -19,6 +20,8 @@ class SupplierService(private val supplierRepository: SupplierRepository) {
     val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
 
     fun getSuppliers(): List<Supplier> {
+        logger.logInfo(SUPPLIERS_RETRIEVED_FROM_DATABASE)
+
         return supplierRepository.findAll()
     }
 

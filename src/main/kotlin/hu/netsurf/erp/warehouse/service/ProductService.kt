@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCTS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_INPUT_MAPPED_TO_PRODUCT
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_UPDATED_IN_DATABASE
@@ -21,6 +22,8 @@ class ProductService(private val productRepository: ProductRepository) {
     val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
 
     fun getProducts(): List<Product> {
+        logger.logInfo(PRODUCTS_RETRIEVED_FROM_DATABASE)
+
         return productRepository.findAll()
     }
 
