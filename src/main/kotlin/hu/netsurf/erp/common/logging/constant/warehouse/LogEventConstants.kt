@@ -36,6 +36,10 @@ enum class LogEventConstants(
         eventName = "erp-api:productService:getProduct",
         eventMessage = "Product retrieved from database",
     ),
+    PRODUCT_UPDATED_IN_DATABASE(
+        eventName = "erp-api:productService:updateProduct",
+        eventMessage = "Product updated in database",
+    ),
     SUPPLIER_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:supplierService:getSupplier",
         eventMessage = "Supplier retrieved from database",
@@ -47,5 +51,13 @@ enum class LogEventConstants(
     PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM(
         eventName = "erp-api:fileSystemUtils:storePhoto",
         eventMessage = "Product photo stored successfully in product photos uploads directory on file system",
+    ),
+    PRODUCT_INPUT_MAPPED_TO_PRODUCT(
+        eventName = "erp-api:productService:createProduct",
+        eventMessage = "Product input mapped to product",
+    ),
+    SUPPLIER_INPUT_MAPPED_TO_SUPPLIER(
+        eventName = "erp-api:productService:createSupplier",
+        eventMessage = "Supplier input mapped to supplier",
     ),
 }
