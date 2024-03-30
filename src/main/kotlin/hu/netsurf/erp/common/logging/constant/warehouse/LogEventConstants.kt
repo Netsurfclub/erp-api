@@ -48,6 +48,10 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierController:createSupplier:SuccessResponse",
         eventMessage = "Create supplier GraphQL mutation success response",
     ),
+    PRODUCTS_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:productService:getProducts",
+        eventMessage = "Products retrieved from database",
+    ),
     PRODUCT_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:productService:getProduct",
         eventMessage = "Product retrieved from database",
@@ -55,6 +59,10 @@ enum class LogEventConstants(
     PRODUCT_UPDATED_IN_DATABASE(
         eventName = "erp-api:productService:updateProduct",
         eventMessage = "Product updated in database",
+    ),
+    SUPPLIERS_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:supplierService:getSuppliers",
+        eventMessage = "Suppliers retrieved from database",
     ),
     SUPPLIER_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:supplierService:getSupplier",
