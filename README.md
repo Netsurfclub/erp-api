@@ -22,7 +22,7 @@ Running project locally
 
 Before you start, make sure you set up a MySQL database locally on your machine, then perform these steps:
 
-1. Install [v4.25.3](https://github.com/mikefarah/yq/releases/tag/v4.25.3) of [yq](https://github.com/mikefarah/yq) on your machine
+1. Install [v4.43.1](https://github.com/mikefarah/yq/releases/tag/v4.43.1) of [yq](https://github.com/mikefarah/yq) on your machine
 2. Generate `database-secrets.yml` configuration file with this [shell script](./generate-database-secrets-file.sh)
 3. Finally, provide your local database's secrets in place of `null` values
 
