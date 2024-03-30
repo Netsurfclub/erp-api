@@ -13,11 +13,11 @@ enum class LogEventConstants(
         eventMessage = "Products GraphQL query success response",
     ),
     CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED(
-        eventName = "erp-api:productController:createProducts:MutationReceived",
+        eventName = "erp-api:productController:createProduct:MutationReceived",
         eventMessage = "Create product GraphQL mutation received",
     ),
     CREATE_PRODUCT_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
-        eventName = "erp-api:productController:createProducts:SuccessResponse",
+        eventName = "erp-api:productController:createProduct:SuccessResponse",
         eventMessage = "Create product GraphQL mutation success response",
     ),
     UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED(
