@@ -43,8 +43,10 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 ```bash
 mvn clean install
+
 docker build -t <image-name>:<tag> .
-docker run <image-name>:<tag> 8080:8080
+
+docker run -p 8080:8080 <image-name>:<tag>
 ```
 
 #### To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
