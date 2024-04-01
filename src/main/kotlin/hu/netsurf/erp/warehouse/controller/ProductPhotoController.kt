@@ -18,8 +18,10 @@ import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_SEGMENT_UPLOAD
 import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_VARIABLE_FILE_NAME
 import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_VARIABLE_PRODUCT_ID
 import hu.netsurf.erp.warehouse.constant.EndpointConstants.REQUEST_PARAM_FILE
+import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
 import hu.netsurf.erp.warehouse.exception.NotFoundException
 import hu.netsurf.erp.warehouse.extension.asString
+import hu.netsurf.erp.warehouse.extension.getExtension
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -49,18 +51,17 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
             )
 
             val photo = productPhotoService.getPhoto(fileName)
-            val contentType = productPhotoService.getContentType(fileName)
+
+            val headers = HttpHeaders()
+            headers.contentType = MediaType.parseMediaType("$IMAGE/${fileName.getExtension()}")
 
             logger.logInfo(
                 GET_PRODUCT_PHOTO_SUCCESS_RESPONSE,
                 mapOf(
                     FILE_NAME to fileName,
-                    CONTENT_TYPE to contentType,
+                    CONTENT_TYPE to headers.contentType.toString(),
                 ),
             )
-
-            val headers = HttpHeaders()
-            headers.contentType = MediaType.parseMediaType(contentType)
 
             return ResponseEntity(photo, headers, HttpStatus.OK)
         } catch (exception: NotFoundException) {

@@ -3,7 +3,6 @@ package hu.netsurf.erp.warehouse.service
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.MULTIPART_FILE_VALIDATED_SUCCESSFULLY
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.MULTIPART_FILE
 import hu.netsurf.erp.common.logging.extension.logInfo
-import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
 import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -33,10 +32,6 @@ class ProductPhotoService(
         }
 
         return productPhoto
-    }
-
-    fun getContentType(fileName: String): String {
-        return "$IMAGE/${fileName.split('.')[1]}"
     }
 
     fun uploadPhoto(productId: Int, file: MultipartFile): String? {
