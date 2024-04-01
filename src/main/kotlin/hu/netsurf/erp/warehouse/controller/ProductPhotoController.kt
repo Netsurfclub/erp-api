@@ -33,11 +33,11 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
 @RestController
-@RequestMapping(path = ["/api/photos/products"])
+@RequestMapping(path = ["/api/photos/product"])
 class ProductPhotoController(private val productPhotoService: ProductPhotoService) {
     val logger: Logger = LoggerFactory.getLogger(ProductPhotoController::class.java)
 
-    @GetMapping(path = ["/{fileName}"])
+    @GetMapping(path = ["/{fileName}/retrieve"])
     fun getProductPhoto(@PathVariable fileName: String): ResponseEntity<*> {
         try {
             logger.logInfo(
