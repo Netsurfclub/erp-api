@@ -38,4 +38,6 @@ mvn clean install
 docker compose up
 ```
 
+#### To manage the database manually, open [phpMyAdmin](http://localhost:8081) in your web browser.
+
 #### To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
