@@ -23,4 +23,4 @@ spring:
       max-file-size: 10485760
 
 file-extensions-config:
-  allowed-extensions: .jpg,.jpeg,.png,.bmp
+  allowed-extensions: jpg,jpeg,png,bmp
