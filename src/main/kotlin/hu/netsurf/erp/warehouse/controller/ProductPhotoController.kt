@@ -69,7 +69,7 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
     }
 
     @PostMapping(path = ["/{productId}/upload"])
-    fun uploadProductPhoto(
+    fun createProductPhoto(
         @PathVariable productId: Int,
         @RequestParam("file") file: MultipartFile,
     ): ResponseEntity<String> {
