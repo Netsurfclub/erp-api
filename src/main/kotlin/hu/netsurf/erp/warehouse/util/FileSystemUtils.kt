@@ -61,16 +61,16 @@ class FileSystemUtils : FileUtils {
         return uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory.toString()
     }
 
-    override fun storePhoto(file: MultipartFile, path: String): String {
+    override fun storePhoto(file: MultipartFile, directoryStructurePath: String): String {
         val fileName = "${UUID.randomUUID()}.${file.getExtension()}"
-        val pathWithFileName = Paths.get(path, fileName)
+        val pathWithFileName = Paths.get(directoryStructurePath, fileName)
 
         Files.copy(file.inputStream, pathWithFileName)
 
         logger.logInfo(
             PHOTO_STORED_ON_FILE_SYSTEM,
             mapOf(
-                UPLOADS_DIRECTORY_PATH to path,
+                UPLOADS_DIRECTORY_PATH to directoryStructurePath,
                 FILE_NAME to fileName,
             ),
         )
