@@ -6,9 +6,9 @@ spring:
       on-profile: dev
     import: database-secrets.yml
   datasource:
-    url: jdbc:mysql://${jpa-connection.host}:${jpa-connection.port}/${jpa-connection.database}
-    username: ${jpa-connection.username}
-    password: ${jpa-connection.password}
+    url: jdbc:mysql://erp_database:3306/erp
+    username: root
+    password: 12345
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     generate-ddl: true
