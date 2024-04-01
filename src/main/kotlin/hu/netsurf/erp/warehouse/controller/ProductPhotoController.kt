@@ -50,7 +50,7 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
                 mapOf(FILE_NAME to fileName),
             )
 
-            val photo = productPhotoService.getPhoto(fileName)
+            val photo = productPhotoService.getProductPhoto(fileName)
 
             val headers = HttpHeaders()
             headers.contentType = MediaType.parseMediaType("$IMAGE/${fileName.getExtension()}")
@@ -87,7 +87,7 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
                 ),
             )
 
-            val productPhotoFileName = productPhotoService.uploadPhoto(productId, file)
+            val productPhotoFileName = productPhotoService.uploadProductPhoto(productId, file)
 
             logger.logInfo(
                 UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE,

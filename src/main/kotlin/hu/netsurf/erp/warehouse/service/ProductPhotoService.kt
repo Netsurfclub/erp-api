@@ -22,7 +22,7 @@ class ProductPhotoService(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(ProductPhotoService::class.java)
 
-    fun getPhoto(fileName: String): ByteArray {
+    fun getProductPhoto(fileName: String): ByteArray {
         val productPhoto: ByteArray
 
         try {
@@ -34,7 +34,7 @@ class ProductPhotoService(
         return productPhoto
     }
 
-    fun uploadPhoto(productId: Int, file: MultipartFile): String? {
+    fun uploadProductPhoto(productId: Int, file: MultipartFile): String? {
         fileValidator.validate(file)
 
         logger.logInfo(
