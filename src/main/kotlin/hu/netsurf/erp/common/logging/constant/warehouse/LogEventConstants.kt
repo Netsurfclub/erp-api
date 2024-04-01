@@ -20,6 +20,18 @@ enum class LogEventConstants(
         eventName = "erp-api:productController:createProduct:SuccessResponse",
         eventMessage = "Create product GraphQL mutation success response",
     ),
+    GET_PRODUCT_PHOTO_REQUEST_RECEIVED(
+        eventName = "erp-api:productPhotoController:getProductPhoto:RequestReceived",
+        eventMessage = "Product photo retrieval request received",
+    ),
+    GET_PRODUCT_PHOTO_SUCCESS_RESPONSE(
+        eventName = "erp-api:productPhotoController:getProductPhoto:SuccessResponse",
+        eventMessage = "Product photo retrieval was successful",
+    ),
+    GET_PRODUCT_PHOTO_FAILURE_RESPONSE(
+        eventName = "erp-api:productPhotoController:getProductPhoto:FailureResponse",
+        eventMessage = "Product photo retrieval was not successful",
+    ),
     UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED(
         eventName = "erp-api:productPhotoController:uploadProductPhoto:RequestReceived",
         eventMessage = "Product photo upload request received",
