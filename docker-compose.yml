@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  erp_database:
+    image: mysql
+    container_name: erp_database
+    restart: always
+    environment:
+      MYSQL_DATABASE: erp
+      MYSQL_ROOT_PASSWORD: 12345
+    networks:
+      - erp_network
+
+  erp_api:
+    build:
+      context: ./
+    container_name: erp_api
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - erp_database
+    networks:
+      - erp_network
+
+  erp_phpmyadmin:
+    image: phpmyadmin
+    container_name: erp_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=erp_database
+    depends_on:
+      - erp_database
+    networks:
+      - erp_network
+
+networks:
+  erp_network:
+    driver: bridge
