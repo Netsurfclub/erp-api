@@ -3,7 +3,6 @@ package hu.netsurf.erp.warehouse.service
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.MULTIPART_FILE_VALIDATED_SUCCESSFULLY
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.MULTIPART_FILE
 import hu.netsurf.erp.common.logging.extension.logInfo
-import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
 import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -23,7 +22,7 @@ class ProductPhotoService(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(ProductPhotoService::class.java)
 
-    fun getPhoto(fileName: String): ByteArray {
+    fun getProductPhoto(fileName: String): ByteArray {
         val productPhoto: ByteArray
 
         try {
@@ -35,11 +34,7 @@ class ProductPhotoService(
         return productPhoto
     }
 
-    fun getContentType(fileName: String): String {
-        return "$IMAGE/${fileName.split('.')[1]}"
-    }
-
-    fun uploadPhoto(productId: Int, file: MultipartFile): String? {
+    fun uploadProductPhoto(productId: Int, file: MultipartFile): String? {
         fileValidator.validate(file)
 
         logger.logInfo(
@@ -52,8 +47,8 @@ class ProductPhotoService(
             throw ProductAlreadyHasPhotoUploadedException(productId)
         }
 
-        val directoriesPath = fileUtils.createPhotoUploadsDirectoryStructure(PRODUCTS_SUBDIRECTORY_NAME)
-        product.photo = fileUtils.storePhoto(file, directoriesPath)
+        val directoryStructurePath = fileUtils.createPhotoUploadsDirectoryStructure(PRODUCTS_SUBDIRECTORY_NAME)
+        product.photo = fileUtils.storePhoto(file, directoryStructurePath)
         productService.updateProduct(product)
 
         return product.photo
