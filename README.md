@@ -30,7 +30,7 @@ Note that:
 - For local development use the **dev** Spring profile.
 - The **default** Spring profile, it is configured with an H2 in-memory database for passing the Continuous integration GitHub check.
 
-### Start containers
+### Start application
 
 ```bash
 mvn clean install
