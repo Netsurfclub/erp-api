@@ -3,8 +3,10 @@ package hu.netsurf.erp.warehouse.service
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.MULTIPART_FILE_VALIDATED_SUCCESSFULLY
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.MULTIPART_FILE
 import hu.netsurf.erp.common.logging.extension.logInfo
+import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
 import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
+import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
 import hu.netsurf.erp.warehouse.extension.asString
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator
@@ -21,7 +23,23 @@ class ProductPhotoService(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(ProductPhotoService::class.java)
 
-    fun uploadPhoto(id: Int, file: MultipartFile): String? {
+    fun getPhoto(fileName: String): ByteArray {
+        val productPhoto: ByteArray
+
+        try {
+            productPhoto = fileUtils.readAllBytes(PRODUCTS_SUBDIRECTORY_NAME, fileName)
+        } catch (exception: Exception) {
+            throw ProductPhotoNotFoundException(fileName)
+        }
+
+        return productPhoto
+    }
+
+    fun getContentType(fileName: String): String {
+        return "$IMAGE/${fileName.split('.')[1]}"
+    }
+
+    fun uploadPhoto(productId: Int, file: MultipartFile): String? {
         fileValidator.validate(file)
 
         logger.logInfo(
@@ -29,9 +47,9 @@ class ProductPhotoService(
             mapOf(MULTIPART_FILE to file.asString()),
         )
 
-        val product = productService.getProduct(id)
+        val product = productService.getProduct(productId)
         if (product.photo != null) {
-            throw ProductAlreadyHasPhotoUploadedException(id)
+            throw ProductAlreadyHasPhotoUploadedException(productId)
         }
 
         val directoriesPath = fileUtils.createPhotoUploadsDirectoryStructure(PRODUCTS_SUBDIRECTORY_NAME)

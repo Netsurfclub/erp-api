@@ -20,16 +20,28 @@ enum class LogEventConstants(
         eventName = "erp-api:productController:createProduct:SuccessResponse",
         eventMessage = "Create product GraphQL mutation success response",
     ),
+    GET_PRODUCT_PHOTO_REQUEST_RECEIVED(
+        eventName = "erp-api:productPhotoController:getProductPhoto:RequestReceived",
+        eventMessage = "Product photo retrieval request received",
+    ),
+    GET_PRODUCT_PHOTO_SUCCESS_RESPONSE(
+        eventName = "erp-api:productPhotoController:getProductPhoto:SuccessResponse",
+        eventMessage = "Product photo retrieval was successful",
+    ),
+    GET_PRODUCT_PHOTO_FAILURE_RESPONSE(
+        eventName = "erp-api:productPhotoController:getProductPhoto:FailureResponse",
+        eventMessage = "Product photo retrieval was not successful",
+    ),
     UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED(
-        eventName = "erp-api:productPhotoController:uploadPhoto:RequestReceived",
+        eventName = "erp-api:productPhotoController:uploadProductPhoto:RequestReceived",
         eventMessage = "Product photo upload request received",
     ),
     UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE(
-        eventName = "erp-api:productPhotoController:uploadPhoto:SuccessResponse",
+        eventName = "erp-api:productPhotoController:uploadProductPhoto:SuccessResponse",
         eventMessage = "Product photo upload was successful",
     ),
     UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE(
-        eventName = "erp-api:productPhotoController:uploadPhoto:FailureResponse",
+        eventName = "erp-api:productPhotoController:uploadProductPhoto:FailureResponse",
         eventMessage = "Product photo upload was not successful",
     ),
     SUPPLIERS_GRAPHQL_QUERY_RECEIVED(
@@ -72,13 +84,17 @@ enum class LogEventConstants(
         eventName = "erp-api:productPhotoService:uploadPhoto",
         eventMessage = "Multipart file validated successfully",
     ),
-    PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED(
-        eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
-        eventMessage = "Product photo uploads directory successfully created on file system",
+    PHOTO_BYTES_READ_FROM_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:readAllBytes",
+        eventMessage = "Photo bytes read from file system",
     ),
-    PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM(
+    PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
+        eventMessage = "Photo uploads directory successfully created on file system",
+    ),
+    PHOTO_STORED_ON_FILE_SYSTEM(
         eventName = "erp-api:fileSystemUtils:storePhoto",
-        eventMessage = "Product photo stored successfully in product photos uploads directory on file system",
+        eventMessage = "Photo stored successfully in product photos uploads directory on file system",
     ),
     PRODUCT_INPUT_MAPPED_TO_PRODUCT(
         eventName = "erp-api:productService:createProduct",
