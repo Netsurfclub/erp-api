@@ -84,7 +84,11 @@ enum class LogEventConstants(
         eventName = "erp-api:productPhotoService:uploadPhoto",
         eventMessage = "Multipart file validated successfully",
     ),
-    PHOTO_UPLOADS_DIRECTORY_CREATED(
+    PHOTO_BYTES_READ_FROM_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:readAllBytes",
+        eventMessage = "Photo bytes read from file system",
+    ),
+    PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM(
         eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
         eventMessage = "Photo uploads directory successfully created on file system",
     ),

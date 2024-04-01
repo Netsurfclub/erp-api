@@ -1,8 +1,9 @@
 ﻿package hu.netsurf.erp.warehouse.util
 
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PHOTO_BYTES_READ_FROM_FILE_SYSTEM
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PHOTO_STORED_ON_FILE_SYSTEM
-import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PHOTO_UPLOADS_DIRECTORY_CREATED
-import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PATH_WITH_FILE_NAME
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM
+import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.FILE_NAME
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.UPLOADS_DIRECTORY_PATH
 import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.FileConstants.PHOTOS_SUBDIRECTORY_NAME
@@ -20,6 +21,27 @@ import java.util.UUID
 class FileSystemUtils : FileUtils {
     val logger: Logger = LoggerFactory.getLogger(FileSystemUtils::class.java)
 
+    override fun readAllBytes(customSubdirectoryName: String, fileName: String): ByteArray {
+        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(
+            UPLOADS_DIRECTORY_NAME,
+            PHOTOS_SUBDIRECTORY_NAME,
+            customSubdirectoryName,
+            fileName,
+        )
+
+        val bytes = Files.readAllBytes(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
+
+        logger.logInfo(
+            PHOTO_BYTES_READ_FROM_FILE_SYSTEM,
+            mapOf(
+                UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory,
+                FILE_NAME to fileName,
+            ),
+        )
+
+        return bytes
+    }
+
     override fun createPhotoUploadsDirectoryStructure(customSubdirectoryName: String): String {
         val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(
             UPLOADS_DIRECTORY_NAME,
@@ -31,7 +53,7 @@ class FileSystemUtils : FileUtils {
             Files.createDirectories(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
 
             logger.logInfo(
-                PHOTO_UPLOADS_DIRECTORY_CREATED,
+                PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM,
                 mapOf(UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory),
             )
         }
@@ -39,15 +61,18 @@ class FileSystemUtils : FileUtils {
         return uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory.toString()
     }
 
-    override fun storePhoto(file: MultipartFile, directoriesPath: String): String {
+    override fun storePhoto(file: MultipartFile, path: String): String {
         val fileName = "${UUID.randomUUID()}${file.getExtension()}"
-        val pathWithFileName = Paths.get(directoriesPath, fileName)
+        val pathWithFileName = Paths.get(path, fileName)
 
         Files.copy(file.inputStream, pathWithFileName)
 
         logger.logInfo(
             PHOTO_STORED_ON_FILE_SYSTEM,
-            mapOf(PATH_WITH_FILE_NAME to pathWithFileName),
+            mapOf(
+                UPLOADS_DIRECTORY_PATH to path,
+                FILE_NAME to fileName,
+            ),
         )
 
         return fileName
