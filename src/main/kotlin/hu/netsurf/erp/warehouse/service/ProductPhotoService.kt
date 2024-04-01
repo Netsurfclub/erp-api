@@ -21,7 +21,7 @@ class ProductPhotoService(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(ProductPhotoService::class.java)
 
-    fun uploadPhoto(id: Int, file: MultipartFile): String? {
+    fun uploadPhoto(productId: Int, file: MultipartFile): String? {
         fileValidator.validate(file)
 
         logger.logInfo(
@@ -29,9 +29,9 @@ class ProductPhotoService(
             mapOf(MULTIPART_FILE to file.asString()),
         )
 
-        val product = productService.getProduct(id)
+        val product = productService.getProduct(productId)
         if (product.photo != null) {
-            throw ProductAlreadyHasPhotoUploadedException(id)
+            throw ProductAlreadyHasPhotoUploadedException(productId)
         }
 
         val directoriesPath = fileUtils.createPhotoUploadsDirectoryStructure(PRODUCTS_SUBDIRECTORY_NAME)
