@@ -13,11 +13,6 @@ import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PRODUCT_
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PRODUCT_PHOTO_FILE_NAME
 import hu.netsurf.erp.common.logging.extension.logError
 import hu.netsurf.erp.common.logging.extension.logInfo
-import hu.netsurf.erp.warehouse.constant.EndpointConstants.CONTROLLER_PATH_PRODUCT_PHOTOS
-import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_SEGMENT_UPLOAD
-import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_VARIABLE_FILE_NAME
-import hu.netsurf.erp.warehouse.constant.EndpointConstants.PATH_VARIABLE_PRODUCT_ID
-import hu.netsurf.erp.warehouse.constant.EndpointConstants.REQUEST_PARAM_FILE
 import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
 import hu.netsurf.erp.warehouse.exception.NotFoundException
 import hu.netsurf.erp.warehouse.extension.asString
@@ -38,11 +33,11 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
 @RestController
-@RequestMapping(path = [CONTROLLER_PATH_PRODUCT_PHOTOS])
+@RequestMapping(path = ["/api/photos/products"])
 class ProductPhotoController(private val productPhotoService: ProductPhotoService) {
     val logger: Logger = LoggerFactory.getLogger(ProductPhotoController::class.java)
 
-    @GetMapping(path = [PATH_VARIABLE_FILE_NAME])
+    @GetMapping(path = ["/{fileName}"])
     fun getProductPhoto(@PathVariable fileName: String): ResponseEntity<*> {
         try {
             logger.logInfo(
@@ -73,10 +68,10 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
         }
     }
 
-    @PostMapping(path = ["$PATH_VARIABLE_PRODUCT_ID/$PATH_SEGMENT_UPLOAD"])
+    @PostMapping(path = ["/{productId}/upload"])
     fun uploadProductPhoto(
         @PathVariable productId: Int,
-        @RequestParam(REQUEST_PARAM_FILE) file: MultipartFile,
+        @RequestParam("file") file: MultipartFile,
     ): ResponseEntity<String> {
         try {
             logger.logInfo(
