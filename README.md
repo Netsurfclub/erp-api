@@ -18,35 +18,26 @@ To avoid any unexpected application behaviour, make sure you have installed the 
 Running project locally
 -----------------------
 
-### Creating database secrets configuration file
+### Set up Docker
 
-Before you start, make sure you set up a MySQL database locally on your machine, then perform these steps:
+Before you start, make sure you set up Docker Desktop on your machine. On a Windows machine install and turn on WSL2:
 
-1. Install [v4.43.1](https://github.com/mikefarah/yq/releases/tag/v4.43.1) of [yq](https://github.com/mikefarah/yq) on your machine
-2. Generate `database-secrets.yml` configuration file with this [shell script](./generate-database-secrets-file.sh)
-3. Finally, provide your local database's secrets in place of `null` values
+- [How to install Linux on Windows with WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-**Note that:**
+Note that:
 
-- The `database-secrets.yml` configuration file is excluded from git tracking, not to accidentally committing secrets to the GitHub repository.
-- For local development don't use the **default** Spring profile, it is configured with an H2 in-memory database for passing the Continuous integration GitHub check.
+- For local development use the **dev** Spring profile.
+- The **default** Spring profile, it is configured with an H2 in-memory database for passing the Continuous integration GitHub check.
 
-### Start application with Spring Boot Maven plugin:
-
-```bash
-mvn clean package
-
-mvn spring-boot:run -Dspring-boot.run.profiles=dev
-```
-
-### Start application with Docker:
+### Start application
 
 ```bash
 mvn clean install
 
-docker build -t <image-name>:<tag> .
-
-docker run -p 8080:8080 <image-name>:<tag>
+docker compose up
 ```
+
+#### To manage the database manually, open [phpMyAdmin](http://localhost:8081) in your web browser.
 
 #### To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
