@@ -4,7 +4,6 @@ spring:
   config:
     activate:
       on-profile: dev
-    import: database-secrets.yml
   datasource:
     url: jdbc:mysql://erp_database:3306/erp
     username: root
