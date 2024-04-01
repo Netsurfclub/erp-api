@@ -1,7 +1,7 @@
 ﻿package hu.netsurf.erp.warehouse.util
 
-import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM
-import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PHOTO_STORED_ON_FILE_SYSTEM
+import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PHOTO_UPLOADS_DIRECTORY_CREATED
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PATH_WITH_FILE_NAME
 import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.UPLOADS_DIRECTORY_PATH
 import hu.netsurf.erp.common.logging.extension.logInfo
@@ -32,7 +32,7 @@ class FileSystemUtils : FileUtils {
             Files.createDirectories(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
 
             logger.logInfo(
-                PRODUCT_PHOTO_UPLOADS_DIRECTORY_CREATED,
+                PHOTO_UPLOADS_DIRECTORY_CREATED,
                 mapOf(UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory),
             )
         }
@@ -47,7 +47,7 @@ class FileSystemUtils : FileUtils {
         Files.copy(file.inputStream, pathWithFileName)
 
         logger.logInfo(
-            PRODUCT_PHOTO_STORED_ON_FILE_SYSTEM,
+            PHOTO_STORED_ON_FILE_SYSTEM,
             mapOf(PATH_WITH_FILE_NAME to pathWithFileName),
         )
 
