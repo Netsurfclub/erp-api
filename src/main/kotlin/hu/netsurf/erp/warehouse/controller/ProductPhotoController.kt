@@ -39,7 +39,7 @@ import org.springframework.web.multipart.MultipartFile
 class ProductPhotoController(private val productPhotoService: ProductPhotoService) {
     val logger: Logger = LoggerFactory.getLogger(ProductPhotoController::class.java)
 
-    @GetMapping(path = ["/{fileName}/retrieve"])
+    @GetMapping(path = ["/retrieve/{fileName}"])
     fun getProductPhoto(@PathVariable fileName: String): ResponseEntity<*> {
         try {
             logger.logInfo(
@@ -70,7 +70,7 @@ class ProductPhotoController(private val productPhotoService: ProductPhotoServic
         }
     }
 
-    @PostMapping(path = ["/{productId}/upload"])
+    @PostMapping(path = ["/upload/{productId}"])
     fun createProductPhoto(
         @PathVariable productId: Int,
         @RequestParam("file") file: MultipartFile,
