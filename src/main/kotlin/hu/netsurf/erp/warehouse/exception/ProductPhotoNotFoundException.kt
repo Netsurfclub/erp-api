@@ -2,4 +2,4 @@ package hu.netsurf.erp.warehouse.exception
 
 class ProductPhotoNotFoundException(
     fileName: String,
-) : NotFoundException("Photo of product not found with file name: $fileName.")
+) : NotFoundException("Fénykép a következő fájlnévvel: $fileName nem található a termékről.")

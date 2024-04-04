@@ -1,3 +1,3 @@
 package hu.netsurf.erp.warehouse.exception
 
-class SupplierNotFoundException(id: Int) : NotFoundException("Supplier not found with id: #$id.")
+class SupplierNotFoundException(id: Int) : NotFoundException("Beszállító a következő azonosítóval: #$id nem található.")
