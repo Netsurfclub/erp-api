@@ -1,9 +1,9 @@
 FROM openjdk:17-alpine
 
-WORKDIR /app
+WORKDIR /erp_api
 
-COPY target/*.jar ./app.jar
+COPY target/*.jar ./erp-api.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "/erp_api/erp-api.jar"]
