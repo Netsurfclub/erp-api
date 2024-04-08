@@ -12,6 +12,14 @@ spring:
   h2:
     console:
       enabled: true
+  jpa:
+    generate-ddl: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      data-locations: classpath:data-default.sql
   graphql:
     graphiql:
       enabled: true

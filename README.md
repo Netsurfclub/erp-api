@@ -27,8 +27,8 @@ Before you start, make sure you set up Docker Desktop on your machine. On a Wind
 
 Note that:
 
-- For local development use the **dev** Spring profile.
-- The **default** Spring profile, it is configured with an H2 in-memory database for passing the Continuous integration GitHub check.
+- For local development prefer to use the **dev** Spring profile with Docker.
+- The **default** Spring profile is configured with an H2 in-memory database for passing the Continuous integration GitHub check. In case you need to use this, you can manage it in the [H2 Console](http://localhost:8080/h2-console).
 
 ### Start application
 
@@ -38,6 +38,6 @@ mvn clean install
 docker compose up
 ```
 
-#### To manage the database manually, open [phpMyAdmin](http://localhost:8081) in your web browser.
+#### To manage the MySQL database manually, open [phpMyAdmin](http://localhost:8081) in your web browser.
 
 #### To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
