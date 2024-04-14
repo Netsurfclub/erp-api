@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service
 @Service
 class ProductService(
     private val productRepository: ProductRepository,
-    private val supplierService: SupplierService
+    private val supplierService: SupplierService,
 ) {
     val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
 
