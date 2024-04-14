@@ -35,7 +35,7 @@ Note that:
 ```bash
 mvn clean install
 
-docker-compose up
+docker compose up
 ```
 
 #### To view GraphQL queries and mutations, open [GraphiQL](http://localhost:8080/graphiql) in your web browser.
