@@ -18,7 +18,10 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class ProductService(private val productRepository: ProductRepository) {
+class ProductService(
+    private val productRepository: ProductRepository,
+    private val supplierService: SupplierService
+) {
     val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
 
     fun getProducts(): List<Product> {
@@ -54,7 +57,8 @@ class ProductService(private val productRepository: ProductRepository) {
         )
 
         val savedProduct = productRepository.save(product)
-        return getProduct(savedProduct.id)
+        savedProduct.supplier = supplierService.getSupplier(productInput.supplierId)
+        return savedProduct
     }
 
     fun updateProduct(product: Product): Product {
