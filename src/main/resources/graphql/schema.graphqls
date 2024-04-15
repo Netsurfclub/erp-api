@@ -36,7 +36,6 @@ type Supplier {
 }
 
 input UserInput {
-    id: ID!
     username: String!
     password: String!
     confirmPassword: String!
