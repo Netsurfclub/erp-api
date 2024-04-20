@@ -1,11 +1,21 @@
 type Query {
+    users: [User]
     products: [Product]
     suppliers: [Supplier]
 }
 
 type Mutation {
+    createUser(input: UserInput!): User!
     createProduct(input: ProductInput!): Product!
     createSupplier(input: SupplierInput!): Supplier!
+}
+
+type User {
+    id: ID!
+    username: String!
+    firstName: String!
+    lastName: String!
+    email: String!
 }
 
 type Product {
@@ -23,6 +33,15 @@ type Supplier {
     name: String!
     phone: String
     email: String
+}
+
+input UserInput {
+    username: String!
+    password: String!
+    confirmPassword: String!
+    firstName: String!
+    lastName: String!
+    email: String!
 }
 
 input ProductInput {
