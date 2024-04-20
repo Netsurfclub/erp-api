@@ -32,12 +32,18 @@ class UserController(private val userService: UserService) {
 
     @MutationMapping(name = "createUser")
     fun createUser(@Argument input: UserInput): User {
-        logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
+        try {
+            logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
 
-        val user = userService.createUser(input)
+            val user = userService.createUser(input)
 
-        logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
+            logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return user
+            return user
+        } catch (exception: Exception) {
+            // TODO: Specify proper HTTP status codes for specific exceptions.
+
+            return User() // TODO: Added for avoid code compilation errors, later clean up.
+        }
     }
 }
