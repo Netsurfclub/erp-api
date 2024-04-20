@@ -1,0 +1,9 @@
+mutation {
+    createUser(input: {username: "", password: "", confirmPassword: "", firstName: "", lastName: "", email: ""}) {
+        id
+        username
+        email
+        firstName
+        lastName
+    }
+}
