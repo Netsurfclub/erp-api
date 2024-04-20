@@ -1,7 +1,7 @@
 package hu.netsurf.erp.common.logging.extension
 
+import hu.netsurf.erp.common.logging.constant.common.LoggerConstants.EMPTY_STRING
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants
-import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.EMPTY_STRING
 import org.slf4j.Logger
 
 fun Logger.logInfo(
