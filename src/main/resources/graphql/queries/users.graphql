@@ -5,6 +5,5 @@ query {
         email
         firstName
         lastName
-        email
     }
 }
