@@ -1,0 +1,10 @@
+query {
+    users {
+        id
+        username
+        email
+        firstName
+        lastName
+        email
+    }
+}
