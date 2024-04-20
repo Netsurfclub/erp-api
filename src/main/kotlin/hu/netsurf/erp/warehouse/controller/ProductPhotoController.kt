@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.controller
 
+import hu.netsurf.erp.common.exception.NotFoundException
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.GET_PRODUCT_PHOTO_FAILURE_RESPONSE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.GET_PRODUCT_PHOTO_REQUEST_RECEIVED
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.GET_PRODUCT_PHOTO_SUCCESS_RESPONSE
@@ -14,7 +15,6 @@ import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.PRODUCT_
 import hu.netsurf.erp.common.logging.extension.logError
 import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
-import hu.netsurf.erp.warehouse.exception.NotFoundException
 import hu.netsurf.erp.warehouse.extension.asString
 import hu.netsurf.erp.warehouse.extension.getExtension
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
