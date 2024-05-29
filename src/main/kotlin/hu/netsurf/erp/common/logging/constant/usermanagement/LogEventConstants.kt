@@ -20,9 +20,25 @@ enum class LogEventConstants(
         eventName = "erp-api:userController:createUser:SuccessResponse",
         eventMessage = "Create user GraphQL mutation success response",
     ),
+    UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED(
+        eventName = "erp-api:userController:updateUserPassword:MutationReceived",
+        eventMessage = "Update user password GraphQL mutation received",
+    ),
+    UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:userController:updateUserPassword:SuccessResponse",
+        eventMessage = "Update user password GraphQL mutation success response",
+    ),
     USERS_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:userService:getUsers",
         eventMessage = "Users retrieved from database",
+    ),
+    USER_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:userService:getUser",
+        eventMessage = "User retrieved from database",
+    ),
+    USER_UPDATED_IN_DATABASE(
+        eventName = "erp-api:userService:updateUser",
+        eventMessage = "User updated in database",
     ),
     USER_INPUT_MAPPED_TO_USER(
         eventName = "erp-api:userService:createUser",
