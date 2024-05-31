@@ -2,9 +2,12 @@ package hu.netsurf.erp.usermanagement.controller
 
 import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.CREATE_USER_GRAPHQL_MUTATION_RECEIVED
 import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE
+import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED
+import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE
 import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.USERS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.USERS_GRAPHQL_QUERY_SUCCESS_RESPONSE
 import hu.netsurf.erp.common.logging.extension.logInfo
+import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.model.UserInput
 import hu.netsurf.erp.usermanagement.service.UserService
@@ -45,5 +48,16 @@ class UserController(private val userService: UserService) {
 
             return User() // TODO: Added for avoid code compilation errors, later clean up.
         }
+    }
+
+    @MutationMapping(name = "updateUserPassword")
+    fun updateUserPassword(@Argument input: UpdateUserPasswordInput): User {
+        logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED)
+
+        val user = userService.updateUserPassword(input)
+
+        logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
+
+        return user
     }
 }
