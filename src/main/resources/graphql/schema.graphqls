@@ -6,6 +6,7 @@ type Query {
 
 type Mutation {
     createUser(input: UserInput!): User!
+    updateUserPassword(input: UpdateUserPasswordInput!): User!
     createProduct(input: ProductInput!): Product!
     createSupplier(input: SupplierInput!): Supplier!
 }
@@ -42,6 +43,13 @@ input UserInput {
     firstName: String!
     lastName: String!
     email: String!
+}
+
+input UpdateUserPasswordInput {
+    userId: ID!
+    currentPassword: String!
+    newPassword: String!
+    confirmNewPassword: String!
 }
 
 input ProductInput {
