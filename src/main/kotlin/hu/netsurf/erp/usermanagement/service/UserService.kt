@@ -69,6 +69,7 @@ class UserService(
     fun updateUserPassword(updateUserPasswordInput: UpdateUserPasswordInput): User {
         val user = getUser(updateUserPasswordInput.userId)
 
+        // TODO: Move to validator component.
         if (updateUserPasswordInput.currentPassword != user.password) {
             throw ConfirmCurrentPasswordException()
         }
@@ -76,6 +77,7 @@ class UserService(
         if (updateUserPasswordInput.newPassword != updateUserPasswordInput.confirmNewPassword) {
             throw ConfirmNewPasswordException()
         }
+        // TODO: ============================
 
         user.password = updateUserPasswordInput.newPassword
         return updateUser(user)
