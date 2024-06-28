@@ -16,12 +16,16 @@ import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.model.UserInput
 import hu.netsurf.erp.usermanagement.repository.UserRepository
+import hu.netsurf.erp.usermanagement.util.UserValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class UserService(private val userRepository: UserRepository) {
+class UserService(
+    private val userRepository: UserRepository,
+    private val userValidator: UserValidator,
+) {
     val logger: Logger = LoggerFactory.getLogger(UserService::class.java)
 
     fun getUsers(): List<User> {
@@ -31,6 +35,8 @@ class UserService(private val userRepository: UserRepository) {
     }
 
     fun createUser(userInput: UserInput): User {
+        userValidator.validate(userInput)
+
         val user = userInput.toUser()
 
         logger.logInfo(
@@ -63,6 +69,7 @@ class UserService(private val userRepository: UserRepository) {
     fun updateUserPassword(updateUserPasswordInput: UpdateUserPasswordInput): User {
         val user = getUser(updateUserPasswordInput.userId)
 
+        // TODO: Move to validator component.
         if (updateUserPasswordInput.currentPassword != user.password) {
             throw ConfirmCurrentPasswordException()
         }
@@ -70,6 +77,7 @@ class UserService(private val userRepository: UserRepository) {
         if (updateUserPasswordInput.newPassword != updateUserPasswordInput.confirmNewPassword) {
             throw ConfirmNewPasswordException()
         }
+        // TODO: ============================
 
         user.password = updateUserPasswordInput.newPassword
         return updateUser(user)
