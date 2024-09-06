@@ -34,7 +34,10 @@ class ProductPhotoService(
         return productPhoto
     }
 
-    fun uploadProductPhoto(productId: Int, file: MultipartFile): String? {
+    fun uploadProductPhoto(
+        productId: Int,
+        file: MultipartFile,
+    ): String? {
         fileValidator.validate(file)
 
         logger.logInfo(

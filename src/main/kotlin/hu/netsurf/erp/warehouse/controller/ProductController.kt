@@ -16,7 +16,9 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class ProductController(private val productService: ProductService) {
+class ProductController(
+    private val productService: ProductService,
+) {
     val logger: Logger = LoggerFactory.getLogger(ProductController::class.java)
 
     @QueryMapping(name = "products")
@@ -31,7 +33,9 @@ class ProductController(private val productService: ProductService) {
     }
 
     @MutationMapping(name = "createProduct")
-    fun createProduct(@Argument input: ProductInput): Product {
+    fun createProduct(
+        @Argument input: ProductInput,
+    ): Product {
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED)
 
         val product = productService.createProduct(input)

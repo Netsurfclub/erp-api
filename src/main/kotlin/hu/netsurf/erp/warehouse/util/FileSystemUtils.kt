@@ -21,13 +21,17 @@ import java.util.UUID
 class FileSystemUtils : FileUtils {
     val logger: Logger = LoggerFactory.getLogger(FileSystemUtils::class.java)
 
-    override fun readAllBytes(customSubdirectoryName: String, fileName: String): ByteArray {
-        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(
-            UPLOADS_DIRECTORY_NAME,
-            PHOTOS_SUBDIRECTORY_NAME,
-            customSubdirectoryName,
-            fileName,
-        )
+    override fun readAllBytes(
+        customSubdirectoryName: String,
+        fileName: String,
+    ): ByteArray {
+        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory =
+            Paths.get(
+                UPLOADS_DIRECTORY_NAME,
+                PHOTOS_SUBDIRECTORY_NAME,
+                customSubdirectoryName,
+                fileName,
+            )
 
         val bytes = Files.readAllBytes(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
 
@@ -43,11 +47,12 @@ class FileSystemUtils : FileUtils {
     }
 
     override fun createPhotoUploadsDirectoryStructure(customSubdirectoryName: String): String {
-        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory = Paths.get(
-            UPLOADS_DIRECTORY_NAME,
-            PHOTOS_SUBDIRECTORY_NAME,
-            customSubdirectoryName,
-        )
+        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory =
+            Paths.get(
+                UPLOADS_DIRECTORY_NAME,
+                PHOTOS_SUBDIRECTORY_NAME,
+                customSubdirectoryName,
+            )
 
         if (!Files.exists(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)) {
             Files.createDirectories(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
@@ -61,7 +66,10 @@ class FileSystemUtils : FileUtils {
         return uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory.toString()
     }
 
-    override fun storePhoto(file: MultipartFile, directoryStructurePath: String): String {
+    override fun storePhoto(
+        file: MultipartFile,
+        directoryStructurePath: String,
+    ): String {
         val fileName = "${UUID.randomUUID()}.${file.getExtension()}"
         val pathWithFileName = Paths.get(directoryStructurePath, fileName)
 

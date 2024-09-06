@@ -19,7 +19,9 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class UserController(private val userService: UserService) {
+class UserController(
+    private val userService: UserService,
+) {
     val logger: Logger = LoggerFactory.getLogger(UserController::class.java)
 
     @QueryMapping(name = "users")
@@ -34,7 +36,9 @@ class UserController(private val userService: UserService) {
     }
 
     @MutationMapping(name = "createUser")
-    fun createUser(@Argument input: UserInput): User {
+    fun createUser(
+        @Argument input: UserInput,
+    ): User {
         logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
 
         val user = userService.createUser(input)
@@ -45,7 +49,9 @@ class UserController(private val userService: UserService) {
     }
 
     @MutationMapping(name = "updateUserPassword")
-    fun updateUserPassword(@Argument input: UpdateUserPasswordInput): User {
+    fun updateUserPassword(
+        @Argument input: UpdateUserPasswordInput,
+    ): User {
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED)
 
         val user = userService.updateUserPassword(input)

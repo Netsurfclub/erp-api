@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component
 import org.springframework.web.multipart.MultipartFile
 
 @Component
-class FileValidator(val fileExtensionsConfig: FileExtensionsConfig) {
-
+class FileValidator(
+    val fileExtensionsConfig: FileExtensionsConfig,
+) {
     fun validate(file: MultipartFile) {
         if (file.isEmpty) {
             throw EmptyFileException(fileName = file.originalFilename)
