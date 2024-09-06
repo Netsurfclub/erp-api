@@ -16,7 +16,9 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class SupplierController(private val supplierService: SupplierService) {
+class SupplierController(
+    private val supplierService: SupplierService,
+) {
     val logger: Logger = LoggerFactory.getLogger(ProductController::class.java)
 
     @QueryMapping(name = "suppliers")
@@ -31,7 +33,9 @@ class SupplierController(private val supplierService: SupplierService) {
     }
 
     @MutationMapping(name = "createSupplier")
-    fun createSupplier(@Argument input: SupplierInput): Supplier {
+    fun createSupplier(
+        @Argument input: SupplierInput,
+    ): Supplier {
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
         val supplier = supplierService.createSupplier(input)

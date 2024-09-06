@@ -36,11 +36,15 @@ import org.springframework.web.multipart.MultipartFile
 @RestController
 @CrossOrigin
 @RequestMapping(path = ["/api/photos/product"])
-class ProductPhotoController(private val productPhotoService: ProductPhotoService) {
+class ProductPhotoController(
+    private val productPhotoService: ProductPhotoService,
+) {
     val logger: Logger = LoggerFactory.getLogger(ProductPhotoController::class.java)
 
     @GetMapping(path = ["/retrieve/{fileName}"])
-    fun getProductPhoto(@PathVariable fileName: String): ResponseEntity<*> {
+    fun getProductPhoto(
+        @PathVariable fileName: String,
+    ): ResponseEntity<*> {
         try {
             logger.logInfo(
                 GET_PRODUCT_PHOTO_REQUEST_RECEIVED,
