@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component
 
 @Component
 class UserValidator {
-
     fun validate(userInput: UserInput) {
         // 1. Empty checks.
         // 2. Length checks.

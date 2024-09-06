@@ -4,14 +4,11 @@ import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.ProductInput
 import hu.netsurf.erp.warehouse.model.Supplier
 
-fun ProductInput.toProduct(): Product {
-    return Product(
+fun ProductInput.toProduct() =
+    Product(
         name = this.name,
-        supplier = Supplier(
-            id = this.supplierId,
-        ),
+        supplier = Supplier(id = this.supplierId),
         price = this.price,
         unit = this.unit,
         onStock = this.onStock,
     )
-}

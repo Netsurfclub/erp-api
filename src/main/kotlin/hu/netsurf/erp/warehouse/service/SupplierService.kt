@@ -16,7 +16,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class SupplierService(private val supplierRepository: SupplierRepository) {
+class SupplierService(
+    private val supplierRepository: SupplierRepository,
+) {
     val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
 
     fun getSuppliers(): List<Supplier> {
