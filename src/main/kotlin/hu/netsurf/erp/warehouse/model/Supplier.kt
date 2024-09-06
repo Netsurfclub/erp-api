@@ -10,14 +10,10 @@ import jakarta.persistence.Table
 @Entity
 @Table(name = TABLE_NAME_SUPPLIERS)
 data class Supplier(
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int = 0,
-
     var name: String = "",
-
     var phone: String? = null,
-
     var email: String? = null,
 )
