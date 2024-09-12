@@ -3,7 +3,7 @@ package hu.netsurf.erp.usermanagement.util
 import org.springframework.stereotype.Component
 
 @Component
-class InputSanitizerUtil {
+class InputSanitizer {
     fun sanitize(input: String): String {
         return trim(input)
     }
