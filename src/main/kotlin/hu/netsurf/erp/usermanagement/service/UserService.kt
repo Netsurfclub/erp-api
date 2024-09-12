@@ -24,9 +24,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserService(
-    private val userRepository: UserRepository,
     private val userInputSanitizer: UserInputSanitizer,
     private val userInputValidator: UserInputValidator,
+    private val userRepository: UserRepository,
 ) {
     val logger: Logger = LoggerFactory.getLogger(UserService::class.java)
 
