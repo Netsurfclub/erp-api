@@ -6,11 +6,12 @@ import org.springframework.stereotype.Component
 @Component
 class UserValidator {
     fun validate(userInput: UserInput) {
-        // 1. Empty checks.
-        // 2. Length checks.
-        // 3. 'firstName' starts with uppercase character.
-        // 4. 'lastName' starts with uppercase character.
-        // 5. 'email' field should contain a '@' character => Might need an email regex.
+        // 0. Sanitize all input fields.
+        // 1. Empty check input fields.
+        // 2. Checks length for input fields.
+        // 3. 'firstName' field starts with uppercase character.
+        // 4. 'lastName' field starts with uppercase character.
+        // 5. 'email' field should contain a '@' character (email regex).
         // 6. 'password' and 'confirmPassword' fields equality check.
     }
 }
