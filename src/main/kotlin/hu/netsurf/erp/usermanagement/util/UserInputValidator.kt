@@ -4,7 +4,7 @@ import hu.netsurf.erp.usermanagement.model.UserInput
 import org.springframework.stereotype.Component
 
 @Component
-class UserValidator {
+class UserInputValidator {
     fun validate(userInput: UserInput) {
         // 0. Sanitize all input fields.
         // 1. Empty check input fields.

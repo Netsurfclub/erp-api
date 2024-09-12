@@ -16,7 +16,7 @@ import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.model.UserInput
 import hu.netsurf.erp.usermanagement.repository.UserRepository
-import hu.netsurf.erp.usermanagement.util.UserValidator
+import hu.netsurf.erp.usermanagement.util.UserInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service
 @Service
 class UserService(
     private val userRepository: UserRepository,
-    private val userValidator: UserValidator,
+    private val userInputValidator: UserInputValidator,
 ) {
     val logger: Logger = LoggerFactory.getLogger(UserService::class.java)
 
@@ -35,7 +35,7 @@ class UserService(
     }
 
     fun createUser(userInput: UserInput): User {
-        userValidator.validate(userInput)
+        userInputValidator.validate(userInput)
 
         val user = userInput.toUser()
 
