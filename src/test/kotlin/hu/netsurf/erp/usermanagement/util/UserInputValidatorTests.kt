@@ -40,7 +40,7 @@ class UserInputValidatorTests {
                 email = "email",
             )
 
-        assertThrows<Exception> {
+        assertThrows<InvalidEmailAddressFormatException> {
             userInputValidator.validate(userInput)
         }
     }
