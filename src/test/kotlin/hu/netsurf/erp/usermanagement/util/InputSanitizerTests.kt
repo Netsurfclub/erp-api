@@ -24,7 +24,7 @@ class InputSanitizerTests {
 
     @ParameterizedTest
     @MethodSource("inputParams")
-    fun `sanitize test`(input: String) {
+    fun `sanitize tests`(input: String) {
         val result = inputSanitizer.sanitize(input)
         assertEquals("input", result)
     }
