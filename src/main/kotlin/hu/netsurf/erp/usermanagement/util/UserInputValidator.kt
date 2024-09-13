@@ -1,5 +1,6 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
+import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.model.UserInput
 import org.springframework.stereotype.Component
@@ -18,6 +19,8 @@ class UserInputValidator(
             throw InvalidEmailAddressFormatException()
         }
 
-        // 6. 'password' and 'confirmPassword' fields equality check.
+        if (userInput.password != userInput.confirmPassword) {
+            throw ConfirmPasswordException()
+        }
     }
 }

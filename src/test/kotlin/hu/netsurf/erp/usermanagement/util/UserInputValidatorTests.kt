@@ -1,5 +1,7 @@
 package hu.netsurf.erp.usermanagement.util
 
+import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
+import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.model.UserInput
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -39,6 +41,23 @@ class UserInputValidatorTests {
             )
 
         assertThrows<Exception> {
+            userInputValidator.validate(userInput)
+        }
+    }
+
+    @Test
+    fun `validate test unhappy path - password and confirm password not equals`() {
+        val userInput =
+            UserInput(
+                username = "jbence",
+                password = "pAsSwOrD",
+                confirmPassword = "CoNfIrMpAsSwOrD",
+                firstName = "Bence",
+                lastName = "Juhász",
+                email = "bjuhasz@netsurfclub.hu",
+            )
+
+        assertThrows<ConfirmPasswordException> {
             userInputValidator.validate(userInput)
         }
     }
