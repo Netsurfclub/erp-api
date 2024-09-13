@@ -22,7 +22,7 @@ class InputSanitizerTests {
             )
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} => {0}")
     @MethodSource("inputParams")
     fun `sanitize tests`(input: String) {
         val result = inputSanitizer.sanitize(input)
