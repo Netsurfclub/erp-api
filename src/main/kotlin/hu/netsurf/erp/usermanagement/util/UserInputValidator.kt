@@ -1,6 +1,7 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
+import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
@@ -10,7 +11,16 @@ import org.springframework.stereotype.Component
 @Component
 class UserInputValidator {
     fun validate(userInput: UserInput) {
-        // 1. Empty check input fields.
+        if (
+            userInput.usernameIsEmpty() ||
+            userInput.passwordIsEmpty() ||
+            userInput.confirmPasswordIsEmpty() ||
+            userInput.firstNameIsEmpty() ||
+            userInput.lastNameIsEmpty() ||
+            userInput.emailIsEmpty()
+        ) {
+            throw EmptyFieldException()
+        }
 
         // 2. Checks length for input fields.
 

@@ -1,6 +1,7 @@
 package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
+import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
@@ -17,6 +18,17 @@ class UserInputValidatorTests {
     private val userInputValidator: UserInputValidator = UserInputValidator()
 
     companion object {
+        @JvmStatic
+        fun userInputParams(): Stream<Arguments> =
+            Stream.of(
+                Arguments.of("username is empty", UserInput("", "pAsSwOrD", "pAsSwOrD", "Bence", "Juhász", "bjuhasz@netsurfclub.hu")),
+                Arguments.of("password is empty", UserInput("jbence", "", "pAsSwOrD", "Bence", "Juhász", "bjuhasz@netsurfclub.hu")),
+                Arguments.of("confirmPassword is empty", UserInput("jbence", "pAsSwOrD", "", "Bence", "Juhász", "bjuhasz@netsurfclub.hu")),
+                Arguments.of("firstName is empty", UserInput("jbence", "pAsSwOrD", "pAsSwOrD", "", "Juhász", "bjuhasz@netsurfclub.hu")),
+                Arguments.of("lastName is empty", UserInput("jbence", "pAsSwOrD", "pAsSwOrD", "Bence", "", "bjuhasz@netsurfclub.hu")),
+                Arguments.of("email is empty", UserInput("jbence", "pAsSwOrD", "pAsSwOrD", "Bence", "Juhász", "")),
+            )
+
         @JvmStatic
         fun firstNameParams(): Stream<Arguments> =
             Stream.of(
@@ -45,6 +57,17 @@ class UserInputValidatorTests {
             )
 
         assertDoesNotThrow {
+            userInputValidator.validate(userInput)
+        }
+    }
+
+    @ParameterizedTest(name = "{index} => {0}")
+    @MethodSource("userInputParams")
+    fun `validate tests unhappy path - empty fields`(
+        testCase: String,
+        userInput: UserInput,
+    ) {
+        assertThrows<EmptyFieldException> {
             userInputValidator.validate(userInput)
         }
     }

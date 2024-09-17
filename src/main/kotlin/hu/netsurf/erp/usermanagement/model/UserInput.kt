@@ -10,6 +10,18 @@ data class UserInput(
     val lastName: String,
     val email: String,
 ) {
+    fun usernameIsEmpty(): Boolean = username.isEmpty()
+
+    fun passwordIsEmpty(): Boolean = password.isEmpty()
+
+    fun confirmPasswordIsEmpty(): Boolean = confirmPassword.isEmpty()
+
+    fun firstNameIsEmpty(): Boolean = firstName.isEmpty()
+
+    fun lastNameIsEmpty(): Boolean = lastName.isEmpty()
+
+    fun emailIsEmpty(): Boolean = email.isEmpty()
+
     fun firstNameStartsWithUpperCaseCharacter(): Boolean = firstName.first().isUpperCase()
 
     fun lastNameStartsWithUpperCaseCharacter(): Boolean = lastName.first().isUpperCase()
