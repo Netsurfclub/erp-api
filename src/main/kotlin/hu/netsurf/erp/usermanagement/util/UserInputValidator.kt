@@ -3,6 +3,8 @@
 import hu.netsurf.erp.usermanagement.constant.ValidationConstants.EMAIL_ADDRESS_REGEX
 import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
+import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
+import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.model.UserInput
 import org.springframework.stereotype.Component
 
@@ -13,9 +15,13 @@ class UserInputValidator {
 
         // 2. Checks length for input fields.
 
-        // 3. 'firstName' field starts with uppercase character.
+        if (!userInput.firstNameStartsWithUpperCaseCharacter()) {
+            throw InvalidFirstNameFormatException()
+        }
 
-        // 4. 'lastName' field starts with uppercase character.
+        if (!userInput.lastNameStartsWithUpperCaseCharacter()) {
+            throw InvalidLastNameFormatException()
+        }
 
         if (!userInput.emailAddressIsValid(EMAIL_ADDRESS_REGEX)) {
             throw InvalidEmailAddressFormatException()
