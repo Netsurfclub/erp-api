@@ -7,4 +7,8 @@ data class UserInput(
     val firstName: String,
     val lastName: String,
     val email: String,
-)
+) {
+    fun emailAddressIsValid(pattern: String): Boolean = email.matches(Regex(pattern))
+
+    fun passwordAndConfirmPasswordAreMatching(): Boolean = password == confirmPassword
+}

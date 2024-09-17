@@ -17,11 +17,11 @@ class UserInputValidator {
 
         // 4. 'lastName' field starts with uppercase character.
 
-        if (!userInput.email.matches(Regex(EMAIL_ADDRESS_REGEX))) {
+        if (!userInput.emailAddressIsValid(EMAIL_ADDRESS_REGEX)) {
             throw InvalidEmailAddressFormatException()
         }
 
-        if (userInput.password != userInput.confirmPassword) {
+        if (!userInput.passwordAndConfirmPasswordAreMatching()) {
             throw ConfirmPasswordException()
         }
     }
