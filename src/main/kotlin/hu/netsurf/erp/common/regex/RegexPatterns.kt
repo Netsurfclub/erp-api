@@ -1,5 +1,5 @@
-package hu.netsurf.erp.usermanagement.constant
+package hu.netsurf.erp.common.regex
 
-object ValidationConstants {
+object RegexPatterns {
     const val EMAIL_ADDRESS_REGEX = "^(?=.{1,255}\$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}\$"
 }

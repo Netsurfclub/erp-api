@@ -1,5 +1,7 @@
 package hu.netsurf.erp.usermanagement.model
 
+import hu.netsurf.erp.common.regex.RegexPatterns.EMAIL_ADDRESS_REGEX
+
 data class UserInput(
     val username: String,
     val password: String,
@@ -12,7 +14,7 @@ data class UserInput(
 
     fun lastNameStartsWithUpperCaseCharacter(): Boolean = lastName.first().isUpperCase()
 
-    fun emailAddressIsValid(pattern: String): Boolean = email.matches(Regex(pattern))
+    fun emailAddressIsValid(): Boolean = email.matches(Regex(EMAIL_ADDRESS_REGEX))
 
     fun passwordAndConfirmPasswordAreMatching(): Boolean = password == confirmPassword
 }

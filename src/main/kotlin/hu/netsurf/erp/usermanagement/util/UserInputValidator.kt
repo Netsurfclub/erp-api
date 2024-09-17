@@ -1,6 +1,5 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
-import hu.netsurf.erp.usermanagement.constant.ValidationConstants.EMAIL_ADDRESS_REGEX
 import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
@@ -23,7 +22,7 @@ class UserInputValidator {
             throw InvalidLastNameFormatException()
         }
 
-        if (!userInput.emailAddressIsValid(EMAIL_ADDRESS_REGEX)) {
+        if (!userInput.emailAddressIsValid()) {
             throw InvalidEmailAddressFormatException()
         }
 
