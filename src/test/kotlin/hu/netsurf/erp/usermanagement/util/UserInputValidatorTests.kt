@@ -8,8 +8,7 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class UserInputValidatorTests {
-    private val emailAddressValidator: EmailAddressValidator = EmailAddressValidator()
-    private val userInputValidator: UserInputValidator = UserInputValidator(emailAddressValidator)
+    private val userInputValidator: UserInputValidator = UserInputValidator()
 
     @Test
     fun `validate test happy path`() {
@@ -37,7 +36,7 @@ class UserInputValidatorTests {
                 confirmPassword = "pAsSwOrD",
                 firstName = "Bence",
                 lastName = "Juhász",
-                email = "email",
+                email = "bjuhasznetsurfclub.hu",
             )
 
         assertThrows<InvalidEmailAddressFormatException> {
