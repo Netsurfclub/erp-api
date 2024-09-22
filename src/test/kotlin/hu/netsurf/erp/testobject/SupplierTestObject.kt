@@ -11,5 +11,13 @@ class SupplierTestObject {
                 phone = "555123",
                 email = "supplier1@test.com",
             )
+
+        fun supplier2(): Supplier =
+            Supplier(
+                id = 2,
+                name = "Supplier#2",
+                phone = "555456",
+                email = "supplier2@test.com",
+            )
     }
 }
