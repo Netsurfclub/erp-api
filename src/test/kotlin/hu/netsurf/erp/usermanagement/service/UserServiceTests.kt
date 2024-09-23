@@ -7,7 +7,10 @@ import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
 import hu.netsurf.erp.usermanagement.exception.ConfirmNewPasswordException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.repository.UserRepository
+import hu.netsurf.erp.usermanagement.util.UserInputSanitizer
+import hu.netsurf.erp.usermanagement.util.UserInputValidator
 import io.mockk.every
+import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -17,7 +20,9 @@ import java.util.Optional
 
 class UserServiceTests {
     private val userRepository: UserRepository = mockk()
-    private val userService: UserService = UserService(userRepository)
+    private val userInputSanitizer: UserInputSanitizer = mockk()
+    private val userInputValidator: UserInputValidator = mockk()
+    private val userService: UserService = UserService(userRepository, userInputSanitizer, userInputValidator)
 
     @Test
     fun `getUsers test happy path`() {
@@ -31,6 +36,10 @@ class UserServiceTests {
 
     @Test
     fun `createUser test happy path`() {
+        every {
+            userInputSanitizer.sanitize(any())
+        } returns UserInputTestObject.userInput1()
+        justRun { userInputValidator.validate(any()) }
         every {
             userRepository.save(any())
         } returns UserTestObject.user1()
