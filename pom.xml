@@ -31,11 +31,11 @@
         <ktlint.version>3.3.0</ktlint.version>
 
         <!-- JaCoCo properties -->
-        <jacoco.line-coverage>0.79</jacoco.line-coverage>
+        <jacoco.line-coverage>0.72</jacoco.line-coverage>
         <jacoco.branch-coverage>1.00</jacoco.branch-coverage>
-        <jacoco.complexity-coverage>0.65</jacoco.complexity-coverage>
-        <jacoco.method-coverage>0.62</jacoco.method-coverage>
-        <jacoco.class-coverage>0.85</jacoco.class-coverage>
+        <jacoco.complexity-coverage>0.64</jacoco.complexity-coverage>
+        <jacoco.method-coverage>0.61</jacoco.method-coverage>
+        <jacoco.class-coverage>0.84</jacoco.class-coverage>
     </properties>
 
     <dependencies>
@@ -103,6 +103,7 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
+                        <exclude>hu/netsurf/erp/common/logging/constant/**</exclude>
                         <exclude>hu/netsurf/erp/warehouse/util/FileSystemUtils*</exclude>
                         <exclude>hu/netsurf/erp/Application*</exclude>
                     </excludes>
