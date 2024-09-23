@@ -24,17 +24,18 @@
 
         <!-- Project dependency versions -->
         <mysql-connector-j.version>8.4.0</mysql-connector-j.version>
+        <mockk.version>1.12.0</mockk.version>
 
         <!-- Maven plugin versions -->
         <jacoco.version>0.8.8</jacoco.version>
         <ktlint.version>3.3.0</ktlint.version>
 
         <!-- JaCoCo properties -->
-        <jacoco.line-coverage>0.23</jacoco.line-coverage>
-        <jacoco.branch-coverage>0.57</jacoco.branch-coverage>
-        <jacoco.complexity-coverage>0.32</jacoco.complexity-coverage>
-        <jacoco.method-coverage>0.28</jacoco.method-coverage>
-        <jacoco.class-coverage>0.53</jacoco.class-coverage>
+        <jacoco.line-coverage>1.00</jacoco.line-coverage>
+        <jacoco.branch-coverage>1.00</jacoco.branch-coverage>
+        <jacoco.complexity-coverage>1.00</jacoco.complexity-coverage>
+        <jacoco.method-coverage>1.00</jacoco.method-coverage>
+        <jacoco.class-coverage>1.00</jacoco.class-coverage>
     </properties>
 
     <dependencies>
@@ -79,6 +80,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk</artifactId>
+            <version>${mockk.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -94,6 +101,16 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>hu/netsurf/erp/usermanagement/model/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/config/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/model/**</exclude>
+                        <exclude>hu/netsurf/erp/common/logging/constant/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/util/FileSystemUtils*</exclude>
+                        <exclude>hu/netsurf/erp/Application*</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
