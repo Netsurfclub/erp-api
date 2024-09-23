@@ -1,5 +1,6 @@
 package hu.netsurf.erp.usermanagement.util
 
+import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
@@ -46,18 +47,8 @@ class UserInputValidatorTests {
 
     @Test
     fun `validate test happy path`() {
-        val userInput =
-            UserInput(
-                username = "jbence",
-                password = "pAsSwOrD",
-                confirmPassword = "pAsSwOrD",
-                firstName = "Bence",
-                lastName = "Juhász",
-                email = "bjuhasz@netsurfclub.hu",
-            )
-
         assertDoesNotThrow {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(UserInputTestObject.userInput1())
         }
     }
 

@@ -11,7 +11,7 @@ class UserInputTestObject {
                 confirmPassword = "pAsSwOrD",
                 firstName = "Bence",
                 lastName = "Juhász",
-                email = "bjuhasznetsurfclub.hu",
+                email = "bjuhasz@netsurfclub.hu",
             )
     }
 }
