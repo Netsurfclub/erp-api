@@ -22,12 +22,12 @@ class UserInputValidatorTests {
         @JvmStatic
         fun userInputParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("username is empty", UserInput("", "pAsSwOrD", "pAsSwOrD", "Bence", "Juhász", "bjuhasz@netsurfclub.hu")),
-                Arguments.of("password is empty", UserInput("jbence", "", "pAsSwOrD", "Bence", "Juhász", "bjuhasz@netsurfclub.hu")),
-                Arguments.of("confirmPassword is empty", UserInput("jbence", "pAsSwOrD", "", "Bence", "Juhász", "bjuhasz@netsurfclub.hu")),
-                Arguments.of("firstName is empty", UserInput("jbence", "pAsSwOrD", "pAsSwOrD", "", "Juhász", "bjuhasz@netsurfclub.hu")),
-                Arguments.of("lastName is empty", UserInput("jbence", "pAsSwOrD", "pAsSwOrD", "Bence", "", "bjuhasz@netsurfclub.hu")),
-                Arguments.of("email is empty", UserInput("jbence", "pAsSwOrD", "pAsSwOrD", "Bence", "Juhász", "")),
+                Arguments.of("username is empty", UserInputTestObject.userInput1WithEmptyUsername()),
+                Arguments.of("password is empty", UserInputTestObject.userInput1WithEmptyPassword()),
+                Arguments.of("confirmPassword is empty", UserInputTestObject.userInput1WithEmptyConfirmPassword()),
+                Arguments.of("firstName is empty", UserInputTestObject.userInput1WithEmptyFirstName()),
+                Arguments.of("lastName is empty", UserInputTestObject.userInput1WithEmptyLastName()),
+                Arguments.of("email is empty", UserInputTestObject.userInput1WithEmptyEmail()),
             )
 
         @JvmStatic
@@ -107,35 +107,15 @@ class UserInputValidatorTests {
 
     @Test
     fun `validate test unhappy path - invalid email address`() {
-        val userInput =
-            UserInput(
-                username = "jbence",
-                password = "pAsSwOrD",
-                confirmPassword = "pAsSwOrD",
-                firstName = "Bence",
-                lastName = "Juhász",
-                email = "bjuhasznetsurfclub.hu",
-            )
-
         assertThrows<InvalidEmailAddressFormatException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(UserInputTestObject.userInput1WithInvalidEmail())
         }
     }
 
     @Test
-    fun `validate test unhappy path - password and confirm password not equals`() {
-        val userInput =
-            UserInput(
-                username = "jbence",
-                password = "pAsSwOrD",
-                confirmPassword = "CoNfIrMpAsSwOrD",
-                firstName = "Bence",
-                lastName = "Juhász",
-                email = "bjuhasz@netsurfclub.hu",
-            )
-
+    fun `validate test unhappy path - password and confirm password are not equals`() {
         assertThrows<ConfirmPasswordException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(UserInputTestObject.userInput1WithInvalidConfirmPassword())
         }
     }
 }
