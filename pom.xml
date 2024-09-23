@@ -31,11 +31,11 @@
         <ktlint.version>3.3.0</ktlint.version>
 
         <!-- JaCoCo properties -->
-        <jacoco.line-coverage>0.84</jacoco.line-coverage>
+        <jacoco.line-coverage>0.99</jacoco.line-coverage>
         <jacoco.branch-coverage>1.00</jacoco.branch-coverage>
-        <jacoco.complexity-coverage>0.73</jacoco.complexity-coverage>
-        <jacoco.method-coverage>0.71</jacoco.method-coverage>
-        <jacoco.class-coverage>0.93</jacoco.class-coverage>
+        <jacoco.complexity-coverage>0.78</jacoco.complexity-coverage>
+        <jacoco.method-coverage>0.76</jacoco.method-coverage>
+        <jacoco.class-coverage>0.96</jacoco.class-coverage>
     </properties>
 
     <dependencies>
