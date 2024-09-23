@@ -10,7 +10,8 @@ import java.util.stream.Stream
 
 @SpringBootTest
 class UserInputSanitizerTests {
-    private val userInputSanitizer: UserInputSanitizer = UserInputSanitizer(InputSanitizer())
+    private val inputSanitizer: InputSanitizer = InputSanitizer()
+    private val userInputSanitizer: UserInputSanitizer = UserInputSanitizer(inputSanitizer)
 
     companion object {
         @JvmStatic
