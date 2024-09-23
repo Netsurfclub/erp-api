@@ -33,8 +33,8 @@
         <!-- JaCoCo properties -->
         <jacoco.line-coverage>0.99</jacoco.line-coverage>
         <jacoco.branch-coverage>1.00</jacoco.branch-coverage>
-        <jacoco.complexity-coverage>0.78</jacoco.complexity-coverage>
-        <jacoco.method-coverage>0.76</jacoco.method-coverage>
+        <jacoco.complexity-coverage>0.83</jacoco.complexity-coverage>
+        <jacoco.method-coverage>0.81</jacoco.method-coverage>
         <jacoco.class-coverage>0.96</jacoco.class-coverage>
     </properties>
 
@@ -103,6 +103,7 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
+                        <exclude>hu/netsurf/erp/usermanagement/model/**</exclude>
                         <exclude>hu/netsurf/erp/common/logging/constant/**</exclude>
                         <exclude>hu/netsurf/erp/warehouse/util/FileSystemUtils*</exclude>
                         <exclude>hu/netsurf/erp/Application*</exclude>
