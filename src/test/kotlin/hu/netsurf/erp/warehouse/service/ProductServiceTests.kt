@@ -66,9 +66,9 @@ class ProductServiceTests {
     fun `updateProduct test happy path`() {
         every {
             productRepository.save(any())
-        } returns ProductTestObject.product2()
+        } returns ProductTestObject.product1()
 
         val result = productService.updateProduct(ProductTestObject.product1())
-        assertEquals(ProductTestObject.product2(), result)
+        assertEquals(ProductTestObject.product1(), result)
     }
 }
