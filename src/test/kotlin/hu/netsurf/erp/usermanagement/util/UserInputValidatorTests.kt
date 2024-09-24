@@ -6,6 +6,7 @@ import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
+import hu.netsurf.erp.usermanagement.exception.InvalidLengthException
 import hu.netsurf.erp.usermanagement.model.UserInput
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -20,7 +21,7 @@ class UserInputValidatorTests {
 
     companion object {
         @JvmStatic
-        fun userInputParams(): Stream<Arguments> =
+        fun userInputEmptyFieldParams(): Stream<Arguments> =
             Stream.of(
                 Arguments.of("username is empty", UserInputTestObject.userInput1WithEmptyUsername()),
                 Arguments.of("password is empty", UserInputTestObject.userInput1WithEmptyPassword()),
@@ -28,6 +29,21 @@ class UserInputValidatorTests {
                 Arguments.of("firstName is empty", UserInputTestObject.userInput1WithEmptyFirstName()),
                 Arguments.of("lastName is empty", UserInputTestObject.userInput1WithEmptyLastName()),
                 Arguments.of("email is empty", UserInputTestObject.userInput1WithEmptyEmail()),
+            )
+
+        @JvmStatic
+        fun userInputFieldLengthParams(): Stream<Arguments> =
+            Stream.of(
+                Arguments.of("username is too short", UserInputTestObject.userInput1WithShortUsername()),
+                Arguments.of("username is too long", UserInputTestObject.userInput1WithLongUsername()),
+                Arguments.of("password is too short", UserInputTestObject.userInput1WithShortPassword()),
+                Arguments.of("password is too long", UserInputTestObject.userInput1WithLongPassword()),
+                Arguments.of("firstName is too short", UserInputTestObject.userInput1WithShortFirstName()),
+                Arguments.of("firstName is too long", UserInputTestObject.userInput1WithLongFirstName()),
+                Arguments.of("lastName is too short", UserInputTestObject.userInput1WithShortLastName()),
+                Arguments.of("lastName is too long", UserInputTestObject.userInput1WithLongLastName()),
+                Arguments.of("email is too short", UserInputTestObject.userInput1WithShortEmail()),
+                Arguments.of("email is too long", UserInputTestObject.userInput1WithLongEmail()),
             )
 
         @JvmStatic
@@ -53,12 +69,23 @@ class UserInputValidatorTests {
     }
 
     @ParameterizedTest(name = "{index} => {0}")
-    @MethodSource("userInputParams")
+    @MethodSource("userInputEmptyFieldParams")
     fun `validate tests unhappy path - empty fields`(
         testCase: String,
         userInput: UserInput,
     ) {
         assertThrows<EmptyFieldException> {
+            userInputValidator.validate(userInput)
+        }
+    }
+
+    @ParameterizedTest(name = "{index} => {0}")
+    @MethodSource("userInputFieldLengthParams")
+    fun `validate tests unhappy path - length check`(
+        testCase: String,
+        userInput: UserInput,
+    ) {
+        assertThrows<InvalidLengthException> {
             userInputValidator.validate(userInput)
         }
     }
