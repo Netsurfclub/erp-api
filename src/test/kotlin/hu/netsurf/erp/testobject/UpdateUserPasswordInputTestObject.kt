@@ -6,11 +6,9 @@ class UpdateUserPasswordInputTestObject {
     companion object {
         fun updateUserPasswordInput1(): UpdateUserPasswordInput = build()
 
-        fun updateUserPasswordInput1WithInvalidCurrentPassword(): UpdateUserPasswordInput =
-            build(currentPassword = "pAsSwOrD1")
+        fun updateUserPasswordInput1WithInvalidCurrentPassword(): UpdateUserPasswordInput = build(currentPassword = "pAsSwOrD1")
 
-        fun updateUserPasswordInput1WithInvalidConfirmNewPassword(): UpdateUserPasswordInput =
-            build(confirmNewPassword = "NeWpAsSwOrD1")
+        fun updateUserPasswordInput1WithInvalidConfirmNewPassword(): UpdateUserPasswordInput = build(confirmNewPassword = "NeWpAsSwOrD1")
 
         private fun build(
             userId: Int = 1,
