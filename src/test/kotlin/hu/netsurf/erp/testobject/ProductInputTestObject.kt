@@ -4,13 +4,21 @@ import hu.netsurf.erp.warehouse.model.ProductInput
 
 class ProductInputTestObject {
     companion object {
-        fun productInput1(): ProductInput =
+        fun productInput1(): ProductInput = build()
+
+        private fun build(
+            name: String = "Product#1",
+            supplierId: Int = 1,
+            price: Double = 10000.0,
+            unit: String = "pieces",
+            onStock: Int = 10,
+        ): ProductInput =
             ProductInput(
-                name = "Product#1",
-                supplierId = 1,
-                price = 10000.0,
-                unit = "pieces",
-                onStock = 10,
+                name = name,
+                supplierId = supplierId,
+                price = price,
+                unit = unit,
+                onStock = onStock,
             )
     }
 }
