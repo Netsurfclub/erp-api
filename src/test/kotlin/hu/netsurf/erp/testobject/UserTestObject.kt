@@ -4,24 +4,31 @@ import hu.netsurf.erp.usermanagement.model.User
 
 class UserTestObject {
     companion object {
-        fun user1(): User =
-            User(
-                id = 1,
-                username = "jbence",
-                password = "pAsSwOrD",
-                firstName = "Bence",
-                lastName = "Juhász",
-                email = "bjuhasznetsurfclub.hu",
-            )
+        fun user1(): User = build()
 
         fun user2(): User =
-            User(
+            build(
                 id = 2,
                 username = "jgabor",
-                password = "pAsSwOrD",
                 firstName = "Gábor",
-                lastName = "Juhász",
-                email = "gjuhasznetsurfclub.hu",
+                email = "gjuhasz@netsurfclub.hu",
+            )
+
+        private fun build(
+            id: Int = 1,
+            username: String = "jbence",
+            password: String = "pAsSwOrD",
+            firstName: String = "Bence",
+            lastName: String = "Juhász",
+            email: String = "bjuhasz@netsurfclub.hu",
+        ): User =
+            User(
+                id = id,
+                username = username,
+                password = password,
+                firstName = firstName,
+                lastName = lastName,
+                email = email,
             )
     }
 }

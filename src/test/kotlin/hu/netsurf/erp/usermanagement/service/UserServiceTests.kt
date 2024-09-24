@@ -79,7 +79,7 @@ class UserServiceTests {
         } returns Optional.of(UserTestObject.user1())
 
         assertThrows<ConfirmCurrentPasswordException> {
-            userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidPassword())
+            userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword())
         }
     }
 
@@ -90,7 +90,7 @@ class UserServiceTests {
         } returns Optional.of(UserTestObject.user1())
 
         assertThrows<ConfirmNewPasswordException> {
-            userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidNewPassword())
+            userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidConfirmNewPassword())
         }
     }
 }
