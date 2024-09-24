@@ -22,7 +22,7 @@ class SupplierController(
     val logger: Logger = LoggerFactory.getLogger(ProductController::class.java)
 
     @QueryMapping(name = "suppliers")
-    fun products(): List<Supplier> {
+    fun suppliers(): List<Supplier> {
         logger.logInfo(SUPPLIERS_GRAPHQL_QUERY_RECEIVED)
 
         val suppliers = supplierService.getSuppliers()
