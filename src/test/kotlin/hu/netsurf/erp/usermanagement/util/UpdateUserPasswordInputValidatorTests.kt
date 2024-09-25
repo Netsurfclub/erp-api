@@ -1,9 +1,10 @@
 package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
-import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
-import hu.netsurf.erp.usermanagement.exception.ConfirmNewPasswordException
+import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
+import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
+import hu.netsurf.erp.usermanagement.exception.NewPasswordAndPasswordInDatabaseMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -47,7 +48,7 @@ class UpdateUserPasswordInputValidatorTests {
 
     @Test
     fun `validate test unhappy path - current password and password in database not matches`() {
-        assertThrows<ConfirmCurrentPasswordException> {
+        assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
             updateUserPasswordInputValidator.validate(
                 UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword(),
                 passwordInDatabase,
@@ -56,8 +57,18 @@ class UpdateUserPasswordInputValidatorTests {
     }
 
     @Test
-    fun `validate test unhappy path - password and confirm password not matches`() {
-        assertThrows<ConfirmNewPasswordException> {
+    fun `validate test unhappy path - new password and password in database matches`() {
+        assertThrows<NewPasswordAndPasswordInDatabaseMatchesException> {
+            updateUserPasswordInputValidator.validate(
+                UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(),
+                passwordInDatabase,
+            )
+        }
+    }
+
+    @Test
+    fun `validate test unhappy path - new password and confirm new password not matches`() {
+        assertThrows<NewPasswordAndConfirmNewPasswordNotMatchesException> {
             updateUserPasswordInputValidator.validate(
                 UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidConfirmNewPassword(),
                 passwordInDatabase,

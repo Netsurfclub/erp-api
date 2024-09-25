@@ -1,11 +1,11 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
-import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLengthException
+import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UserInput
 import org.springframework.stereotype.Component
 
@@ -51,7 +51,7 @@ class UserInputValidator {
         }
 
         if (!userInput.passwordAndConfirmPasswordMatches()) {
-            throw ConfirmPasswordException()
+            throw PasswordAndConfirmPasswordNotMatchesException()
         }
     }
 }

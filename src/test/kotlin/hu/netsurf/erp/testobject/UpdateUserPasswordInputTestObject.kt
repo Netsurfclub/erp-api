@@ -14,6 +14,8 @@ class UpdateUserPasswordInputTestObject {
 
         fun updateUserPasswordInput1WithInvalidCurrentPassword(): UpdateUserPasswordInput = build(currentPassword = "pAsSwOrD1")
 
+        fun updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(): UpdateUserPasswordInput = build(newPassword = "pAsSwOrD")
+
         fun updateUserPasswordInput1WithInvalidConfirmNewPassword(): UpdateUserPasswordInput = build(confirmNewPassword = "NeWpAsSwOrD1")
 
         private fun build(
