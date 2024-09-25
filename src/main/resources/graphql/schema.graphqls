@@ -5,10 +5,30 @@ type Query {
 }
 
 type Mutation {
-    createUser(input: UserInput!): User!
-    updateUserPassword(input: UpdateUserPasswordInput!): User!
-    createProduct(input: ProductInput!): Product!
-    createSupplier(input: SupplierInput!): Supplier!
+    createUser(request: CreateUserRequest!): CreateUserResponse!
+    updateUserPassword(request: UpdateUserPasswordInputRequest!): UpdateUserPasswordInputResponse!
+    createProduct(request: CreateProductRequest!): CreateProductResponse!
+    createSupplier(request: CreateSupplierRequest!): CreateSupplierResponse!
+}
+
+type CreateUserResponse {
+    user: User
+    errorMessage: String
+}
+
+type UpdateUserPasswordInputResponse {
+    user: User
+    errorMessage: String
+}
+
+type CreateProductResponse {
+    product: Product
+    errorMessage: String
+}
+
+type CreateSupplierResponse {
+    product: Product
+    errorMessage: String
 }
 
 type User {
@@ -34,6 +54,22 @@ type Supplier {
     name: String!
     phone: String
     email: String
+}
+
+input CreateUserRequest {
+    input: UserInput!
+}
+
+input UpdateUserPasswordInputRequest {
+    input: UpdateUserPasswordInput!
+}
+
+input CreateProductRequest {
+    input: ProductInput!
+}
+
+input CreateSupplierRequest {
+    input: SupplierInput!
 }
 
 input UserInput {
