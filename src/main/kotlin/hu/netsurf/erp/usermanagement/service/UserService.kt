@@ -76,7 +76,6 @@ class UserService(
 
         val user = getUser(updateUserPasswordInput.userId)
 
-        // TODO: create a wrapper class.
         updateUserPasswordInputValidator.validate(sanitizedUserInput, user.password)
 
         user.password = updateUserPasswordInput.newPassword
