@@ -4,6 +4,7 @@ import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
+import hu.netsurf.erp.usermanagement.exception.NewPasswordAndPasswordInDatabaseMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -50,6 +51,16 @@ class UpdateUserPasswordInputValidatorTests {
         assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
             updateUserPasswordInputValidator.validate(
                 UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword(),
+                passwordInDatabase,
+            )
+        }
+    }
+
+    @Test
+    fun `validate test unhappy path - new password and password in database matches`() {
+        assertThrows<NewPasswordAndPasswordInDatabaseMatchesException> {
+            updateUserPasswordInputValidator.validate(
+                UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(),
                 passwordInDatabase,
             )
         }

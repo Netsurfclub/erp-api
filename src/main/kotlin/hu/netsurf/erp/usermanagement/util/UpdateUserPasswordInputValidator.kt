@@ -3,6 +3,7 @@
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
+import hu.netsurf.erp.usermanagement.exception.NewPasswordAndPasswordInDatabaseMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import org.springframework.stereotype.Component
 
@@ -22,6 +23,10 @@ class UpdateUserPasswordInputValidator {
 
         if (!updateUserPasswordInput.currentPasswordAndPasswordInDatabaseMatches(passwordInDatabase)) {
             throw CurrentPasswordAndPasswordInDatabaseNotMatchesException()
+        }
+
+        if (updateUserPasswordInput.newPasswordAndCurrentPasswordInDatabaseMatches(passwordInDatabase)) {
+            throw NewPasswordAndPasswordInDatabaseMatchesException()
         }
 
         if (!updateUserPasswordInput.newPasswordAndConfirmNewPasswordMatches()) {
