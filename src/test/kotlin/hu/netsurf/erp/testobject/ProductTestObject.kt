@@ -1,5 +1,6 @@
 package hu.netsurf.erp.testobject
 
+import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.Supplier
 
@@ -7,7 +8,7 @@ class ProductTestObject {
     companion object {
         fun product1(): Product = build()
 
-        fun product1WithPhoto(): Product = build(photo = "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg")
+        fun product1WithPhoto(): Product = build(photo = PHOTO_FILE_NAME)
 
         fun product2(): Product =
             build(

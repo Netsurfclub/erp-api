@@ -2,6 +2,8 @@ package hu.netsurf.erp.warehouse.service
 
 import hu.netsurf.erp.TestConstants.CONTENT_TYPE_IMAGE_JPEG
 import hu.netsurf.erp.TestConstants.MULTIPART_FILE_SIZE
+import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
+import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -29,7 +31,7 @@ class ProductPhotoServiceTests {
     fun setup() {
         justRun { fileValidator.validate(any()) }
 
-        every { multipartFile.originalFilename } returns "file_name.jpeg"
+        every { multipartFile.originalFilename } returns ORIGINAL_FILE_NAME
         every { multipartFile.size } returns MULTIPART_FILE_SIZE.toLong()
         every { multipartFile.contentType } returns CONTENT_TYPE_IMAGE_JPEG
     }
@@ -40,7 +42,7 @@ class ProductPhotoServiceTests {
             fileUtils.readAllBytes(any(), any())
         } returns ByteArray(MULTIPART_FILE_SIZE)
 
-        val result = productPhotoService.getProductPhoto("file_name.jpeg")
+        val result = productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
         assertTrue(result.isNotEmpty())
     }
 
@@ -51,7 +53,7 @@ class ProductPhotoServiceTests {
         } throws IOException()
 
         assertThrows<ProductPhotoNotFoundException> {
-            productPhotoService.getProductPhoto("file_name.jpeg")
+            productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
         }
     }
 
@@ -59,7 +61,7 @@ class ProductPhotoServiceTests {
     fun `uploadProductPhoto test happy path`() {
         every { productService.getProduct(1) } returns ProductTestObject.product1()
         every { fileUtils.createPhotoUploadsDirectoryStructure(any()) } returns "uploads/photos/products/"
-        every { fileUtils.storePhoto(any(), any()) } returns "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg"
+        every { fileUtils.storePhoto(any(), any()) } returns PHOTO_FILE_NAME
         every { productService.updateProduct(any()) } returns ProductTestObject.product1WithPhoto()
 
         val result = productPhotoService.uploadProductPhoto(1, multipartFile)
