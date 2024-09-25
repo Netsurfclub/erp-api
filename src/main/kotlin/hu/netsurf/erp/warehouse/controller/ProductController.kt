@@ -5,8 +5,9 @@ import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.CREATE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCTS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.PRODUCTS_GRAPHQL_QUERY_SUCCESS_RESPONSE
 import hu.netsurf.erp.common.logging.extension.logInfo
+import hu.netsurf.erp.usermanagement.model.CreateProductRequest
+import hu.netsurf.erp.usermanagement.model.CreateProductResponse
 import hu.netsurf.erp.warehouse.model.Product
-import hu.netsurf.erp.warehouse.model.ProductInput
 import hu.netsurf.erp.warehouse.service.ProductService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -34,14 +35,14 @@ class ProductController(
 
     @MutationMapping(name = "createProduct")
     fun createProduct(
-        @Argument input: ProductInput,
-    ): Product {
+        @Argument request: CreateProductRequest,
+    ): CreateProductResponse {
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED)
 
-        val product = productService.createProduct(input)
+        val product = productService.createProduct(request.input)
 
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return product
+        return CreateProductResponse(product)
     }
 }

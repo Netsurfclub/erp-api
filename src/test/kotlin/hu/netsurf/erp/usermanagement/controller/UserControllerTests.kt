@@ -1,7 +1,9 @@
 package hu.netsurf.erp.usermanagement.controller
 
-import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
-import hu.netsurf.erp.testobject.UserInputTestObject
+import hu.netsurf.erp.testobject.CreateUserRequestTestObject
+import hu.netsurf.erp.testobject.CreateUserResponseTestObject
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputRequestTestObject
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputResponseTestObject
 import hu.netsurf.erp.testobject.UserTestObject
 import hu.netsurf.erp.usermanagement.service.UserService
 import io.mockk.every
@@ -30,8 +32,8 @@ class UserControllerTests {
             userService.createUser(any())
         } returns UserTestObject.user1()
 
-        val result = userController.createUser(UserInputTestObject.userInput1())
-        assertEquals(UserTestObject.user1(), result)
+        val result = userController.createUser(CreateUserRequestTestObject.createUserRequest1())
+        assertEquals(CreateUserResponseTestObject.createUserRequest1(), result)
     }
 
     @Test
@@ -40,7 +42,7 @@ class UserControllerTests {
             userService.updateUserPassword(any())
         } returns UserTestObject.user1()
 
-        val result = userController.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())
-        assertEquals(UserTestObject.user1(), result)
+        val result = userController.updateUserPassword(UpdateUserPasswordInputRequestTestObject.updateUserPasswordInputRequest1())
+        assertEquals(UpdateUserPasswordInputResponseTestObject.updateUserPasswordInputResponse1(), result)
     }
 }

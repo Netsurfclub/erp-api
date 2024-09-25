@@ -7,9 +7,11 @@ import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.U
 import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.USERS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.common.logging.constant.usermanagement.LogEventConstants.USERS_GRAPHQL_QUERY_SUCCESS_RESPONSE
 import hu.netsurf.erp.common.logging.extension.logInfo
-import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
+import hu.netsurf.erp.usermanagement.model.CreateUserRequest
+import hu.netsurf.erp.usermanagement.model.CreateUserResponse
+import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInputRequest
+import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInputResponse
 import hu.netsurf.erp.usermanagement.model.User
-import hu.netsurf.erp.usermanagement.model.UserInput
 import hu.netsurf.erp.usermanagement.service.UserService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -37,27 +39,27 @@ class UserController(
 
     @MutationMapping(name = "createUser")
     fun createUser(
-        @Argument input: UserInput,
-    ): User {
+        @Argument request: CreateUserRequest,
+    ): CreateUserResponse {
         logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
 
-        val user = userService.createUser(input)
+        val user = userService.createUser(request.input)
 
         logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return user
+        return CreateUserResponse(user)
     }
 
     @MutationMapping(name = "updateUserPassword")
     fun updateUserPassword(
-        @Argument input: UpdateUserPasswordInput,
-    ): User {
+        @Argument request: UpdateUserPasswordInputRequest,
+    ): UpdateUserPasswordInputResponse {
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED)
 
-        val user = userService.updateUserPassword(input)
+        val user = userService.updateUserPassword(request.input)
 
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return user
+        return UpdateUserPasswordInputResponse(user)
     }
 }

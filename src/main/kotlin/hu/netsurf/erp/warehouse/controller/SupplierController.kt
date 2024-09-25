@@ -5,8 +5,9 @@ import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.CREATE
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.common.logging.constant.warehouse.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_SUCCESS_RESPONSE
 import hu.netsurf.erp.common.logging.extension.logInfo
+import hu.netsurf.erp.usermanagement.model.CreateSupplierRequest
+import hu.netsurf.erp.usermanagement.model.CreateSupplierResponse
 import hu.netsurf.erp.warehouse.model.Supplier
-import hu.netsurf.erp.warehouse.model.SupplierInput
 import hu.netsurf.erp.warehouse.service.SupplierService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -34,14 +35,14 @@ class SupplierController(
 
     @MutationMapping(name = "createSupplier")
     fun createSupplier(
-        @Argument input: SupplierInput,
-    ): Supplier {
+        @Argument request: CreateSupplierRequest,
+    ): CreateSupplierResponse {
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
-        val supplier = supplierService.createSupplier(input)
+        val supplier = supplierService.createSupplier(request.input)
 
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return supplier
+        return CreateSupplierResponse(supplier)
     }
 }
