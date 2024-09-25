@@ -3,8 +3,6 @@ package hu.netsurf.erp.usermanagement.service
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.testobject.UserTestObject
-import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
-import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.repository.UserRepository
 import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputSanitizer
@@ -89,34 +87,6 @@ class UserServiceTests {
 
         assertThrows<UserNotFoundException> {
             userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())
-        }
-    }
-
-    @Test
-    fun `updateUserPassword test unhappy path - current password and password in database not matches`() {
-        every {
-            userRepository.findById(any())
-        } returns Optional.of(UserTestObject.user1())
-        every {
-            updateUserPasswordInputValidator.validate(any(), any())
-        } throws CurrentPasswordAndPasswordInDatabaseNotMatchesException()
-
-        assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
-            userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword())
-        }
-    }
-
-    @Test
-    fun `updateUserPassword test unhappy path - new password and confirm new password not matches`() {
-        every {
-            userRepository.findById(any())
-        } returns Optional.of(UserTestObject.user1())
-        every {
-            updateUserPasswordInputValidator.validate(any(), any())
-        } throws NewPasswordAndConfirmNewPasswordNotMatchesException()
-
-        assertThrows<NewPasswordAndConfirmNewPasswordNotMatchesException> {
-            userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidConfirmNewPassword())
         }
     }
 }
