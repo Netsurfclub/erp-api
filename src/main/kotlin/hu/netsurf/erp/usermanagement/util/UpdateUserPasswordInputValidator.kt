@@ -1,8 +1,8 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
-import hu.netsurf.erp.usermanagement.exception.ConfirmNewPasswordException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
+import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import org.springframework.stereotype.Component
 
@@ -25,7 +25,7 @@ class UpdateUserPasswordInputValidator {
         }
 
         if (!updateUserPasswordInput.newPasswordAndConfirmNewPasswordMatches()) {
-            throw ConfirmNewPasswordException()
+            throw NewPasswordAndConfirmNewPasswordNotMatchesException()
         }
     }
 }
