@@ -20,7 +20,7 @@ class ProductPhotoService(
     private val fileUtils: FileUtils,
     private val fileValidator: FileValidator,
 ) {
-    private val logger: Logger = LoggerFactory.getLogger(ProductPhotoService::class.java)
+    private val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     fun getProductPhoto(fileName: String): ByteArray {
         val productPhoto: ByteArray

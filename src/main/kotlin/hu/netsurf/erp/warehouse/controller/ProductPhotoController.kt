@@ -39,7 +39,7 @@ import org.springframework.web.multipart.MultipartFile
 class ProductPhotoController(
     private val productPhotoService: ProductPhotoService,
 ) {
-    val logger: Logger = LoggerFactory.getLogger(ProductPhotoController::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     @GetMapping(path = ["/retrieve/{fileName}"])
     fun getProductPhoto(
