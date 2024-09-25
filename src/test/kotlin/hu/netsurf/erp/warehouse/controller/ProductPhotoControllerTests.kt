@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.controller
 
+import hu.netsurf.erp.TestConstants.MULTIPART_FILE_SIZE
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -23,7 +24,7 @@ class ProductPhotoControllerTests {
     @BeforeEach
     fun setup() {
         every { multipartFile.originalFilename } returns "file_name.jpeg"
-        every { multipartFile.size } returns 10485760
+        every { multipartFile.size } returns MULTIPART_FILE_SIZE.toLong()
         every { multipartFile.contentType } returns "image/jpeg"
     }
 
@@ -31,7 +32,7 @@ class ProductPhotoControllerTests {
     fun `getProductPhoto test happy path`() {
         every {
             productPhotoService.getProductPhoto(fileName)
-        } returns ByteArray(10485760)
+        } returns ByteArray(MULTIPART_FILE_SIZE)
 
         val result = productPhotoController.getProductPhoto(fileName)
         assertEquals(HttpStatus.OK, result.statusCode)
