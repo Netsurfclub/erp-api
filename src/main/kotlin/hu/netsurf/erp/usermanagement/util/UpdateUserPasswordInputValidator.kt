@@ -20,11 +20,11 @@ class UpdateUserPasswordInputValidator {
             throw EmptyFieldException()
         }
 
-        if (!updateUserPasswordInput.currentPasswordAndPasswordInDatabaseAreMatching(passwordInDatabase)) {
+        if (!updateUserPasswordInput.currentPasswordAndPasswordInDatabaseMatches(passwordInDatabase)) {
             throw ConfirmCurrentPasswordException()
         }
 
-        if (!updateUserPasswordInput.newPasswordAndConfirmNewPasswordAreMatching()) {
+        if (!updateUserPasswordInput.newPasswordAndConfirmNewPasswordMatches()) {
             throw ConfirmNewPasswordException()
         }
     }

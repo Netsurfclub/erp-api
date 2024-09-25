@@ -12,7 +12,7 @@ data class UpdateUserPasswordInput(
 
     fun confirmNewPasswordIsEmpty(): Boolean = confirmNewPassword.isEmpty()
 
-    fun currentPasswordAndPasswordInDatabaseAreMatching(password: String): Boolean = currentPassword == password
+    fun currentPasswordAndPasswordInDatabaseMatches(password: String): Boolean = currentPassword == password
 
-    fun newPasswordAndConfirmNewPasswordAreMatching(): Boolean = newPassword == confirmNewPassword
+    fun newPasswordAndConfirmNewPasswordMatches(): Boolean = newPassword == confirmNewPassword
 }

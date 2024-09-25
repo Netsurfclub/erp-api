@@ -50,7 +50,7 @@ class UserInputValidator {
             throw InvalidEmailAddressFormatException()
         }
 
-        if (!userInput.passwordAndConfirmPasswordAreMatching()) {
+        if (!userInput.passwordAndConfirmPasswordMatches()) {
             throw ConfirmPasswordException()
         }
     }

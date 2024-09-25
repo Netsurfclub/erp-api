@@ -140,7 +140,7 @@ class UserInputValidatorTests {
     }
 
     @Test
-    fun `validate test unhappy path - password and confirm password are not equals`() {
+    fun `validate test unhappy path - password and confirm password not matches`() {
         assertThrows<ConfirmPasswordException> {
             userInputValidator.validate(UserInputTestObject.userInput1WithInvalidConfirmPassword())
         }

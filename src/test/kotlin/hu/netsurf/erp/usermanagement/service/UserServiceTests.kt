@@ -93,7 +93,7 @@ class UserServiceTests {
     }
 
     @Test
-    fun `updateUserPassword test unhappy path - user current password is not matching with the one in database`() {
+    fun `updateUserPassword test unhappy path - user current password not matches with the one in database`() {
         every {
             userRepository.findById(any())
         } returns Optional.of(UserTestObject.user1())
@@ -107,7 +107,7 @@ class UserServiceTests {
     }
 
     @Test
-    fun `updateUserPassword test unhappy path - new password and confirm password are not matching`() {
+    fun `updateUserPassword test unhappy path - new password and confirm password not matches`() {
         every {
             userRepository.findById(any())
         } returns Optional.of(UserTestObject.user1())

@@ -46,7 +46,7 @@ class UpdateUserPasswordInputValidatorTests {
     }
 
     @Test
-    fun `validate test unhappy path - current password and password in database are not matches`() {
+    fun `validate test unhappy path - current password and password in database not matches`() {
         assertThrows<ConfirmCurrentPasswordException> {
             updateUserPasswordInputValidator.validate(
                 UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword(),
@@ -56,7 +56,7 @@ class UpdateUserPasswordInputValidatorTests {
     }
 
     @Test
-    fun `validate test unhappy path - password and confirm password are not matches`() {
+    fun `validate test unhappy path - password and confirm password not matches`() {
         assertThrows<ConfirmNewPasswordException> {
             updateUserPasswordInputValidator.validate(
                 UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidConfirmNewPassword(),

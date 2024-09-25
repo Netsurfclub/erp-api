@@ -48,5 +48,5 @@ data class UserInput(
 
     fun emailAddressIsValid(): Boolean = email.matches(Regex(EMAIL_ADDRESS_REGEX))
 
-    fun passwordAndConfirmPasswordAreMatching(): Boolean = password == confirmPassword
+    fun passwordAndConfirmPasswordMatches(): Boolean = password == confirmPassword
 }
