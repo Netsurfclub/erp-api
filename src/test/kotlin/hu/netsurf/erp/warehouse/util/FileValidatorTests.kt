@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.util
 
+import hu.netsurf.erp.TestConstants.ALLOWED_EXTENSIONS
 import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.warehouse.config.FileExtensionsConfig
 import hu.netsurf.erp.warehouse.exception.EmptyFileException
@@ -22,7 +23,7 @@ class FileValidatorTests {
         every { multipartFile.isEmpty } returns false
         every { multipartFile.originalFilename } returns ORIGINAL_FILE_NAME
 
-        every { fileExtensionsConfig.allowedExtensions } returns listOf("jpg", "jpeg", "png", "bmp")
+        every { fileExtensionsConfig.allowedExtensions } returns ALLOWED_EXTENSIONS
     }
 
     @Test
