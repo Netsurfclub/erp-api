@@ -1,5 +1,6 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.TestConstants.CONTENT_TYPE_IMAGE_JPEG
 import hu.netsurf.erp.TestConstants.MULTIPART_FILE_SIZE
 import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
@@ -30,7 +31,7 @@ class ProductPhotoServiceTests {
 
         every { multipartFile.originalFilename } returns "file_name.jpeg"
         every { multipartFile.size } returns MULTIPART_FILE_SIZE.toLong()
-        every { multipartFile.contentType } returns "image/jpeg"
+        every { multipartFile.contentType } returns CONTENT_TYPE_IMAGE_JPEG
     }
 
     @Test
