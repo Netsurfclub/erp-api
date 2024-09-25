@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController
 class UserController(
     private val userService: UserService,
 ) {
-    val logger: Logger = LoggerFactory.getLogger(UserController::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     @QueryMapping(name = "users")
     fun users(): List<User> {

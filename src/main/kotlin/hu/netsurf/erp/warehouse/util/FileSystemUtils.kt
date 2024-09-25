@@ -19,7 +19,7 @@ import java.util.UUID
 
 @Component
 class FileSystemUtils : FileUtils {
-    val logger: Logger = LoggerFactory.getLogger(FileSystemUtils::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     override fun readAllBytes(
         customSubdirectoryName: String,

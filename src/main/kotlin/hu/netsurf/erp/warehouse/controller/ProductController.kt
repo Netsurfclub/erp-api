@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController
 class ProductController(
     private val productService: ProductService,
 ) {
-    val logger: Logger = LoggerFactory.getLogger(ProductController::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     @QueryMapping(name = "products")
     fun products(): List<Product> {

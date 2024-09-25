@@ -1,12 +1,12 @@
 package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.testobject.UserInputTestObject
-import hu.netsurf.erp.usermanagement.exception.ConfirmPasswordException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLengthException
+import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UserInput
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -141,7 +141,7 @@ class UserInputValidatorTests {
 
     @Test
     fun `validate test unhappy path - password and confirm password not matches`() {
-        assertThrows<ConfirmPasswordException> {
+        assertThrows<PasswordAndConfirmPasswordNotMatchesException> {
             userInputValidator.validate(UserInputTestObject.userInput1WithInvalidConfirmPassword())
         }
     }
