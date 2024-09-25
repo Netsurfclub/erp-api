@@ -57,7 +57,6 @@ class UserService(
     }
 
     private fun getUser(id: Int): User {
-        // TODO: Sanitize "id" param.
         val user = userRepository.findById(id)
 
         if (user.isEmpty) {
