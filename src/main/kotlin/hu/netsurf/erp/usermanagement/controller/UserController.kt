@@ -41,25 +41,33 @@ class UserController(
     fun createUser(
         @Argument request: CreateUserRequest,
     ): CreateUserResponse {
-        logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
+        try {
+            logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
 
-        val user = userService.createUser(request.input)
+            val user = userService.createUser(request.input)
 
-        logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
+            logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return CreateUserResponse(user)
+            return CreateUserResponse(user)
+        } catch (exception: Exception) {
+            return CreateUserResponse(errorMessage = exception.message.toString())
+        }
     }
 
     @MutationMapping(name = "updateUserPassword")
     fun updateUserPassword(
         @Argument request: UpdateUserPasswordInputRequest,
     ): UpdateUserPasswordInputResponse {
-        logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED)
+        try {
+            logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED)
 
-        val user = userService.updateUserPassword(request.input)
+            val user = userService.updateUserPassword(request.input)
 
-        logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
+            logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return UpdateUserPasswordInputResponse(user)
+            return UpdateUserPasswordInputResponse(user)
+        } catch (exception: Exception) {
+            return UpdateUserPasswordInputResponse(errorMessage = exception.message.toString())
+        }
     }
 }
