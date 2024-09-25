@@ -8,14 +8,14 @@ import hu.netsurf.erp.common.logging.constant.usermanagement.LoggerConstants.UPD
 import hu.netsurf.erp.common.logging.constant.usermanagement.LoggerConstants.USER
 import hu.netsurf.erp.common.logging.constant.usermanagement.LoggerConstants.USER_INPUT
 import hu.netsurf.erp.common.logging.extension.logInfo
-import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
-import hu.netsurf.erp.usermanagement.exception.ConfirmNewPasswordException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.extension.toUser
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.model.UserInput
 import hu.netsurf.erp.usermanagement.repository.UserRepository
+import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputSanitizer
+import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputValidator
 import hu.netsurf.erp.usermanagement.util.UserInputSanitizer
 import hu.netsurf.erp.usermanagement.util.UserInputValidator
 import org.slf4j.Logger
@@ -27,6 +27,8 @@ class UserService(
     private val userRepository: UserRepository,
     private val userInputSanitizer: UserInputSanitizer,
     private val userInputValidator: UserInputValidator,
+    private val updateUserPasswordInputSanitizer: UpdateUserPasswordInputSanitizer,
+    private val updateUserPasswordInputValidator: UpdateUserPasswordInputValidator,
 ) {
     val logger: Logger = LoggerFactory.getLogger(UserService::class.java)
 
@@ -71,15 +73,12 @@ class UserService(
     }
 
     fun updateUserPassword(updateUserPasswordInput: UpdateUserPasswordInput): User {
+        val sanitizedUserInput = updateUserPasswordInputSanitizer.sanitize(updateUserPasswordInput)
+
         val user = getUser(updateUserPasswordInput.userId)
 
-        if (updateUserPasswordInput.currentPassword != user.password) {
-            throw ConfirmCurrentPasswordException()
-        }
-
-        if (updateUserPasswordInput.newPassword != updateUserPasswordInput.confirmNewPassword) {
-            throw ConfirmNewPasswordException()
-        }
+        // TODO: create a wrapper class.
+        updateUserPasswordInputValidator.validate(sanitizedUserInput, user.password)
 
         user.password = updateUserPasswordInput.newPassword
         return updateUser(user)
