@@ -22,7 +22,7 @@ class ProductService(
     private val productRepository: ProductRepository,
     private val supplierService: SupplierService,
 ) {
-    val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     fun getProducts(): List<Product> {
         logger.logInfo(PRODUCTS_RETRIEVED_FROM_DATABASE)

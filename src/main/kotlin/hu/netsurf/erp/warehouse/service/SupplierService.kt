@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service
 class SupplierService(
     private val supplierRepository: SupplierRepository,
 ) {
-    val logger: Logger = LoggerFactory.getLogger(ProductService::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     fun getSuppliers(): List<Supplier> {
         logger.logInfo(SUPPLIERS_RETRIEVED_FROM_DATABASE)

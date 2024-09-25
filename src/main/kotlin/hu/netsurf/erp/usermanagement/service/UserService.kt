@@ -30,7 +30,7 @@ class UserService(
     private val updateUserPasswordInputSanitizer: UpdateUserPasswordInputSanitizer,
     private val updateUserPasswordInputValidator: UpdateUserPasswordInputValidator,
 ) {
-    val logger: Logger = LoggerFactory.getLogger(UserService::class.java)
+    val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     fun getUsers(): List<User> {
         logger.logInfo(USERS_RETRIEVED_FROM_DATABASE)
