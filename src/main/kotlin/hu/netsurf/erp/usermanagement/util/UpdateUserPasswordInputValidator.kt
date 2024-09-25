@@ -1,6 +1,6 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
-import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
+import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
@@ -21,7 +21,7 @@ class UpdateUserPasswordInputValidator {
         }
 
         if (!updateUserPasswordInput.currentPasswordAndPasswordInDatabaseMatches(passwordInDatabase)) {
-            throw ConfirmCurrentPasswordException()
+            throw CurrentPasswordAndPasswordInDatabaseNotMatchesException()
         }
 
         if (!updateUserPasswordInput.newPasswordAndConfirmNewPasswordMatches()) {

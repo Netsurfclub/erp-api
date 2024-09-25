@@ -1,7 +1,7 @@
 package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
-import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
+import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
@@ -47,7 +47,7 @@ class UpdateUserPasswordInputValidatorTests {
 
     @Test
     fun `validate test unhappy path - current password and password in database not matches`() {
-        assertThrows<ConfirmCurrentPasswordException> {
+        assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
             updateUserPasswordInputValidator.validate(
                 UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword(),
                 passwordInDatabase,

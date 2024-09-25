@@ -3,7 +3,7 @@ package hu.netsurf.erp.usermanagement.service
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.testobject.UserTestObject
-import hu.netsurf.erp.usermanagement.exception.ConfirmCurrentPasswordException
+import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.repository.UserRepository
@@ -93,15 +93,15 @@ class UserServiceTests {
     }
 
     @Test
-    fun `updateUserPassword test unhappy path - user current password not matches with the one in database`() {
+    fun `updateUserPassword test unhappy path - current password and password in database not matches`() {
         every {
             userRepository.findById(any())
         } returns Optional.of(UserTestObject.user1())
         every {
             updateUserPasswordInputValidator.validate(any(), any())
-        } throws ConfirmCurrentPasswordException()
+        } throws CurrentPasswordAndPasswordInDatabaseNotMatchesException()
 
-        assertThrows<ConfirmCurrentPasswordException> {
+        assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
             userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword())
         }
     }
