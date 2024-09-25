@@ -15,16 +15,19 @@ class InputSanitizerTests {
         @JvmStatic
         fun inputParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("input"),
-                Arguments.of(" input"),
-                Arguments.of("input "),
-                Arguments.of(" input "),
+                Arguments.of("no whitespace", "input"),
+                Arguments.of("one whitespace on left side", " input"),
+                Arguments.of("one whitespace on right side", "input "),
+                Arguments.of("whitespaces on both right and left side", " input "),
             )
     }
 
     @ParameterizedTest(name = "{index} => {0}")
     @MethodSource("inputParams")
-    fun `sanitize tests`(input: String) {
+    fun `sanitize tests`(
+        testCase: String,
+        input: String,
+    ) {
         val result = inputSanitizer.sanitize(input)
         assertEquals("input", result)
     }

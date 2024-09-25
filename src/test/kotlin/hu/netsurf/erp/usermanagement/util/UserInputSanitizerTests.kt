@@ -17,16 +17,49 @@ class UserInputSanitizerTests {
         @JvmStatic
         fun userInputParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("username", "password", "confirmPassword", "firstName", "lastName", "email"),
-                Arguments.of(" username", " password", " confirmPassword", " firstName", " lastName", " email"),
-                Arguments.of("username ", "password ", "confirmPassword ", "firstName ", "lastName ", "email "),
-                Arguments.of(" username ", " password ", " confirmPassword ", " firstName ", " lastName ", " email "),
+                Arguments.of(
+                    "no whitespace",
+                    "username",
+                    "password",
+                    "confirmPassword",
+                    "firstName",
+                    "lastName",
+                    "email",
+                ),
+                Arguments.of(
+                    "one whitespace on left side",
+                    " username",
+                    " password",
+                    " confirmPassword",
+                    " firstName",
+                    " lastName",
+                    " email",
+                ),
+                Arguments.of(
+                    "one whitespace on right side",
+                    "username ",
+                    "password ",
+                    "confirmPassword ",
+                    "firstName ",
+                    "lastName ",
+                    "email ",
+                ),
+                Arguments.of(
+                    "whitespaces on both right and left side",
+                    " username ",
+                    " password ",
+                    " confirmPassword ",
+                    " firstName ",
+                    " lastName ",
+                    " email ",
+                ),
             )
     }
 
     @ParameterizedTest(name = "{index} => {0}")
     @MethodSource("userInputParams")
     fun `sanitize tests`(
+        testCase: String,
         username: String,
         password: String,
         confirmPassword: String,
