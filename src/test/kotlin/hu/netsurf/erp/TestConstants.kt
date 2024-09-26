@@ -8,4 +8,7 @@ object TestConstants {
     const val PHOTO_FILE_NAME = "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg"
     const val UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY = "uploads/photos/products/"
     val ALLOWED_EXTENSIONS = listOf("jpg", "jpeg", "png", "bmp")
+    const val PRODUCT_1_NAME = "Product#1"
+    const val PRODUCT_1_UNIT = "pieces"
+    const val PRODUCT_2_NAME = "Product#2"
 }
