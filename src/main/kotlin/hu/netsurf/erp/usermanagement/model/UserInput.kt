@@ -1,6 +1,16 @@
 package hu.netsurf.erp.usermanagement.model
 
 import hu.netsurf.erp.common.regex.RegexPatterns.EMAIL_ADDRESS_REGEX
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.EMAIL_MAX_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.EMAIL_MIN_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.FIRST_NAME_MAX_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.FIRST_NAME_MIN_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.LAST_NAME_MAX_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.LAST_NAME_MIN_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.PASSWORD_MAX_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.PASSWORD_MIN_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.USERNAME_MAX_LENGTH
+import hu.netsurf.erp.usermanagement.constant.ValidationConstants.USERNAME_MIN_LENGTH
 
 data class UserInput(
     val username: String,
@@ -12,35 +22,35 @@ data class UserInput(
 ) {
     fun usernameIsEmpty(): Boolean = username.isEmpty()
 
-    fun usernameIsShort(): Boolean = username.length < 5
+    fun usernameIsShort(): Boolean = username.length < USERNAME_MIN_LENGTH
 
-    fun usernameIsLong(): Boolean = username.length > 15
+    fun usernameIsLong(): Boolean = username.length > USERNAME_MAX_LENGTH
 
     fun passwordIsEmpty(): Boolean = password.isEmpty()
 
-    fun passwordIsShort(): Boolean = password.length < 5
+    fun passwordIsShort(): Boolean = password.length < PASSWORD_MIN_LENGTH
 
-    fun passwordIsLong(): Boolean = password.length > 15
+    fun passwordIsLong(): Boolean = password.length > PASSWORD_MAX_LENGTH
 
     fun confirmPasswordIsEmpty(): Boolean = confirmPassword.isEmpty()
 
     fun firstNameIsEmpty(): Boolean = firstName.isEmpty()
 
-    fun firstNameIsShort(): Boolean = firstName.length <= 1
+    fun firstNameIsShort(): Boolean = firstName.length <= FIRST_NAME_MIN_LENGTH
 
-    fun firstNameIsLong(): Boolean = firstName.length > 255
+    fun firstNameIsLong(): Boolean = firstName.length > FIRST_NAME_MAX_LENGTH
 
     fun lastNameIsEmpty(): Boolean = lastName.isEmpty()
 
-    fun lastNameIsShort(): Boolean = lastName.length <= 1
+    fun lastNameIsShort(): Boolean = lastName.length <= LAST_NAME_MIN_LENGTH
 
-    fun lastNameIsLong(): Boolean = lastName.length > 255
+    fun lastNameIsLong(): Boolean = lastName.length > LAST_NAME_MAX_LENGTH
 
     fun emailIsEmpty(): Boolean = email.isEmpty()
 
-    fun emailIsShort(): Boolean = email.length <= 1
+    fun emailIsShort(): Boolean = email.length <= EMAIL_MIN_LENGTH
 
-    fun emailIsLong(): Boolean = email.length > 75
+    fun emailIsLong(): Boolean = email.length > EMAIL_MAX_LENGTH
 
     fun firstNameStartsWithUpperCaseCharacter(): Boolean = firstName.first().isUpperCase()
 
