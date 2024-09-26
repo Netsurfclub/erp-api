@@ -17,6 +17,7 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: none
+    open-in-view: off
   sql:
     init:
       data-locations: classpath:data-default.sql
