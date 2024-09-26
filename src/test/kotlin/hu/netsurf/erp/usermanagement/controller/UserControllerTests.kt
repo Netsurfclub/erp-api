@@ -27,7 +27,7 @@ class UserControllerTests {
     @Test
     fun `createUser test happy path`() {
         every {
-            userService.createUser(any())
+            userService.createUser()
         } returns UserTestObject.user1()
 
         val result = userController.createUser(UserInputTestObject.userInput1())
@@ -37,7 +37,7 @@ class UserControllerTests {
     @Test
     fun `updateUserPassword test happy path`() {
         every {
-            userService.updateUserPassword(any())
+            userService.updateUserPassword()
         } returns UserTestObject.user1()
 
         val result = userController.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())

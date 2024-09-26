@@ -26,7 +26,7 @@ class SupplierControllerTests {
     @Test
     fun `createSupplier test happy path`() {
         every {
-            supplierService.createSupplier(any())
+            supplierService.createSupplier()
         } returns SupplierTestObject.supplier1()
 
         val result = supplierController.createSupplier(SupplierInputTestObject.supplierInput1())

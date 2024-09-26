@@ -26,7 +26,7 @@ class ProductControllerTests {
     @Test
     fun `createProduct test happy path`() {
         every {
-            productService.createProduct(any())
+            productService.createProduct()
         } returns ProductTestObject.product1()
 
         val result = productController.createProduct(ProductInputTestObject.productInput1())

@@ -37,7 +37,7 @@ class UserServiceTests {
     @BeforeEach
     fun setup() {
         every {
-            updateUserPasswordInputSanitizer.sanitize(any())
+            updateUserPasswordInputSanitizer.sanitize()
         } returns UpdateUserPasswordInputTestObject.updateUserPasswordInput1()
     }
 
@@ -54,11 +54,11 @@ class UserServiceTests {
     @Test
     fun `createUser test happy path`() {
         every {
-            userInputSanitizer.sanitize(any())
+            userInputSanitizer.sanitize()
         } returns UserInputTestObject.userInput1()
-        justRun { userInputValidator.validate(any()) }
+        justRun { userInputValidator.validate() }
         every {
-            userRepository.save(any())
+            userRepository.save()
         } returns UserTestObject.user1()
 
         val result = userService.createUser(UserInputTestObject.userInput1())
@@ -68,12 +68,12 @@ class UserServiceTests {
     @Test
     fun `updateUserPassword test happy path`() {
         every {
-            userRepository.findById(any())
+            userRepository.findById()
         } returns Optional.of(UserTestObject.user1())
         every {
-            userRepository.save(any())
+            userRepository.save()
         } returns UserTestObject.user1()
-        justRun { updateUserPasswordInputValidator.validate(any(), any()) }
+        justRun { updateUserPasswordInputValidator.validate() }
 
         val result = userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())
         assertEquals(UserTestObject.user1(), result)
@@ -82,7 +82,7 @@ class UserServiceTests {
     @Test
     fun `updateUserPassword test unhappy path - user is empty`() {
         every {
-            userRepository.findById(any())
+            userRepository.findById()
         } returns Optional.empty()
 
         assertThrows<UserNotFoundException> {

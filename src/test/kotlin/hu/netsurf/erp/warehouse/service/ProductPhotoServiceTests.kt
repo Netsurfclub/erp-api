@@ -25,7 +25,7 @@ class ProductPhotoServiceTests {
 
     @BeforeEach
     fun setup() {
-        justRun { fileValidator.validate(any()) }
+        justRun { fileValidator.validate() }
 
         every { multipartFile.originalFilename } returns "file_name.jpeg"
         every { multipartFile.size } returns 10485760
@@ -35,7 +35,7 @@ class ProductPhotoServiceTests {
     @Test
     fun `getProductPhoto test happy path`() {
         every {
-            fileUtils.readAllBytes(any(), any())
+            fileUtils.readAllBytes()
         } returns ByteArray(10485760)
 
         val result = productPhotoService.getProductPhoto("file_name.jpeg")
@@ -45,7 +45,7 @@ class ProductPhotoServiceTests {
     @Test
     fun `getProductPhoto test unhappy path`() {
         every {
-            fileUtils.readAllBytes(any(), any())
+            fileUtils.readAllBytes()
         } throws IOException()
 
         assertThrows<ProductPhotoNotFoundException> {
@@ -56,9 +56,9 @@ class ProductPhotoServiceTests {
     @Test
     fun `uploadProductPhoto test happy path`() {
         every { productService.getProduct(1) } returns ProductTestObject.product1()
-        every { fileUtils.createPhotoUploadsDirectoryStructure(any()) } returns "uploads/photos/products/"
-        every { fileUtils.storePhoto(any(), any()) } returns "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg"
-        every { productService.updateProduct(any()) } returns ProductTestObject.product1WithPhoto()
+        every { fileUtils.createPhotoUploadsDirectoryStructure() } returns "uploads/photos/products/"
+        every { fileUtils.storePhoto() } returns "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg"
+        every { productService.updateProduct() } returns ProductTestObject.product1WithPhoto()
 
         val result = productPhotoService.uploadProductPhoto(1, multipartFile)
         assertFalse(result.isNullOrBlank())
