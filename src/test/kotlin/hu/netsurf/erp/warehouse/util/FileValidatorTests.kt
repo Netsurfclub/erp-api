@@ -1,6 +1,7 @@
 package hu.netsurf.erp.warehouse.util
 
 import hu.netsurf.erp.TestConstants.ALLOWED_EXTENSIONS
+import hu.netsurf.erp.TestConstants.INVALID_ORIGINAL_FILE_NAME
 import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.warehouse.config.FileExtensionsConfig
 import hu.netsurf.erp.warehouse.exception.EmptyFileException
@@ -44,7 +45,7 @@ class FileValidatorTests {
 
     @Test
     fun `validate test unhappy path - file has not allowed extension`() {
-        every { multipartFile.originalFilename } returns "file_name.txt"
+        every { multipartFile.originalFilename } returns INVALID_ORIGINAL_FILE_NAME
 
         assertThrows<InvalidFileExtensionException> {
             fileValidator.validate(multipartFile)
