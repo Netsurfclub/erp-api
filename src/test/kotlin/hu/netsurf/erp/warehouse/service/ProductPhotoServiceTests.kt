@@ -4,6 +4,7 @@ import hu.netsurf.erp.TestConstants.CONTENT_TYPE_IMAGE_JPEG
 import hu.netsurf.erp.TestConstants.MULTIPART_FILE_SIZE
 import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.TestConstants.UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
 import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -60,7 +61,9 @@ class ProductPhotoServiceTests {
     @Test
     fun `uploadProductPhoto test happy path`() {
         every { productService.getProduct(1) } returns ProductTestObject.product1()
-        every { fileUtils.createPhotoUploadsDirectoryStructure(any()) } returns "uploads/photos/products/"
+        every {
+            fileUtils.createPhotoUploadsDirectoryStructure(any())
+        } returns UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
         every { fileUtils.storePhoto(any(), any()) } returns PHOTO_FILE_NAME
         every { productService.updateProduct(any()) } returns ProductTestObject.product1WithPhoto()
 
