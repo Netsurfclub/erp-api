@@ -11,4 +11,10 @@ object TestConstants {
     const val PRODUCT_1_NAME = "Product#1"
     const val PRODUCT_1_UNIT = "pieces"
     const val PRODUCT_2_NAME = "Product#2"
+    const val SUPPLIER_1_NAME = "Supplier#1"
+    const val SUPPLIER_1_PHONE = "555123"
+    const val SUPPLIER_1_EMAIL = "supplier1@test.com"
+    const val SUPPLIER_2_NAME = "Supplier#2"
+    const val SUPPLIER_2_PHONE = "555456"
+    const val SUPPLIER_2_EMAIL = "supplier2@test.com"
 }
