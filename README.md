@@ -12,7 +12,7 @@ Prerequisites
 
 To avoid any unexpected application behaviour, make sure you have installed the following tools with the proper version numbers:
 
-- [Eclipse Temurin JDK](https://adoptium.net/temurin/releases)
+- [Eclipse Temurin JDK 21](https://adoptium.net/temurin/releases/?version=21)
 - [Maven 3.9.6](https://maven.apache.org/download.cgi)
 
 Running project locally
