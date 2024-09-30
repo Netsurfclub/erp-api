@@ -1,5 +1,15 @@
 package hu.netsurf.erp.usermanagement.util
 
+import hu.netsurf.erp.TestConstants.EMAIL_1
+import hu.netsurf.erp.TestConstants.FIRST_NAME_1
+import hu.netsurf.erp.TestConstants.INVALID_EMAIL_1
+import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_1
+import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_STARTS_WITH_NUMBER
+import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_1
+import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_STARTS_WITH_NUMBER
+import hu.netsurf.erp.TestConstants.LAST_NAME_1
+import hu.netsurf.erp.TestConstants.PASSWORD
+import hu.netsurf.erp.TestConstants.USERNAME_1
 import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
@@ -49,15 +59,15 @@ class UserInputValidatorTests {
         @JvmStatic
         fun firstNameParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("bence", "bence"),
-                Arguments.of("1firstName", "1firstName"),
+                Arguments.of("bence", INVALID_FIRST_NAME_1),
+                Arguments.of("1firstName", INVALID_FIRST_NAME_STARTS_WITH_NUMBER),
             )
 
         @JvmStatic
         fun lastNameParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("juhász", "juhász"),
-                Arguments.of("1lastName", "1lastName"),
+                Arguments.of("juhász", INVALID_LAST_NAME_1),
+                Arguments.of("1lastName", INVALID_LAST_NAME_STARTS_WITH_NUMBER),
             )
     }
 
@@ -98,12 +108,12 @@ class UserInputValidatorTests {
     ) {
         val userInput =
             UserInput(
-                username = "jbence",
-                password = "pAsSwOrD",
-                confirmPassword = "pAsSwOrD",
+                username = USERNAME_1,
+                password = PASSWORD,
+                confirmPassword = PASSWORD,
                 firstName = firstName,
-                lastName = "Juhász",
-                email = "bjuhasznetsurfclub.hu",
+                lastName = LAST_NAME_1,
+                email = EMAIL_1,
             )
 
         assertThrows<InvalidFirstNameFormatException> {
@@ -119,12 +129,12 @@ class UserInputValidatorTests {
     ) {
         val userInput =
             UserInput(
-                username = "jbence",
-                password = "pAsSwOrD",
-                confirmPassword = "pAsSwOrD",
-                firstName = "Bence",
+                username = USERNAME_1,
+                password = PASSWORD,
+                confirmPassword = PASSWORD,
+                firstName = FIRST_NAME_1,
                 lastName = lastName,
-                email = "bjuhasznetsurfclub.hu",
+                email = INVALID_EMAIL_1,
             )
 
         assertThrows<InvalidLastNameFormatException> {

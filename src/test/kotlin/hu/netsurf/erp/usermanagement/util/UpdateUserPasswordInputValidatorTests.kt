@@ -1,5 +1,6 @@
 package hu.netsurf.erp.usermanagement.util
 
+import hu.netsurf.erp.TestConstants.PASSWORD
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
@@ -16,7 +17,7 @@ import java.util.stream.Stream
 
 class UpdateUserPasswordInputValidatorTests {
     private val updateUserPasswordInputValidator: UpdateUserPasswordInputValidator = UpdateUserPasswordInputValidator()
-    private val passwordInDatabase: String = "pAsSwOrD"
+    private val passwordInDatabase: String = PASSWORD
 
     companion object {
         @JvmStatic

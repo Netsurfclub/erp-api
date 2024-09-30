@@ -25,7 +25,7 @@ class FileSystemUtils : FileUtils {
         customSubdirectoryName: String,
         fileName: String,
     ): ByteArray {
-        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory =
+        val uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory =
             Paths.get(
                 UPLOADS_DIRECTORY_NAME,
                 PHOTOS_SUBDIRECTORY_NAME,
@@ -33,12 +33,12 @@ class FileSystemUtils : FileUtils {
                 fileName,
             )
 
-        val bytes = Files.readAllBytes(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
+        val bytes = Files.readAllBytes(uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory)
 
         logger.logInfo(
             PHOTO_BYTES_READ_FROM_FILE_SYSTEM,
             mapOf(
-                UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory,
+                UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory,
                 FILE_NAME to fileName,
             ),
         )
@@ -47,23 +47,23 @@ class FileSystemUtils : FileUtils {
     }
 
     override fun createPhotoUploadsDirectoryStructure(customSubdirectoryName: String): String {
-        val uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory =
+        val uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory =
             Paths.get(
                 UPLOADS_DIRECTORY_NAME,
                 PHOTOS_SUBDIRECTORY_NAME,
                 customSubdirectoryName,
             )
 
-        if (!Files.exists(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)) {
-            Files.createDirectories(uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory)
+        if (!Files.exists(uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory)) {
+            Files.createDirectories(uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory)
 
             logger.logInfo(
                 PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM,
-                mapOf(UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory),
+                mapOf(UPLOADS_DIRECTORY_PATH to uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory),
             )
         }
 
-        return uploadsDirectoryWithPhotosSubDirectoryAndCustomSubdirectory.toString()
+        return uploadsDirectoryWithPhotosSubdirectoryAndCustomSubdirectory.toString()
     }
 
     override fun storePhoto(
