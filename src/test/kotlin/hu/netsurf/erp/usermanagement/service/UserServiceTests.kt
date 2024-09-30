@@ -4,13 +4,14 @@ import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.testobject.UserTestObject
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
+import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInputValidationResult
+import hu.netsurf.erp.usermanagement.model.UserInputValidationResult
 import hu.netsurf.erp.usermanagement.repository.UserRepository
 import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputSanitizer
 import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputValidator
 import hu.netsurf.erp.usermanagement.util.UserInputSanitizer
 import hu.netsurf.erp.usermanagement.util.UserInputValidator
 import io.mockk.every
-import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -56,7 +57,7 @@ class UserServiceTests {
         every {
             userInputSanitizer.sanitize(any())
         } returns UserInputTestObject.userInput1()
-        justRun { userInputValidator.validate(any()) }
+        every { userInputValidator.validate(any()) } returns UserInputValidationResult.success()
         every {
             userRepository.save(any())
         } returns UserTestObject.user1()
@@ -73,7 +74,9 @@ class UserServiceTests {
         every {
             userRepository.save(any())
         } returns UserTestObject.user1()
-        justRun { updateUserPasswordInputValidator.validate(any(), any()) }
+        every {
+            updateUserPasswordInputValidator.validate(any(), any())
+        } returns UpdateUserPasswordInputValidationResult.success()
 
         val result = userService.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())
         assertEquals(UserTestObject.user1(), result)

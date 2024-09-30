@@ -11,16 +11,9 @@ import hu.netsurf.erp.TestConstants.LAST_NAME_1
 import hu.netsurf.erp.TestConstants.PASSWORD
 import hu.netsurf.erp.TestConstants.USERNAME_1
 import hu.netsurf.erp.testobject.UserInputTestObject
-import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
-import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
-import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
-import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
-import hu.netsurf.erp.usermanagement.exception.InvalidLengthException
-import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UserInput
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
-import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -73,9 +66,8 @@ class UserInputValidatorTests {
 
     @Test
     fun `validate test happy path`() {
-        assertDoesNotThrow {
-            userInputValidator.validate(UserInputTestObject.userInput1())
-        }
+        val result = userInputValidator.validate(UserInputTestObject.userInput1())
+        assertEquals("Validation success.", result.message)
     }
 
     @ParameterizedTest(name = "{index} => {0}")
@@ -84,9 +76,8 @@ class UserInputValidatorTests {
         testCase: String,
         userInput: UserInput,
     ) {
-        assertThrows<EmptyFieldException> {
-            userInputValidator.validate(userInput)
-        }
+        val result = userInputValidator.validate(userInput)
+        assertEquals("Üres mező.", result.message)
     }
 
     @ParameterizedTest(name = "{index} => {0}")
@@ -95,9 +86,8 @@ class UserInputValidatorTests {
         testCase: String,
         userInput: UserInput,
     ) {
-        assertThrows<InvalidLengthException> {
-            userInputValidator.validate(userInput)
-        }
+        val result = userInputValidator.validate(userInput)
+        assertEquals("A mező hossza nem megfelelő.", result.message)
     }
 
     @ParameterizedTest(name = "{index} => {0}")
@@ -116,9 +106,8 @@ class UserInputValidatorTests {
                 email = EMAIL_1,
             )
 
-        assertThrows<InvalidFirstNameFormatException> {
-            userInputValidator.validate(userInput)
-        }
+        val result = userInputValidator.validate(userInput)
+        assertEquals("Nem megfelelő keresztnév formátum.", result.message)
     }
 
     @ParameterizedTest(name = "{index} => {0}")
@@ -137,22 +126,19 @@ class UserInputValidatorTests {
                 email = INVALID_EMAIL_1,
             )
 
-        assertThrows<InvalidLastNameFormatException> {
-            userInputValidator.validate(userInput)
-        }
+        val result = userInputValidator.validate(userInput)
+        assertEquals("Nem megfelelő vezetéknév formátum.", result.message)
     }
 
     @Test
     fun `validate test unhappy path - invalid email address`() {
-        assertThrows<InvalidEmailAddressFormatException> {
-            userInputValidator.validate(UserInputTestObject.userInput1WithInvalidEmail())
-        }
+        val result = userInputValidator.validate(UserInputTestObject.userInput1WithInvalidEmail())
+        assertEquals("Nem megfelelő e-mail cím formátum.", result.message)
     }
 
     @Test
     fun `validate test unhappy path - password and confirm password not matches`() {
-        assertThrows<PasswordAndConfirmPasswordNotMatchesException> {
-            userInputValidator.validate(UserInputTestObject.userInput1WithInvalidConfirmPassword())
-        }
+        val result = userInputValidator.validate(UserInputTestObject.userInput1WithInvalidConfirmPassword())
+        assertEquals("A jelszavak nem egyeznek.", result.message)
     }
 }

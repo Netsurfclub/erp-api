@@ -4,14 +4,11 @@ import hu.netsurf.erp.TestConstants.ALLOWED_EXTENSIONS
 import hu.netsurf.erp.TestConstants.INVALID_ORIGINAL_FILE_NAME
 import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.warehouse.config.FileExtensionsConfig
-import hu.netsurf.erp.warehouse.exception.EmptyFileException
-import hu.netsurf.erp.warehouse.exception.InvalidFileExtensionException
 import io.mockk.every
 import io.mockk.mockk
-import org.junit.jupiter.api.Assertions.assertDoesNotThrow
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.springframework.web.multipart.MultipartFile
 
 class FileValidatorTests {
@@ -29,26 +26,23 @@ class FileValidatorTests {
 
     @Test
     fun `validate test happy path`() {
-        assertDoesNotThrow {
-            fileValidator.validate(multipartFile)
-        }
+        val result = fileValidator.validate(multipartFile)
+        assertEquals("Validation success.", result.message)
     }
 
     @Test
     fun `validate test unhappy path - file is empty`() {
         every { multipartFile.isEmpty } returns true
 
-        assertThrows<EmptyFileException> {
-            fileValidator.validate(multipartFile)
-        }
+        val result = fileValidator.validate(multipartFile)
+        assertEquals("Üres fájl: file_name.jpeg", result.message)
     }
 
     @Test
     fun `validate test unhappy path - file has not allowed extension`() {
         every { multipartFile.originalFilename } returns INVALID_ORIGINAL_FILE_NAME
 
-        assertThrows<InvalidFileExtensionException> {
-            fileValidator.validate(multipartFile)
-        }
+        val result = fileValidator.validate(multipartFile)
+        assertEquals("Hibás fájlformátum: .txt", result.message)
     }
 }

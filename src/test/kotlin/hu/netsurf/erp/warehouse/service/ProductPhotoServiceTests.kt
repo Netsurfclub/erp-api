@@ -8,10 +8,10 @@ import hu.netsurf.erp.TestConstants.UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_A
 import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
+import hu.netsurf.erp.warehouse.model.MultipartFileValidationResult
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator
 import io.mockk.every
-import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -30,7 +30,7 @@ class ProductPhotoServiceTests {
 
     @BeforeEach
     fun setup() {
-        justRun { fileValidator.validate(any()) }
+        every { fileValidator.validate(any()) } returns MultipartFileValidationResult.success()
 
         every { multipartFile.originalFilename } returns ORIGINAL_FILE_NAME
         every { multipartFile.size } returns MULTIPART_FILE_SIZE.toLong()
