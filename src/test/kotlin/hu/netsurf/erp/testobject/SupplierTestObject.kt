@@ -1,5 +1,11 @@
 package hu.netsurf.erp.testobject
 
+import hu.netsurf.erp.TestConstants.SUPPLIER_1_EMAIL
+import hu.netsurf.erp.TestConstants.SUPPLIER_1_NAME
+import hu.netsurf.erp.TestConstants.SUPPLIER_1_PHONE
+import hu.netsurf.erp.TestConstants.SUPPLIER_2_EMAIL
+import hu.netsurf.erp.TestConstants.SUPPLIER_2_NAME
+import hu.netsurf.erp.TestConstants.SUPPLIER_2_PHONE
 import hu.netsurf.erp.warehouse.model.Supplier
 
 class SupplierTestObject {
@@ -9,16 +15,16 @@ class SupplierTestObject {
         fun supplier2(): Supplier =
             build(
                 id = 2,
-                name = "Supplier#2",
-                phone = "555456",
-                email = "supplier2@test.com",
+                name = SUPPLIER_2_NAME,
+                phone = SUPPLIER_2_PHONE,
+                email = SUPPLIER_2_EMAIL,
             )
 
         private fun build(
             id: Int = 1,
-            name: String = "Supplier#1",
-            phone: String = "555123",
-            email: String = "supplier1@test.com",
+            name: String = SUPPLIER_1_NAME,
+            phone: String = SUPPLIER_1_PHONE,
+            email: String = SUPPLIER_1_EMAIL,
         ): Supplier =
             Supplier(
                 id = id,

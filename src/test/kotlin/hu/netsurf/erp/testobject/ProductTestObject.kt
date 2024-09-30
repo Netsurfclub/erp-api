@@ -1,5 +1,9 @@
 package hu.netsurf.erp.testobject
 
+import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.TestConstants.PRODUCT_1_NAME
+import hu.netsurf.erp.TestConstants.PRODUCT_1_UNIT
+import hu.netsurf.erp.TestConstants.PRODUCT_2_NAME
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.Supplier
 
@@ -7,22 +11,22 @@ class ProductTestObject {
     companion object {
         fun product1(): Product = build()
 
-        fun product1WithPhoto(): Product = build(photo = "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg")
+        fun product1WithPhoto(): Product = build(photo = PHOTO_FILE_NAME)
 
         fun product2(): Product =
             build(
                 id = 2,
-                name = "Product#2",
+                name = PRODUCT_2_NAME,
                 price = 20000.0,
                 onStock = 20,
             )
 
         private fun build(
             id: Int = 1,
-            name: String = "Product#1",
+            name: String = PRODUCT_1_NAME,
             supplier: Supplier = SupplierTestObject.supplier1(),
             price: Double = 10000.0,
-            unit: String = "pieces",
+            unit: String = PRODUCT_1_UNIT,
             photo: String? = null,
             onStock: Int = 10,
         ): Product =
