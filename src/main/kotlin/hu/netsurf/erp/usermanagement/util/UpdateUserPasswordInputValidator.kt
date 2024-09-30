@@ -1,10 +1,7 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
-import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
-import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
-import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
-import hu.netsurf.erp.usermanagement.exception.NewPasswordAndPasswordInDatabaseMatchesException
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
+import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInputValidationResult
 import org.springframework.stereotype.Component
 
 @Component
@@ -12,25 +9,27 @@ class UpdateUserPasswordInputValidator {
     fun validate(
         updateUserPasswordInput: UpdateUserPasswordInput,
         passwordInDatabase: String,
-    ) {
+    ): UpdateUserPasswordInputValidationResult {
         if (
             updateUserPasswordInput.currentPasswordIsEmpty() ||
             updateUserPasswordInput.newPasswordIsEmpty() ||
             updateUserPasswordInput.confirmNewPasswordIsEmpty()
         ) {
-            throw EmptyFieldException()
+            return UpdateUserPasswordInputValidationResult.emptyField()
         }
 
         if (!updateUserPasswordInput.currentPasswordAndPasswordInDatabaseMatches(passwordInDatabase)) {
-            throw CurrentPasswordAndPasswordInDatabaseNotMatchesException()
+            return UpdateUserPasswordInputValidationResult.currentPasswordAndPasswordInDatabaseNotMatches()
         }
 
         if (updateUserPasswordInput.newPasswordAndCurrentPasswordInDatabaseMatches(passwordInDatabase)) {
-            throw NewPasswordAndPasswordInDatabaseMatchesException()
+            return UpdateUserPasswordInputValidationResult.newPasswordAndPasswordInDatabaseMatches()
         }
 
         if (!updateUserPasswordInput.newPasswordAndConfirmNewPasswordMatches()) {
-            throw NewPasswordAndConfirmNewPasswordNotMatchesException()
+            return UpdateUserPasswordInputValidationResult.newPasswordAndConfirmNewPasswordMatches()
         }
+
+        return UpdateUserPasswordInputValidationResult.success()
     }
 }
