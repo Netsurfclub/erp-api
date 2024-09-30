@@ -1,26 +1,21 @@
 package hu.netsurf.erp.usermanagement.model
 
-class UserInputValidationResult private constructor(val message: String) {
+class UserInputValidationResult private constructor(
+    val message: String,
+) {
     companion object {
-        fun emptyField(): UserInputValidationResult =
-            UserInputValidationResult("Üres mező.")
+        fun emptyField(): UserInputValidationResult = UserInputValidationResult("Üres mező.")
 
-        fun invalidLength(): UserInputValidationResult =
-            UserInputValidationResult("A mező hossza nem megfelelő.")
+        fun invalidLength(): UserInputValidationResult = UserInputValidationResult("A mező hossza nem megfelelő.")
 
-        fun invalidFirstNameFormat(): UserInputValidationResult =
-            UserInputValidationResult("Nem megfelelő keresztnév formátuma.")
+        fun invalidFirstNameFormat(): UserInputValidationResult = UserInputValidationResult("Nem megfelelő keresztnév formátuma.")
 
-        fun invalidLastNameFormat(): UserInputValidationResult =
-            UserInputValidationResult("Nem megfelelő vezetéknév formátuma.")
+        fun invalidLastNameFormat(): UserInputValidationResult = UserInputValidationResult("Nem megfelelő vezetéknév formátuma.")
 
-        fun invalidEmailAddressFormat(): UserInputValidationResult =
-            UserInputValidationResult("Nem megfelelő e-mail cím formátuma.")
+        fun invalidEmailAddressFormat(): UserInputValidationResult = UserInputValidationResult("Nem megfelelő e-mail cím formátuma.")
 
-        fun passwordAndConfirmPasswordNotMatches(): UserInputValidationResult =
-            UserInputValidationResult("A jelszavak nem egyeznek.")
+        fun passwordAndConfirmPasswordNotMatches(): UserInputValidationResult = UserInputValidationResult("A jelszavak nem egyeznek.")
 
-        fun success(): UserInputValidationResult =
-            UserInputValidationResult("Validation success.")
+        fun success(): UserInputValidationResult = UserInputValidationResult("Validation success.")
     }
 }

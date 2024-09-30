@@ -1,9 +1,10 @@
 package hu.netsurf.erp.usermanagement.model
 
-class UpdateUserPasswordInputValidationResult private constructor(val message: String) {
+class UpdateUserPasswordInputValidationResult private constructor(
+    val message: String,
+) {
     companion object {
-        fun emptyField(): UpdateUserPasswordInputValidationResult =
-            UpdateUserPasswordInputValidationResult("Üres mező.")
+        fun emptyField(): UpdateUserPasswordInputValidationResult = UpdateUserPasswordInputValidationResult("Üres mező.")
 
         fun currentPasswordAndPasswordInDatabaseNotMatches(): UpdateUserPasswordInputValidationResult =
             UpdateUserPasswordInputValidationResult("A jelenlegi jelszó hibás.")
@@ -14,7 +15,6 @@ class UpdateUserPasswordInputValidationResult private constructor(val message: S
         fun newPasswordAndConfirmNewPasswordMatches(): UpdateUserPasswordInputValidationResult =
             UpdateUserPasswordInputValidationResult("A jelszó megerősítése sikertelen.")
 
-        fun success(): UpdateUserPasswordInputValidationResult =
-            UpdateUserPasswordInputValidationResult("Validation success.")
+        fun success(): UpdateUserPasswordInputValidationResult = UpdateUserPasswordInputValidationResult("Validation success.")
     }
 }
