@@ -1,5 +1,8 @@
 package hu.netsurf.erp.testobject
 
+import hu.netsurf.erp.TestConstants.SUPPLIER_1_EMAIL
+import hu.netsurf.erp.TestConstants.SUPPLIER_1_NAME
+import hu.netsurf.erp.TestConstants.SUPPLIER_1_PHONE
 import hu.netsurf.erp.warehouse.model.SupplierInput
 
 class SupplierInputTestObject {
@@ -7,9 +10,9 @@ class SupplierInputTestObject {
         fun supplierInput1(): SupplierInput = build()
 
         private fun build(
-            name: String = "Supplier#1",
-            phone: String = "555123",
-            email: String = "supplier1@test.com",
+            name: String = SUPPLIER_1_NAME,
+            phone: String = SUPPLIER_1_PHONE,
+            email: String = SUPPLIER_1_EMAIL,
         ): SupplierInput =
             SupplierInput(
                 name = name,
