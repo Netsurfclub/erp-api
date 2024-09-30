@@ -1,17 +1,12 @@
 ﻿package hu.netsurf.erp.usermanagement.util
 
-import hu.netsurf.erp.usermanagement.exception.EmptyFieldException
-import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
-import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
-import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
-import hu.netsurf.erp.usermanagement.exception.InvalidLengthException
-import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.model.UserInput
+import hu.netsurf.erp.usermanagement.model.UserInputValidationResult
 import org.springframework.stereotype.Component
 
 @Component
 class UserInputValidator {
-    fun validate(userInput: UserInput) {
+    fun validate(userInput: UserInput): UserInputValidationResult {
         if (
             userInput.usernameIsEmpty() ||
             userInput.passwordIsEmpty() ||
@@ -20,7 +15,7 @@ class UserInputValidator {
             userInput.lastNameIsEmpty() ||
             userInput.emailIsEmpty()
         ) {
-            throw EmptyFieldException()
+            return UserInputValidationResult.emptyField()
         }
 
         if (
@@ -35,23 +30,25 @@ class UserInputValidator {
             userInput.emailIsShort() ||
             userInput.emailIsLong()
         ) {
-            throw InvalidLengthException()
+            return UserInputValidationResult.invalidLength()
         }
 
         if (!userInput.firstNameStartsWithUpperCaseCharacter()) {
-            throw InvalidFirstNameFormatException()
+            return UserInputValidationResult.invalidFirstNameFormat()
         }
 
         if (!userInput.lastNameStartsWithUpperCaseCharacter()) {
-            throw InvalidLastNameFormatException()
+            return UserInputValidationResult.invalidLastNameFormat()
         }
 
         if (!userInput.emailAddressIsValid()) {
-            throw InvalidEmailAddressFormatException()
+            return UserInputValidationResult.invalidEmailAddressFormat()
         }
 
         if (!userInput.passwordAndConfirmPasswordMatches()) {
-            throw PasswordAndConfirmPasswordNotMatchesException()
+            return UserInputValidationResult.passwordAndConfirmPasswordNotMatches()
         }
+
+        return UserInputValidationResult.success()
     }
 }
