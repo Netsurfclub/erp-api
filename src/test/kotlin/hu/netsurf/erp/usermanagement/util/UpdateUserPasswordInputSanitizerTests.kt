@@ -1,5 +1,7 @@
 package hu.netsurf.erp.usermanagement.util
 
+import hu.netsurf.erp.TestConstants.NEW_PASSWORD
+import hu.netsurf.erp.TestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
@@ -15,10 +17,10 @@ class UpdateUserPasswordInputSanitizerTests {
         @JvmStatic
         fun updateUserPasswordInputParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("no whitespace", "pAsSwOrD", "NeWpAsSwOrD", "NeWpAsSwOrD"),
-                Arguments.of("one whitespace on left side", " pAsSwOrD", " NeWpAsSwOrD", " NeWpAsSwOrD"),
-                Arguments.of("one whitespace on right side", "pAsSwOrD ", "NeWpAsSwOrD ", "NeWpAsSwOrD "),
-                Arguments.of("whitespaces on both right and left side", " pAsSwOrD ", " NeWpAsSwOrD ", " NeWpAsSwOrD "),
+                Arguments.of("no whitespace", PASSWORD, NEW_PASSWORD, NEW_PASSWORD),
+                Arguments.of("one whitespace on left side", " $PASSWORD", " $NEW_PASSWORD", " $NEW_PASSWORD"),
+                Arguments.of("one whitespace on right side", "$PASSWORD ", "$NEW_PASSWORD ", "$NEW_PASSWORD "),
+                Arguments.of("whitespaces on both right and left side", " $PASSWORD ", " $NEW_PASSWORD ", " $NEW_PASSWORD "),
             )
     }
 
@@ -40,8 +42,8 @@ class UpdateUserPasswordInputSanitizerTests {
 
         val result = updateUserPasswordInputSanitizer.sanitize(updateUserPasswordInput)
 
-        assertEquals("pAsSwOrD", result.currentPassword)
-        assertEquals("NeWpAsSwOrD", result.newPassword)
-        assertEquals("NeWpAsSwOrD", result.confirmNewPassword)
+        assertEquals(PASSWORD, result.currentPassword)
+        assertEquals(NEW_PASSWORD, result.newPassword)
+        assertEquals(NEW_PASSWORD, result.confirmNewPassword)
     }
 }

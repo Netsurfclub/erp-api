@@ -1,5 +1,13 @@
 package hu.netsurf.erp.testobject
 
+import hu.netsurf.erp.TestConstants.EMAIL_1
+import hu.netsurf.erp.TestConstants.EMAIL_2
+import hu.netsurf.erp.TestConstants.FIRST_NAME_1
+import hu.netsurf.erp.TestConstants.FIRST_NAME_2
+import hu.netsurf.erp.TestConstants.LAST_NAME_1
+import hu.netsurf.erp.TestConstants.PASSWORD
+import hu.netsurf.erp.TestConstants.USERNAME_1
+import hu.netsurf.erp.TestConstants.USERNAME_2
 import hu.netsurf.erp.usermanagement.model.User
 
 class UserTestObject {
@@ -9,18 +17,18 @@ class UserTestObject {
         fun user2(): User =
             build(
                 id = 2,
-                username = "jgabor",
-                firstName = "Gábor",
-                email = "gjuhasz@netsurfclub.hu",
+                username = USERNAME_2,
+                firstName = FIRST_NAME_2,
+                email = EMAIL_2,
             )
 
         private fun build(
             id: Int = 1,
-            username: String = "jbence",
-            password: String = "pAsSwOrD",
-            firstName: String = "Bence",
-            lastName: String = "Juhász",
-            email: String = "bjuhasz@netsurfclub.hu",
+            username: String = USERNAME_1,
+            password: String = PASSWORD,
+            firstName: String = FIRST_NAME_1,
+            lastName: String = LAST_NAME_1,
+            email: String = EMAIL_1,
         ): User =
             User(
                 id = id,

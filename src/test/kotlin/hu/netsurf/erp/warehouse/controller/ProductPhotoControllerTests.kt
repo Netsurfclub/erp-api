@@ -1,5 +1,9 @@
 package hu.netsurf.erp.warehouse.controller
 
+import hu.netsurf.erp.TestConstants.CONTENT_TYPE_IMAGE_JPEG
+import hu.netsurf.erp.TestConstants.MULTIPART_FILE_SIZE
+import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
+import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -18,34 +22,33 @@ class ProductPhotoControllerTests {
     private val productPhotoService: ProductPhotoService = mockk()
     private val productPhotoController: ProductPhotoController = ProductPhotoController(productPhotoService)
     private val multipartFile: MultipartFile = mockk<MultipartFile>()
-    private val fileName = "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg"
 
     @BeforeEach
     fun setup() {
-        every { multipartFile.originalFilename } returns "file_name.jpeg"
-        every { multipartFile.size } returns 10485760
-        every { multipartFile.contentType } returns "image/jpeg"
+        every { multipartFile.originalFilename } returns ORIGINAL_FILE_NAME
+        every { multipartFile.size } returns MULTIPART_FILE_SIZE.toLong()
+        every { multipartFile.contentType } returns CONTENT_TYPE_IMAGE_JPEG
     }
 
     @Test
     fun `getProductPhoto test happy path`() {
         every {
-            productPhotoService.getProductPhoto(fileName)
-        } returns ByteArray(10485760)
+            productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
+        } returns ByteArray(MULTIPART_FILE_SIZE)
 
-        val result = productPhotoController.getProductPhoto(fileName)
+        val result = productPhotoController.getProductPhoto(PHOTO_FILE_NAME)
         assertEquals(HttpStatus.OK, result.statusCode)
-        assertEquals("image/jpeg", result.headers.contentType.toString())
+        assertEquals(CONTENT_TYPE_IMAGE_JPEG, result.headers.contentType.toString())
         assertTrue(result.body.toString().isNotEmpty())
     }
 
     @Test
     fun `getProductPhoto test unhappy path - product photo not found (HTTP 404)`() {
         every {
-            productPhotoService.getProductPhoto(fileName)
-        } throws ProductPhotoNotFoundException(fileName)
+            productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
+        } throws ProductPhotoNotFoundException(PHOTO_FILE_NAME)
 
-        val result = productPhotoController.getProductPhoto(fileName)
+        val result = productPhotoController.getProductPhoto(PHOTO_FILE_NAME)
         assertEquals(HttpStatus.NOT_FOUND, result.statusCode)
         assertEquals(
             "Fénykép a következő fájlnévvel: 7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg nem található a termékről.",
@@ -57,10 +60,10 @@ class ProductPhotoControllerTests {
     fun `getProductPhoto test unhappy path - bad request (HTTP 400)`() {
         val exceptionMessage = "IOException occurred."
         every {
-            productPhotoService.getProductPhoto(fileName)
+            productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
         } throws IOException(exceptionMessage)
 
-        val result = productPhotoController.getProductPhoto(fileName)
+        val result = productPhotoController.getProductPhoto(PHOTO_FILE_NAME)
         assertEquals(HttpStatus.BAD_REQUEST, result.statusCode)
         assertEquals(exceptionMessage, result.body.toString())
     }
@@ -69,11 +72,11 @@ class ProductPhotoControllerTests {
     fun `createProductPhoto test happy path`() {
         every {
             productPhotoService.uploadProductPhoto(1, multipartFile)
-        } returns fileName
+        } returns PHOTO_FILE_NAME
 
         val result = productPhotoController.createProductPhoto(1, multipartFile)
         assertEquals(HttpStatus.OK, result.statusCode)
-        assertEquals(fileName, result.body.toString())
+        assertEquals(PHOTO_FILE_NAME, result.body.toString())
     }
 
     @Test

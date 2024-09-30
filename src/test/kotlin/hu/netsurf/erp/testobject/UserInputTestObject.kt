@@ -1,75 +1,67 @@
 package hu.netsurf.erp.testobject
 
+import hu.netsurf.erp.TestConstants.EMAIL_1
+import hu.netsurf.erp.TestConstants.EMPTY_STRING
+import hu.netsurf.erp.TestConstants.FIRST_NAME_1
+import hu.netsurf.erp.TestConstants.INVALID_CONFIRM_PASSWORD
+import hu.netsurf.erp.TestConstants.INVALID_EMAIL_1
+import hu.netsurf.erp.TestConstants.LAST_NAME_1
+import hu.netsurf.erp.TestConstants.LONG_EMAIL_1
+import hu.netsurf.erp.TestConstants.LONG_FIRST_NAME_1
+import hu.netsurf.erp.TestConstants.LONG_LAST_NAME_1
+import hu.netsurf.erp.TestConstants.LONG_PASSWORD
+import hu.netsurf.erp.TestConstants.LONG_USERNAME_1
+import hu.netsurf.erp.TestConstants.PASSWORD
+import hu.netsurf.erp.TestConstants.USERNAME_1
 import hu.netsurf.erp.usermanagement.model.UserInput
 
 class UserInputTestObject {
     companion object {
         fun userInput1(): UserInput = build()
 
-        fun userInput1WithEmptyUsername(): UserInput = build(username = "")
+        fun userInput1WithEmptyUsername(): UserInput = build(username = EMPTY_STRING)
 
         fun userInput1WithShortUsername(): UserInput = build(username = "j")
 
-        fun userInput1WithLongUsername(): UserInput =
-            build(
-                username =
-                    "jbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbence" +
-                        "jbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbence" +
-                        "jbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejben",
-            )
+        fun userInput1WithLongUsername(): UserInput = build(username = LONG_USERNAME_1)
 
-        fun userInput1WithEmptyPassword(): UserInput = build(password = "")
+        fun userInput1WithEmptyPassword(): UserInput = build(password = EMPTY_STRING)
 
         fun userInput1WithShortPassword(): UserInput = build(password = "p")
 
-        fun userInput1WithLongPassword(): UserInput = build(password = "pAsSwOrDpAsSwOrD")
+        fun userInput1WithLongPassword(): UserInput = build(password = LONG_PASSWORD)
 
-        fun userInput1WithEmptyConfirmPassword(): UserInput = build(confirmPassword = "")
+        fun userInput1WithEmptyConfirmPassword(): UserInput = build(confirmPassword = EMPTY_STRING)
 
-        fun userInput1WithEmptyFirstName(): UserInput = build(firstName = "")
+        fun userInput1WithEmptyFirstName(): UserInput = build(firstName = EMPTY_STRING)
 
         fun userInput1WithShortFirstName(): UserInput = build(firstName = "B")
 
-        fun userInput1WithLongFirstName(): UserInput =
-            build(
-                firstName =
-                    "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBence" +
-                        "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBence" +
-                        "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceB",
-            )
+        fun userInput1WithLongFirstName(): UserInput = build(firstName = LONG_FIRST_NAME_1)
 
-        fun userInput1WithEmptyLastName(): UserInput = build(lastName = "")
+        fun userInput1WithEmptyLastName(): UserInput = build(lastName = EMPTY_STRING)
 
         fun userInput1WithShortLastName(): UserInput = build(lastName = "J")
 
-        fun userInput1WithLongLastName(): UserInput =
-            build(
-                lastName =
-                    "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhász" +
-                        "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhász" +
-                        "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhá",
-            )
+        fun userInput1WithLongLastName(): UserInput = build(lastName = LONG_LAST_NAME_1)
 
-        fun userInput1WithEmptyEmail(): UserInput = build(email = "")
+        fun userInput1WithEmptyEmail(): UserInput = build(email = EMPTY_STRING)
 
         fun userInput1WithShortEmail(): UserInput = build(email = "a")
 
-        fun userInput1WithLongEmail(): UserInput =
-            build(
-                email = "bjuhasz@netsurfclub.hubjuhasz@netsurfclub.hubjuhasz@netsurfclub.hubjuhasz@ne",
-            )
+        fun userInput1WithLongEmail(): UserInput = build(email = LONG_EMAIL_1)
 
-        fun userInput1WithInvalidEmail(): UserInput = build(email = "bjuhasznetsurfclub.hu")
+        fun userInput1WithInvalidEmail(): UserInput = build(email = INVALID_EMAIL_1)
 
-        fun userInput1WithInvalidConfirmPassword(): UserInput = build(confirmPassword = "CoNfIrMpAsSwOrD")
+        fun userInput1WithInvalidConfirmPassword(): UserInput = build(confirmPassword = INVALID_CONFIRM_PASSWORD)
 
         private fun build(
-            username: String = "jbence",
-            password: String = "pAsSwOrD",
-            confirmPassword: String = "pAsSwOrD",
-            firstName: String = "Bence",
-            lastName: String = "Juhász",
-            email: String = "bjuhasz@netsurfclub.hu",
+            username: String = USERNAME_1,
+            password: String = PASSWORD,
+            confirmPassword: String = PASSWORD,
+            firstName: String = FIRST_NAME_1,
+            lastName: String = LAST_NAME_1,
+            email: String = EMAIL_1,
         ): UserInput =
             UserInput(
                 username = username,
