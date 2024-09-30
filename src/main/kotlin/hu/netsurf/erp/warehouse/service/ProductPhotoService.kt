@@ -29,7 +29,7 @@ class ProductPhotoService(
             productPhoto = fileUtils.readAllBytes(PRODUCTS_SUBDIRECTORY_NAME, fileName)
         } catch (exception: Exception) {
             return GetProductPhotoResult(
-                errorMessage = "Fénykép a következő fájlnévvel: $fileName nem található a termékről."
+                errorMessage = "Fénykép a következő fájlnévvel: $fileName nem található a termékről.",
             )
         }
 
