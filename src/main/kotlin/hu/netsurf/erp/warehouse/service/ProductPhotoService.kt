@@ -5,8 +5,8 @@ import hu.netsurf.erp.common.logging.constant.warehouse.LoggerConstants.MULTIPAR
 import hu.netsurf.erp.common.logging.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
-import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
 import hu.netsurf.erp.warehouse.extension.asString
+import hu.netsurf.erp.warehouse.model.GetProductPhotoResult
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator
 import org.slf4j.Logger
@@ -22,16 +22,18 @@ class ProductPhotoService(
 ) {
     private val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
-    fun getProductPhoto(fileName: String): ByteArray {
+    fun getProductPhoto(fileName: String): GetProductPhotoResult {
         val productPhoto: ByteArray
 
         try {
             productPhoto = fileUtils.readAllBytes(PRODUCTS_SUBDIRECTORY_NAME, fileName)
         } catch (exception: Exception) {
-            throw ProductPhotoNotFoundException(fileName)
+            return GetProductPhotoResult(
+                errorMessage = "Fénykép a következő fájlnévvel: $fileName nem található a termékről."
+            )
         }
 
-        return productPhoto
+        return GetProductPhotoResult(productPhoto = productPhoto)
     }
 
     fun uploadProductPhoto(

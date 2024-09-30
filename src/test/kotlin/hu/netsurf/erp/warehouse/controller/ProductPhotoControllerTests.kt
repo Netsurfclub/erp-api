@@ -6,7 +6,7 @@ import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
-import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
+import hu.netsurf.erp.warehouse.model.GetProductPhotoResult
 import hu.netsurf.erp.warehouse.service.ProductPhotoService
 import io.mockk.every
 import io.mockk.mockk
@@ -34,7 +34,7 @@ class ProductPhotoControllerTests {
     fun `getProductPhoto test happy path`() {
         every {
             productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
-        } returns ByteArray(MULTIPART_FILE_SIZE)
+        } returns GetProductPhotoResult(productPhoto = ByteArray(MULTIPART_FILE_SIZE))
 
         val result = productPhotoController.getProductPhoto(PHOTO_FILE_NAME)
         assertEquals(HttpStatus.OK, result.statusCode)
@@ -46,7 +46,7 @@ class ProductPhotoControllerTests {
     fun `getProductPhoto test unhappy path - product photo not found (HTTP 404)`() {
         every {
             productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
-        } throws ProductPhotoNotFoundException(PHOTO_FILE_NAME)
+        } returns GetProductPhotoResult(errorMessage = "Fénykép a következő fájlnévvel: $PHOTO_FILE_NAME nem található a termékről.")
 
         val result = productPhotoController.getProductPhoto(PHOTO_FILE_NAME)
         assertEquals(HttpStatus.NOT_FOUND, result.statusCode)

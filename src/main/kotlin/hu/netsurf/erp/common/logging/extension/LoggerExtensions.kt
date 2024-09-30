@@ -18,7 +18,12 @@ fun Logger.logInfo(
 fun Logger.logError(
     logEventConstants: WarehouseLogEventConstants,
     exception: Exception,
-) = this.error("${logEventConstants.eventName} ${logEventConstants.eventMessage}: ${exception.message}")
+) = this.logError(logEventConstants, exception.message)
+
+fun Logger.logError(
+    logEventConstants: WarehouseLogEventConstants,
+    errorMessage: String?,
+) = this.error("${logEventConstants.eventName} ${logEventConstants.eventMessage}: $errorMessage")
 
 private fun format(additionalProperties: Map<String, Any>) =
     if (additionalProperties.isNotEmpty()) {

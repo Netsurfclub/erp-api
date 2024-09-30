@@ -51,7 +51,12 @@ class ProductPhotoController(
                 mapOf(FILE_NAME to fileName),
             )
 
-            val photo = productPhotoService.getProductPhoto(fileName)
+            val result = productPhotoService.getProductPhoto(fileName)
+
+            if (result.errorMessage != null) {
+                logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, result.errorMessage)
+                return ResponseEntity(result.errorMessage, HttpStatus.NOT_FOUND)
+            }
 
             val headers = HttpHeaders()
             headers.contentType = MediaType.parseMediaType("$IMAGE/${fileName.getExtension()}")
@@ -64,10 +69,7 @@ class ProductPhotoController(
                 ),
             )
 
-            return ResponseEntity(photo, headers, HttpStatus.OK)
-        } catch (exception: NotFoundException) {
-            logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
+            return ResponseEntity(result.productPhoto, headers, HttpStatus.OK)
         } catch (exception: Exception) {
             logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
             return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)

@@ -7,14 +7,14 @@ import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.TestConstants.UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
 import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
-import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
 import hu.netsurf.erp.warehouse.util.FileUtils
 import hu.netsurf.erp.warehouse.util.FileValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -44,7 +44,7 @@ class ProductPhotoServiceTests {
         } returns ByteArray(MULTIPART_FILE_SIZE)
 
         val result = productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
-        assertTrue(result.isNotEmpty())
+        assertNotNull(result.productPhoto)
     }
 
     @Test
@@ -53,9 +53,9 @@ class ProductPhotoServiceTests {
             fileUtils.readAllBytes(any(), any())
         } throws IOException()
 
-        assertThrows<ProductPhotoNotFoundException> {
-            productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
-        }
+        val result = productPhotoService.getProductPhoto(PHOTO_FILE_NAME)
+        assertNull(result.productPhoto)
+        assertNotNull(result.errorMessage)
     }
 
     @Test
