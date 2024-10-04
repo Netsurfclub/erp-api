@@ -97,7 +97,7 @@ enum class LogEventConstants(
         eventMessage = "Photo stored successfully in product photos uploads directory on file system",
     ),
     PRODUCT_INPUT_MAPPED_TO_PRODUCT(
-        eventName = "erp-api:productService:createProduct",
+        eventName = "erp-api:productController:createProduct",
         eventMessage = "Product input mapped to product",
     ),
     SUPPLIER_INPUT_MAPPED_TO_SUPPLIER(
