@@ -13,7 +13,7 @@ import hu.netsurf.erp.TestConstants.LONG_PASSWORD
 import hu.netsurf.erp.TestConstants.LONG_USERNAME_1
 import hu.netsurf.erp.TestConstants.PASSWORD
 import hu.netsurf.erp.TestConstants.USERNAME_1
-import hu.netsurf.erp.usermanagement.model.UserInput
+import hu.netsurf.erp.model.UserInput
 
 class UserInputTestObject {
     companion object {

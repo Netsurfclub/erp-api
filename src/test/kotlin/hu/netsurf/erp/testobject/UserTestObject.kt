@@ -8,7 +8,7 @@ import hu.netsurf.erp.TestConstants.LAST_NAME_1
 import hu.netsurf.erp.TestConstants.PASSWORD
 import hu.netsurf.erp.TestConstants.USERNAME_1
 import hu.netsurf.erp.TestConstants.USERNAME_2
-import hu.netsurf.erp.usermanagement.model.User
+import hu.netsurf.erp.model.User
 
 class UserTestObject {
     companion object {
