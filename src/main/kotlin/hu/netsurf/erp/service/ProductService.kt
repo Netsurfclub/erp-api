@@ -2,6 +2,7 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.constant.LogEventConstants.PRODUCTS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.PRODUCT_RETRIEVED_FROM_DATABASE
+import hu.netsurf.erp.constant.LogEventConstants.PRODUCT_SAVED_TO_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.PRODUCT_UPDATED_IN_DATABASE
 import hu.netsurf.erp.constant.LoggerConstants.PRODUCT
 import hu.netsurf.erp.constant.LoggerConstants.UPDATED_PRODUCT
@@ -43,6 +44,14 @@ class ProductService(
 
     fun createProduct(product: Product): Product {
         val savedProduct = productRepository.save(product)
+
+        logger.logInfo(
+            PRODUCT_SAVED_TO_DATABASE,
+            mapOf(
+                PRODUCT to product,
+            ),
+        )
+
         savedProduct.supplier = supplierService.getSupplier(product.supplier.id)
         return savedProduct
     }

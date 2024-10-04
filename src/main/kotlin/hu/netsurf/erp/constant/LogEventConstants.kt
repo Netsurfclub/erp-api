@@ -60,50 +60,6 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierController:createSupplier:SuccessResponse",
         eventMessage = "Create supplier GraphQL mutation success response",
     ),
-    PRODUCTS_RETRIEVED_FROM_DATABASE(
-        eventName = "erp-api:productService:getProducts",
-        eventMessage = "Products retrieved from database",
-    ),
-    PRODUCT_RETRIEVED_FROM_DATABASE(
-        eventName = "erp-api:productService:getProduct",
-        eventMessage = "Product retrieved from database",
-    ),
-    PRODUCT_UPDATED_IN_DATABASE(
-        eventName = "erp-api:productService:updateProduct",
-        eventMessage = "Product updated in database",
-    ),
-    SUPPLIERS_RETRIEVED_FROM_DATABASE(
-        eventName = "erp-api:supplierService:getSuppliers",
-        eventMessage = "Suppliers retrieved from database",
-    ),
-    SUPPLIER_RETRIEVED_FROM_DATABASE(
-        eventName = "erp-api:supplierService:getSupplier",
-        eventMessage = "Supplier retrieved from database",
-    ),
-    MULTIPART_FILE_VALIDATED_SUCCESSFULLY(
-        eventName = "erp-api:productPhotoService:uploadPhoto",
-        eventMessage = "Multipart file validated successfully",
-    ),
-    PHOTO_BYTES_READ_FROM_FILE_SYSTEM(
-        eventName = "erp-api:fileSystemUtils:readAllBytes",
-        eventMessage = "Photo bytes read from file system",
-    ),
-    PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM(
-        eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
-        eventMessage = "Photo uploads directory successfully created on file system",
-    ),
-    PHOTO_STORED_ON_FILE_SYSTEM(
-        eventName = "erp-api:fileSystemUtils:storePhoto",
-        eventMessage = "Photo stored successfully in product photos uploads directory on file system",
-    ),
-    PRODUCT_INPUT_MAPPED_TO_PRODUCT(
-        eventName = "erp-api:productController:createProduct",
-        eventMessage = "Product input mapped to product",
-    ),
-    SUPPLIER_INPUT_MAPPED_TO_SUPPLIER(
-        eventName = "erp-api:supplierController:createSupplier",
-        eventMessage = "Supplier input mapped to supplier",
-    ),
     USERS_GRAPHQL_QUERY_RECEIVED(
         eventName = "erp-api:userController:users:QueryReceived",
         eventMessage = "Users GraphQL query received",
@@ -128,9 +84,57 @@ enum class LogEventConstants(
         eventName = "erp-api:userController:updateUserPassword:SuccessResponse",
         eventMessage = "Update user password GraphQL mutation success response",
     ),
+    MULTIPART_FILE_VALIDATED_SUCCESSFULLY(
+        eventName = "erp-api:productPhotoService:uploadPhoto",
+        eventMessage = "Multipart file validated successfully",
+    ),
+    PRODUCTS_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:productService:getProducts",
+        eventMessage = "Products retrieved from database",
+    ),
+    PRODUCT_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:productService:getProduct",
+        eventMessage = "Product retrieved from database",
+    ),
+    PRODUCT_INPUT_MAPPED_TO_PRODUCT(
+        eventName = "erp-api:productController:createProduct",
+        eventMessage = "Product input mapped to product",
+    ),
+    PRODUCT_SAVED_TO_DATABASE(
+        eventName = "erp-api:productService:saveProduct",
+        eventMessage = "Product saved in database",
+    ),
+    PRODUCT_UPDATED_IN_DATABASE(
+        eventName = "erp-api:productService:updateProduct",
+        eventMessage = "Product updated in database",
+    ),
+    SUPPLIERS_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:supplierService:getSuppliers",
+        eventMessage = "Suppliers retrieved from database",
+    ),
+    SUPPLIER_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:supplierService:getSupplier",
+        eventMessage = "Supplier retrieved from database",
+    ),
+    SUPPLIER_INPUT_MAPPED_TO_SUPPLIER(
+        eventName = "erp-api:supplierController:createSupplier",
+        eventMessage = "Supplier input mapped to supplier",
+    ),
+    SUPPLIER_SAVED_TO_DATABASE(
+        eventName = "erp-api:supplierService:saveSupplier",
+        eventMessage = "Supplier saved in database",
+    ),
     USERS_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:userService:getUsers",
         eventMessage = "Users retrieved from database",
+    ),
+    USER_INPUT_MAPPED_TO_USER(
+        eventName = "erp-api:userService:createUser",
+        eventMessage = "User input mapped to user",
+    ),
+    USER_SAVED_TO_DATABASE(
+        eventName = "erp-api:userService:saveUser",
+        eventMessage = "User saved in database",
     ),
     USER_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:userService:getUser",
@@ -140,8 +144,16 @@ enum class LogEventConstants(
         eventName = "erp-api:userService:updateUser",
         eventMessage = "User updated in database",
     ),
-    USER_INPUT_MAPPED_TO_USER(
-        eventName = "erp-api:userService:createUser",
-        eventMessage = "User input mapped to user",
+    PHOTO_BYTES_READ_FROM_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:readAllBytes",
+        eventMessage = "Photo bytes read from file system",
+    ),
+    PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:createPhotoUploadsDirectoryStructure",
+        eventMessage = "Photo uploads directory successfully created on file system",
+    ),
+    PHOTO_STORED_ON_FILE_SYSTEM(
+        eventName = "erp-api:fileSystemUtils:storePhoto",
+        eventMessage = "Photo stored successfully in product photos uploads directory on file system",
     ),
 }
