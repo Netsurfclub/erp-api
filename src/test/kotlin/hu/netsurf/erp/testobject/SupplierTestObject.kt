@@ -6,7 +6,7 @@ import hu.netsurf.erp.TestConstants.SUPPLIER_1_PHONE
 import hu.netsurf.erp.TestConstants.SUPPLIER_2_EMAIL
 import hu.netsurf.erp.TestConstants.SUPPLIER_2_NAME
 import hu.netsurf.erp.TestConstants.SUPPLIER_2_PHONE
-import hu.netsurf.erp.warehouse.model.Supplier
+import hu.netsurf.erp.model.Supplier
 
 class SupplierTestObject {
     companion object {
