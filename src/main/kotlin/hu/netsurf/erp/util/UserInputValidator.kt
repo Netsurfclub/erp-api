@@ -1,7 +1,7 @@
 ﻿package hu.netsurf.erp.util
 
 import hu.netsurf.erp.model.UserInput
-import hu.netsurf.erp.usermanagement.model.UserInputValidationResult
+import hu.netsurf.erp.model.UserInputValidationResult
 import org.springframework.stereotype.Component
 
 @Component

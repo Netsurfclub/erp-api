@@ -1,4 +1,4 @@
-package hu.netsurf.erp.usermanagement.model
+package hu.netsurf.erp.model
 
 class UserInputValidationResult private constructor(
     val message: String,

@@ -1,12 +1,12 @@
 package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.UserNotFoundException
+import hu.netsurf.erp.model.UpdateUserPasswordInputValidationResult
+import hu.netsurf.erp.model.UserInputValidationResult
 import hu.netsurf.erp.repository.UserRepository
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.testobject.UserTestObject
-import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInputValidationResult
-import hu.netsurf.erp.usermanagement.model.UserInputValidationResult
 import hu.netsurf.erp.util.UpdateUserPasswordInputSanitizer
 import hu.netsurf.erp.util.UpdateUserPasswordInputValidator
 import hu.netsurf.erp.util.UserInputSanitizer

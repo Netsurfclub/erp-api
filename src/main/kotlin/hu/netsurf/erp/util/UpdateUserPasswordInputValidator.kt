@@ -1,7 +1,7 @@
 ﻿package hu.netsurf.erp.util
 
 import hu.netsurf.erp.model.UpdateUserPasswordInput
-import hu.netsurf.erp.usermanagement.model.UpdateUserPasswordInputValidationResult
+import hu.netsurf.erp.model.UpdateUserPasswordInputValidationResult
 import org.springframework.stereotype.Component
 
 @Component
