@@ -3,6 +3,7 @@ package hu.netsurf.erp.service
 import hu.netsurf.erp.constant.LogEventConstants.USERS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.USER_INPUT_MAPPED_TO_USER
 import hu.netsurf.erp.constant.LogEventConstants.USER_RETRIEVED_FROM_DATABASE
+import hu.netsurf.erp.constant.LogEventConstants.USER_SAVED_TO_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.USER_UPDATED_IN_DATABASE
 import hu.netsurf.erp.constant.LoggerConstants.UPDATED_USER
 import hu.netsurf.erp.constant.LoggerConstants.USER
@@ -53,6 +54,14 @@ class UserService(
         )
 
         val savedUser = userRepository.save(user)
+
+        logger.logInfo(
+            USER_SAVED_TO_DATABASE,
+            mapOf(
+                USER to user,
+            ),
+        )
+
         return savedUser
     }
 
