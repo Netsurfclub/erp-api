@@ -4,8 +4,8 @@ import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.TestConstants.PRODUCT_1_NAME
 import hu.netsurf.erp.TestConstants.PRODUCT_1_UNIT
 import hu.netsurf.erp.TestConstants.PRODUCT_2_NAME
-import hu.netsurf.erp.warehouse.model.Product
-import hu.netsurf.erp.warehouse.model.Supplier
+import hu.netsurf.erp.model.Product
+import hu.netsurf.erp.model.Supplier
 
 class ProductTestObject {
     companion object {
