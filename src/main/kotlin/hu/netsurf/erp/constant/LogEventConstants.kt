@@ -101,7 +101,7 @@ enum class LogEventConstants(
         eventMessage = "Product input mapped to product",
     ),
     SUPPLIER_INPUT_MAPPED_TO_SUPPLIER(
-        eventName = "erp-api:productService:createSupplier",
+        eventName = "erp-api:supplierController:createSupplier",
         eventMessage = "Supplier input mapped to supplier",
     ),
     USERS_GRAPHQL_QUERY_RECEIVED(
