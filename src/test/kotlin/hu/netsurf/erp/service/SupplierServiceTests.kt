@@ -2,11 +2,12 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.SupplierNotFoundException
 import hu.netsurf.erp.repository.SupplierRepository
-import hu.netsurf.erp.testobject.SupplierInputTestObject
 import hu.netsurf.erp.testobject.SupplierTestObject
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -32,8 +33,11 @@ class SupplierServiceTests {
             supplierRepository.findById()
         } returns Optional.of(SupplierTestObject.supplier1())
 
-        val result = supplierService.getSupplier(1)
-        assertEquals(1, result.id)
+        assertDoesNotThrow {
+            val result = supplierService.getSupplier(1)
+            assertNotNull(result)
+            assertEquals(1, result.id)
+        }
     }
 
     @Test
@@ -43,7 +47,7 @@ class SupplierServiceTests {
         } returns Optional.empty()
 
         assertThrows<SupplierNotFoundException> {
-            supplierService.getSupplier(1)
+            supplierService.getSupplier(3)
         }
     }
 
@@ -56,7 +60,7 @@ class SupplierServiceTests {
             supplierRepository.findById()
         } returns Optional.of(SupplierTestObject.supplier1())
 
-        val result = supplierService.createSupplier(SupplierInputTestObject.supplierInput1())
+        val result = supplierService.createSupplier(SupplierTestObject.supplier1())
         assertEquals(SupplierTestObject.supplier1(), result)
     }
 }
