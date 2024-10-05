@@ -16,7 +16,7 @@ import hu.netsurf.erp.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.exception.InvalidLengthException
 import hu.netsurf.erp.exception.PasswordAndConfirmPasswordNotMatchesException
-import hu.netsurf.erp.model.UserInput
+import hu.netsurf.erp.input.UserInput
 import hu.netsurf.erp.testobject.UserInputTestObject
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
