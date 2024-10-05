@@ -1,7 +1,7 @@
 package hu.netsurf.erp.extension
 
+import hu.netsurf.erp.input.ProductInput
 import hu.netsurf.erp.model.Product
-import hu.netsurf.erp.model.ProductInput
 import hu.netsurf.erp.model.Supplier
 
 fun ProductInput.toProduct() =

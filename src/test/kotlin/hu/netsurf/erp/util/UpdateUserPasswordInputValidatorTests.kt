@@ -5,7 +5,7 @@ import hu.netsurf.erp.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesEx
 import hu.netsurf.erp.exception.EmptyFieldException
 import hu.netsurf.erp.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.exception.NewPasswordAndPasswordInDatabaseMatchesException
-import hu.netsurf.erp.model.UpdateUserPasswordInput
+import hu.netsurf.erp.input.UpdateUserPasswordInput
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow

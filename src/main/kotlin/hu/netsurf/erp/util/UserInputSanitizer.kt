@@ -1,6 +1,6 @@
 ﻿package hu.netsurf.erp.util
 
-import hu.netsurf.erp.model.UserInput
+import hu.netsurf.erp.input.UserInput
 import org.springframework.stereotype.Component
 
 @Component

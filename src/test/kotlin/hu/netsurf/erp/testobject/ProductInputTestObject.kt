@@ -2,7 +2,7 @@ package hu.netsurf.erp.testobject
 
 import hu.netsurf.erp.TestConstants.PRODUCT_1_NAME
 import hu.netsurf.erp.TestConstants.PRODUCT_1_UNIT
-import hu.netsurf.erp.model.ProductInput
+import hu.netsurf.erp.input.ProductInput
 
 class ProductInputTestObject {
     companion object {

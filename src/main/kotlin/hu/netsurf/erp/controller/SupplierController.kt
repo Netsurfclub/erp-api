@@ -9,8 +9,8 @@ import hu.netsurf.erp.constant.LoggerConstants.SUPPLIER
 import hu.netsurf.erp.constant.LoggerConstants.SUPPLIER_INPUT
 import hu.netsurf.erp.extension.logInfo
 import hu.netsurf.erp.extension.toSupplier
+import hu.netsurf.erp.input.SupplierInput
 import hu.netsurf.erp.model.Supplier
-import hu.netsurf.erp.model.SupplierInput
 import hu.netsurf.erp.service.SupplierService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
