@@ -43,7 +43,7 @@ class UserServiceTests {
     @Test
     fun `getUser test unhappy path - user is empty`() {
         every {
-            userRepository.findById(any())
+            userRepository.findById()
         } returns Optional.empty()
 
         assertThrows<UserNotFoundException> {
@@ -54,7 +54,7 @@ class UserServiceTests {
     @Test
     fun `createUser test happy path`() {
         every {
-            userRepository.save(any())
+            userRepository.save()
         } returns UserTestObject.user1()
 
         val result = userService.createUser(UserTestObject.user1())
@@ -64,7 +64,7 @@ class UserServiceTests {
     @Test
     fun `updateUser test happy path`() {
         every {
-            userRepository.save(any())
+            userRepository.save()
         } returns UserTestObject.user1()
 
         val result = userService.updateUser(UserTestObject.user1())
