@@ -4,7 +4,11 @@ import hu.netsurf.erp.constant.LogEventConstants.CREATE_PRODUCT_GRAPHQL_MUTATION
 import hu.netsurf.erp.constant.LogEventConstants.CREATE_PRODUCT_GRAPHQL_MUTATION_SUCCESS_RESPONSE
 import hu.netsurf.erp.constant.LogEventConstants.PRODUCTS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.constant.LogEventConstants.PRODUCTS_GRAPHQL_QUERY_SUCCESS_RESPONSE
+import hu.netsurf.erp.constant.LogEventConstants.PRODUCT_INPUT_MAPPED_TO_PRODUCT
+import hu.netsurf.erp.constant.LoggerConstants.PRODUCT
+import hu.netsurf.erp.constant.LoggerConstants.PRODUCT_INPUT
 import hu.netsurf.erp.extension.logInfo
+import hu.netsurf.erp.extension.toProduct
 import hu.netsurf.erp.model.Product
 import hu.netsurf.erp.model.ProductInput
 import hu.netsurf.erp.service.ProductService
@@ -38,10 +42,20 @@ class ProductController(
     ): Product {
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED)
 
-        val product = productService.createProduct(input)
+        val product = input.toProduct()
+
+        logger.logInfo(
+            PRODUCT_INPUT_MAPPED_TO_PRODUCT,
+            mapOf(
+                PRODUCT_INPUT to input,
+                PRODUCT to product,
+            ),
+        )
+
+        val createdProduct = productService.createProduct(product)
 
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return product
+        return createdProduct
     }
 }

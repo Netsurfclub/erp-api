@@ -2,7 +2,6 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.ProductNotFoundException
 import hu.netsurf.erp.repository.ProductRepository
-import hu.netsurf.erp.testobject.ProductInputTestObject
 import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.testobject.SupplierTestObject
 import io.mockk.every
@@ -63,7 +62,7 @@ class ProductServiceTests {
             supplierService.getSupplier(any())
         } returns SupplierTestObject.supplier1()
 
-        val result = productService.createProduct(ProductInputTestObject.productInput1())
+        val result = productService.createProduct(ProductTestObject.product1())
         assertEquals(ProductTestObject.product1(), result)
     }
 

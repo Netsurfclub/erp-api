@@ -97,7 +97,7 @@ enum class LogEventConstants(
         eventMessage = "Product retrieved from database",
     ),
     PRODUCT_INPUT_MAPPED_TO_PRODUCT(
-        eventName = "erp-api:productService:createProduct",
+        eventName = "erp-api:productController:createProduct",
         eventMessage = "Product input mapped to product",
     ),
     PRODUCT_SAVED_TO_DATABASE(
@@ -117,7 +117,7 @@ enum class LogEventConstants(
         eventMessage = "Supplier retrieved from database",
     ),
     SUPPLIER_INPUT_MAPPED_TO_SUPPLIER(
-        eventName = "erp-api:supplierService:createSupplier",
+        eventName = "erp-api:supplierController:createSupplier",
         eventMessage = "Supplier input mapped to supplier",
     ),
     SUPPLIER_SAVED_TO_DATABASE(

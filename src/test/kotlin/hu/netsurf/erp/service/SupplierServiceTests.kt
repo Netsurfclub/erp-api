@@ -2,7 +2,6 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.SupplierNotFoundException
 import hu.netsurf.erp.repository.SupplierRepository
-import hu.netsurf.erp.testobject.SupplierInputTestObject
 import hu.netsurf.erp.testobject.SupplierTestObject
 import io.mockk.every
 import io.mockk.mockk
@@ -61,7 +60,7 @@ class SupplierServiceTests {
             supplierRepository.findById(any())
         } returns Optional.of(SupplierTestObject.supplier1())
 
-        val result = supplierService.createSupplier(SupplierInputTestObject.supplierInput1())
+        val result = supplierService.createSupplier(SupplierTestObject.supplier1())
         assertEquals(SupplierTestObject.supplier1(), result)
     }
 }

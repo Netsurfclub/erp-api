@@ -4,7 +4,11 @@ import hu.netsurf.erp.constant.LogEventConstants.CREATE_SUPPLIER_GRAPHQL_MUTATIO
 import hu.netsurf.erp.constant.LogEventConstants.CREATE_SUPPLIER_GRAPHQL_MUTATION_SUCCESS_RESPONSE
 import hu.netsurf.erp.constant.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_RECEIVED
 import hu.netsurf.erp.constant.LogEventConstants.SUPPLIERS_GRAPHQL_QUERY_SUCCESS_RESPONSE
+import hu.netsurf.erp.constant.LogEventConstants.SUPPLIER_INPUT_MAPPED_TO_SUPPLIER
+import hu.netsurf.erp.constant.LoggerConstants.SUPPLIER
+import hu.netsurf.erp.constant.LoggerConstants.SUPPLIER_INPUT
 import hu.netsurf.erp.extension.logInfo
+import hu.netsurf.erp.extension.toSupplier
 import hu.netsurf.erp.model.Supplier
 import hu.netsurf.erp.model.SupplierInput
 import hu.netsurf.erp.service.SupplierService
@@ -38,10 +42,20 @@ class SupplierController(
     ): Supplier {
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
-        val supplier = supplierService.createSupplier(input)
+        val supplier = input.toSupplier()
+
+        logger.logInfo(
+            SUPPLIER_INPUT_MAPPED_TO_SUPPLIER,
+            mapOf(
+                SUPPLIER_INPUT to input,
+                SUPPLIER to supplier,
+            ),
+        )
+
+        val createdSupplier = supplierService.createSupplier(supplier)
 
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
-        return supplier
+        return createdSupplier
     }
 }
