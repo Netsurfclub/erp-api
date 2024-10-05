@@ -5,7 +5,7 @@ import hu.netsurf.erp.TestConstants.INVALID_NEW_PASSWORD
 import hu.netsurf.erp.TestConstants.INVALID_PASSWORD
 import hu.netsurf.erp.TestConstants.NEW_PASSWORD
 import hu.netsurf.erp.TestConstants.PASSWORD
-import hu.netsurf.erp.model.UpdateUserPasswordInput
+import hu.netsurf.erp.input.UpdateUserPasswordInput
 
 class UpdateUserPasswordInputTestObject {
     companion object {

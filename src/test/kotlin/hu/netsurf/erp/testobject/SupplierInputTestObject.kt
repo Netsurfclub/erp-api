@@ -3,7 +3,7 @@ package hu.netsurf.erp.testobject
 import hu.netsurf.erp.TestConstants.SUPPLIER_1_EMAIL
 import hu.netsurf.erp.TestConstants.SUPPLIER_1_NAME
 import hu.netsurf.erp.TestConstants.SUPPLIER_1_PHONE
-import hu.netsurf.erp.model.SupplierInput
+import hu.netsurf.erp.input.SupplierInput
 
 class SupplierInputTestObject {
     companion object {

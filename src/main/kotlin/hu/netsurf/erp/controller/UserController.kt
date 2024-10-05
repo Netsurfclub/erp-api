@@ -11,9 +11,9 @@ import hu.netsurf.erp.constant.LoggerConstants.USER
 import hu.netsurf.erp.constant.LoggerConstants.USER_INPUT
 import hu.netsurf.erp.extension.logInfo
 import hu.netsurf.erp.extension.toUser
-import hu.netsurf.erp.model.UpdateUserPasswordInput
+import hu.netsurf.erp.input.UpdateUserPasswordInput
+import hu.netsurf.erp.input.UserInput
 import hu.netsurf.erp.model.User
-import hu.netsurf.erp.model.UserInput
 import hu.netsurf.erp.service.UserService
 import hu.netsurf.erp.util.UpdateUserPasswordInputSanitizer
 import hu.netsurf.erp.util.UpdateUserPasswordInputValidator

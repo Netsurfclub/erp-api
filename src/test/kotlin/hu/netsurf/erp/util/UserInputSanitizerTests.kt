@@ -6,7 +6,7 @@ import hu.netsurf.erp.TestConstants.FIRST_NAME_INPUT
 import hu.netsurf.erp.TestConstants.LAST_NAME_INPUT
 import hu.netsurf.erp.TestConstants.PASSWORD_INPUT
 import hu.netsurf.erp.TestConstants.USERNAME_INPUT
-import hu.netsurf.erp.model.UserInput
+import hu.netsurf.erp.input.UserInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments

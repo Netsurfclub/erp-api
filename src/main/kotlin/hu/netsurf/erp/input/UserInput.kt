@@ -1,4 +1,4 @@
-package hu.netsurf.erp.model
+package hu.netsurf.erp.input
 
 import hu.netsurf.erp.constant.RegexPatterns.EMAIL_ADDRESS_REGEX
 import hu.netsurf.erp.constant.ValidationConstants.EMAIL_MAX_LENGTH
