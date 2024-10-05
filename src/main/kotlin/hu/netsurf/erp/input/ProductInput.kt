@@ -1,4 +1,4 @@
-package hu.netsurf.erp.model
+package hu.netsurf.erp.input
 
 data class ProductInput(
     val name: String,
