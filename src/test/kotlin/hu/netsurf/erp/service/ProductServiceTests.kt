@@ -6,7 +6,9 @@ import hu.netsurf.erp.testobject.ProductTestObject
 import hu.netsurf.erp.testobject.SupplierTestObject
 import io.mockk.every
 import io.mockk.mockk
+import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -33,8 +35,11 @@ class ProductServiceTests {
             productRepository.findById(any())
         } returns Optional.of(ProductTestObject.product1())
 
-        val result = productService.getProduct(1)
-        assertEquals(1, result.id)
+        assertDoesNotThrow {
+            val result = productService.getProduct(1)
+            assertNotNull(result)
+            assertEquals(1, result.id)
+        }
     }
 
     @Test
@@ -44,7 +49,7 @@ class ProductServiceTests {
         } returns Optional.empty()
 
         assertThrows<ProductNotFoundException> {
-            productService.getProduct(1)
+            productService.getProduct(3)
         }
     }
 
