@@ -7,7 +7,6 @@ import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.exception.ProductNotFoundException
 import hu.netsurf.erp.exception.ProductPhotoNotFoundException
-import hu.netsurf.erp.service.ProductPhotoService
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals

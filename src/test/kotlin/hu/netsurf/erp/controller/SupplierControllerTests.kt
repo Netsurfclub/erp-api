@@ -1,6 +1,5 @@
 package hu.netsurf.erp.controller
 
-import hu.netsurf.erp.service.SupplierService
 import hu.netsurf.erp.testobject.SupplierInputTestObject
 import hu.netsurf.erp.testobject.SupplierTestObject
 import io.mockk.every

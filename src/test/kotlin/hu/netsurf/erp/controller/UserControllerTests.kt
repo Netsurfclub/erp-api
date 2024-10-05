@@ -4,10 +4,6 @@ import hu.netsurf.erp.service.UserService
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
 import hu.netsurf.erp.testobject.UserInputTestObject
 import hu.netsurf.erp.testobject.UserTestObject
-import hu.netsurf.erp.util.UpdateUserPasswordInputSanitizer
-import hu.netsurf.erp.util.UpdateUserPasswordInputValidator
-import hu.netsurf.erp.util.UserInputSanitizer
-import hu.netsurf.erp.util.UserInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
