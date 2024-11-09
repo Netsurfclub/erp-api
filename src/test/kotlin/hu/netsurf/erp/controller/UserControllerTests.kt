@@ -43,11 +43,11 @@ class UserControllerTests {
     @Test
     fun `createUser test happy path`() {
         every {
-            userInputSanitizer.sanitize(any())
+            userInputSanitizer.sanitize()
         } returns UserInputTestObject.userInput1()
-        justRun { userInputValidator.validate(any()) }
+        justRun { userInputValidator.validate() }
         every {
-            userService.createUser(any())
+            userService.createUser()
         } returns UserTestObject.user1()
 
         val result = userController.createUser(UserInputTestObject.userInput1())
@@ -57,14 +57,14 @@ class UserControllerTests {
     @Test
     fun `updateUserPassword test happy path`() {
         every {
-            updateUserPasswordInputSanitizer.sanitize(any())
+            updateUserPasswordInputSanitizer.sanitize()
         } returns UpdateUserPasswordInputTestObject.updateUserPasswordInput1()
         every {
-            userService.getUser(any())
+            userService.getUser()
         } returns UserTestObject.user1()
-        justRun { updateUserPasswordInputValidator.validate(any(), any()) }
+        justRun { updateUserPasswordInputValidator.validate() }
         every {
-            userService.updateUser(any())
+            userService.updateUser()
         } returns UserTestObject.user1()
 
         val result = userController.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())

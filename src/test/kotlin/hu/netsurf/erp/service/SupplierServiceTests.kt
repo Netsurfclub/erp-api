@@ -30,7 +30,7 @@ class SupplierServiceTests {
     @Test
     fun `getSupplier test happy path`() {
         every {
-            supplierRepository.findById(any())
+            supplierRepository.findById()
         } returns Optional.of(SupplierTestObject.supplier1())
 
         assertDoesNotThrow {
@@ -43,7 +43,7 @@ class SupplierServiceTests {
     @Test
     fun `getSupplier test unhappy path`() {
         every {
-            supplierRepository.findById(any())
+            supplierRepository.findById()
         } returns Optional.empty()
 
         assertThrows<SupplierNotFoundException> {
@@ -54,10 +54,10 @@ class SupplierServiceTests {
     @Test
     fun `createSupplier test happy path`() {
         every {
-            supplierRepository.save(any())
+            supplierRepository.save()
         } returns SupplierTestObject.supplier1()
         every {
-            supplierRepository.findById(any())
+            supplierRepository.findById()
         } returns Optional.of(SupplierTestObject.supplier1())
 
         val result = supplierService.createSupplier(SupplierTestObject.supplier1())

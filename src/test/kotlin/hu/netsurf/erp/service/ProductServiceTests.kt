@@ -32,7 +32,7 @@ class ProductServiceTests {
     @Test
     fun `getProduct test happy path`() {
         every {
-            productRepository.findById(any())
+            productRepository.findById()
         } returns Optional.of(ProductTestObject.product1())
 
         assertDoesNotThrow {
@@ -45,7 +45,7 @@ class ProductServiceTests {
     @Test
     fun `getProduct test unhappy path`() {
         every {
-            productRepository.findById(any())
+            productRepository.findById()
         } returns Optional.empty()
 
         assertThrows<ProductNotFoundException> {
@@ -56,10 +56,10 @@ class ProductServiceTests {
     @Test
     fun `createProduct test happy path`() {
         every {
-            productRepository.save(any())
+            productRepository.save()
         } returns ProductTestObject.product1()
         every {
-            supplierService.getSupplier(any())
+            supplierService.getSupplier()
         } returns SupplierTestObject.supplier1()
 
         val result = productService.createProduct(ProductTestObject.product1())
@@ -69,7 +69,7 @@ class ProductServiceTests {
     @Test
     fun `updateProduct test happy path`() {
         every {
-            productRepository.save(any())
+            productRepository.save()
         } returns ProductTestObject.product1()
 
         val result = productService.updateProduct(ProductTestObject.product1())
