@@ -23,7 +23,7 @@
         <kotlin.version>2.0.21</kotlin.version>
 
         <!-- Project dependency versions -->
-        <mysql-connector-j.version>9.0.0</mysql-connector-j.version>
+        <mysql-connector-j.version>9.1.0</mysql-connector-j.version>
         <mockk.version>1.12.0</mockk.version>
 
         <!-- Maven plugin versions -->
