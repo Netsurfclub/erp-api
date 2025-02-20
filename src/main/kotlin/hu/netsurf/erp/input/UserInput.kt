@@ -1,16 +1,16 @@
 package hu.netsurf.erp.input
 
 import hu.netsurf.erp.constant.RegexPatterns.EMAIL_ADDRESS_REGEX
-import hu.netsurf.erp.constant.ValidationConstants.EMAIL_MAX_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.EMAIL_MIN_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.FIRST_NAME_MAX_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.FIRST_NAME_MIN_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.LAST_NAME_MAX_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.LAST_NAME_MIN_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.PASSWORD_MAX_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.PASSWORD_MIN_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.USERNAME_MAX_LENGTH
-import hu.netsurf.erp.constant.ValidationConstants.USERNAME_MIN_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.EMAIL_MAX_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.EMAIL_MIN_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.FIRST_NAME_MAX_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.FIRST_NAME_MIN_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.LAST_NAME_MAX_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.LAST_NAME_MIN_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.PASSWORD_MAX_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.PASSWORD_MIN_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.USERNAME_MAX_LENGTH
+import hu.netsurf.erp.constant.UserValidationConstants.USERNAME_MIN_LENGTH
 
 data class UserInput(
     val username: String,
