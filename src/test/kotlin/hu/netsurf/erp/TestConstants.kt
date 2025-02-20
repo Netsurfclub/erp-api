@@ -56,4 +56,6 @@ object TestConstants {
     const val FIRST_NAME_INPUT = "firstName"
     const val LAST_NAME_INPUT = "lastName"
     const val EMAIL_INPUT = "email"
+    const val NAME_INPUT = "name"
+    const val PHONE_INPUT = "phone"
 }
