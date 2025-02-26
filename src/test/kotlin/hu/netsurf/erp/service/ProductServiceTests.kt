@@ -2,8 +2,9 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.ProductNotFoundException
 import hu.netsurf.erp.repository.ProductRepository
-import hu.netsurf.erp.testobject.ProductTestObject
-import hu.netsurf.erp.testobject.SupplierTestObject
+import hu.netsurf.erp.testobject.ProductTestObject.Companion.product1
+import hu.netsurf.erp.testobject.ProductTestObject.Companion.product2
+import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
@@ -23,7 +24,7 @@ class ProductServiceTests {
     fun `getProducts test happy path`() {
         every {
             productRepository.findAll()
-        } returns listOf(ProductTestObject.product1(), ProductTestObject.product2())
+        } returns listOf(product1(), product2())
 
         val result = productService.getProducts()
         assertTrue(result.isNotEmpty())
@@ -33,7 +34,7 @@ class ProductServiceTests {
     fun `getProduct test happy path`() {
         every {
             productRepository.findById(any())
-        } returns Optional.of(ProductTestObject.product1())
+        } returns Optional.of(product1())
 
         assertDoesNotThrow {
             val result = productService.getProduct(1)
@@ -57,22 +58,22 @@ class ProductServiceTests {
     fun `createProduct test happy path`() {
         every {
             productRepository.save(any())
-        } returns ProductTestObject.product1()
+        } returns product1()
         every {
             supplierService.getSupplier(any())
-        } returns SupplierTestObject.supplier1()
+        } returns supplier1()
 
-        val result = productService.createProduct(ProductTestObject.product1())
-        assertEquals(ProductTestObject.product1(), result)
+        val result = productService.createProduct(product1())
+        assertEquals(product1(), result)
     }
 
     @Test
     fun `updateProduct test happy path`() {
         every {
             productRepository.save(any())
-        } returns ProductTestObject.product1()
+        } returns product1()
 
-        val result = productService.updateProduct(ProductTestObject.product1())
-        assertEquals(ProductTestObject.product1(), result)
+        val result = productService.updateProduct(product1())
+        assertEquals(product1(), result)
     }
 }
