@@ -2,11 +2,10 @@ package hu.netsurf.erp.util
 
 import hu.netsurf.erp.TestConstants.EMAIL_1
 import hu.netsurf.erp.TestConstants.FIRST_NAME_1
-import hu.netsurf.erp.TestConstants.INVALID_EMAIL_1
-import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_1
-import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_STARTS_WITH_NUMBER
-import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_1
-import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_STARTS_WITH_NUMBER
+import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_CONTAINS_DIGIT
+import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
+import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_CONTAINS_DIGIT
+import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
 import hu.netsurf.erp.TestConstants.LAST_NAME_1
 import hu.netsurf.erp.TestConstants.PASSWORD
 import hu.netsurf.erp.TestConstants.USERNAME_1
@@ -77,15 +76,15 @@ class UserInputValidatorTests {
         @JvmStatic
         fun firstNameParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("bence", INVALID_FIRST_NAME_1),
-                Arguments.of("1firstName", INVALID_FIRST_NAME_STARTS_WITH_NUMBER),
+                Arguments.of("bence", INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
+                Arguments.of("F1rstName", INVALID_FIRST_NAME_CONTAINS_DIGIT),
             )
 
         @JvmStatic
         fun lastNameParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("juhász", INVALID_LAST_NAME_1),
-                Arguments.of("1lastName", INVALID_LAST_NAME_STARTS_WITH_NUMBER),
+                Arguments.of("juhász", INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
+                Arguments.of("LastNam3", INVALID_LAST_NAME_CONTAINS_DIGIT),
             )
     }
 
@@ -152,7 +151,7 @@ class UserInputValidatorTests {
                 confirmPassword = PASSWORD,
                 firstName = FIRST_NAME_1,
                 lastName = lastName,
-                email = INVALID_EMAIL_1,
+                email = EMAIL_1,
             )
 
         assertThrows<InvalidLastNameFormatException> {
