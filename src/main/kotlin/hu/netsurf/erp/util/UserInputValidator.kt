@@ -46,6 +46,14 @@ class UserInputValidator {
             throw InvalidLastNameFormatException()
         }
 
+        if (userInput.firstNameContainsDigit()) {
+            throw InvalidFirstNameFormatException()
+        }
+
+        if (userInput.lastNameContainsDigit()) {
+            throw InvalidLastNameFormatException()
+        }
+
         if (!userInput.emailAddressIsValid()) {
             throw InvalidEmailAddressFormatException()
         }
