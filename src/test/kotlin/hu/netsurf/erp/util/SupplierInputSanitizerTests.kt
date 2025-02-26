@@ -22,7 +22,7 @@ class SupplierInputSanitizerTests {
                     "no whitespace",
                     NAME_INPUT,
                     EMAIL_INPUT,
-                    PHONE_INPUT
+                    PHONE_INPUT,
                 ),
                 Arguments.of(
                     "one whitespace on left side",
