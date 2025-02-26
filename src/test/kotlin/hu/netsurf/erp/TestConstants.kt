@@ -13,11 +13,18 @@ object TestConstants {
     const val PRODUCT_1_UNIT = "pieces"
     const val PRODUCT_2_NAME = "Product#2"
     const val SUPPLIER_1_NAME = "Supplier#1"
-    const val SUPPLIER_1_PHONE = "555123"
+    const val SUPPLIER_1_PHONE = "+36 (50) 132-35-66"
     const val SUPPLIER_1_EMAIL = "supplier1@test.com"
     const val SUPPLIER_2_NAME = "Supplier#2"
     const val SUPPLIER_2_PHONE = "555456"
     const val SUPPLIER_2_EMAIL = "supplier2@test.com"
+    const val SUPPLIER_LONG_NAME =
+        "acmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacme" +
+            "acmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacme" +
+            "acmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacme"
+    const val SUPPLIER_LONG_EMAIL = "acmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacmeacme@test.com"
+    const val SUPPLIER_LONG_PHONE = "+10 (20) 300-400-500-600-700"
+    const val SUPPLIER_INVALID_EMAIL = "acmetest.com"
     const val PASSWORD = "pAsSwOrD"
     const val INVALID_PASSWORD = "pAsSwOrD1"
     const val LONG_PASSWORD = "pAsSwOrDpAsSwOrD"
@@ -31,16 +38,16 @@ object TestConstants {
             "jbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbence" +
             "jbencejbencejbencejbencejben"
     const val FIRST_NAME_1 = "Bence"
-    const val INVALID_FIRST_NAME_1 = "bence"
-    const val INVALID_FIRST_NAME_STARTS_WITH_NUMBER = "1firstName"
+    const val INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER = "bence"
+    const val INVALID_FIRST_NAME_CONTAINS_DIGIT = "F1rstName"
     const val FIRST_NAME_2 = "Gábor"
     const val LONG_FIRST_NAME_1 =
         "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBence" +
             "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBence" +
             "BenceBenceBenceBenceBenceBenceB"
     const val LAST_NAME_1 = "Juhász"
-    const val INVALID_LAST_NAME_1 = "juhász"
-    const val INVALID_LAST_NAME_STARTS_WITH_NUMBER = "1lastName"
+    const val INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER = "juhász"
+    const val INVALID_LAST_NAME_CONTAINS_DIGIT = "LastNam3"
     const val LONG_LAST_NAME_1 =
         "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhász" +
             "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhász" +
@@ -56,4 +63,6 @@ object TestConstants {
     const val FIRST_NAME_INPUT = "firstName"
     const val LAST_NAME_INPUT = "lastName"
     const val EMAIL_INPUT = "email"
+    const val NAME_INPUT = "name"
+    const val PHONE_INPUT = "phone"
 }

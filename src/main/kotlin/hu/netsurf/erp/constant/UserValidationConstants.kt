@@ -1,6 +1,6 @@
 package hu.netsurf.erp.constant
 
-object ValidationConstants {
+object UserValidationConstants {
     const val USERNAME_MIN_LENGTH = 5
     const val USERNAME_MAX_LENGTH = 15
     const val PASSWORD_MIN_LENGTH = 5
