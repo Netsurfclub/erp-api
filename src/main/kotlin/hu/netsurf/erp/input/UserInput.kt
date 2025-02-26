@@ -56,6 +56,10 @@ data class UserInput(
 
     fun lastNameStartsWithUpperCaseCharacter(): Boolean = lastName.first().isUpperCase()
 
+    fun firstNameContainsDigit(): Boolean = firstName.any { it.isDigit() }
+
+    fun lastNameContainsDigit(): Boolean = lastName.any { it.isDigit() }
+
     fun emailAddressIsValid(): Boolean = email.matches(Regex(EMAIL_ADDRESS_REGEX))
 
     fun passwordAndConfirmPasswordMatches(): Boolean = password == confirmPassword

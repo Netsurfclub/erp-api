@@ -2,7 +2,8 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.SupplierNotFoundException
 import hu.netsurf.erp.repository.SupplierRepository
-import hu.netsurf.erp.testobject.SupplierTestObject
+import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1
+import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier2
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
@@ -21,7 +22,7 @@ class SupplierServiceTests {
     fun `getSuppliers test happy path`() {
         every {
             supplierRepository.findAll()
-        } returns listOf(SupplierTestObject.supplier1(), SupplierTestObject.supplier2())
+        } returns listOf(supplier1(), supplier2())
 
         val result = supplierService.getSuppliers()
         assertTrue(result.isNotEmpty())
@@ -31,7 +32,7 @@ class SupplierServiceTests {
     fun `getSupplier test happy path`() {
         every {
             supplierRepository.findById(any())
-        } returns Optional.of(SupplierTestObject.supplier1())
+        } returns Optional.of(supplier1())
 
         assertDoesNotThrow {
             val result = supplierService.getSupplier(1)
@@ -55,12 +56,12 @@ class SupplierServiceTests {
     fun `createSupplier test happy path`() {
         every {
             supplierRepository.save(any())
-        } returns SupplierTestObject.supplier1()
+        } returns supplier1()
         every {
             supplierRepository.findById(any())
-        } returns Optional.of(SupplierTestObject.supplier1())
+        } returns Optional.of(supplier1())
 
-        val result = supplierService.createSupplier(SupplierTestObject.supplier1())
-        assertEquals(SupplierTestObject.supplier1(), result)
+        val result = supplierService.createSupplier(supplier1())
+        assertEquals(supplier1(), result)
     }
 }

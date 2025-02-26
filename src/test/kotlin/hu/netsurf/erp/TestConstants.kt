@@ -38,16 +38,16 @@ object TestConstants {
             "jbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbencejbence" +
             "jbencejbencejbencejbencejben"
     const val FIRST_NAME_1 = "Bence"
-    const val INVALID_FIRST_NAME_1 = "bence"
-    const val INVALID_FIRST_NAME_STARTS_WITH_NUMBER = "1firstName"
+    const val INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER = "bence"
+    const val INVALID_FIRST_NAME_CONTAINS_DIGIT = "F1rstName"
     const val FIRST_NAME_2 = "Gábor"
     const val LONG_FIRST_NAME_1 =
         "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBence" +
             "BenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBenceBence" +
             "BenceBenceBenceBenceBenceBenceB"
     const val LAST_NAME_1 = "Juhász"
-    const val INVALID_LAST_NAME_1 = "juhász"
-    const val INVALID_LAST_NAME_STARTS_WITH_NUMBER = "1lastName"
+    const val INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER = "juhász"
+    const val INVALID_LAST_NAME_CONTAINS_DIGIT = "LastNam3"
     const val LONG_LAST_NAME_1 =
         "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhász" +
             "JuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhászJuhász" +

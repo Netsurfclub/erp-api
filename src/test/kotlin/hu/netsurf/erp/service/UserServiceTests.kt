@@ -2,7 +2,8 @@ package hu.netsurf.erp.service
 
 import hu.netsurf.erp.exception.UserNotFoundException
 import hu.netsurf.erp.repository.UserRepository
-import hu.netsurf.erp.testobject.UserTestObject
+import hu.netsurf.erp.testobject.UserTestObject.Companion.user1
+import hu.netsurf.erp.testobject.UserTestObject.Companion.user2
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
@@ -21,7 +22,7 @@ class UserServiceTests {
     fun `getUsers test happy path`() {
         every {
             userRepository.findAll()
-        } returns listOf(UserTestObject.user1(), UserTestObject.user2())
+        } returns listOf(user1(), user2())
 
         val result = userService.getUsers()
         assertTrue(result.isNotEmpty())
@@ -31,7 +32,7 @@ class UserServiceTests {
     fun `getUser test happy path`() {
         every {
             userRepository.findById(1)
-        } returns Optional.of(UserTestObject.user1())
+        } returns Optional.of(user1())
 
         assertDoesNotThrow {
             val result = userService.getUser(1)
@@ -55,19 +56,19 @@ class UserServiceTests {
     fun `createUser test happy path`() {
         every {
             userRepository.save(any())
-        } returns UserTestObject.user1()
+        } returns user1()
 
-        val result = userService.createUser(UserTestObject.user1())
-        assertEquals(UserTestObject.user1(), result)
+        val result = userService.createUser(user1())
+        assertEquals(user1(), result)
     }
 
     @Test
     fun `updateUser test happy path`() {
         every {
             userRepository.save(any())
-        } returns UserTestObject.user1()
+        } returns user1()
 
-        val result = userService.updateUser(UserTestObject.user1())
-        assertEquals(UserTestObject.user1(), result)
+        val result = userService.updateUser(user1())
+        assertEquals(user1(), result)
     }
 }

@@ -1,8 +1,9 @@
 package hu.netsurf.erp.controller
 
 import hu.netsurf.erp.service.ProductService
-import hu.netsurf.erp.testobject.ProductInputTestObject
-import hu.netsurf.erp.testobject.ProductTestObject
+import hu.netsurf.erp.testobject.ProductInputTestObject.Companion.productInput1
+import hu.netsurf.erp.testobject.ProductTestObject.Companion.product1
+import hu.netsurf.erp.testobject.ProductTestObject.Companion.product2
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -17,7 +18,7 @@ class ProductControllerTests {
     fun `products test happy path`() {
         every {
             productService.getProducts()
-        } returns listOf(ProductTestObject.product1(), ProductTestObject.product2())
+        } returns listOf(product1(), product2())
 
         val result = productController.products()
         assertTrue(result.isNotEmpty())
@@ -27,9 +28,9 @@ class ProductControllerTests {
     fun `createProduct test happy path`() {
         every {
             productService.createProduct(any())
-        } returns ProductTestObject.product1()
+        } returns product1()
 
-        val result = productController.createProduct(ProductInputTestObject.productInput1())
-        assertEquals(ProductTestObject.product1(), result)
+        val result = productController.createProduct(productInput1())
+        assertEquals(product1(), result)
     }
 }

@@ -1,9 +1,10 @@
 package hu.netsurf.erp.controller
 
 import hu.netsurf.erp.service.UserService
-import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
-import hu.netsurf.erp.testobject.UserInputTestObject
-import hu.netsurf.erp.testobject.UserTestObject
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1
+import hu.netsurf.erp.testobject.UserInputTestObject.Companion.userInput1
+import hu.netsurf.erp.testobject.UserTestObject.Companion.user1
+import hu.netsurf.erp.testobject.UserTestObject.Companion.user2
 import hu.netsurf.erp.util.UpdateUserPasswordInputSanitizer
 import hu.netsurf.erp.util.UpdateUserPasswordInputValidator
 import hu.netsurf.erp.util.UserInputSanitizer
@@ -34,7 +35,7 @@ class UserControllerTests {
     fun `users test happy path`() {
         every {
             userService.getUsers()
-        } returns listOf(UserTestObject.user1(), UserTestObject.user2())
+        } returns listOf(user1(), user2())
 
         val result = userController.users()
         assertTrue(result.isNotEmpty())
@@ -44,30 +45,30 @@ class UserControllerTests {
     fun `createUser test happy path`() {
         every {
             userInputSanitizer.sanitize(any())
-        } returns UserInputTestObject.userInput1()
+        } returns userInput1()
         justRun { userInputValidator.validate(any()) }
         every {
             userService.createUser(any())
-        } returns UserTestObject.user1()
+        } returns user1()
 
-        val result = userController.createUser(UserInputTestObject.userInput1())
-        assertEquals(UserTestObject.user1(), result)
+        val result = userController.createUser(userInput1())
+        assertEquals(user1(), result)
     }
 
     @Test
     fun `updateUserPassword test happy path`() {
         every {
             updateUserPasswordInputSanitizer.sanitize(any())
-        } returns UpdateUserPasswordInputTestObject.updateUserPasswordInput1()
+        } returns updateUserPasswordInput1()
         every {
             userService.getUser(any())
-        } returns UserTestObject.user1()
+        } returns user1()
         justRun { updateUserPasswordInputValidator.validate(any(), any()) }
         every {
             userService.updateUser(any())
-        } returns UserTestObject.user1()
+        } returns user1()
 
-        val result = userController.updateUserPassword(UpdateUserPasswordInputTestObject.updateUserPasswordInput1())
-        assertEquals(UserTestObject.user1(), result)
+        val result = userController.updateUserPassword(updateUserPasswordInput1())
+        assertEquals(user1(), result)
     }
 }

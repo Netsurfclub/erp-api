@@ -7,7 +7,8 @@ import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
 import hu.netsurf.erp.TestConstants.UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
 import hu.netsurf.erp.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.exception.ProductPhotoNotFoundException
-import hu.netsurf.erp.testobject.ProductTestObject
+import hu.netsurf.erp.testobject.ProductTestObject.Companion.product1
+import hu.netsurf.erp.testobject.ProductTestObject.Companion.product1WithPhoto
 import hu.netsurf.erp.util.FileUtils
 import hu.netsurf.erp.util.FileValidator
 import io.mockk.every
@@ -60,12 +61,12 @@ class ProductPhotoServiceTests {
 
     @Test
     fun `uploadProductPhoto test happy path`() {
-        every { productService.getProduct(1) } returns ProductTestObject.product1()
+        every { productService.getProduct(1) } returns product1()
         every {
             fileUtils.createPhotoUploadsDirectoryStructure(any())
         } returns UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
         every { fileUtils.storePhoto(any(), any()) } returns PHOTO_FILE_NAME
-        every { productService.updateProduct(any()) } returns ProductTestObject.product1WithPhoto()
+        every { productService.updateProduct(any()) } returns product1WithPhoto()
 
         val result = productPhotoService.uploadProductPhoto(1, multipartFile)
         assertFalse(result.isNullOrBlank())
@@ -73,7 +74,7 @@ class ProductPhotoServiceTests {
 
     @Test
     fun `uploadProductPhoto test unhappy path`() {
-        every { productService.getProduct(1) } returns ProductTestObject.product1WithPhoto()
+        every { productService.getProduct(1) } returns product1WithPhoto()
 
         assertThrows<ProductAlreadyHasPhotoUploadedException> {
             productPhotoService.uploadProductPhoto(1, multipartFile)
