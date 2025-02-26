@@ -1,8 +1,9 @@
 package hu.netsurf.erp.controller
 
 import hu.netsurf.erp.service.SupplierService
-import hu.netsurf.erp.testobject.SupplierInputTestObject
-import hu.netsurf.erp.testobject.SupplierTestObject
+import hu.netsurf.erp.testobject.SupplierInputTestObject.Companion.supplierInput1
+import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1
+import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier2
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -17,7 +18,7 @@ class SupplierControllerTests {
     fun `suppliers test happy path`() {
         every {
             supplierService.getSuppliers()
-        } returns listOf(SupplierTestObject.supplier1(), SupplierTestObject.supplier2())
+        } returns listOf(supplier1(), supplier2())
 
         val result = supplierController.suppliers()
         assertTrue(result.isNotEmpty())
@@ -27,9 +28,9 @@ class SupplierControllerTests {
     fun `createSupplier test happy path`() {
         every {
             supplierService.createSupplier(any())
-        } returns SupplierTestObject.supplier1()
+        } returns supplier1()
 
-        val result = supplierController.createSupplier(SupplierInputTestObject.supplierInput1())
-        assertEquals(SupplierTestObject.supplier1(), result)
+        val result = supplierController.createSupplier(supplierInput1())
+        assertEquals(supplier1(), result)
     }
 }

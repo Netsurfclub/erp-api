@@ -6,7 +6,13 @@ import hu.netsurf.erp.exception.EmptyFieldException
 import hu.netsurf.erp.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.exception.NewPasswordAndPasswordInDatabaseMatchesException
 import hu.netsurf.erp.input.UpdateUserPasswordInput
-import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1WithInvalidConfirmNewPassword
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1WithInvalidCurrentPassword
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.userInput1WithEmptyConfirmNewPassword
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.userInput1WithEmptyCurrentPassword
+import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.userInput1WithEmptyNewPassword
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -23,16 +29,16 @@ class UpdateUserPasswordInputValidatorTests {
         @JvmStatic
         fun updateUserPasswordInputEmptyFieldParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("current password is empty", UpdateUserPasswordInputTestObject.userInput1WithEmptyCurrentPassword()),
-                Arguments.of("new password is empty", UpdateUserPasswordInputTestObject.userInput1WithEmptyNewPassword()),
-                Arguments.of("confirm new password is empty", UpdateUserPasswordInputTestObject.userInput1WithEmptyConfirmNewPassword()),
+                Arguments.of("current password is empty", userInput1WithEmptyCurrentPassword()),
+                Arguments.of("new password is empty", userInput1WithEmptyNewPassword()),
+                Arguments.of("confirm new password is empty", userInput1WithEmptyConfirmNewPassword()),
             )
     }
 
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            updateUserPasswordInputValidator.validate(UpdateUserPasswordInputTestObject.updateUserPasswordInput1(), passwordInDatabase)
+            updateUserPasswordInputValidator.validate(updateUserPasswordInput1(), passwordInDatabase)
         }
     }
 
@@ -51,7 +57,7 @@ class UpdateUserPasswordInputValidatorTests {
     fun `validate test unhappy path - current password and password in database not matches`() {
         assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
             updateUserPasswordInputValidator.validate(
-                UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidCurrentPassword(),
+                updateUserPasswordInput1WithInvalidCurrentPassword(),
                 passwordInDatabase,
             )
         }
@@ -61,7 +67,7 @@ class UpdateUserPasswordInputValidatorTests {
     fun `validate test unhappy path - new password and password in database matches`() {
         assertThrows<NewPasswordAndPasswordInDatabaseMatchesException> {
             updateUserPasswordInputValidator.validate(
-                UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(),
+                updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(),
                 passwordInDatabase,
             )
         }
@@ -71,7 +77,7 @@ class UpdateUserPasswordInputValidatorTests {
     fun `validate test unhappy path - new password and confirm new password not matches`() {
         assertThrows<NewPasswordAndConfirmNewPasswordNotMatchesException> {
             updateUserPasswordInputValidator.validate(
-                UpdateUserPasswordInputTestObject.updateUserPasswordInput1WithInvalidConfirmNewPassword(),
+                updateUserPasswordInput1WithInvalidConfirmNewPassword(),
                 passwordInDatabase,
             )
         }
