@@ -1,8 +1,8 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.TestConstants.ALLOWED_EXTENSIONS
-import hu.netsurf.erp.TestConstants.INVALID_ORIGINAL_FILE_NAME
-import hu.netsurf.erp.TestConstants.ORIGINAL_FILE_NAME
+import hu.netsurf.erp.PhotoTestConstants.ALLOWED_EXTENSIONS
+import hu.netsurf.erp.PhotoTestConstants.INVALID_ORIGINAL_FILE_NAME
+import hu.netsurf.erp.PhotoTestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.config.FileExtensionsConfig
 import hu.netsurf.erp.exception.EmptyFileException
 import hu.netsurf.erp.exception.InvalidFileExtensionException

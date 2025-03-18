@@ -1,7 +1,7 @@
 package hu.netsurf.erp.testobject
 
-import hu.netsurf.erp.TestConstants.PRODUCT_1_NAME
-import hu.netsurf.erp.TestConstants.PRODUCT_1_UNIT
+import hu.netsurf.erp.ProductTestConstants.PRODUCT_1_NAME
+import hu.netsurf.erp.ProductTestConstants.PRODUCT_1_UNIT
 import hu.netsurf.erp.input.ProductInput
 
 class ProductInputTestObject {
