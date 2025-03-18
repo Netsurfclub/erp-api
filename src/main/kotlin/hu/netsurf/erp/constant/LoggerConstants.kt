@@ -12,6 +12,7 @@ object LoggerConstants {
     const val SUPPLIER = "Supplier"
     const val SUPPLIER_INPUT = "SupplierInput"
     const val MULTIPART_FILE = "MultipartFile"
+    const val PHOTO_FILE = "PhotoFile"
     const val UPLOADS_DIRECTORY_PATH = "UploadsDirectoryPath"
     const val USER = "User"
     const val USER_INPUT = "UserInput"

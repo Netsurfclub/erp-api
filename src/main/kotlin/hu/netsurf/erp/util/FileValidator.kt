@@ -3,15 +3,14 @@
 import hu.netsurf.erp.config.FileExtensionsConfig
 import hu.netsurf.erp.exception.EmptyFileException
 import hu.netsurf.erp.exception.InvalidFileExtensionException
-import hu.netsurf.erp.extension.getExtension
+import hu.netsurf.erp.wrapper.PhotoFile
 import org.springframework.stereotype.Component
-import org.springframework.web.multipart.MultipartFile
 
 @Component
 class FileValidator(
     val fileExtensionsConfig: FileExtensionsConfig,
 ) {
-    fun validate(file: MultipartFile) {
+    fun validate(file: PhotoFile) {
         if (file.isEmpty) {
             throw EmptyFileException(fileName = file.originalFilename)
         }
