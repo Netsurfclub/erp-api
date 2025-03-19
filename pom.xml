@@ -107,6 +107,7 @@
                         <exclude>hu/netsurf/erp/constant/**</exclude>
                         <exclude>hu/netsurf/erp/model/**</exclude>
                         <exclude>hu/netsurf/erp/util/FileSystemUtils*</exclude>
+                        <exclude>hu/netsurf/erp/wrapper/**</exclude>
                         <exclude>hu/netsurf/erp/Application*</exclude>
                     </excludes>
                 </configuration>

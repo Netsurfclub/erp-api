@@ -36,6 +36,10 @@ enum class LogEventConstants(
         eventName = "erp-api:productPhotoController:uploadProductPhoto:RequestReceived",
         eventMessage = "Product photo upload request received",
     ),
+    MULTIPART_FILE_MAPPED_TO_PHOTO_FILE(
+        eventName = "erp-api:productPhotoController:uploadProductPhoto:MultipartFileMappedToPhotoFile",
+        eventMessage = "MultipartFile mapped to ProductPhotoFile",
+    ),
     UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE(
         eventName = "erp-api:productPhotoController:uploadProductPhoto:SuccessResponse",
         eventMessage = "Product photo upload was successful",
@@ -84,9 +88,9 @@ enum class LogEventConstants(
         eventName = "erp-api:userController:updateUserPassword:SuccessResponse",
         eventMessage = "Update user password GraphQL mutation success response",
     ),
-    MULTIPART_FILE_VALIDATED_SUCCESSFULLY(
+    PHOTO_FILE_VALIDATED_SUCCESSFULLY(
         eventName = "erp-api:productPhotoService:uploadPhoto",
-        eventMessage = "Multipart file validated successfully",
+        eventMessage = "PhotoFile validated successfully",
     ),
     PRODUCTS_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:productService:getProducts",

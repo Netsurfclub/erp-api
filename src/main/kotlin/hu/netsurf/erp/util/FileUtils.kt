@@ -1,6 +1,6 @@
 package hu.netsurf.erp.util
 
-import org.springframework.web.multipart.MultipartFile
+import hu.netsurf.erp.wrapper.PhotoFile
 
 interface FileUtils {
     fun readAllBytes(
@@ -11,7 +11,7 @@ interface FileUtils {
     fun createPhotoUploadsDirectoryStructure(customSubdirectoryName: String): String
 
     fun storePhoto(
-        file: MultipartFile,
+        file: PhotoFile,
         directoryStructurePath: String,
     ): String
 }
