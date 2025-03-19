@@ -4,7 +4,8 @@ object TestConstants {
     const val EMPTY_STRING = ""
     const val FILE_SIZE = 10485760
     const val CONTENT_TYPE_IMAGE_JPEG = "image/jpeg"
-    const val ORIGINAL_FILE_NAME = "file_name.jpeg"
+    const val FILE_NAME = "file_name.jpeg"
+    const val ORIGINAL_FILE_NAME = FILE_NAME
     const val ORIGINAL_FILE_EXTENSION = "jpeg"
     const val INVALID_ORIGINAL_FILE_NAME = "file_name.txt"
     const val INVALID_ORIGINAL_FILE_EXTENSION = "txt"
