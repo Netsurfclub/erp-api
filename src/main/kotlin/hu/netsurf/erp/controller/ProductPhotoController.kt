@@ -4,12 +4,14 @@ import hu.netsurf.erp.constant.FileConstants.IMAGE
 import hu.netsurf.erp.constant.LogEventConstants.GET_PRODUCT_PHOTO_FAILURE_RESPONSE
 import hu.netsurf.erp.constant.LogEventConstants.GET_PRODUCT_PHOTO_REQUEST_RECEIVED
 import hu.netsurf.erp.constant.LogEventConstants.GET_PRODUCT_PHOTO_SUCCESS_RESPONSE
+import hu.netsurf.erp.constant.LogEventConstants.MULTIPART_FILE_MAPPED_TO_PHOTO_FILE
 import hu.netsurf.erp.constant.LogEventConstants.UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE
 import hu.netsurf.erp.constant.LogEventConstants.UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED
 import hu.netsurf.erp.constant.LogEventConstants.UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE
 import hu.netsurf.erp.constant.LoggerConstants.CONTENT_TYPE
 import hu.netsurf.erp.constant.LoggerConstants.FILE_NAME
 import hu.netsurf.erp.constant.LoggerConstants.MULTIPART_FILE
+import hu.netsurf.erp.constant.LoggerConstants.PHOTO_FILE
 import hu.netsurf.erp.constant.LoggerConstants.PRODUCT_ID
 import hu.netsurf.erp.constant.LoggerConstants.PRODUCT_PHOTO_FILE_NAME
 import hu.netsurf.erp.exception.NotFoundException
@@ -17,7 +19,9 @@ import hu.netsurf.erp.extension.asString
 import hu.netsurf.erp.extension.getExtension
 import hu.netsurf.erp.extension.logError
 import hu.netsurf.erp.extension.logInfo
+import hu.netsurf.erp.extension.toPhotoFile
 import hu.netsurf.erp.service.ProductPhotoService
+import hu.netsurf.erp.wrapper.PhotoFile
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpHeaders
@@ -88,7 +92,17 @@ class ProductPhotoController(
                 ),
             )
 
-            val productPhotoFileName = productPhotoService.uploadProductPhoto(productId, file)
+            val photoFile: PhotoFile = file.toPhotoFile()
+
+            logger.logInfo(
+                MULTIPART_FILE_MAPPED_TO_PHOTO_FILE,
+                mapOf(
+                    MULTIPART_FILE to file.asString(),
+                    PHOTO_FILE to photoFile.asString(),
+                ),
+            )
+
+            val productPhotoFileName = productPhotoService.uploadProductPhoto(productId, photoFile)
 
             logger.logInfo(
                 UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE,
