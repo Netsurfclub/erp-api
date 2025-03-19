@@ -1,11 +1,11 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.TestConstants.CONFIRM_PASSWORD_INPUT
-import hu.netsurf.erp.TestConstants.EMAIL_INPUT
-import hu.netsurf.erp.TestConstants.FIRST_NAME_INPUT
-import hu.netsurf.erp.TestConstants.LAST_NAME_INPUT
-import hu.netsurf.erp.TestConstants.PASSWORD_INPUT
-import hu.netsurf.erp.TestConstants.USERNAME_INPUT
+import hu.netsurf.erp.UserTestConstants.CONFIRM_PASSWORD_INPUT
+import hu.netsurf.erp.UserTestConstants.EMAIL_INPUT
+import hu.netsurf.erp.UserTestConstants.FIRST_NAME_INPUT
+import hu.netsurf.erp.UserTestConstants.LAST_NAME_INPUT
+import hu.netsurf.erp.UserTestConstants.PASSWORD_INPUT
+import hu.netsurf.erp.UserTestConstants.USERNAME_INPUT
 import hu.netsurf.erp.input.UserInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest

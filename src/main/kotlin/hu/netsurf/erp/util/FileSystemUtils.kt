@@ -7,12 +7,11 @@ import hu.netsurf.erp.constant.LogEventConstants.PHOTO_STORED_ON_FILE_SYSTEM
 import hu.netsurf.erp.constant.LogEventConstants.PHOTO_UPLOADS_DIRECTORY_CREATED_ON_FILE_SYSTEM
 import hu.netsurf.erp.constant.LoggerConstants.FILE_NAME
 import hu.netsurf.erp.constant.LoggerConstants.UPLOADS_DIRECTORY_PATH
-import hu.netsurf.erp.extension.getExtension
 import hu.netsurf.erp.extension.logInfo
+import hu.netsurf.erp.wrapper.PhotoFile
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
-import org.springframework.web.multipart.MultipartFile
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.UUID
@@ -67,13 +66,13 @@ class FileSystemUtils : FileUtils {
     }
 
     override fun storePhoto(
-        file: MultipartFile,
+        file: PhotoFile,
         directoryStructurePath: String,
     ): String {
         val fileName = "${UUID.randomUUID()}.${file.getExtension()}"
         val pathWithFileName = Paths.get(directoryStructurePath, fileName)
 
-        Files.copy(file.inputStream, pathWithFileName)
+        Files.copy(file.inputStream(), pathWithFileName)
 
         logger.logInfo(
             PHOTO_STORED_ON_FILE_SYSTEM,
