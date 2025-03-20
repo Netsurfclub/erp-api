@@ -1,10 +1,10 @@
 package hu.netsurf.erp.testobject
 
-import hu.netsurf.erp.TestConstants.EMPTY_STRING
-import hu.netsurf.erp.TestConstants.INVALID_NEW_PASSWORD
-import hu.netsurf.erp.TestConstants.INVALID_PASSWORD
-import hu.netsurf.erp.TestConstants.NEW_PASSWORD
-import hu.netsurf.erp.TestConstants.PASSWORD
+import hu.netsurf.erp.CommonTestConstants.EMPTY_STRING
+import hu.netsurf.erp.UserTestConstants.INVALID_NEW_PASSWORD
+import hu.netsurf.erp.UserTestConstants.INVALID_PASSWORD
+import hu.netsurf.erp.UserTestConstants.NEW_PASSWORD
+import hu.netsurf.erp.UserTestConstants.PASSWORD
 import hu.netsurf.erp.input.UpdateUserPasswordInput
 
 class UpdateUserPasswordInputTestObject {

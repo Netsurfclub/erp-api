@@ -1,14 +1,14 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.TestConstants.EMAIL_1
-import hu.netsurf.erp.TestConstants.FIRST_NAME_1
-import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_CONTAINS_DIGIT
-import hu.netsurf.erp.TestConstants.INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
-import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_CONTAINS_DIGIT
-import hu.netsurf.erp.TestConstants.INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
-import hu.netsurf.erp.TestConstants.LAST_NAME_1
-import hu.netsurf.erp.TestConstants.PASSWORD
-import hu.netsurf.erp.TestConstants.USERNAME_1
+import hu.netsurf.erp.UserTestConstants.EMAIL_1
+import hu.netsurf.erp.UserTestConstants.FIRST_NAME_1
+import hu.netsurf.erp.UserTestConstants.INVALID_FIRST_NAME_CONTAINS_DIGIT
+import hu.netsurf.erp.UserTestConstants.INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
+import hu.netsurf.erp.UserTestConstants.INVALID_LAST_NAME_CONTAINS_DIGIT
+import hu.netsurf.erp.UserTestConstants.INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
+import hu.netsurf.erp.UserTestConstants.LAST_NAME_1
+import hu.netsurf.erp.UserTestConstants.PASSWORD
+import hu.netsurf.erp.UserTestConstants.USERNAME_1
 import hu.netsurf.erp.exception.EmptyFieldException
 import hu.netsurf.erp.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.exception.InvalidFirstNameFormatException
