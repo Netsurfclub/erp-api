@@ -20,7 +20,7 @@
     <properties>
         <!-- Language versions -->
         <java.version>21</java.version>
-        <kotlin.version>2.0.21</kotlin.version>
+        <kotlin.version>2.1.20</kotlin.version>
 
         <!-- Project dependency versions -->
         <mysql-connector-j.version>9.1.0</mysql-connector-j.version>
