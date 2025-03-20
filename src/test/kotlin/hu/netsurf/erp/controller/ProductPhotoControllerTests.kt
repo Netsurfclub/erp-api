@@ -1,10 +1,9 @@
 package hu.netsurf.erp.controller
 
 import hu.netsurf.erp.PhotoTestConstants.CONTENT_TYPE_IMAGE_JPEG
-import hu.netsurf.erp.PhotoTestConstants.FILE_NAME
 import hu.netsurf.erp.PhotoTestConstants.FILE_SIZE
-import hu.netsurf.erp.PhotoTestConstants.ORIGINAL_FILE_NAME
 import hu.netsurf.erp.PhotoTestConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.constant.LoggerConstants.FILE_NAME
 import hu.netsurf.erp.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.exception.ProductNotFoundException
 import hu.netsurf.erp.exception.ProductPhotoNotFoundException
@@ -25,7 +24,7 @@ class ProductPhotoControllerTests {
     private val multipartFile: MultipartFile =
         MockMultipartFile(
             FILE_NAME,
-            ORIGINAL_FILE_NAME,
+            FILE_NAME,
             CONTENT_TYPE_IMAGE_JPEG,
             ByteArray(1024),
         )
