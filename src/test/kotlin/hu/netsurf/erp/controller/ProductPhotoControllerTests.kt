@@ -3,31 +3,22 @@ package hu.netsurf.erp.controller
 import hu.netsurf.erp.PhotoTestConstants.CONTENT_TYPE_IMAGE_JPEG
 import hu.netsurf.erp.PhotoTestConstants.FILE_SIZE
 import hu.netsurf.erp.PhotoTestConstants.PHOTO_FILE_NAME
-import hu.netsurf.erp.constant.LoggerConstants.FILE_NAME
 import hu.netsurf.erp.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.exception.ProductNotFoundException
 import hu.netsurf.erp.exception.ProductPhotoNotFoundException
 import hu.netsurf.erp.service.ProductPhotoService
+import hu.netsurf.erp.testobject.MultipartFileTestObject.Companion.multipartFile
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
-import org.springframework.mock.web.MockMultipartFile
-import org.springframework.web.multipart.MultipartFile
 import java.io.IOException
 
 class ProductPhotoControllerTests {
     private val productPhotoService: ProductPhotoService = mockk()
     private val productPhotoController: ProductPhotoController = ProductPhotoController(productPhotoService)
-    private val multipartFile: MultipartFile =
-        MockMultipartFile(
-            FILE_NAME,
-            FILE_NAME,
-            CONTENT_TYPE_IMAGE_JPEG,
-            ByteArray(1024),
-        )
 
     @Test
     fun `getProductPhoto test happy path`() {
@@ -73,7 +64,7 @@ class ProductPhotoControllerTests {
             productPhotoService.uploadProductPhoto(any(), any())
         } returns PHOTO_FILE_NAME
 
-        val result = productPhotoController.createProductPhoto(1, multipartFile)
+        val result = productPhotoController.createProductPhoto(1, multipartFile())
         assertEquals(HttpStatus.OK, result.statusCode)
         assertEquals(PHOTO_FILE_NAME, result.body)
     }
@@ -84,7 +75,7 @@ class ProductPhotoControllerTests {
             productPhotoService.uploadProductPhoto(any(), any())
         } throws ProductNotFoundException(3)
 
-        val result = productPhotoController.createProductPhoto(3, multipartFile)
+        val result = productPhotoController.createProductPhoto(3, multipartFile())
         assertEquals(HttpStatus.NOT_FOUND, result.statusCode)
         assertEquals("Termék a következő azonosítóval: #3 nem található.", result.body)
     }
@@ -95,7 +86,7 @@ class ProductPhotoControllerTests {
             productPhotoService.uploadProductPhoto(any(), any())
         } throws ProductAlreadyHasPhotoUploadedException(1)
 
-        val result = productPhotoController.createProductPhoto(1, multipartFile)
+        val result = productPhotoController.createProductPhoto(1, multipartFile())
         assertEquals(HttpStatus.BAD_REQUEST, result.statusCode)
         assertEquals(
             "Termék a következő azonosítóval: #1 már rendelkezik feltöltött fényképpel.",
