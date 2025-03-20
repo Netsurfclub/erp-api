@@ -1,8 +1,8 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.TestConstants.EMAIL_INPUT
-import hu.netsurf.erp.TestConstants.NAME_INPUT
-import hu.netsurf.erp.TestConstants.PHONE_INPUT
+import hu.netsurf.erp.UserTestConstants.EMAIL_INPUT
+import hu.netsurf.erp.UserTestConstants.NAME_INPUT
+import hu.netsurf.erp.UserTestConstants.PHONE_INPUT
 import hu.netsurf.erp.input.SupplierInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest

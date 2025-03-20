@@ -1,11 +1,12 @@
 package hu.netsurf.erp.testobject
 
-import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
-import hu.netsurf.erp.TestConstants.PRODUCT_1_NAME
-import hu.netsurf.erp.TestConstants.PRODUCT_1_UNIT
-import hu.netsurf.erp.TestConstants.PRODUCT_2_NAME
+import hu.netsurf.erp.PhotoTestConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.ProductTestConstants.PRODUCT_1_NAME
+import hu.netsurf.erp.ProductTestConstants.PRODUCT_1_UNIT
+import hu.netsurf.erp.ProductTestConstants.PRODUCT_2_NAME
 import hu.netsurf.erp.model.Product
 import hu.netsurf.erp.model.Supplier
+import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1
 
 class ProductTestObject {
     companion object {
@@ -24,7 +25,7 @@ class ProductTestObject {
         private fun build(
             id: Int = 1,
             name: String = PRODUCT_1_NAME,
-            supplier: Supplier = SupplierTestObject.supplier1(),
+            supplier: Supplier = supplier1(),
             price: Double = 10000.0,
             unit: String = PRODUCT_1_UNIT,
             photo: String? = null,

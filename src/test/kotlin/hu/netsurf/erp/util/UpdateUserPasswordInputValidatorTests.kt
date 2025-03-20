@@ -1,6 +1,6 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.TestConstants.PASSWORD
+import hu.netsurf.erp.UserTestConstants.PASSWORD
 import hu.netsurf.erp.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.exception.EmptyFieldException
 import hu.netsurf.erp.exception.NewPasswordAndConfirmNewPasswordNotMatchesException

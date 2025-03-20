@@ -1,9 +1,9 @@
 package hu.netsurf.erp.service
 
-import hu.netsurf.erp.TestConstants.FILE_SIZE
-import hu.netsurf.erp.TestConstants.PHOTO_FILE_AS_STRING
-import hu.netsurf.erp.TestConstants.PHOTO_FILE_NAME
-import hu.netsurf.erp.TestConstants.UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
+import hu.netsurf.erp.PhotoTestConstants.FILE_SIZE
+import hu.netsurf.erp.PhotoTestConstants.PHOTO_FILE_AS_STRING
+import hu.netsurf.erp.PhotoTestConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.PhotoTestConstants.UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY
 import hu.netsurf.erp.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.exception.ProductPhotoNotFoundException
 import hu.netsurf.erp.testobject.ProductTestObject.Companion.product1

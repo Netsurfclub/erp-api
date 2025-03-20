@@ -1,13 +1,13 @@
 package hu.netsurf.erp.testobject
 
-import hu.netsurf.erp.TestConstants.EMPTY_STRING
-import hu.netsurf.erp.TestConstants.SUPPLIER_1_EMAIL
-import hu.netsurf.erp.TestConstants.SUPPLIER_1_NAME
-import hu.netsurf.erp.TestConstants.SUPPLIER_1_PHONE
-import hu.netsurf.erp.TestConstants.SUPPLIER_INVALID_EMAIL
-import hu.netsurf.erp.TestConstants.SUPPLIER_LONG_EMAIL
-import hu.netsurf.erp.TestConstants.SUPPLIER_LONG_NAME
-import hu.netsurf.erp.TestConstants.SUPPLIER_LONG_PHONE
+import hu.netsurf.erp.CommonTestConstants.EMPTY_STRING
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_1_EMAIL
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_1_NAME
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_1_PHONE
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_INVALID_EMAIL
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_LONG_EMAIL
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_LONG_NAME
+import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_LONG_PHONE
 import hu.netsurf.erp.input.SupplierInput
 
 class SupplierInputTestObject {

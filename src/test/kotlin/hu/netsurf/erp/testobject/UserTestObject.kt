@@ -1,13 +1,13 @@
 package hu.netsurf.erp.testobject
 
-import hu.netsurf.erp.TestConstants.EMAIL_1
-import hu.netsurf.erp.TestConstants.EMAIL_2
-import hu.netsurf.erp.TestConstants.FIRST_NAME_1
-import hu.netsurf.erp.TestConstants.FIRST_NAME_2
-import hu.netsurf.erp.TestConstants.LAST_NAME_1
-import hu.netsurf.erp.TestConstants.PASSWORD
-import hu.netsurf.erp.TestConstants.USERNAME_1
-import hu.netsurf.erp.TestConstants.USERNAME_2
+import hu.netsurf.erp.UserTestConstants.EMAIL_1
+import hu.netsurf.erp.UserTestConstants.EMAIL_2
+import hu.netsurf.erp.UserTestConstants.FIRST_NAME_1
+import hu.netsurf.erp.UserTestConstants.FIRST_NAME_2
+import hu.netsurf.erp.UserTestConstants.LAST_NAME_1
+import hu.netsurf.erp.UserTestConstants.PASSWORD
+import hu.netsurf.erp.UserTestConstants.USERNAME_1
+import hu.netsurf.erp.UserTestConstants.USERNAME_2
 import hu.netsurf.erp.model.User
 
 class UserTestObject {

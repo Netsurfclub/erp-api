@@ -1,7 +1,7 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.TestConstants.NEW_PASSWORD
-import hu.netsurf.erp.TestConstants.PASSWORD
+import hu.netsurf.erp.UserTestConstants.NEW_PASSWORD
+import hu.netsurf.erp.UserTestConstants.PASSWORD
 import hu.netsurf.erp.input.UpdateUserPasswordInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest

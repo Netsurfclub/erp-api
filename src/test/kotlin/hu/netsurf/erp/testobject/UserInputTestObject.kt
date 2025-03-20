@@ -1,18 +1,18 @@
 package hu.netsurf.erp.testobject
 
-import hu.netsurf.erp.TestConstants.EMAIL_1
-import hu.netsurf.erp.TestConstants.EMPTY_STRING
-import hu.netsurf.erp.TestConstants.FIRST_NAME_1
-import hu.netsurf.erp.TestConstants.INVALID_CONFIRM_PASSWORD
-import hu.netsurf.erp.TestConstants.INVALID_EMAIL_1
-import hu.netsurf.erp.TestConstants.LAST_NAME_1
-import hu.netsurf.erp.TestConstants.LONG_EMAIL_1
-import hu.netsurf.erp.TestConstants.LONG_FIRST_NAME_1
-import hu.netsurf.erp.TestConstants.LONG_LAST_NAME_1
-import hu.netsurf.erp.TestConstants.LONG_PASSWORD
-import hu.netsurf.erp.TestConstants.LONG_USERNAME_1
-import hu.netsurf.erp.TestConstants.PASSWORD
-import hu.netsurf.erp.TestConstants.USERNAME_1
+import hu.netsurf.erp.CommonTestConstants.EMPTY_STRING
+import hu.netsurf.erp.UserTestConstants.EMAIL_1
+import hu.netsurf.erp.UserTestConstants.FIRST_NAME_1
+import hu.netsurf.erp.UserTestConstants.INVALID_CONFIRM_PASSWORD
+import hu.netsurf.erp.UserTestConstants.INVALID_EMAIL_1
+import hu.netsurf.erp.UserTestConstants.LAST_NAME_1
+import hu.netsurf.erp.UserTestConstants.LONG_EMAIL_1
+import hu.netsurf.erp.UserTestConstants.LONG_FIRST_NAME_1
+import hu.netsurf.erp.UserTestConstants.LONG_LAST_NAME_1
+import hu.netsurf.erp.UserTestConstants.LONG_PASSWORD
+import hu.netsurf.erp.UserTestConstants.LONG_USERNAME_1
+import hu.netsurf.erp.UserTestConstants.PASSWORD
+import hu.netsurf.erp.UserTestConstants.USERNAME_1
 import hu.netsurf.erp.input.UserInput
 
 class UserInputTestObject {
