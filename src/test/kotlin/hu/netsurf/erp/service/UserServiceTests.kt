@@ -5,8 +5,8 @@ import hu.netsurf.erp.repository.UserRepository
 import hu.netsurf.erp.testobject.UserTestObject.Companion.user1
 import hu.netsurf.erp.testobject.UserTestObject.Companion.user2
 import io.mockk.every
+import io.mockk.justRun
 import io.mockk.mockk
-import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -34,11 +34,9 @@ class UserServiceTests {
             userRepository.findById(1)
         } returns Optional.of(user1())
 
-        assertDoesNotThrow {
-            val result = userService.getUser(1)
-            assertNotNull(result)
-            assertEquals(1, result.id)
-        }
+        val result = userService.getUser(1)
+        assertNotNull(result)
+        assertEquals(user1(), result)
     }
 
     @Test
@@ -59,6 +57,7 @@ class UserServiceTests {
         } returns user1()
 
         val result = userService.createUser(user1())
+        assertNotNull(result)
         assertEquals(user1(), result)
     }
 
@@ -69,6 +68,19 @@ class UserServiceTests {
         } returns user1()
 
         val result = userService.updateUser(user1())
+        assertNotNull(result)
+        assertEquals(user1(), result)
+    }
+
+    @Test
+    fun `deleteUser test happy path`() {
+        every {
+            userRepository.findById(1)
+        } returns Optional.of(user1())
+        justRun { userRepository.deleteById(any()) }
+
+        val result = userService.deleteUser(1)
+        assertNotNull(result)
         assertEquals(user1(), result)
     }
 }
