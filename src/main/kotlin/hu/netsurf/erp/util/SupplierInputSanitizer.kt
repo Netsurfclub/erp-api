@@ -10,7 +10,7 @@ class SupplierInputSanitizer(
     fun sanitize(userInput: SupplierInput): SupplierInput =
         SupplierInput(
             name = inputSanitizer.sanitize(userInput.name),
-            email = inputSanitizer.sanitize(userInput.email),
-            phone = inputSanitizer.sanitize(userInput.phone),
+            email = inputSanitizer.sanitize(userInput.email!!),
+            phone = inputSanitizer.sanitize(userInput.phone!!),
         )
 }

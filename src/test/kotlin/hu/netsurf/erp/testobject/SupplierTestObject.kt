@@ -12,6 +12,10 @@ class SupplierTestObject {
     companion object {
         fun supplier1(): Supplier = build()
 
+        fun supplier1WithNullPhone(): Supplier = build(phone = null)
+
+        fun supplier1WithNullEmail(): Supplier = build(email = null)
+
         fun supplier2(): Supplier =
             build(
                 id = 2,
@@ -23,8 +27,8 @@ class SupplierTestObject {
         private fun build(
             id: Int = 1,
             name: String = SUPPLIER_1_NAME,
-            phone: String = SUPPLIER_1_PHONE,
-            email: String = SUPPLIER_1_EMAIL,
+            phone: String? = SUPPLIER_1_PHONE,
+            email: String? = SUPPLIER_1_EMAIL,
         ): Supplier =
             Supplier(
                 id = id,

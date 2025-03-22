@@ -24,16 +24,20 @@ class SupplierInputTestObject {
 
         fun supplierInput1WithLongPhone(): SupplierInput = build(phone = SUPPLIER_LONG_PHONE)
 
+        fun supplierInput1WithNullPhone(): SupplierInput = build(phone = null)
+
         fun supplierInput1WithShortEmail(): SupplierInput = build(email = "a")
 
         fun supplierInput1WithLongEmail(): SupplierInput = build(email = SUPPLIER_LONG_EMAIL)
 
         fun supplierInput1WithInvalidEmail(): SupplierInput = build(email = SUPPLIER_INVALID_EMAIL)
 
+        fun supplierInput1WithNullEmail(): SupplierInput = build(email = null)
+
         private fun build(
             name: String = SUPPLIER_1_NAME,
-            phone: String = SUPPLIER_1_PHONE,
-            email: String = SUPPLIER_1_EMAIL,
+            phone: String? = SUPPLIER_1_PHONE,
+            email: String? = SUPPLIER_1_EMAIL,
         ): SupplierInput =
             SupplierInput(
                 name = name,
