@@ -8,15 +8,35 @@ import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1
 import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1WithNullEmail
 import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier1WithNullPhone
 import hu.netsurf.erp.testobject.SupplierTestObject.Companion.supplier2
+import hu.netsurf.erp.util.SupplierInputSanitizer
+import hu.netsurf.erp.util.SupplierInputValidator
 import io.mockk.every
+import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class SupplierControllerTests {
     private val supplierService: SupplierService = mockk()
-    private val supplierController: SupplierController = SupplierController(supplierService)
+    private val supplierInputSanitizer: SupplierInputSanitizer = mockk()
+    private val supplierInputValidator: SupplierInputValidator = mockk()
+
+    private val supplierController: SupplierController =
+        SupplierController(
+            supplierService,
+            supplierInputSanitizer,
+            supplierInputValidator,
+        )
+
+    @BeforeEach
+    fun setup() {
+        every {
+            supplierInputSanitizer.sanitize(any())
+        } returns supplierInput1()
+        justRun { supplierInputValidator.validate(any()) }
+    }
 
     @Test
     fun `suppliers test happy path`() {
