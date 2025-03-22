@@ -1,6 +1,7 @@
 package hu.netsurf.erp.controller
 
 import hu.netsurf.erp.service.UserService
+import hu.netsurf.erp.testobject.DeleteUserInputTestObject.Companion.deleteUserInput1
 import hu.netsurf.erp.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1
 import hu.netsurf.erp.testobject.UserInputTestObject.Companion.userInput1
 import hu.netsurf.erp.testobject.UserTestObject.Companion.user1
@@ -69,6 +70,16 @@ class UserControllerTests {
         } returns user1()
 
         val result = userController.updateUserPassword(updateUserPasswordInput1())
+        assertEquals(user1(), result)
+    }
+
+    @Test
+    fun `deleteUser test happy path`() {
+        every {
+            userService.deleteUser(any())
+        } returns user1()
+
+        val result = userController.deleteUser(deleteUserInput1())
         assertEquals(user1(), result)
     }
 }
