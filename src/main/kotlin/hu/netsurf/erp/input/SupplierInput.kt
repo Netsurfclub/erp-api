@@ -10,8 +10,8 @@ import hu.netsurf.erp.constant.SupplierValidationConstants.PHONE_MIN_LENGTH
 
 data class SupplierInput(
     val name: String,
-    val email: String,
-    val phone: String,
+    val phone: String?,
+    val email: String?,
 ) {
     fun nameIsEmpty(): Boolean = name.isEmpty()
 
@@ -19,13 +19,13 @@ data class SupplierInput(
 
     fun nameIsLong(): Boolean = name.length > NAME_MAX_LENGTH
 
-    fun emailIsShort(): Boolean = email.length <= EMAIL_MIN_LENGTH
+    fun phoneIsShort(): Boolean = phone!!.length <= PHONE_MIN_LENGTH
 
-    fun emailIsLong(): Boolean = email.length > EMAIL_MAX_LENGTH
+    fun phoneIsLong(): Boolean = phone!!.length > PHONE_MAX_LENGTH
 
-    fun phoneIsShort(): Boolean = phone.length <= PHONE_MIN_LENGTH
+    fun emailAddressIsValid(): Boolean = email!!.matches(Regex(EMAIL_ADDRESS_REGEX))
 
-    fun phoneIsLong(): Boolean = phone.length > PHONE_MAX_LENGTH
+    fun emailIsShort(): Boolean = email!!.length <= EMAIL_MIN_LENGTH
 
-    fun emailAddressIsValid(): Boolean = email.matches(Regex(EMAIL_ADDRESS_REGEX))
+    fun emailIsLong(): Boolean = email!!.length > EMAIL_MAX_LENGTH
 }

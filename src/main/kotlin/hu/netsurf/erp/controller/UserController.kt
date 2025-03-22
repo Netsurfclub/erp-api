@@ -2,6 +2,8 @@ package hu.netsurf.erp.controller
 
 import hu.netsurf.erp.constant.LogEventConstants.CREATE_USER_GRAPHQL_MUTATION_RECEIVED
 import hu.netsurf.erp.constant.LogEventConstants.CREATE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE
+import hu.netsurf.erp.constant.LogEventConstants.DELETE_USER_GRAPHQL_MUTATION_RECEIVED
+import hu.netsurf.erp.constant.LogEventConstants.DELETE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE
 import hu.netsurf.erp.constant.LogEventConstants.UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED
 import hu.netsurf.erp.constant.LogEventConstants.UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE
 import hu.netsurf.erp.constant.LogEventConstants.USERS_GRAPHQL_QUERY_RECEIVED
@@ -11,6 +13,7 @@ import hu.netsurf.erp.constant.LoggerConstants.USER
 import hu.netsurf.erp.constant.LoggerConstants.USER_INPUT
 import hu.netsurf.erp.extension.logInfo
 import hu.netsurf.erp.extension.toUser
+import hu.netsurf.erp.input.DeleteUserInput
 import hu.netsurf.erp.input.UpdateUserPasswordInput
 import hu.netsurf.erp.input.UserInput
 import hu.netsurf.erp.model.User
@@ -92,5 +95,18 @@ class UserController(
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 
         return updatedUser
+    }
+
+    @MutationMapping(name = "deleteUser")
+    fun deleteUser(
+        @Argument input: DeleteUserInput,
+    ): User {
+        logger.logInfo(DELETE_USER_GRAPHQL_MUTATION_RECEIVED)
+
+        val deletedUser = userService.deleteUser(input.userId)
+
+        logger.logInfo(DELETE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
+
+        return deletedUser
     }
 }

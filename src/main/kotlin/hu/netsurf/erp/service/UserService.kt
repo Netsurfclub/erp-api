@@ -1,6 +1,7 @@
 package hu.netsurf.erp.service
 
 import hu.netsurf.erp.constant.LogEventConstants.USERS_RETRIEVED_FROM_DATABASE
+import hu.netsurf.erp.constant.LogEventConstants.USER_DELETED_FROM_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.USER_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.USER_SAVED_TO_DATABASE
 import hu.netsurf.erp.constant.LogEventConstants.USER_UPDATED_IN_DATABASE
@@ -66,5 +67,18 @@ class UserService(
         )
 
         return updatedUser
+    }
+
+    fun deleteUser(id: Int): User {
+        val deletedUser = getUser(id)
+
+        userRepository.deleteById(id)
+
+        logger.logInfo(
+            USER_DELETED_FROM_DATABASE,
+            mapOf(USER to deletedUser),
+        )
+
+        return deletedUser
     }
 }

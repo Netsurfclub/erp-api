@@ -88,6 +88,14 @@ enum class LogEventConstants(
         eventName = "erp-api:userController:updateUserPassword:SuccessResponse",
         eventMessage = "Update user password GraphQL mutation success response",
     ),
+    DELETE_USER_GRAPHQL_MUTATION_RECEIVED(
+        eventName = "erp-api:userController:deleteUser:MutationReceived",
+        eventMessage = "Delete user GraphQL mutation received",
+    ),
+    DELETE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:userController:deleteUser:SuccessResponse",
+        eventMessage = "Delete user GraphQL mutation success response",
+    ),
     PHOTO_FILE_VALIDATED_SUCCESSFULLY(
         eventName = "erp-api:productPhotoService:uploadPhoto",
         eventMessage = "PhotoFile validated successfully",
@@ -147,6 +155,10 @@ enum class LogEventConstants(
     USER_UPDATED_IN_DATABASE(
         eventName = "erp-api:userService:updateUser",
         eventMessage = "User updated in database",
+    ),
+    USER_DELETED_FROM_DATABASE(
+        eventName = "erp-api:userService:deleteUser",
+        eventMessage = "User deleted from database",
     ),
     PHOTO_BYTES_READ_FROM_FILE_SYSTEM(
         eventName = "erp-api:fileSystemUtils:readAllBytes",
