@@ -10,8 +10,8 @@ import hu.netsurf.erp.constant.SupplierValidationConstants.PHONE_MIN_LENGTH
 
 data class SupplierInput(
     val name: String,
-    val phone: String? = null,
-    val email: String? = null,
+    val phone: String?,
+    val email: String?,
 ) {
     fun nameIsEmpty(): Boolean = name.isEmpty()
 
