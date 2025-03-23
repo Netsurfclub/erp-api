@@ -1,6 +1,6 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.UserTestConstants.INPUT
+import hu.netsurf.erp.CommonTestConstants.INPUT
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
