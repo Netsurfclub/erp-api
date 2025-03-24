@@ -3,9 +3,6 @@ package hu.netsurf.erp.util
 import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_1_EMAIL
 import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_1_NAME
 import hu.netsurf.erp.SupplierTestConstants.SUPPLIER_1_PHONE
-import hu.netsurf.erp.UserTestConstants.EMAIL_INPUT
-import hu.netsurf.erp.UserTestConstants.NAME_INPUT
-import hu.netsurf.erp.UserTestConstants.PHONE_INPUT
 import hu.netsurf.erp.input.SupplierInput
 import hu.netsurf.erp.testobject.SupplierInputTestObject.Companion.supplierInput1WithNullEmail
 import hu.netsurf.erp.testobject.SupplierInputTestObject.Companion.supplierInput1WithNullPhone
@@ -27,27 +24,27 @@ class SupplierInputSanitizerTests {
             Stream.of(
                 Arguments.of(
                     "no whitespace",
-                    NAME_INPUT,
-                    PHONE_INPUT,
-                    EMAIL_INPUT,
+                    SUPPLIER_1_NAME,
+                    SUPPLIER_1_PHONE,
+                    SUPPLIER_1_EMAIL,
                 ),
                 Arguments.of(
                     "one whitespace on left side",
-                    " $NAME_INPUT",
-                    " $PHONE_INPUT",
-                    " $EMAIL_INPUT",
+                    " $SUPPLIER_1_NAME",
+                    " $SUPPLIER_1_PHONE",
+                    " $SUPPLIER_1_EMAIL",
                 ),
                 Arguments.of(
                     "one whitespace on right side",
-                    "$NAME_INPUT ",
-                    "$PHONE_INPUT ",
-                    "$EMAIL_INPUT ",
+                    "$SUPPLIER_1_NAME ",
+                    "$SUPPLIER_1_PHONE ",
+                    "$SUPPLIER_1_EMAIL ",
                 ),
                 Arguments.of(
                     "whitespaces on both right and left side",
-                    " $NAME_INPUT ",
-                    " $PHONE_INPUT ",
-                    " $EMAIL_INPUT ",
+                    " $SUPPLIER_1_NAME ",
+                    " $SUPPLIER_1_PHONE ",
+                    " $SUPPLIER_1_EMAIL ",
                 ),
             )
     }
@@ -69,9 +66,9 @@ class SupplierInputSanitizerTests {
 
         val result = supplierInputSanitizer.sanitize(supplierInput)
 
-        assertEquals(NAME_INPUT, result.name)
-        assertEquals(PHONE_INPUT, result.phone)
-        assertEquals(EMAIL_INPUT, result.email)
+        assertEquals(SUPPLIER_1_NAME, result.name)
+        assertEquals(SUPPLIER_1_PHONE, result.phone)
+        assertEquals(SUPPLIER_1_EMAIL, result.email)
     }
 
     @Test
