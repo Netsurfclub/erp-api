@@ -1,11 +1,10 @@
 package hu.netsurf.erp.util
 
-import hu.netsurf.erp.UserTestConstants.CONFIRM_PASSWORD_INPUT
-import hu.netsurf.erp.UserTestConstants.EMAIL_INPUT
-import hu.netsurf.erp.UserTestConstants.FIRST_NAME_INPUT
-import hu.netsurf.erp.UserTestConstants.LAST_NAME_INPUT
-import hu.netsurf.erp.UserTestConstants.PASSWORD_INPUT
-import hu.netsurf.erp.UserTestConstants.USERNAME_INPUT
+import hu.netsurf.erp.UserTestConstants.EMAIL_1
+import hu.netsurf.erp.UserTestConstants.FIRST_NAME_1
+import hu.netsurf.erp.UserTestConstants.LAST_NAME_1
+import hu.netsurf.erp.UserTestConstants.PASSWORD
+import hu.netsurf.erp.UserTestConstants.USERNAME_1
 import hu.netsurf.erp.input.UserInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
@@ -23,39 +22,39 @@ class UserInputSanitizerTests {
             Stream.of(
                 Arguments.of(
                     "no whitespace",
-                    USERNAME_INPUT,
-                    PASSWORD_INPUT,
-                    CONFIRM_PASSWORD_INPUT,
-                    FIRST_NAME_INPUT,
-                    LAST_NAME_INPUT,
-                    EMAIL_INPUT,
+                    USERNAME_1,
+                    PASSWORD,
+                    PASSWORD,
+                    FIRST_NAME_1,
+                    LAST_NAME_1,
+                    EMAIL_1,
                 ),
                 Arguments.of(
                     "one whitespace on left side",
-                    " $USERNAME_INPUT",
-                    " $PASSWORD_INPUT",
-                    " $CONFIRM_PASSWORD_INPUT",
-                    " $FIRST_NAME_INPUT",
-                    " $LAST_NAME_INPUT",
-                    " $EMAIL_INPUT",
+                    " $USERNAME_1",
+                    " $PASSWORD",
+                    " $PASSWORD",
+                    " $FIRST_NAME_1",
+                    " $LAST_NAME_1",
+                    " $EMAIL_1",
                 ),
                 Arguments.of(
                     "one whitespace on right side",
-                    "$USERNAME_INPUT ",
-                    "$PASSWORD_INPUT ",
-                    "$CONFIRM_PASSWORD_INPUT ",
-                    "$FIRST_NAME_INPUT ",
-                    "$LAST_NAME_INPUT ",
-                    "$EMAIL_INPUT ",
+                    "$USERNAME_1 ",
+                    "$PASSWORD ",
+                    "$PASSWORD ",
+                    "$FIRST_NAME_1 ",
+                    "$LAST_NAME_1 ",
+                    "$EMAIL_1 ",
                 ),
                 Arguments.of(
                     "whitespaces on both right and left side",
-                    " $USERNAME_INPUT ",
-                    " $PASSWORD_INPUT ",
-                    " $CONFIRM_PASSWORD_INPUT ",
-                    " $FIRST_NAME_INPUT ",
-                    " $LAST_NAME_INPUT ",
-                    " $EMAIL_INPUT ",
+                    " $USERNAME_1 ",
+                    " $PASSWORD ",
+                    " $PASSWORD ",
+                    " $FIRST_NAME_1 ",
+                    " $LAST_NAME_1 ",
+                    " $EMAIL_1 ",
                 ),
             )
     }
@@ -83,11 +82,11 @@ class UserInputSanitizerTests {
 
         val result = userInputSanitizer.sanitize(userInput)
 
-        assertEquals(USERNAME_INPUT, result.username)
-        assertEquals(PASSWORD_INPUT, result.password)
-        assertEquals(CONFIRM_PASSWORD_INPUT, result.confirmPassword)
-        assertEquals(FIRST_NAME_INPUT, result.firstName)
-        assertEquals(LAST_NAME_INPUT, result.lastName)
-        assertEquals(EMAIL_INPUT, result.email)
+        assertEquals(USERNAME_1, result.username)
+        assertEquals(PASSWORD, result.password)
+        assertEquals(PASSWORD, result.confirmPassword)
+        assertEquals(FIRST_NAME_1, result.firstName)
+        assertEquals(LAST_NAME_1, result.lastName)
+        assertEquals(EMAIL_1, result.email)
     }
 }
