@@ -12,6 +12,8 @@ import hu.netsurf.erp.extension.toProduct
 import hu.netsurf.erp.input.ProductInput
 import hu.netsurf.erp.model.Product
 import hu.netsurf.erp.service.ProductService
+import hu.netsurf.erp.util.ProductInputSanitizer
+import hu.netsurf.erp.util.ProductInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument
@@ -22,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class ProductController(
     private val productService: ProductService,
+    private val productInputSanitizer: ProductInputSanitizer,
+    private val productInputValidator: ProductInputValidator,
 ) {
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
@@ -41,6 +45,9 @@ class ProductController(
         @Argument input: ProductInput,
     ): Product {
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED)
+
+        val sanitizedProductInput = productInputSanitizer.sanitize(input)
+        productInputValidator.validate(sanitizedProductInput)
 
         val product = input.toProduct()
 
