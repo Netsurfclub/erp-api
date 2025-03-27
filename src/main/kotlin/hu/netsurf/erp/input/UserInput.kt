@@ -11,6 +11,7 @@ import hu.netsurf.erp.constant.UserValidationConstants.PASSWORD_MAX_LENGTH
 import hu.netsurf.erp.constant.UserValidationConstants.PASSWORD_MIN_LENGTH
 import hu.netsurf.erp.constant.UserValidationConstants.USERNAME_MAX_LENGTH
 import hu.netsurf.erp.constant.UserValidationConstants.USERNAME_MIN_LENGTH
+import hu.netsurf.erp.model.User
 
 data class UserInput(
     val username: String,
@@ -63,4 +64,13 @@ data class UserInput(
     fun emailAddressIsValid(): Boolean = email.matches(Regex(EMAIL_ADDRESS_REGEX))
 
     fun passwordAndConfirmPasswordMatches(): Boolean = password == confirmPassword
+
+    fun toUser(): User =
+        User(
+            username = this.username,
+            password = this.password,
+            firstName = this.firstName,
+            lastName = this.lastName,
+            email = this.email,
+        )
 }

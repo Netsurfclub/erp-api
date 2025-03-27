@@ -8,7 +8,6 @@ import hu.netsurf.erp.constant.LogEventConstants.PRODUCT_INPUT_MAPPED_TO_PRODUCT
 import hu.netsurf.erp.constant.LoggerConstants.PRODUCT
 import hu.netsurf.erp.constant.LoggerConstants.PRODUCT_INPUT
 import hu.netsurf.erp.extension.logInfo
-import hu.netsurf.erp.extension.toProduct
 import hu.netsurf.erp.input.ProductInput
 import hu.netsurf.erp.model.Product
 import hu.netsurf.erp.service.ProductService
