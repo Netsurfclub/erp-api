@@ -4,6 +4,8 @@ import hu.netsurf.erp.constant.ProductValidationConstants.NAME_MAX_LENGTH
 import hu.netsurf.erp.constant.ProductValidationConstants.NAME_MIN_LENGTH
 import hu.netsurf.erp.constant.ProductValidationConstants.UNIT_MAX_LENGTH
 import hu.netsurf.erp.constant.ProductValidationConstants.UNIT_MIN_LENGTH
+import hu.netsurf.erp.model.Product
+import hu.netsurf.erp.model.Supplier
 
 data class ProductInput(
     val name: String,
@@ -23,4 +25,13 @@ data class ProductInput(
     fun unitIsShort(): Boolean = unit.length <= UNIT_MIN_LENGTH
 
     fun unitIsLong(): Boolean = unit.length > UNIT_MAX_LENGTH
+
+    fun toProduct() =
+        Product(
+            name = this.name,
+            supplier = Supplier(id = this.supplierId),
+            price = this.price,
+            unit = this.unit,
+            onStock = this.onStock,
+        )
 }
