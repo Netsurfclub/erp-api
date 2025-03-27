@@ -3,7 +3,7 @@
     {
       "name": "file-extensions-config.allowed-extensions",
       "description": "Allowed file extensions for photo upload feature in the application.",
-      "sourceType": "hu.netsurf.erp.config.FileExtensionsConfig"
+      "sourceType": "hu.netsurf.erp.warehouse.config.FileExtensionsConfig"
     }
   ]
 }

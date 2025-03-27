@@ -1,7 +1,7 @@
 erp-api
 =======
 
-### Enterprise resource planning application's backend.
+### Enterprise resource planning application.
 
 [![Continuous integration](https://github.com/Netsurfclub/erp-api/actions/workflows/build.yml/badge.svg)](https://github.com/Netsurfclub/erp-api/actions/workflows/build.yml)
 
