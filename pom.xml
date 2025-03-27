@@ -13,7 +13,7 @@
     <groupId>hu.netsurf</groupId>
     <artifactId>erp-api</artifactId>
     <name>erp-api</name>
-    <description>Enterprise resource planning application's backend.</description>
+    <description>Enterprise resource planning application.</description>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -103,11 +103,14 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>hu/netsurf/erp/config/**</exclude>
-                        <exclude>hu/netsurf/erp/constant/**</exclude>
-                        <exclude>hu/netsurf/erp/model/**</exclude>
-                        <exclude>hu/netsurf/erp/util/FileSystemUtils*</exclude>
-                        <exclude>hu/netsurf/erp/wrapper/**</exclude>
+                        <exclude>hu/netsurf/erp/common/constant/**</exclude>
+                        <exclude>hu/netsurf/erp/usermanagement/constant/**</exclude>
+                        <exclude>hu/netsurf/erp/usermanagement/model/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/config/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/constant/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/model/**</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/util/FileSystemUtils*</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/wrapper/**</exclude>
                         <exclude>hu/netsurf/erp/Application*</exclude>
                     </excludes>
                 </configuration>
