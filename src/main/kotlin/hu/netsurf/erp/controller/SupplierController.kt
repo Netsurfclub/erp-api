@@ -8,7 +8,6 @@ import hu.netsurf.erp.constant.LogEventConstants.SUPPLIER_INPUT_MAPPED_TO_SUPPLI
 import hu.netsurf.erp.constant.LoggerConstants.SUPPLIER
 import hu.netsurf.erp.constant.LoggerConstants.SUPPLIER_INPUT
 import hu.netsurf.erp.extension.logInfo
-import hu.netsurf.erp.extension.toSupplier
 import hu.netsurf.erp.input.SupplierInput
 import hu.netsurf.erp.model.Supplier
 import hu.netsurf.erp.service.SupplierService
