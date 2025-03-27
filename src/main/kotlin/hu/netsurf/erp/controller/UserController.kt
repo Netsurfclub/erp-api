@@ -12,7 +12,6 @@ import hu.netsurf.erp.constant.LogEventConstants.USER_INPUT_MAPPED_TO_USER
 import hu.netsurf.erp.constant.LoggerConstants.USER
 import hu.netsurf.erp.constant.LoggerConstants.USER_INPUT
 import hu.netsurf.erp.extension.logInfo
-import hu.netsurf.erp.extension.toUser
 import hu.netsurf.erp.input.DeleteUserInput
 import hu.netsurf.erp.input.UpdateUserPasswordInput
 import hu.netsurf.erp.input.UserInput
