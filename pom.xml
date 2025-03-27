@@ -13,7 +13,7 @@
     <groupId>hu.netsurf</groupId>
     <artifactId>erp-api</artifactId>
     <name>erp-api</name>
-    <description>Enterprise resource planning application's backend.</description>
+    <description>Enterprise resource planning application.</description>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
