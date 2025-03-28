@@ -11,6 +11,7 @@ import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.repository.UserRepository
+import hu.netsurf.erp.usermanagement.util.PasswordUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service
 @Service
 class UserService(
     private val userRepository: UserRepository,
+    private val passwordUtil: PasswordUtil,
 ) {
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
@@ -28,6 +30,8 @@ class UserService(
     }
 
     fun createUser(user: User): User {
+        user.password = passwordUtil.encode(user.password)
+
         val savedUser = userRepository.save(user)
 
         logger.logInfo(
