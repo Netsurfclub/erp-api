@@ -116,6 +116,7 @@
                 <configuration>
                     <excludes>
                         <exclude>hu/netsurf/erp/common/constant/**</exclude>
+                        <exclude>hu/netsurf/erp/usermanagement/config/**</exclude>
                         <exclude>hu/netsurf/erp/usermanagement/constant/**</exclude>
                         <exclude>hu/netsurf/erp/usermanagement/model/**</exclude>
                         <exclude>hu/netsurf/erp/warehouse/config/**</exclude>
