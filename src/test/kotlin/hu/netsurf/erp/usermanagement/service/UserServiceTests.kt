@@ -1,5 +1,6 @@
 package hu.netsurf.erp.usermanagement.service
 
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.HASHED_PASSWORD
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.repository.UserRepository
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
@@ -54,6 +55,9 @@ class UserServiceTests {
 
     @Test
     fun `createUser test happy path`() {
+        every {
+            passwordUtil.encode(any())
+        } returns HASHED_PASSWORD
         every {
             userRepository.save(any())
         } returns user1()
