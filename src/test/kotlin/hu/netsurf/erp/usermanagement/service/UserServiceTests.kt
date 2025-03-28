@@ -4,6 +4,7 @@ import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.repository.UserRepository
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user2
+import hu.netsurf.erp.usermanagement.util.PasswordUtil
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
@@ -16,7 +17,8 @@ import java.util.Optional
 
 class UserServiceTests {
     private val userRepository: UserRepository = mockk()
-    private val userService: UserService = UserService(userRepository)
+    private val passwordUtil: PasswordUtil = mockk()
+    private val userService: UserService = UserService(userRepository, passwordUtil)
 
     @Test
     fun `getUsers test happy path`() {
