@@ -14,6 +14,7 @@ import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USERNAME_1
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
+import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.input.UserInput
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1
@@ -28,12 +29,10 @@ import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.us
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongEmail
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongFirstName
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongLastName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongPassword
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongUsername
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortEmail
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortFirstName
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortLastName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortPassword
 import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortUsername
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -63,8 +62,6 @@ class UserInputValidatorTests {
             Stream.of(
                 Arguments.of("username is too short", userInput1WithShortUsername()),
                 Arguments.of("username is too long", userInput1WithLongUsername()),
-                Arguments.of("password is too short", userInput1WithShortPassword()),
-                Arguments.of("password is too long", userInput1WithLongPassword()),
                 Arguments.of("firstName is too short", userInput1WithShortFirstName()),
                 Arguments.of("firstName is too long", userInput1WithLongFirstName()),
                 Arguments.of("lastName is too short", userInput1WithShortLastName()),
@@ -85,6 +82,17 @@ class UserInputValidatorTests {
             Stream.of(
                 Arguments.of("juhász", INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
                 Arguments.of("LastNam3", INVALID_LAST_NAME_CONTAINS_DIGIT),
+            )
+
+        @JvmStatic
+        fun invalidPasswordParams(): Stream<Arguments> =
+            Stream.of(
+                Arguments.of("no number", "p@sSwOrD"),
+                Arguments.of("no lowercase character", "P@SSW0RD"),
+                Arguments.of("no uppercase character", "p@ssword"),
+                Arguments.of("no special character", "pAsSwOrD"),
+                Arguments.of("too short", "p"),
+                Arguments.of("too long", "p@sSw0rDp@sSw0rD"),
             )
     }
 
@@ -170,6 +178,27 @@ class UserInputValidatorTests {
     fun `validate test unhappy path - password and confirm password not matches`() {
         assertThrows<PasswordAndConfirmPasswordNotMatchesException> {
             userInputValidator.validate(userInput1WithInvalidConfirmPassword())
+        }
+    }
+
+    @ParameterizedTest(name = "{index} => {0}")
+    @MethodSource("invalidPasswordParams")
+    fun `validate test unhappy path - invalid password format`(
+        testCase: String,
+        password: String,
+    ) {
+        val userInput =
+            UserInput(
+                username = USERNAME_1,
+                password = password,
+                confirmPassword = password,
+                firstName = FIRST_NAME_1,
+                lastName = LAST_NAME_1,
+                email = EMAIL_1,
+            )
+
+        assertThrows<InvalidPasswordFormatException> {
+            userInputValidator.validate(userInput)
         }
     }
 }
