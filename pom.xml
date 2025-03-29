@@ -51,6 +51,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-graphql</artifactId>
         </dependency>
         <dependency>
@@ -65,6 +69,14 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>flyway-mysql</artifactId>
+            <groupId>org.flywaydb</groupId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -104,6 +116,7 @@
                 <configuration>
                     <excludes>
                         <exclude>hu/netsurf/erp/common/constant/**</exclude>
+                        <exclude>hu/netsurf/erp/usermanagement/config/**</exclude>
                         <exclude>hu/netsurf/erp/usermanagement/constant/**</exclude>
                         <exclude>hu/netsurf/erp/usermanagement/model/**</exclude>
                         <exclude>hu/netsurf/erp/warehouse/config/**</exclude>

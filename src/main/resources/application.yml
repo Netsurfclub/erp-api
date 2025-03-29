@@ -18,9 +18,8 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: off
-  sql:
-    init:
-      data-locations: classpath:data-default.sql
+  flyway:
+    enabled: false
   graphql:
     graphiql:
       enabled: true

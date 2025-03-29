@@ -9,11 +9,6 @@ spring:
     username: root
     password: 12345
     driver-class-name: org.postgresql.Driver
-  jpa:
-    generate-ddl: true
-    hibernate:
-      ddl-auto: none
-    open-in-view: off
   graphql:
     graphiql:
       enabled: true
