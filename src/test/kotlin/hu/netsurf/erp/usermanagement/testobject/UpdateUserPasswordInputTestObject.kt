@@ -1,8 +1,8 @@
 package hu.netsurf.erp.usermanagement.testobject
 
 import hu.netsurf.erp.common.constant.CommonTestConstants.EMPTY_STRING
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_CURRENT_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_NEW_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.NEW_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
@@ -17,7 +17,8 @@ class UpdateUserPasswordInputTestObject {
 
         fun userInput1WithEmptyConfirmNewPassword(): UpdateUserPasswordInput = build(confirmNewPassword = EMPTY_STRING)
 
-        fun updateUserPasswordInput1WithInvalidCurrentPassword(): UpdateUserPasswordInput = build(currentPassword = INVALID_PASSWORD)
+        fun updateUserPasswordInput1WithInvalidCurrentPassword(): UpdateUserPasswordInput =
+            build(currentPassword = INVALID_CURRENT_PASSWORD)
 
         fun updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(): UpdateUserPasswordInput = build(newPassword = PASSWORD)
 

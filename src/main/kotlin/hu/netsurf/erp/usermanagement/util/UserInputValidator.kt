@@ -5,6 +5,7 @@ import hu.netsurf.erp.common.exception.InvalidLengthException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
+import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.input.UserInput
 import org.springframework.stereotype.Component
@@ -26,8 +27,6 @@ class UserInputValidator {
         if (
             userInput.usernameIsShort() ||
             userInput.usernameIsLong() ||
-            userInput.passwordIsShort() ||
-            userInput.passwordIsLong() ||
             userInput.firstNameIsShort() ||
             userInput.firstNameIsLong() ||
             userInput.lastNameIsShort() ||
@@ -60,6 +59,10 @@ class UserInputValidator {
 
         if (!userInput.passwordAndConfirmPasswordMatches()) {
             throw PasswordAndConfirmPasswordNotMatchesException()
+        }
+
+        if (!userInput.passwordIsValid()) {
+            throw InvalidPasswordFormatException()
         }
     }
 }

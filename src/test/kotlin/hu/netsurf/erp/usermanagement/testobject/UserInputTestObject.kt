@@ -9,7 +9,6 @@ import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LAST_NAME_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LONG_EMAIL_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LONG_FIRST_NAME_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LONG_LAST_NAME_1
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LONG_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LONG_USERNAME_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USERNAME_1
@@ -26,10 +25,6 @@ class UserInputTestObject {
         fun userInput1WithLongUsername(): UserInput = build(username = LONG_USERNAME_1)
 
         fun userInput1WithEmptyPassword(): UserInput = build(password = EMPTY_STRING)
-
-        fun userInput1WithShortPassword(): UserInput = build(password = "p")
-
-        fun userInput1WithLongPassword(): UserInput = build(password = LONG_PASSWORD)
 
         fun userInput1WithEmptyConfirmPassword(): UserInput = build(confirmPassword = EMPTY_STRING)
 
