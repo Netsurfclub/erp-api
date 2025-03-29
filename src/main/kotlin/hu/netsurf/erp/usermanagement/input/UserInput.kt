@@ -1,14 +1,13 @@
 package hu.netsurf.erp.usermanagement.input
 
 import hu.netsurf.erp.common.constant.RegexPatterns.EMAIL_ADDRESS_REGEX
+import hu.netsurf.erp.usermanagement.constant.RegexPatterns.PASSWORD_REGEX
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.EMAIL_MAX_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.EMAIL_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.FIRST_NAME_MAX_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.FIRST_NAME_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.LAST_NAME_MAX_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.LAST_NAME_MIN_LENGTH
-import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.PASSWORD_MAX_LENGTH
-import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.PASSWORD_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.USERNAME_MAX_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.USERNAME_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.model.User
@@ -28,10 +27,6 @@ data class UserInput(
     fun usernameIsLong(): Boolean = username.length > USERNAME_MAX_LENGTH
 
     fun passwordIsEmpty(): Boolean = password.isEmpty()
-
-    fun passwordIsShort(): Boolean = password.length < PASSWORD_MIN_LENGTH
-
-    fun passwordIsLong(): Boolean = password.length > PASSWORD_MAX_LENGTH
 
     fun confirmPasswordIsEmpty(): Boolean = confirmPassword.isEmpty()
 
@@ -64,6 +59,8 @@ data class UserInput(
     fun emailAddressIsValid(): Boolean = email.matches(Regex(EMAIL_ADDRESS_REGEX))
 
     fun passwordAndConfirmPasswordMatches(): Boolean = password == confirmPassword
+
+    fun passwordIsValid(): Boolean = password.matches(Regex(PASSWORD_REGEX))
 
     fun toUser(): User =
         User(
