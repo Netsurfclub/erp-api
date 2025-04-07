@@ -69,5 +69,6 @@ data class UserInput(
             firstName = this.firstName,
             lastName = this.lastName,
             email = this.email,
+            isDeleted = false,
         )
 }
