@@ -58,15 +58,15 @@ input DeleteUserInput {
 }
 
 input ProductInput {
-    name: String
-    supplierId: Int
-    price: Float
-    unit: String
-    onStock: Int
+    name: String!
+    supplierId: Int!
+    price: Float!
+    unit: String!
+    onStock: Int!
 }
 
 input SupplierInput {
-    name: String
+    name: String!
     phone: String
     email: String
 }
