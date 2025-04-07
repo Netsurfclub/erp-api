@@ -16,24 +16,24 @@ import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
-import hu.netsurf.erp.usermanagement.input.UserInput
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithEmptyConfirmPassword
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithEmptyEmail
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithEmptyFirstName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithEmptyLastName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithEmptyPassword
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithEmptyUsername
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithInvalidConfirmPassword
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithInvalidEmail
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongEmail
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongFirstName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongLastName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithLongUsername
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortEmail
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortFirstName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortLastName
-import hu.netsurf.erp.usermanagement.testobject.UserInputTestObject.Companion.userInput1WithShortUsername
+import hu.netsurf.erp.usermanagement.input.CreateUserInput
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithEmptyConfirmPassword
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithEmptyEmail
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithEmptyFirstName
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithEmptyLastName
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithEmptyPassword
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithEmptyUsername
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithInvalidConfirmPassword
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithInvalidEmail
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithLongEmail
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithLongFirstName
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithLongLastName
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithLongUsername
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithShortEmail
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithShortFirstName
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithShortLastName
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1WithShortUsername
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -49,25 +49,25 @@ class UserInputValidatorTests {
         @JvmStatic
         fun userInputEmptyFieldParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("username is empty", userInput1WithEmptyUsername()),
-                Arguments.of("password is empty", userInput1WithEmptyPassword()),
-                Arguments.of("confirmPassword is empty", userInput1WithEmptyConfirmPassword()),
-                Arguments.of("firstName is empty", userInput1WithEmptyFirstName()),
-                Arguments.of("lastName is empty", userInput1WithEmptyLastName()),
-                Arguments.of("email is empty", userInput1WithEmptyEmail()),
+                Arguments.of("username is empty", input1WithEmptyUsername()),
+                Arguments.of("password is empty", input1WithEmptyPassword()),
+                Arguments.of("confirmPassword is empty", input1WithEmptyConfirmPassword()),
+                Arguments.of("firstName is empty", input1WithEmptyFirstName()),
+                Arguments.of("lastName is empty", input1WithEmptyLastName()),
+                Arguments.of("email is empty", input1WithEmptyEmail()),
             )
 
         @JvmStatic
         fun userInputFieldLengthParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("username is too short", userInput1WithShortUsername()),
-                Arguments.of("username is too long", userInput1WithLongUsername()),
-                Arguments.of("firstName is too short", userInput1WithShortFirstName()),
-                Arguments.of("firstName is too long", userInput1WithLongFirstName()),
-                Arguments.of("lastName is too short", userInput1WithShortLastName()),
-                Arguments.of("lastName is too long", userInput1WithLongLastName()),
-                Arguments.of("email is too short", userInput1WithShortEmail()),
-                Arguments.of("email is too long", userInput1WithLongEmail()),
+                Arguments.of("username is too short", input1WithShortUsername()),
+                Arguments.of("username is too long", input1WithLongUsername()),
+                Arguments.of("firstName is too short", input1WithShortFirstName()),
+                Arguments.of("firstName is too long", input1WithLongFirstName()),
+                Arguments.of("lastName is too short", input1WithShortLastName()),
+                Arguments.of("lastName is too long", input1WithLongLastName()),
+                Arguments.of("email is too short", input1WithShortEmail()),
+                Arguments.of("email is too long", input1WithLongEmail()),
             )
 
         @JvmStatic
@@ -99,7 +99,7 @@ class UserInputValidatorTests {
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            userInputValidator.validate(userInput1())
+            userInputValidator.validate(input1())
         }
     }
 
@@ -107,10 +107,10 @@ class UserInputValidatorTests {
     @MethodSource("userInputEmptyFieldParams")
     fun `validate tests unhappy path - empty fields`(
         testCase: String,
-        userInput: UserInput,
+        input: CreateUserInput,
     ) {
         assertThrows<EmptyFieldException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(input)
         }
     }
 
@@ -118,10 +118,10 @@ class UserInputValidatorTests {
     @MethodSource("userInputFieldLengthParams")
     fun `validate tests unhappy path - length check`(
         testCase: String,
-        userInput: UserInput,
+        input: CreateUserInput,
     ) {
         assertThrows<InvalidLengthException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(input)
         }
     }
 
@@ -131,8 +131,8 @@ class UserInputValidatorTests {
         testCase: String,
         firstName: String,
     ) {
-        val userInput =
-            UserInput(
+        val input =
+            CreateUserInput(
                 username = USERNAME_1,
                 password = PASSWORD,
                 confirmPassword = PASSWORD,
@@ -142,7 +142,7 @@ class UserInputValidatorTests {
             )
 
         assertThrows<InvalidFirstNameFormatException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(input)
         }
     }
 
@@ -152,8 +152,8 @@ class UserInputValidatorTests {
         testCase: String,
         lastName: String,
     ) {
-        val userInput =
-            UserInput(
+        val input =
+            CreateUserInput(
                 username = USERNAME_1,
                 password = PASSWORD,
                 confirmPassword = PASSWORD,
@@ -163,21 +163,21 @@ class UserInputValidatorTests {
             )
 
         assertThrows<InvalidLastNameFormatException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(input)
         }
     }
 
     @Test
     fun `validate test unhappy path - invalid email address`() {
         assertThrows<InvalidEmailAddressFormatException> {
-            userInputValidator.validate(userInput1WithInvalidEmail())
+            userInputValidator.validate(input1WithInvalidEmail())
         }
     }
 
     @Test
     fun `validate test unhappy path - password and confirm password not matches`() {
         assertThrows<PasswordAndConfirmPasswordNotMatchesException> {
-            userInputValidator.validate(userInput1WithInvalidConfirmPassword())
+            userInputValidator.validate(input1WithInvalidConfirmPassword())
         }
     }
 
@@ -187,8 +187,8 @@ class UserInputValidatorTests {
         testCase: String,
         password: String,
     ) {
-        val userInput =
-            UserInput(
+        val input =
+            CreateUserInput(
                 username = USERNAME_1,
                 password = password,
                 confirmPassword = password,
@@ -198,7 +198,7 @@ class UserInputValidatorTests {
             )
 
         assertThrows<InvalidPasswordFormatException> {
-            userInputValidator.validate(userInput)
+            userInputValidator.validate(input)
         }
     }
 }

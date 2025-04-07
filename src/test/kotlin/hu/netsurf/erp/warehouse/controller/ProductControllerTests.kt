@@ -1,7 +1,7 @@
 package hu.netsurf.erp.warehouse.controller
 
 import hu.netsurf.erp.warehouse.service.ProductService
-import hu.netsurf.erp.warehouse.testobject.ProductInputTestObject.Companion.productInput1
+import hu.netsurf.erp.warehouse.testobject.CreateProductInputTestObject.Companion.input1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product2
 import hu.netsurf.erp.warehouse.util.ProductInputSanitizer
@@ -38,13 +38,13 @@ class ProductControllerTests {
     fun `createProduct test happy path`() {
         every {
             productInputSanitizer.sanitize(any())
-        } returns productInput1()
+        } returns input1()
         justRun { productInputValidator.validate(any()) }
         every {
             productService.createProduct(any())
         } returns product1()
 
-        val result = productController.createProduct(productInput1())
+        val result = productController.createProduct(input1())
         assertEquals(product1(), result)
     }
 }

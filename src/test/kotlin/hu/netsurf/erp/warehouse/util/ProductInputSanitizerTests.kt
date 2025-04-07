@@ -3,7 +3,7 @@ package hu.netsurf.erp.warehouse.util
 import hu.netsurf.erp.common.util.InputSanitizer
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_NAME
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_UNIT
-import hu.netsurf.erp.warehouse.input.ProductInput
+import hu.netsurf.erp.warehouse.input.CreateProductInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -48,8 +48,8 @@ class ProductInputSanitizerTests {
         name: String,
         unit: String,
     ) {
-        val productInput =
-            ProductInput(
+        val input =
+            CreateProductInput(
                 name = name,
                 supplierId = 1,
                 price = 100.0,
@@ -57,7 +57,7 @@ class ProductInputSanitizerTests {
                 onStock = 1,
             )
 
-        val result = productInputSanitizer.sanitize(productInput)
+        val result = productInputSanitizer.sanitize(input)
 
         assertEquals(PRODUCT_1_NAME, result.name)
         assertEquals(PRODUCT_1_UNIT, result.unit)

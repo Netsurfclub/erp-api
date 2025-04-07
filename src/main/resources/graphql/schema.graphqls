@@ -5,11 +5,11 @@ type Query {
 }
 
 type Mutation {
-    createUser(input: UserInput!): User!
+    createUser(input: CreateUserInput!): User!
     updateUserPassword(input: UpdateUserPasswordInput!): User!
     deleteUser(input: DeleteUserInput!): User!
-    createProduct(input: ProductInput!): Product!
-    createSupplier(input: SupplierInput!): Supplier!
+    createProduct(input: CreateProductInput!): Product!
+    createSupplier(input: CreateSupplierInput!): Supplier!
 }
 
 type User {
@@ -37,7 +37,7 @@ type Supplier {
     email: String
 }
 
-input UserInput {
+input CreateUserInput {
     username: String!
     password: String!
     confirmPassword: String!
@@ -57,7 +57,7 @@ input DeleteUserInput {
     userId: ID!
 }
 
-input ProductInput {
+input CreateProductInput {
     name: String!
     supplierId: Int!
     price: Float!
@@ -65,7 +65,7 @@ input ProductInput {
     onStock: Int!
 }
 
-input SupplierInput {
+input CreateSupplierInput {
     name: String!
     phone: String
     email: String

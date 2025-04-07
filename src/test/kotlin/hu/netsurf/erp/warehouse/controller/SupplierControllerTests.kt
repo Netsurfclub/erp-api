@@ -1,9 +1,9 @@
 package hu.netsurf.erp.warehouse.controller
 
 import hu.netsurf.erp.warehouse.service.SupplierService
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithNullEmail
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithNullPhone
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithNullEmail
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithNullPhone
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullEmail
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullPhone
@@ -34,7 +34,7 @@ class SupplierControllerTests {
     fun setup() {
         every {
             supplierInputSanitizer.sanitize(any())
-        } returns supplierInput1()
+        } returns input1()
         justRun { supplierInputValidator.validate(any()) }
     }
 
@@ -54,7 +54,7 @@ class SupplierControllerTests {
             supplierService.createSupplier(any())
         } returns supplier1()
 
-        val result = supplierController.createSupplier(supplierInput1())
+        val result = supplierController.createSupplier(input1())
         assertEquals(supplier1(), result)
     }
 
@@ -64,7 +64,7 @@ class SupplierControllerTests {
             supplierService.createSupplier(any())
         } returns supplier1WithNullPhone()
 
-        val result = supplierController.createSupplier(supplierInput1WithNullPhone())
+        val result = supplierController.createSupplier(input1WithNullPhone())
         assertEquals(supplier1WithNullPhone(), result)
     }
 
@@ -74,7 +74,7 @@ class SupplierControllerTests {
             supplierService.createSupplier(any())
         } returns supplier1WithNullEmail()
 
-        val result = supplierController.createSupplier(supplierInput1WithNullEmail())
+        val result = supplierController.createSupplier(input1WithNullEmail())
         assertEquals(supplier1WithNullEmail(), result)
     }
 }

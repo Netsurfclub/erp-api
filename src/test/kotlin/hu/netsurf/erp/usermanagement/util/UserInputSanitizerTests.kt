@@ -6,7 +6,7 @@ import hu.netsurf.erp.usermanagement.constant.UserTestConstants.FIRST_NAME_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LAST_NAME_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USERNAME_1
-import hu.netsurf.erp.usermanagement.input.UserInput
+import hu.netsurf.erp.usermanagement.input.CreateUserInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -71,8 +71,8 @@ class UserInputSanitizerTests {
         lastName: String,
         email: String,
     ) {
-        val userInput =
-            UserInput(
+        val input =
+            CreateUserInput(
                 username = username,
                 password = password,
                 confirmPassword = confirmPassword,
@@ -81,7 +81,7 @@ class UserInputSanitizerTests {
                 email = email,
             )
 
-        val result = userInputSanitizer.sanitize(userInput)
+        val result = userInputSanitizer.sanitize(input)
 
         assertEquals(USERNAME_1, result.username)
         assertEquals(PASSWORD, result.password)
