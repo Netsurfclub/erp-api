@@ -4,10 +4,10 @@ import hu.netsurf.erp.usermanagement.constant.UserTestConstants.HASHED_PASSWORD
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.repository.UserRepository
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
+import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1IsDeleted
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user2
 import hu.netsurf.erp.usermanagement.util.PasswordUtil
 import io.mockk.every
-import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -81,12 +81,25 @@ class UserServiceTests {
     @Test
     fun `deleteUser test happy path`() {
         every {
-            userRepository.findById(1)
+            userRepository.findById(any())
         } returns Optional.of(user1())
-        justRun { userRepository.deleteById(any()) }
+        every {
+            userRepository.save(any())
+        } returns user1IsDeleted()
 
         val result = userService.deleteUser(1)
         assertNotNull(result)
-        assertEquals(user1(), result)
+        assertEquals(user1IsDeleted(), result)
+    }
+
+    @Test
+    fun `deleteUser test unhappy path - user is already deleted (not found in database)`() {
+        every {
+            userRepository.findById(any())
+        } returns Optional.of(user1IsDeleted())
+
+        assertThrows<UserNotFoundException> {
+            userService.deleteUser(1)
+        }
     }
 }

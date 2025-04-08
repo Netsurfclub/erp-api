@@ -74,9 +74,14 @@ class UserService(
     }
 
     fun deleteUser(id: Int): User {
-        val deletedUser = getUser(id)
+        val userToDelete = getUser(id)
 
-        userRepository.deleteById(id)
+        if (userToDelete.isDeleted) {
+            throw UserNotFoundException(id)
+        }
+
+        userToDelete.isDeleted = true
+        val deletedUser = userRepository.save(userToDelete)
 
         logger.logInfo(
             USER_DELETED_FROM_DATABASE,
