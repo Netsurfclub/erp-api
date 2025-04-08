@@ -7,7 +7,7 @@ import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.UNIT_MIN_LEN
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.Supplier
 
-data class ProductInput(
+data class CreateProductInput(
     val name: String,
     val supplierId: Int,
     val price: Double,

@@ -8,7 +8,7 @@ import hu.netsurf.erp.warehouse.constant.LogEventConstants.PRODUCTS_GRAPHQL_QUER
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.PRODUCT_INPUT_MAPPED_TO_PRODUCT
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.PRODUCT
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.PRODUCT_INPUT
-import hu.netsurf.erp.warehouse.input.ProductInput
+import hu.netsurf.erp.warehouse.input.CreateProductInput
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.service.ProductService
 import hu.netsurf.erp.warehouse.util.ProductInputSanitizer
@@ -41,7 +41,7 @@ class ProductController(
 
     @MutationMapping(name = "createProduct")
     fun createProduct(
-        @Argument input: ProductInput,
+        @Argument input: CreateProductInput,
     ): Product {
         logger.logInfo(CREATE_PRODUCT_GRAPHQL_MUTATION_RECEIVED)
 

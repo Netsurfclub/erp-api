@@ -4,9 +4,9 @@ import hu.netsurf.erp.common.util.InputSanitizer
 import hu.netsurf.erp.warehouse.constant.SupplierTestConstants.SUPPLIER_1_EMAIL
 import hu.netsurf.erp.warehouse.constant.SupplierTestConstants.SUPPLIER_1_NAME
 import hu.netsurf.erp.warehouse.constant.SupplierTestConstants.SUPPLIER_1_PHONE
-import hu.netsurf.erp.warehouse.input.SupplierInput
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithNullEmail
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithNullPhone
+import hu.netsurf.erp.warehouse.input.CreateSupplierInput
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithNullEmail
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithNullPhone
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
@@ -58,14 +58,14 @@ class SupplierInputSanitizerTests {
         phone: String?,
         email: String?,
     ) {
-        val supplierInput =
-            SupplierInput(
+        val input =
+            CreateSupplierInput(
                 name = name,
                 phone = phone,
                 email = email,
             )
 
-        val result = supplierInputSanitizer.sanitize(supplierInput)
+        val result = supplierInputSanitizer.sanitize(input)
 
         assertEquals(SUPPLIER_1_NAME, result.name)
         assertEquals(SUPPLIER_1_PHONE, result.phone)
@@ -74,7 +74,7 @@ class SupplierInputSanitizerTests {
 
     @Test
     fun `sanitize test - phone is null`() {
-        val result = supplierInputSanitizer.sanitize(supplierInput1WithNullPhone())
+        val result = supplierInputSanitizer.sanitize(input1WithNullPhone())
 
         assertEquals(SUPPLIER_1_NAME, result.name)
         assertNull(result.phone)
@@ -83,7 +83,7 @@ class SupplierInputSanitizerTests {
 
     @Test
     fun `sanitize test - email is null`() {
-        val result = supplierInputSanitizer.sanitize(supplierInput1WithNullEmail())
+        val result = supplierInputSanitizer.sanitize(input1WithNullEmail())
 
         assertEquals(SUPPLIER_1_NAME, result.name)
         assertEquals(SUPPLIER_1_PHONE, result.phone)

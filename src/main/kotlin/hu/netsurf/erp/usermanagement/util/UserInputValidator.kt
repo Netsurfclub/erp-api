@@ -7,61 +7,61 @@ import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
-import hu.netsurf.erp.usermanagement.input.UserInput
+import hu.netsurf.erp.usermanagement.input.CreateUserInput
 import org.springframework.stereotype.Component
 
 @Component
 class UserInputValidator {
-    fun validate(userInput: UserInput) {
+    fun validate(input: CreateUserInput) {
         if (
-            userInput.usernameIsEmpty() ||
-            userInput.passwordIsEmpty() ||
-            userInput.confirmPasswordIsEmpty() ||
-            userInput.firstNameIsEmpty() ||
-            userInput.lastNameIsEmpty() ||
-            userInput.emailIsEmpty()
+            input.usernameIsEmpty() ||
+            input.passwordIsEmpty() ||
+            input.confirmPasswordIsEmpty() ||
+            input.firstNameIsEmpty() ||
+            input.lastNameIsEmpty() ||
+            input.emailIsEmpty()
         ) {
             throw EmptyFieldException()
         }
 
         if (
-            userInput.usernameIsShort() ||
-            userInput.usernameIsLong() ||
-            userInput.firstNameIsShort() ||
-            userInput.firstNameIsLong() ||
-            userInput.lastNameIsShort() ||
-            userInput.lastNameIsLong() ||
-            userInput.emailIsShort() ||
-            userInput.emailIsLong()
+            input.usernameIsShort() ||
+            input.usernameIsLong() ||
+            input.firstNameIsShort() ||
+            input.firstNameIsLong() ||
+            input.lastNameIsShort() ||
+            input.lastNameIsLong() ||
+            input.emailIsShort() ||
+            input.emailIsLong()
         ) {
             throw InvalidLengthException()
         }
 
-        if (!userInput.firstNameStartsWithUpperCaseCharacter()) {
+        if (!input.firstNameStartsWithUpperCaseCharacter()) {
             throw InvalidFirstNameFormatException()
         }
 
-        if (!userInput.lastNameStartsWithUpperCaseCharacter()) {
+        if (!input.lastNameStartsWithUpperCaseCharacter()) {
             throw InvalidLastNameFormatException()
         }
 
-        if (userInput.firstNameContainsDigit()) {
+        if (input.firstNameContainsDigit()) {
             throw InvalidFirstNameFormatException()
         }
 
-        if (userInput.lastNameContainsDigit()) {
+        if (input.lastNameContainsDigit()) {
             throw InvalidLastNameFormatException()
         }
 
-        if (!userInput.emailAddressIsValid()) {
+        if (!input.emailAddressIsValid()) {
             throw InvalidEmailAddressFormatException()
         }
 
-        if (!userInput.passwordAndConfirmPasswordMatches()) {
+        if (!input.passwordAndConfirmPasswordMatches()) {
             throw PasswordAndConfirmPasswordNotMatchesException()
         }
 
-        if (!userInput.passwordIsValid()) {
+        if (!input.passwordIsValid()) {
             throw InvalidPasswordFormatException()
         }
     }

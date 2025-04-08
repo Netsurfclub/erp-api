@@ -1,5 +1,7 @@
 mutation {
-    createSupplier(input: {name: "", phone: "", email: ""}) {
+    createSupplier(
+        input: {name: "", phone: "", email: ""}
+    ) {
         id
         name
         phone

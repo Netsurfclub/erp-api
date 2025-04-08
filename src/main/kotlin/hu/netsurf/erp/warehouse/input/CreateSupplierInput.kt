@@ -9,7 +9,7 @@ import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.PHONE_MAX_L
 import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.PHONE_MIN_LENGTH
 import hu.netsurf.erp.warehouse.model.Supplier
 
-data class SupplierInput(
+data class CreateSupplierInput(
     val name: String,
     val phone: String?,
     val email: String?,
