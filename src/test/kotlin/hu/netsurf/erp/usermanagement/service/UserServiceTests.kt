@@ -89,6 +89,9 @@ class UserServiceTests {
     @Test
     fun `updateUserPassword test happy path`() {
         every {
+            passwordUtil.encode(any())
+        } returns HASHED_PASSWORD
+        every {
             userRepository.save(any())
         } returns user1()
 
