@@ -9,10 +9,8 @@ class PasswordUtil(
 ) {
     fun encode(rawPassword: String): String = passwordEncoder.encode(rawPassword)
 
-    // For login.
-
-    /*fun verify(
+    fun verify(
         rawPassword: String,
         hashedPassword: String,
-    ): Boolean = passwordEncoder.matches(rawPassword, hashedPassword)*/
+    ): Boolean = passwordEncoder.matches(rawPassword, hashedPassword)
 }
