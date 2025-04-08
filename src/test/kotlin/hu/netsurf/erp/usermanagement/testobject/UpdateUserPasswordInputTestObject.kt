@@ -9,21 +9,17 @@ import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
 
 class UpdateUserPasswordInputTestObject {
     companion object {
-        fun updateUserPasswordInput1(): UpdateUserPasswordInput = build()
+        fun input1(): UpdateUserPasswordInput = build()
 
-        fun userInput1WithEmptyCurrentPassword(): UpdateUserPasswordInput = build(currentPassword = EMPTY_STRING)
+        fun input1WithEmptyCurrentPassword(): UpdateUserPasswordInput = build(currentPassword = EMPTY_STRING)
 
-        fun userInput1WithEmptyNewPassword(): UpdateUserPasswordInput = build(newPassword = EMPTY_STRING)
+        fun input1WithEmptyNewPassword(): UpdateUserPasswordInput = build(newPassword = EMPTY_STRING)
 
-        fun userInput1WithEmptyConfirmNewPassword(): UpdateUserPasswordInput = build(confirmNewPassword = EMPTY_STRING)
+        fun input1WithEmptyConfirmNewPassword(): UpdateUserPasswordInput = build(confirmNewPassword = EMPTY_STRING)
 
-        fun updateUserPasswordInput1WithInvalidCurrentPassword(): UpdateUserPasswordInput =
-            build(currentPassword = INVALID_CURRENT_PASSWORD)
+        fun input1WithInvalidCurrentPassword(): UpdateUserPasswordInput = build(currentPassword = INVALID_CURRENT_PASSWORD)
 
-        fun updateUserPasswordInput1WithNewPasswordAndPasswordInDatabaseMatches(): UpdateUserPasswordInput = build(newPassword = PASSWORD)
-
-        fun updateUserPasswordInput1WithInvalidConfirmNewPassword(): UpdateUserPasswordInput =
-            build(confirmNewPassword = INVALID_NEW_PASSWORD)
+        fun input1WithInvalidConfirmNewPassword(): UpdateUserPasswordInput = build(confirmNewPassword = INVALID_NEW_PASSWORD)
 
         private fun build(
             userId: Int = 1,

@@ -1,9 +1,6 @@
 package hu.netsurf.erp.usermanagement.controller
 
 import hu.netsurf.erp.usermanagement.service.UserService
-import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1
-import hu.netsurf.erp.usermanagement.testobject.DeleteUserInputTestObject.Companion.deleteUserInput1
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.updateUserPasswordInput1
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user2
 import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputSanitizer
@@ -16,6 +13,9 @@ import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
+import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1 as createUserInput1
+import hu.netsurf.erp.usermanagement.testobject.DeleteUserInputTestObject.Companion.input1 as deleteUserInput1
+import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1 as updateUserPasswordInput1
 
 class UserControllerTests {
     private val userService: UserService = mockk()
@@ -46,13 +46,13 @@ class UserControllerTests {
     fun `createUser test happy path`() {
         every {
             userInputSanitizer.sanitize(any())
-        } returns input1()
+        } returns createUserInput1()
         justRun { userInputValidator.validate(any()) }
         every {
             userService.createUser(any())
         } returns user1()
 
-        val result = userController.createUser(input1())
+        val result = userController.createUser(createUserInput1())
         assertEquals(user1(), result)
     }
 

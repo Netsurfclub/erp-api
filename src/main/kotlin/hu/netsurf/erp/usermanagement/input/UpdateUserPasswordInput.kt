@@ -14,7 +14,5 @@ data class UpdateUserPasswordInput(
 
     fun currentPasswordAndPasswordInDatabaseMatches(password: String): Boolean = currentPassword == password
 
-    fun newPasswordAndCurrentPasswordInDatabaseMatches(password: String): Boolean = newPassword == password
-
     fun newPasswordAndConfirmNewPasswordMatches(): Boolean = newPassword == confirmNewPassword
 }
