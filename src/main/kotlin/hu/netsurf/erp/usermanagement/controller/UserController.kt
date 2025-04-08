@@ -87,9 +87,7 @@ class UserController(
 
         updateUserPasswordInputValidator.validate(sanitizedUserInput, user.password)
 
-        user.password = input.newPassword
-
-        val updatedUser = userService.updateUser(user)
+        val updatedUser = userService.updateUserPassword(user, input.newPassword)
 
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 

@@ -8,7 +8,7 @@ VALUES ('6-os csavar', 1, 120, 'darab', NULL, 1000),
        ('Sárgaréz', 1, 5000, 'kilogramm', NULL, 2000),
        ('Vörösréz', 1, 3000, 'kilogramm', NULL, 3000);
 
-INSERT INTO users (username, password, first_name, last_name, email)
-VALUES ('bjuhasz', '12345', 'Ferenc', 'Dunai', 'juhasz.bence@netsurfclub.hu'),
-       ('gjuhasz', '12345', 'Gábor', 'Juhász', 'juhasz.gabor@netsurfclub.hu'),
-       ('lpapp', '12345', 'László', 'Papp', 'papp.laszlo@netsurfclub.hu');
+INSERT INTO users (username, password, first_name, last_name, email, is_deleted)
+VALUES ('bjuhasz', '12345', 'Ferenc', 'Dunai', 'juhasz.bence@netsurfclub.hu', 0),
+       ('gjuhasz', '12345', 'Gábor', 'Juhász', 'juhasz.gabor@netsurfclub.hu', 0),
+       ('lpapp', '12345', 'László', 'Papp', 'papp.laszlo@netsurfclub.hu', 0);

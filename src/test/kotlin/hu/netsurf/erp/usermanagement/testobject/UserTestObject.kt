@@ -14,6 +14,8 @@ class UserTestObject {
     companion object {
         fun user1(): User = build()
 
+        fun user1IsDeleted(): User = build(isDeleted = true)
+
         fun user2(): User =
             build(
                 id = 2,
@@ -29,6 +31,7 @@ class UserTestObject {
             firstName: String = FIRST_NAME_1,
             lastName: String = LAST_NAME_1,
             email: String = EMAIL_1,
+            isDeleted: Boolean = false,
         ): User =
             User(
                 id = id,
@@ -37,6 +40,7 @@ class UserTestObject {
                 firstName = firstName,
                 lastName = lastName,
                 email = email,
+                isDeleted = isDeleted,
             )
     }
 }

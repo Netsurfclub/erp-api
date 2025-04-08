@@ -26,9 +26,10 @@ CREATE TABLE IF NOT EXISTS products
 CREATE TABLE IF NOT EXISTS users
 (
     id         INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username   VARCHAR(15),
-    password   VARCHAR(255)  NOT NULL,
+    username   VARCHAR(15)  NOT NULL,
+    password   VARCHAR(255) NOT NULL,
     first_name VARCHAR(255) NOT NULL,
     last_name  VARCHAR(255) NOT NULL,
-    email      VARCHAR(75)  NOT NULL
+    email      VARCHAR(75)  NOT NULL,
+    is_deleted TINYINT(1)   NOT NULL
 );
