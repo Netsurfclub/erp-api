@@ -26,7 +26,7 @@ class UserService(
     fun getUsers(): List<User> {
         logger.logInfo(USERS_RETRIEVED_FROM_DATABASE)
 
-        return userRepository.findAll()
+        return userRepository.findAll().filter { user: User -> !user.isDeleted }
     }
 
     fun createUser(user: User): User {
