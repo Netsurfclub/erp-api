@@ -34,7 +34,7 @@ class UserServiceTests {
     @Test
     fun `getUser test happy path`() {
         every {
-            userRepository.findById(1)
+            userRepository.findById(any())
         } returns Optional.of(user1())
 
         val result = userService.getUser(1)
