@@ -66,7 +66,7 @@ class UserControllerTests {
         } returns user1()
         justRun { updateUserPasswordInputValidator.validate(any(), any()) }
         every {
-            userService.updateUser(any())
+            userService.updateUserPassword(any(), any())
         } returns user1()
 
         val result = userController.updateUserPassword(updateUserPasswordInput1())

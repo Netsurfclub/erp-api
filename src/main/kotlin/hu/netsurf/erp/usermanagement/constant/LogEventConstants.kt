@@ -52,9 +52,9 @@ enum class LogEventConstants(
         eventName = "erp-api:userService:getUser",
         eventMessage = "User retrieved from database",
     ),
-    USER_UPDATED_IN_DATABASE(
-        eventName = "erp-api:userService:updateUser",
-        eventMessage = "User updated in database",
+    USER_PASSWORD_UPDATED_IN_DATABASE(
+        eventName = "erp-api:userService:updateUserPassword",
+        eventMessage = "User password updated in database",
     ),
     USER_DELETED_FROM_DATABASE(
         eventName = "erp-api:userService:deleteUser",

@@ -1,6 +1,7 @@
 package hu.netsurf.erp.usermanagement.service
 
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.HASHED_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.NEW_PASSWORD
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.repository.UserRepository
@@ -61,7 +62,7 @@ class UserServiceTests {
     }
 
     @Test
-    fun `getUser test unhappy path - user is empty`() {
+    fun `getUser test unhappy path - user not found by id`() {
         every {
             userRepository.findById(any())
         } returns Optional.empty()
@@ -86,14 +87,21 @@ class UserServiceTests {
     }
 
     @Test
-    fun `updateUser test happy path`() {
+    fun `updateUserPassword test happy path`() {
         every {
             userRepository.save(any())
         } returns user1()
 
-        val result = userService.updateUser(user1())
+        val result = userService.updateUserPassword(user1(), NEW_PASSWORD)
         assertNotNull(result)
         assertEquals(user1(), result)
+    }
+
+    @Test
+    fun `updateUserPassword test unhappy path - user is already deleted (not found in database)`() {
+        assertThrows<UserNotFoundException> {
+            userService.updateUserPassword(user1IsDeleted(), NEW_PASSWORD)
+        }
     }
 
     @Test
