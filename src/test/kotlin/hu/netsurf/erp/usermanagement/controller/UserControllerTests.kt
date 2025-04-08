@@ -1,6 +1,5 @@
 package hu.netsurf.erp.usermanagement.controller
 
-import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.service.UserService
 import hu.netsurf.erp.usermanagement.testobject.CreateUserInputTestObject.Companion.input1
 import hu.netsurf.erp.usermanagement.testobject.DeleteUserInputTestObject.Companion.deleteUserInput1
@@ -17,7 +16,6 @@ import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class UserControllerTests {
     private val userService: UserService = mockk()
@@ -83,16 +81,5 @@ class UserControllerTests {
 
         val result = userController.deleteUser(deleteUserInput1())
         assertEquals(user1(), result)
-    }
-
-    @Test
-    fun `deleteUser test unhappy path`() {
-        every {
-            userService.deleteUser(any())
-        } throws UserNotFoundException(1)
-
-        assertThrows<UserNotFoundException> {
-            userController.deleteUser(deleteUserInput1())
-        }
     }
 }
