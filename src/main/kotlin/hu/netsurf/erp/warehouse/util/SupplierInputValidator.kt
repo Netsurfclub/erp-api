@@ -3,28 +3,28 @@
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.common.exception.InvalidLengthException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
-import hu.netsurf.erp.warehouse.input.SupplierInput
+import hu.netsurf.erp.warehouse.input.CreateSupplierInput
 import org.springframework.stereotype.Component
 
 @Component
 class SupplierInputValidator {
-    fun validate(supplierInput: SupplierInput) {
-        if (supplierInput.nameIsEmpty()) {
+    fun validate(input: CreateSupplierInput) {
+        if (input.nameIsEmpty()) {
             throw EmptyFieldException()
         }
 
         if (
-            supplierInput.nameIsShort() ||
-            supplierInput.nameIsLong() ||
-            supplierInput.emailIsShort() ||
-            supplierInput.emailIsLong() ||
-            supplierInput.phoneIsShort() ||
-            supplierInput.phoneIsLong()
+            input.nameIsShort() ||
+            input.nameIsLong() ||
+            input.emailIsShort() ||
+            input.emailIsLong() ||
+            input.phoneIsShort() ||
+            input.phoneIsLong()
         ) {
             throw InvalidLengthException()
         }
 
-        if (!supplierInput.emailAddressIsValid()) {
+        if (!input.emailAddressIsValid()) {
             throw InvalidEmailAddressFormatException()
         }
     }

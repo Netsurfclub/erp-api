@@ -3,16 +3,16 @@ package hu.netsurf.erp.warehouse.util
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.common.exception.InvalidLengthException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
-import hu.netsurf.erp.warehouse.input.SupplierInput
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithEmptyName
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithInvalidEmail
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithLongEmail
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithLongName
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithLongPhone
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithShortEmail
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithShortName
-import hu.netsurf.erp.warehouse.testobject.SupplierInputTestObject.Companion.supplierInput1WithShortPhone
+import hu.netsurf.erp.warehouse.input.CreateSupplierInput
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithEmptyName
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithInvalidEmail
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithLongEmail
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithLongName
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithLongPhone
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithShortEmail
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithShortName
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithShortPhone
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -28,25 +28,25 @@ class SupplierInputValidatorTests {
         @JvmStatic
         fun supplierInputEmptyFieldParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("name is empty", supplierInput1WithEmptyName()),
+                Arguments.of("name is empty", input1WithEmptyName()),
             )
 
         @JvmStatic
         fun supplierInputFieldLengthParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("name is too short", supplierInput1WithShortName()),
-                Arguments.of("name is too long", supplierInput1WithLongName()),
-                Arguments.of("phone is too short", supplierInput1WithShortPhone()),
-                Arguments.of("phone is too long", supplierInput1WithLongPhone()),
-                Arguments.of("email is too short", supplierInput1WithShortEmail()),
-                Arguments.of("email is too long", supplierInput1WithLongEmail()),
+                Arguments.of("name is too short", input1WithShortName()),
+                Arguments.of("name is too long", input1WithLongName()),
+                Arguments.of("phone is too short", input1WithShortPhone()),
+                Arguments.of("phone is too long", input1WithLongPhone()),
+                Arguments.of("email is too short", input1WithShortEmail()),
+                Arguments.of("email is too long", input1WithLongEmail()),
             )
     }
 
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            supplierInputValidator.validate(supplierInput1())
+            supplierInputValidator.validate(input1())
         }
     }
 
@@ -54,10 +54,10 @@ class SupplierInputValidatorTests {
     @MethodSource("supplierInputEmptyFieldParams")
     fun `validate tests unhappy path - empty fields`(
         testCase: String,
-        supplierInput: SupplierInput,
+        input: CreateSupplierInput,
     ) {
         assertThrows<EmptyFieldException> {
-            supplierInputValidator.validate(supplierInput)
+            supplierInputValidator.validate(input)
         }
     }
 
@@ -65,17 +65,17 @@ class SupplierInputValidatorTests {
     @MethodSource("supplierInputFieldLengthParams")
     fun `validate tests unhappy path - length check`(
         testCase: String,
-        supplierInput: SupplierInput,
+        input: CreateSupplierInput,
     ) {
         assertThrows<InvalidLengthException> {
-            supplierInputValidator.validate(supplierInput)
+            supplierInputValidator.validate(input)
         }
     }
 
     @Test
     fun `validate test unhappy path - invalid email address`() {
         assertThrows<InvalidEmailAddressFormatException> {
-            supplierInputValidator.validate(supplierInput1WithInvalidEmail())
+            supplierInputValidator.validate(input1WithInvalidEmail())
         }
     }
 }

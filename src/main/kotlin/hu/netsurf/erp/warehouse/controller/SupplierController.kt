@@ -8,7 +8,7 @@ import hu.netsurf.erp.warehouse.constant.LogEventConstants.SUPPLIERS_GRAPHQL_QUE
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.SUPPLIER_INPUT_MAPPED_TO_SUPPLIER
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.SUPPLIER
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.SUPPLIER_INPUT
-import hu.netsurf.erp.warehouse.input.SupplierInput
+import hu.netsurf.erp.warehouse.input.CreateSupplierInput
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.service.SupplierService
 import hu.netsurf.erp.warehouse.util.SupplierInputSanitizer
@@ -41,7 +41,7 @@ class SupplierController(
 
     @MutationMapping(name = "createSupplier")
     fun createSupplier(
-        @Argument input: SupplierInput,
+        @Argument input: CreateSupplierInput,
     ): Supplier {
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
