@@ -67,7 +67,7 @@ class UserService(
             throw UserNotFoundException(user.id)
         }
 
-        user.password = newPassword
+        user.password = passwordUtil.encode(newPassword)
         val updatedUser = userRepository.save(user)
 
         logger.logInfo(

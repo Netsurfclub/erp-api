@@ -2,12 +2,15 @@
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
+import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
 import org.springframework.stereotype.Component
 
 @Component
-class UpdateUserPasswordInputValidator {
+class UpdateUserPasswordInputValidator(
+    private val passwordUtil: PasswordUtil,
+) {
     fun validate(
         input: UpdateUserPasswordInput,
         passwordInDatabase: String,
@@ -20,7 +23,11 @@ class UpdateUserPasswordInputValidator {
             throw EmptyFieldException()
         }
 
-        if (!input.currentPasswordAndPasswordInDatabaseMatches(passwordInDatabase)) {
+        if (!input.newPasswordIsValid()) {
+            throw InvalidPasswordFormatException()
+        }
+
+        if (!passwordUtil.verify(input.currentPassword, passwordInDatabase)) {
             throw CurrentPasswordAndPasswordInDatabaseNotMatchesException()
         }
 
