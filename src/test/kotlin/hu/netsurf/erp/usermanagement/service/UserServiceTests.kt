@@ -2,6 +2,8 @@ package hu.netsurf.erp.usermanagement.service
 
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.HASHED_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.NEW_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.repository.UserRepository
@@ -9,6 +11,7 @@ import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1IsDeleted
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user2
 import hu.netsurf.erp.usermanagement.util.PasswordUtil
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -25,6 +28,7 @@ class UserServiceTests {
     private val userRepository: UserRepository = mockk()
     private val passwordUtil: PasswordUtil = mockk()
     private val userService: UserService = UserService(userRepository, passwordUtil)
+    private val currentAndNewPassword: Pair<String, String> = Pair(PASSWORD, NEW_PASSWORD)
 
     companion object {
         @JvmStatic
@@ -88,6 +92,12 @@ class UserServiceTests {
 
     @Test
     fun `updateUserPassword test happy path`() {
+        coEvery {
+            userRepository.findById(any())
+        } returns Optional.of(user1())
+        every {
+            passwordUtil.verify(any(), any())
+        } returns true
         every {
             passwordUtil.encode(any())
         } returns HASHED_PASSWORD
@@ -95,15 +105,31 @@ class UserServiceTests {
             userRepository.save(any())
         } returns user1()
 
-        val result = userService.updateUserPassword(user1(), NEW_PASSWORD)
+        val result = userService.updateUserPassword(1, currentAndNewPassword)
         assertNotNull(result)
         assertEquals(user1(), result)
     }
 
     @Test
     fun `updateUserPassword test unhappy path - user is already deleted (not found in database)`() {
+        coEvery {
+            userRepository.findById(any())
+        } returns Optional.of(user1IsDeleted())
+
         assertThrows<UserNotFoundException> {
-            userService.updateUserPassword(user1IsDeleted(), NEW_PASSWORD)
+            userService.updateUserPassword(1, currentAndNewPassword)
+        }
+    }
+
+    @Test
+    fun `updateUserPassword test unhappy path - current password and password in database not matches`() {
+        coEvery {
+            userRepository.findById(any())
+        } returns Optional.of(user1())
+        coEvery { passwordUtil.verify(any(), any()) } returns false
+
+        assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
+            userService.updateUserPassword(1, currentAndNewPassword)
         }
     }
 

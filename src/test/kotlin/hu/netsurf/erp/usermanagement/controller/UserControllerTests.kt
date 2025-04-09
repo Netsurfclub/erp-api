@@ -64,7 +64,7 @@ class UserControllerTests {
         every {
             userService.getUser(any())
         } returns user1()
-        justRun { updateUserPasswordInputValidator.validate(any(), any()) }
+        justRun { updateUserPasswordInputValidator.validate(any()) }
         every {
             userService.updateUserPassword(any(), any())
         } returns user1()
