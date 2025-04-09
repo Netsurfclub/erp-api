@@ -24,7 +24,7 @@
 
         <!-- Project dependency versions -->
         <mysql-connector-j.version>9.2.0</mysql-connector-j.version>
-        <mockk.version>1.13.17</mockk.version>
+        <mockk.version>1.14.0</mockk.version>
 
         <!-- Maven plugin versions -->
         <jacoco.version>0.8.13</jacoco.version>
