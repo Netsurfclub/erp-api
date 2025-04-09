@@ -1,5 +1,7 @@
 mutation {
-    deleteUser(input: {userId: 0}) {
+    deleteUser(
+        input: {userId: 0}
+    ) {
         id
         username
         email

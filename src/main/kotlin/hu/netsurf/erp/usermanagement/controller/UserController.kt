@@ -12,9 +12,9 @@ import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USERS_GRAPHQL_QU
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_INPUT_MAPPED_TO_USER
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER_INPUT
+import hu.netsurf.erp.usermanagement.input.CreateUserInput
 import hu.netsurf.erp.usermanagement.input.DeleteUserInput
 import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
-import hu.netsurf.erp.usermanagement.input.UserInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.service.UserService
 import hu.netsurf.erp.usermanagement.util.UpdateUserPasswordInputSanitizer
@@ -51,7 +51,7 @@ class UserController(
 
     @MutationMapping(name = "createUser")
     fun createUser(
-        @Argument input: UserInput,
+        @Argument input: CreateUserInput,
     ): User {
         logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
 
@@ -87,9 +87,7 @@ class UserController(
 
         updateUserPasswordInputValidator.validate(sanitizedUserInput, user.password)
 
-        user.password = input.newPassword
-
-        val updatedUser = userService.updateUser(user)
+        val updatedUser = userService.updateUserPassword(user, input.newPassword)
 
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 

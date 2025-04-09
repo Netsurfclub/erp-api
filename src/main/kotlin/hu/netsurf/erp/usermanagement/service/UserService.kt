@@ -3,9 +3,9 @@ package hu.netsurf.erp.usermanagement.service
 import hu.netsurf.erp.common.extension.logInfo
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USERS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_DELETED_FROM_DATABASE
+import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_PASSWORD_UPDATED_IN_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_SAVED_TO_DATABASE
-import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_UPDATED_IN_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.UPDATED_USER
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
@@ -26,7 +26,7 @@ class UserService(
     fun getUsers(): List<User> {
         logger.logInfo(USERS_RETRIEVED_FROM_DATABASE)
 
-        return userRepository.findAll()
+        return userRepository.findAll().filter { user: User -> !user.isDeleted }
     }
 
     fun createUser(user: User): User {
@@ -59,11 +59,19 @@ class UserService(
         return user.get()
     }
 
-    fun updateUser(user: User): User {
+    fun updateUserPassword(
+        user: User,
+        newPassword: String,
+    ): User {
+        if (user.isDeleted) {
+            throw UserNotFoundException(user.id)
+        }
+
+        user.password = passwordUtil.encode(newPassword)
         val updatedUser = userRepository.save(user)
 
         logger.logInfo(
-            USER_UPDATED_IN_DATABASE,
+            USER_PASSWORD_UPDATED_IN_DATABASE,
             mapOf(
                 USER to user,
                 UPDATED_USER to updatedUser,
@@ -74,9 +82,14 @@ class UserService(
     }
 
     fun deleteUser(id: Int): User {
-        val deletedUser = getUser(id)
+        val userToDelete = getUser(id)
 
-        userRepository.deleteById(id)
+        if (userToDelete.isDeleted) {
+            throw UserNotFoundException(id)
+        }
+
+        userToDelete.isDeleted = true
+        val deletedUser = userRepository.save(userToDelete)
 
         logger.logInfo(
             USER_DELETED_FROM_DATABASE,

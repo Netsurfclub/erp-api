@@ -12,7 +12,7 @@ import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.USERNAME_M
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.USERNAME_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.model.User
 
-data class UserInput(
+data class CreateUserInput(
     val username: String,
     val password: String,
     val confirmPassword: String,
@@ -69,5 +69,6 @@ data class UserInput(
             firstName = this.firstName,
             lastName = this.lastName,
             email = this.email,
+            isDeleted = false,
         )
 }

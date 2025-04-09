@@ -1,5 +1,7 @@
 package hu.netsurf.erp.usermanagement.input
 
+import hu.netsurf.erp.usermanagement.constant.RegexPatterns.PASSWORD_REGEX
+
 data class UpdateUserPasswordInput(
     val userId: Int,
     val currentPassword: String,
@@ -12,9 +14,7 @@ data class UpdateUserPasswordInput(
 
     fun confirmNewPasswordIsEmpty(): Boolean = confirmNewPassword.isEmpty()
 
-    fun currentPasswordAndPasswordInDatabaseMatches(password: String): Boolean = currentPassword == password
-
-    fun newPasswordAndCurrentPasswordInDatabaseMatches(password: String): Boolean = newPassword == password
+    fun newPasswordIsValid(): Boolean = newPassword.matches(Regex(PASSWORD_REGEX))
 
     fun newPasswordAndConfirmNewPasswordMatches(): Boolean = newPassword == confirmNewPassword
 }

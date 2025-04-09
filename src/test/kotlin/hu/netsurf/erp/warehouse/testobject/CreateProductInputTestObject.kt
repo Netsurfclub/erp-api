@@ -5,23 +5,23 @@ import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_NAME
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_UNIT
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_LONG_NAME
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_LONG_UNIT
-import hu.netsurf.erp.warehouse.input.ProductInput
+import hu.netsurf.erp.warehouse.input.CreateProductInput
 
-class ProductInputTestObject {
+class CreateProductInputTestObject {
     companion object {
-        fun productInput1(): ProductInput = build()
+        fun input1(): CreateProductInput = build()
 
-        fun productInput1WithEmptyName(): ProductInput = build(name = EMPTY_STRING)
+        fun input1WithEmptyName(): CreateProductInput = build(name = EMPTY_STRING)
 
-        fun productInput1WithShortName(): ProductInput = build(name = "a")
+        fun input1WithShortName(): CreateProductInput = build(name = "a")
 
-        fun productInput1WithLongName(): ProductInput = build(name = PRODUCT_LONG_NAME)
+        fun input1WithLongName(): CreateProductInput = build(name = PRODUCT_LONG_NAME)
 
-        fun productInput1WithEmptyUnit(): ProductInput = build(unit = EMPTY_STRING)
+        fun input1WithEmptyUnit(): CreateProductInput = build(unit = EMPTY_STRING)
 
-        fun productInput1WithShortUnit(): ProductInput = build(unit = "a")
+        fun input1WithShortUnit(): CreateProductInput = build(unit = "a")
 
-        fun productInput1WithLongUnit(): ProductInput = build(unit = PRODUCT_LONG_UNIT)
+        fun input1WithLongUnit(): CreateProductInput = build(unit = PRODUCT_LONG_UNIT)
 
         private fun build(
             name: String = PRODUCT_1_NAME,
@@ -29,8 +29,8 @@ class ProductInputTestObject {
             price: Double = 10000.0,
             unit: String = PRODUCT_1_UNIT,
             onStock: Int = 10,
-        ): ProductInput =
-            ProductInput(
+        ): CreateProductInput =
+            CreateProductInput(
                 name = name,
                 supplierId = supplierId,
                 price = price,

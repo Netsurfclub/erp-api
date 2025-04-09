@@ -1,27 +1,27 @@
 ﻿package hu.netsurf.erp.warehouse.util
 
 import hu.netsurf.erp.common.util.InputSanitizer
-import hu.netsurf.erp.warehouse.input.SupplierInput
+import hu.netsurf.erp.warehouse.input.CreateSupplierInput
 import org.springframework.stereotype.Component
 
 @Component
 class SupplierInputSanitizer(
     private val inputSanitizer: InputSanitizer,
 ) {
-    fun sanitize(supplierInput: SupplierInput): SupplierInput {
+    fun sanitize(input: CreateSupplierInput): CreateSupplierInput {
         var phone: String? = null
         var email: String? = null
 
-        if (supplierInput.phone != null) {
-            phone = inputSanitizer.sanitize(supplierInput.phone)
+        if (input.phone != null) {
+            phone = inputSanitizer.sanitize(input.phone)
         }
 
-        if (supplierInput.email != null) {
-            email = inputSanitizer.sanitize(supplierInput.email)
+        if (input.email != null) {
+            email = inputSanitizer.sanitize(input.email)
         }
 
-        return SupplierInput(
-            name = inputSanitizer.sanitize(supplierInput.name),
+        return CreateSupplierInput(
+            name = inputSanitizer.sanitize(input.name),
             phone = phone,
             email = email,
         )

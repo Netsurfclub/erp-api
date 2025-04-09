@@ -2,24 +2,24 @@
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.common.exception.InvalidLengthException
-import hu.netsurf.erp.warehouse.input.ProductInput
+import hu.netsurf.erp.warehouse.input.CreateProductInput
 import org.springframework.stereotype.Component
 
 @Component
 class ProductInputValidator {
-    fun validate(productInput: ProductInput) {
+    fun validate(input: CreateProductInput) {
         if (
-            productInput.nameIsEmpty() ||
-            productInput.unitIsEmpty()
+            input.nameIsEmpty() ||
+            input.unitIsEmpty()
         ) {
             throw EmptyFieldException()
         }
 
         if (
-            productInput.nameIsShort() ||
-            productInput.nameIsLong() ||
-            productInput.unitIsShort() ||
-            productInput.unitIsLong()
+            input.nameIsShort() ||
+            input.nameIsLong() ||
+            input.unitIsShort() ||
+            input.unitIsLong()
         ) {
             throw InvalidLengthException()
         }

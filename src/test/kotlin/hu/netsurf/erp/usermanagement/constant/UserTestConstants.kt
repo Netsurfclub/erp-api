@@ -2,7 +2,7 @@ package hu.netsurf.erp.usermanagement.constant
 
 object UserTestConstants {
     const val PASSWORD = "p@sSw0rD"
-    const val NEW_PASSWORD = "NeWpAsSwOrD"
+    const val NEW_PASSWORD = "NeWp@sSw0rD"
     const val INVALID_CURRENT_PASSWORD = "pAsSwOrD1"
     const val INVALID_CONFIRM_PASSWORD = "CoNfIrMpAsSwOrD"
     const val INVALID_NEW_PASSWORD = "NeWpAsSwOrD1"
