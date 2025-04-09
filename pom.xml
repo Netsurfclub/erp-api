@@ -24,7 +24,7 @@
 
         <!-- Project dependency versions -->
         <postgresql.version>42.3.8</postgresql.version>
-        <mockk.version>1.13.17</mockk.version>
+        <mockk.version>1.14.0</mockk.version>
 
         <!-- Maven plugin versions -->
         <jacoco.version>0.8.13</jacoco.version>
