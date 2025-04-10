@@ -2,7 +2,6 @@ package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
-import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
@@ -11,10 +10,6 @@ import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObjec
 import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithEmptyCurrentPassword
 import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithEmptyNewPassword
 import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithInvalidConfirmNewPassword
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithInvalidCurrentPassword
-import io.mockk.coEvery
-import io.mockk.mockk
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -24,9 +19,7 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
 class UpdateUserPasswordInputValidatorTests {
-    private val passwordUtil: PasswordUtil = mockk()
-    private val updateUserPasswordInputValidator: UpdateUserPasswordInputValidator = UpdateUserPasswordInputValidator(passwordUtil)
-    private val passwordInDatabase: String = PASSWORD
+    private val updateUserPasswordInputValidator: UpdateUserPasswordInputValidator = UpdateUserPasswordInputValidator()
 
     companion object {
         @JvmStatic
@@ -49,15 +42,10 @@ class UpdateUserPasswordInputValidatorTests {
             )
     }
 
-    @BeforeEach
-    fun setup() {
-        coEvery { passwordUtil.verify(any(), any()) } returns true
-    }
-
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            updateUserPasswordInputValidator.validate(input1(), passwordInDatabase)
+            updateUserPasswordInputValidator.validate(input1())
         }
     }
 
@@ -68,7 +56,7 @@ class UpdateUserPasswordInputValidatorTests {
         updateUserPasswordInput: UpdateUserPasswordInput,
     ) {
         assertThrows<EmptyFieldException> {
-            updateUserPasswordInputValidator.validate(updateUserPasswordInput, passwordInDatabase)
+            updateUserPasswordInputValidator.validate(updateUserPasswordInput)
         }
     }
 
@@ -87,23 +75,14 @@ class UpdateUserPasswordInputValidatorTests {
             )
 
         assertThrows<InvalidPasswordFormatException> {
-            updateUserPasswordInputValidator.validate(input, passwordInDatabase)
-        }
-    }
-
-    @Test
-    fun `validate test unhappy path - current password and password in database not matches`() {
-        coEvery { passwordUtil.verify(any(), any()) } returns false
-
-        assertThrows<CurrentPasswordAndPasswordInDatabaseNotMatchesException> {
-            updateUserPasswordInputValidator.validate(input1WithInvalidCurrentPassword(), passwordInDatabase)
+            updateUserPasswordInputValidator.validate(input)
         }
     }
 
     @Test
     fun `validate test unhappy path - new password and confirm new password not matches`() {
         assertThrows<NewPasswordAndConfirmNewPasswordNotMatchesException> {
-            updateUserPasswordInputValidator.validate(input1WithInvalidConfirmNewPassword(), passwordInDatabase)
+            updateUserPasswordInputValidator.validate(input1WithInvalidConfirmNewPassword())
         }
     }
 }

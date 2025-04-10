@@ -81,13 +81,14 @@ class UserController(
     ): User {
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED)
 
-        val sanitizedUserInput = updateUserPasswordInputSanitizer.sanitize(input)
+        val sanitizedUpdateUserPasswordInput = updateUserPasswordInputSanitizer.sanitize(input)
+        updateUserPasswordInputValidator.validate(sanitizedUpdateUserPasswordInput)
 
-        val user = userService.getUser(input.userId)
-
-        updateUserPasswordInputValidator.validate(sanitizedUserInput, user.password)
-
-        val updatedUser = userService.updateUserPassword(user, input.newPassword)
+        val updatedUser =
+            userService.updateUserPassword(
+                input.userId,
+                Pair(input.currentPassword, input.newPassword),
+            )
 
         logger.logInfo(UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE)
 

@@ -47,9 +47,7 @@ class ProductService(
 
         logger.logInfo(
             PRODUCT_SAVED_TO_DATABASE,
-            mapOf(
-                PRODUCT to product,
-            ),
+            mapOf(PRODUCT to product),
         )
 
         savedProduct.supplier = supplierService.getSupplier(product.supplier.id)

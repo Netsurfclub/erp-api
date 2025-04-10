@@ -44,9 +44,7 @@ class SupplierService(
 
         logger.logInfo(
             SUPPLIER_SAVED_TO_DATABASE,
-            mapOf(
-                SUPPLIER to supplier,
-            ),
+            mapOf(SUPPLIER to supplier),
         )
 
         return getSupplier(savedSupplier.id)

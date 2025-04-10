@@ -8,6 +8,7 @@ import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_RETRIEVED_F
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_SAVED_TO_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.UPDATED_USER
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER
+import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.repository.UserRepository
@@ -36,9 +37,7 @@ class UserService(
 
         logger.logInfo(
             USER_SAVED_TO_DATABASE,
-            mapOf(
-                USER to user,
-            ),
+            mapOf(USER to user),
         )
 
         return savedUser
@@ -60,20 +59,29 @@ class UserService(
     }
 
     fun updateUserPassword(
-        user: User,
-        newPassword: String,
+        userId: Int,
+        currentAndNewPassword: Pair<String, String>,
     ): User {
-        if (user.isDeleted) {
-            throw UserNotFoundException(user.id)
+        val userToUpdate = getUser(userId)
+
+        if (userToUpdate.isDeleted) {
+            throw UserNotFoundException(userId)
         }
 
-        user.password = passwordUtil.encode(newPassword)
-        val updatedUser = userRepository.save(user)
+        val (currentPassword, newPassword) = currentAndNewPassword
+        if (!passwordUtil.verify(currentPassword, userToUpdate.password)) {
+            throw CurrentPasswordAndPasswordInDatabaseNotMatchesException()
+        }
+
+        val userBeforeUpdate = userToUpdate
+
+        userToUpdate.password = passwordUtil.encode(newPassword)
+        val updatedUser = userRepository.save(userToUpdate)
 
         logger.logInfo(
             USER_PASSWORD_UPDATED_IN_DATABASE,
             mapOf(
-                USER to user,
+                USER to userBeforeUpdate,
                 UPDATED_USER to updatedUser,
             ),
         )
