@@ -8,6 +8,7 @@ import hu.netsurf.erp.usermanagement.constant.LogEventConstants.PROFILE_SAVED_TO
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.PROFILE
 import hu.netsurf.erp.usermanagement.constant.LoggerConstants.UPDATED_PROFILE
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
+import hu.netsurf.erp.usermanagement.exception.ProfileAlreadyExistException
 import hu.netsurf.erp.usermanagement.exception.ProfileNotFoundException
 import hu.netsurf.erp.usermanagement.model.Profile
 import hu.netsurf.erp.usermanagement.repository.ProfileRepository
@@ -24,6 +25,12 @@ class ProfileService(
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
     fun createProfile(profile: Profile): Profile {
+        val userId = profile.user.id
+
+        if (isProfileAlreadyExists(userId)) {
+            throw ProfileAlreadyExistException(userId)
+        }
+
         profile.password = passwordUtil.encode(profile.password)
 
         val savedProfile = profileRepository.save(profile)
@@ -35,6 +42,8 @@ class ProfileService(
 
         return savedProfile
     }
+
+    private fun isProfileAlreadyExists(userId: Int): Boolean = profileRepository.findByUserId(userId).isPresent
 
     fun getProfile(id: Int): Profile {
         val profile = profileRepository.findById(id)

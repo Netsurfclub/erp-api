@@ -4,6 +4,7 @@ import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.HASHED_PASSWO
 import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.NEW_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
+import hu.netsurf.erp.usermanagement.exception.ProfileAlreadyExistException
 import hu.netsurf.erp.usermanagement.exception.ProfileNotFoundException
 import hu.netsurf.erp.usermanagement.repository.ProfileRepository
 import hu.netsurf.erp.usermanagement.testobject.ProfileTestObject.Companion.profile1
@@ -49,6 +50,9 @@ class ProfileServiceTests {
     @Test
     fun `createProfile test happy path`() {
         every {
+            profileRepository.findByUserId(any())
+        } returns Optional.empty()
+        every {
             passwordUtil.encode(any())
         } returns HASHED_PASSWORD
         every {
@@ -58,6 +62,20 @@ class ProfileServiceTests {
         val result = profileService.createProfile(profile1())
         assertNotNull(result)
         assertEquals(profile1(), result)
+    }
+
+    @Test
+    fun `createProfile test unhappy path - profile already been created for given user`() {
+        every {
+            profileRepository.findByUserId(any())
+        } returns Optional.of(profile1())
+        every {
+            profileRepository.save(any())
+        } returns profile1()
+
+        assertThrows<ProfileAlreadyExistException> {
+            profileService.createProfile(profile1())
+        }
     }
 
     @Test
