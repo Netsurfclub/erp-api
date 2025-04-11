@@ -5,11 +5,9 @@ import hu.netsurf.erp.usermanagement.constant.UserTestConstants.NEW_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.UserNotFoundException
-import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.repository.UserRepository
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1IsDeleted
-import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user2
 import hu.netsurf.erp.usermanagement.util.PasswordUtil
 import io.mockk.coEvery
 import io.mockk.every
@@ -18,41 +16,13 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
 import java.util.Optional
-import java.util.stream.Stream
 
 class UserServiceTests {
     private val userRepository: UserRepository = mockk()
     private val passwordUtil: PasswordUtil = mockk()
     private val userService: UserService = UserService(userRepository, passwordUtil)
     private val currentAndNewPassword: Pair<String, String> = Pair(PASSWORD, NEW_PASSWORD)
-
-    companion object {
-        @JvmStatic
-        fun getUsersParams(): Stream<Arguments> =
-            Stream.of(
-                Arguments.of("2 active users", listOf(user1(), user2()), 2),
-                Arguments.of("1 deleted user, 1 active user", listOf(user1IsDeleted(), user2()), 1),
-            )
-    }
-
-    @ParameterizedTest(name = "{index} => {0}")
-    @MethodSource("getUsersParams")
-    fun `getUsers test happy path`(
-        testCase: String,
-        users: List<User>,
-        expectedCount: Int,
-    ) {
-        every {
-            userRepository.findAll()
-        } returns users
-
-        val result = userService.getUsers()
-        assertEquals(result.size, expectedCount)
-    }
 
     @Test
     fun `getUser test happy path`() {

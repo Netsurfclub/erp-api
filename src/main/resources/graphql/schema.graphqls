@@ -1,5 +1,4 @@
 type Query {
-    users: [User]
     products: [Product]
     suppliers: [Supplier]
 }

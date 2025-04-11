@@ -1,7 +1,6 @@
 package hu.netsurf.erp.usermanagement.service
 
 import hu.netsurf.erp.common.extension.logInfo
-import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USERS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_DELETED_FROM_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_PASSWORD_UPDATED_IN_DATABASE
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants.USER_RETRIEVED_FROM_DATABASE
@@ -23,12 +22,6 @@ class UserService(
     private val passwordUtil: PasswordUtil,
 ) {
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
-
-    fun getUsers(): List<User> {
-        logger.logInfo(USERS_RETRIEVED_FROM_DATABASE)
-
-        return userRepository.findAll().filter { user: User -> !user.isDeleted }
-    }
 
     fun createUser(user: User): User {
         user.password = passwordUtil.encode(user.password)
