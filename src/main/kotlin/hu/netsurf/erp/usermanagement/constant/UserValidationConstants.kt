@@ -7,6 +7,4 @@ object UserValidationConstants {
     const val FIRST_NAME_MAX_LENGTH = 255
     const val LAST_NAME_MIN_LENGTH = 1
     const val LAST_NAME_MAX_LENGTH = 255
-    const val EMAIL_MIN_LENGTH = 1
-    const val EMAIL_MAX_LENGTH = 75
 }
