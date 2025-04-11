@@ -12,10 +12,7 @@ data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int = 0,
-    var username: String = "",
-    var password: String = "",
     var firstName: String = "",
     var lastName: String = "",
     var email: String = "",
-    var isDeleted: Boolean = false,
 )

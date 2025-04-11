@@ -1,18 +1,19 @@
 package hu.netsurf.erp.usermanagement.util
 
 import hu.netsurf.erp.common.util.InputSanitizer
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.NEW_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
-import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.NEW_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class UpdateUserPasswordInputSanitizerTests {
+class UpdateProfilePasswordInputSanitizerTests {
     private val inputSanitizer: InputSanitizer = InputSanitizer()
-    private val updateUserPasswordInputSanitizer: UpdateUserPasswordInputSanitizer = UpdateUserPasswordInputSanitizer(inputSanitizer)
+    private val updateProfilePasswordInputSanitizer: UpdateProfilePasswordInputSanitizer =
+        UpdateProfilePasswordInputSanitizer(inputSanitizer)
 
     companion object {
         @JvmStatic
@@ -33,15 +34,15 @@ class UpdateUserPasswordInputSanitizerTests {
         newPassword: String,
         confirmNewPassword: String,
     ) {
-        val updateUserPasswordInput =
-            UpdateUserPasswordInput(
-                userId = 1,
+        val input =
+            UpdateProfilePasswordInput(
+                id = 1,
                 currentPassword = currentPassword,
                 newPassword = newPassword,
                 confirmNewPassword = confirmNewPassword,
             )
 
-        val result = updateUserPasswordInputSanitizer.sanitize(updateUserPasswordInput)
+        val result = updateProfilePasswordInputSanitizer.sanitize(input)
 
         assertEquals(PASSWORD, result.currentPassword)
         assertEquals(NEW_PASSWORD, result.newPassword)
