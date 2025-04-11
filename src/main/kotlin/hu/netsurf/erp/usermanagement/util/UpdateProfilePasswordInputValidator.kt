@@ -3,12 +3,12 @@
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
-import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
+import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
 import org.springframework.stereotype.Component
 
 @Component
-class UpdateUserPasswordInputValidator {
-    fun validate(input: UpdateUserPasswordInput) {
+class UpdateProfilePasswordInputValidator {
+    fun validate(input: UpdateProfilePasswordInput) {
         if (
             input.currentPasswordIsEmpty() ||
             input.newPasswordIsEmpty() ||

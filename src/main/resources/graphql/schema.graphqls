@@ -4,16 +4,22 @@ type Query {
 }
 
 type Mutation {
+    createProfile(input: CreateProfileInput!): Profile!
+    updateProfilePassword(input: UpdateProfilePasswordInput!): Profile!
+    deleteProfile(input: DeleteProfileInput!): Profile!
     createUser(input: CreateUserInput!): User!
-    updateUserPassword(input: UpdateUserPasswordInput!): User!
-    deleteUser(input: DeleteUserInput!): User!
     createProduct(input: CreateProductInput!): Product!
     createSupplier(input: CreateSupplierInput!): Supplier!
 }
 
-type User {
+type Profile {
     id: ID!
     username: String!
+    user: User!
+}
+
+type User {
+    id: ID!
     firstName: String!
     lastName: String!
     email: String!
@@ -36,23 +42,27 @@ type Supplier {
     email: String
 }
 
-input CreateUserInput {
+input CreateProfileInput {
+    userId: ID!
     username: String!
     password: String!
     confirmPassword: String!
+}
+
+input CreateUserInput {
     firstName: String!
     lastName: String!
     email: String!
 }
 
-input UpdateUserPasswordInput {
-    userId: ID!
+input UpdateProfilePasswordInput {
+    id: ID!
     currentPassword: String!
     newPassword: String!
     confirmNewPassword: String!
 }
 
-input DeleteUserInput {
+input DeleteProfileInput {
     userId: ID!
 }
 
