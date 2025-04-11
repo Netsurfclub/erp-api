@@ -1,4 +1,4 @@
-package hu.netsurf.erp.common.util
+package hu.netsurf.erp.common.util.sanitization
 
 import hu.netsurf.erp.common.constant.CommonTestConstants.INPUT
 import org.junit.jupiter.api.Assertions.assertEquals

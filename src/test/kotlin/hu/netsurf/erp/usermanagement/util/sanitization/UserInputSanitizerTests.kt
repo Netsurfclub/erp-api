@@ -1,6 +1,6 @@
-package hu.netsurf.erp.usermanagement.util
+package hu.netsurf.erp.usermanagement.util.sanitization
 
-import hu.netsurf.erp.common.util.InputSanitizer
+import hu.netsurf.erp.common.util.sanitization.InputSanitizer
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.EMAIL_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.FIRST_NAME_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LAST_NAME_1

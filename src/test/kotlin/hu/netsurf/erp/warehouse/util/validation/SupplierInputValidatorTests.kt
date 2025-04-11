@@ -1,4 +1,4 @@
-package hu.netsurf.erp.warehouse.util
+package hu.netsurf.erp.warehouse.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.common.exception.InvalidLengthException

@@ -1,4 +1,4 @@
-package hu.netsurf.erp.usermanagement.util
+package hu.netsurf.erp.usermanagement.util.password
 
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.HASHED_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD

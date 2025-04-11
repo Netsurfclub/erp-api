@@ -9,7 +9,7 @@ import hu.netsurf.erp.usermanagement.exception.ProfileNotFoundException
 import hu.netsurf.erp.usermanagement.repository.ProfileRepository
 import hu.netsurf.erp.usermanagement.testobject.ProfileTestObject.Companion.profile1
 import hu.netsurf.erp.usermanagement.testobject.ProfileTestObject.Companion.profile1IsDeleted
-import hu.netsurf.erp.usermanagement.util.PasswordUtil
+import hu.netsurf.erp.usermanagement.util.password.PasswordUtil
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk

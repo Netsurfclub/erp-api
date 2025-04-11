@@ -1,4 +1,4 @@
-package hu.netsurf.erp.usermanagement.util
+package hu.netsurf.erp.usermanagement.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD

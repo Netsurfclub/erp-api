@@ -1,6 +1,6 @@
-package hu.netsurf.erp.usermanagement.util
+package hu.netsurf.erp.usermanagement.util.sanitization
 
-import hu.netsurf.erp.common.util.InputSanitizer
+import hu.netsurf.erp.common.util.sanitization.InputSanitizer
 import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.NEW_PASSWORD
 import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
