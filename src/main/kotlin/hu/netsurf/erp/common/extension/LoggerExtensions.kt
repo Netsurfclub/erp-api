@@ -1,6 +1,5 @@
 package hu.netsurf.erp.common.extension
 
-import hu.netsurf.erp.common.constant.CommonConstants.EMPTY_STRING
 import org.slf4j.Logger
 import hu.netsurf.erp.usermanagement.constant.LogEventConstants as UserManagementLogEventConstants
 import hu.netsurf.erp.warehouse.constant.LogEventConstants as WarehouseLogEventConstants
@@ -24,5 +23,5 @@ private fun format(additionalProperties: Map<String, Any>) =
     if (additionalProperties.isNotEmpty()) {
         "${additionalProperties.map { it.key + " = " + it.value }}"
     } else {
-        EMPTY_STRING
+        ""
     }

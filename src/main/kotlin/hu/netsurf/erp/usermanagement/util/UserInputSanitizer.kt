@@ -10,9 +10,6 @@ class UserInputSanitizer(
 ) {
     fun sanitize(input: CreateUserInput): CreateUserInput =
         CreateUserInput(
-            username = inputSanitizer.sanitize(input.username),
-            password = inputSanitizer.sanitize(input.password),
-            confirmPassword = inputSanitizer.sanitize(input.confirmPassword),
             firstName = inputSanitizer.sanitize(input.firstName),
             lastName = inputSanitizer.sanitize(input.lastName),
             email = inputSanitizer.sanitize(input.email),

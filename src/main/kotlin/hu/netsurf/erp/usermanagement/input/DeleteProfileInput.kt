@@ -1,5 +1,5 @@
 package hu.netsurf.erp.usermanagement.input
 
-class DeleteUserInput(
+class DeleteProfileInput(
     val userId: Int,
 )

@@ -4,12 +4,12 @@ import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
-import hu.netsurf.erp.usermanagement.input.UpdateUserPasswordInput
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithEmptyConfirmNewPassword
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithEmptyCurrentPassword
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithEmptyNewPassword
-import hu.netsurf.erp.usermanagement.testobject.UpdateUserPasswordInputTestObject.Companion.input1WithInvalidConfirmNewPassword
+import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
+import hu.netsurf.erp.usermanagement.testobject.UpdateProfilePasswordInputTestObject.Companion.input1
+import hu.netsurf.erp.usermanagement.testobject.UpdateProfilePasswordInputTestObject.Companion.input1WithEmptyConfirmNewPassword
+import hu.netsurf.erp.usermanagement.testobject.UpdateProfilePasswordInputTestObject.Companion.input1WithEmptyCurrentPassword
+import hu.netsurf.erp.usermanagement.testobject.UpdateProfilePasswordInputTestObject.Companion.input1WithEmptyNewPassword
+import hu.netsurf.erp.usermanagement.testobject.UpdateProfilePasswordInputTestObject.Companion.input1WithInvalidConfirmNewPassword
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -18,8 +18,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class UpdateUserPasswordInputValidatorTests {
-    private val updateUserPasswordInputValidator: UpdateUserPasswordInputValidator = UpdateUserPasswordInputValidator()
+class UpdateProfilePasswordInputValidatorTests {
+    private val updateUserPasswordInputValidator: UpdateProfilePasswordInputValidator = UpdateProfilePasswordInputValidator()
 
     companion object {
         @JvmStatic
@@ -53,10 +53,10 @@ class UpdateUserPasswordInputValidatorTests {
     @MethodSource("updateUserPasswordInputEmptyFieldParams")
     fun `validate tests unhappy path - empty fields`(
         testCase: String,
-        updateUserPasswordInput: UpdateUserPasswordInput,
+        input: UpdateProfilePasswordInput,
     ) {
         assertThrows<EmptyFieldException> {
-            updateUserPasswordInputValidator.validate(updateUserPasswordInput)
+            updateUserPasswordInputValidator.validate(input)
         }
     }
 
@@ -67,8 +67,8 @@ class UpdateUserPasswordInputValidatorTests {
         newPassword: String,
     ) {
         val input =
-            UpdateUserPasswordInput(
-                userId = 1,
+            UpdateProfilePasswordInput(
+                id = 1,
                 currentPassword = PASSWORD,
                 newPassword = newPassword,
                 confirmNewPassword = newPassword,
