@@ -1,4 +1,4 @@
-package hu.netsurf.erp.warehouse.util
+package hu.netsurf.erp.warehouse.util.file
 
 import hu.netsurf.erp.warehouse.wrapper.PhotoFile
 

@@ -1,4 +1,4 @@
-package hu.netsurf.erp.usermanagement.util
+package hu.netsurf.erp.usermanagement.util.password
 
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component

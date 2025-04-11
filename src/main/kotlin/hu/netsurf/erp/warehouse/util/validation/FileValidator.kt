@@ -1,4 +1,4 @@
-﻿package hu.netsurf.erp.warehouse.util
+﻿package hu.netsurf.erp.warehouse.util.validation
 
 import hu.netsurf.erp.warehouse.config.FileExtensionsConfig
 import hu.netsurf.erp.warehouse.exception.EmptyFileException

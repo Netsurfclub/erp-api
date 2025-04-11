@@ -1,4 +1,4 @@
-package hu.netsurf.erp.common.util
+package hu.netsurf.erp.common.util.sanitization
 
 import org.springframework.stereotype.Component
 

@@ -1,4 +1,4 @@
-﻿package hu.netsurf.erp.warehouse.util
+﻿package hu.netsurf.erp.warehouse.util.sanitization
 
 import hu.netsurf.erp.common.util.InputSanitizer
 import hu.netsurf.erp.warehouse.input.CreateProductInput

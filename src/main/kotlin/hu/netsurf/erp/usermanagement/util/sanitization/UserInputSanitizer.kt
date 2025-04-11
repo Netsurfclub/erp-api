@@ -1,4 +1,4 @@
-﻿package hu.netsurf.erp.usermanagement.util
+﻿package hu.netsurf.erp.usermanagement.util.sanitization
 
 import hu.netsurf.erp.common.util.InputSanitizer
 import hu.netsurf.erp.usermanagement.input.CreateUserInput
