@@ -5,10 +5,10 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:mysql://erp_database:3306/erp
+    url: jdbc:postgresql://erp_database:5432/erp
     username: root
     password: 12345
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
   graphql:
     graphiql:
       enabled: true
