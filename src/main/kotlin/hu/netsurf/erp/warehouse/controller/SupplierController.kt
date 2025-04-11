@@ -11,8 +11,8 @@ import hu.netsurf.erp.warehouse.constant.LoggerConstants.SUPPLIER_INPUT
 import hu.netsurf.erp.warehouse.input.CreateSupplierInput
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.service.SupplierService
-import hu.netsurf.erp.warehouse.util.SupplierInputSanitizer
-import hu.netsurf.erp.warehouse.util.SupplierInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.SupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument

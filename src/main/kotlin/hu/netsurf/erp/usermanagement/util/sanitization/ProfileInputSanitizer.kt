@@ -1,6 +1,6 @@
 package hu.netsurf.erp.usermanagement.util.sanitization
 
-import hu.netsurf.erp.common.util.InputSanitizer
+import hu.netsurf.erp.common.util.sanitization.InputSanitizer
 import hu.netsurf.erp.usermanagement.input.CreateProfileInput
 import org.springframework.stereotype.Component
 

@@ -15,10 +15,10 @@ import hu.netsurf.erp.usermanagement.input.DeleteProfileInput
 import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
 import hu.netsurf.erp.usermanagement.model.Profile
 import hu.netsurf.erp.usermanagement.service.ProfileService
-import hu.netsurf.erp.usermanagement.util.ProfileInputSanitizer
-import hu.netsurf.erp.usermanagement.util.ProfileInputValidator
-import hu.netsurf.erp.usermanagement.util.UpdateProfilePasswordInputSanitizer
-import hu.netsurf.erp.usermanagement.util.UpdateProfilePasswordInputValidator
+import hu.netsurf.erp.usermanagement.util.sanitization.ProfileInputSanitizer
+import hu.netsurf.erp.usermanagement.util.sanitization.UpdateProfilePasswordInputSanitizer
+import hu.netsurf.erp.usermanagement.util.validation.ProfileInputValidator
+import hu.netsurf.erp.usermanagement.util.validation.UpdateProfilePasswordInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument
