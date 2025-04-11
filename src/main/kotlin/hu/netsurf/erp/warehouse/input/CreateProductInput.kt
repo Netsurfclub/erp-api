@@ -1,7 +1,7 @@
 package hu.netsurf.erp.warehouse.input
 
-import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.NAME_MAX_LENGTH
-import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.NAME_MIN_LENGTH
+import hu.netsurf.erp.common.constant.CommonConstants.NAME_MAX_LENGTH
+import hu.netsurf.erp.common.constant.CommonConstants.NAME_MIN_LENGTH
 import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.UNIT_MAX_LENGTH
 import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.UNIT_MIN_LENGTH
 import hu.netsurf.erp.warehouse.model.Product

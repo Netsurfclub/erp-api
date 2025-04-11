@@ -1,8 +1,8 @@
 package hu.netsurf.erp.usermanagement.input
 
+import hu.netsurf.erp.common.constant.CommonConstants.EMAIL_MAX_LENGTH
+import hu.netsurf.erp.common.constant.CommonConstants.EMAIL_MIN_LENGTH
 import hu.netsurf.erp.common.constant.RegexPatterns.EMAIL_ADDRESS_REGEX
-import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.EMAIL_MAX_LENGTH
-import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.EMAIL_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.FIRST_NAME_MAX_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.FIRST_NAME_MIN_LENGTH
 import hu.netsurf.erp.usermanagement.constant.UserValidationConstants.LAST_NAME_MAX_LENGTH
