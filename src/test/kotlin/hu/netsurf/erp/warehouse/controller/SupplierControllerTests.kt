@@ -1,42 +1,36 @@
 package hu.netsurf.erp.warehouse.controller
 
 import hu.netsurf.erp.warehouse.service.SupplierService
-import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1
-import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithNullEmail
-import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1WithNullPhone
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1
-import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullEmail
-import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullPhone
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier2
 import hu.netsurf.erp.warehouse.util.SupplierInputSanitizer
 import hu.netsurf.erp.warehouse.util.SupplierInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.UpdateSupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.UpdateSupplierInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import hu.netsurf.erp.warehouse.testobject.CreateSupplierInputTestObject.Companion.input1 as createSupplierInput1
+import hu.netsurf.erp.warehouse.testobject.UpdateSupplierInputTestObject.Companion.input1 as updateSupplierInput1
 
 class SupplierControllerTests {
     private val supplierService: SupplierService = mockk()
     private val supplierInputSanitizer: SupplierInputSanitizer = mockk()
     private val supplierInputValidator: SupplierInputValidator = mockk()
+    private val updateSupplierInputSanitizer: UpdateSupplierInputSanitizer = mockk()
+    private val updateSupplierInputValidator: UpdateSupplierInputValidator = mockk()
 
     private val supplierController: SupplierController =
         SupplierController(
             supplierService,
             supplierInputSanitizer,
             supplierInputValidator,
+            updateSupplierInputSanitizer,
+            updateSupplierInputValidator,
         )
-
-    @BeforeEach
-    fun setup() {
-        every {
-            supplierInputSanitizer.sanitize(any())
-        } returns input1()
-        justRun { supplierInputValidator.validate(any()) }
-    }
 
     @Test
     fun `suppliers test happy path`() {
@@ -51,30 +45,28 @@ class SupplierControllerTests {
     @Test
     fun `createSupplier test happy path`() {
         every {
+            supplierInputSanitizer.sanitize(any())
+        } returns createSupplierInput1()
+        justRun { supplierInputValidator.validate(any()) }
+        every {
             supplierService.createSupplier(any())
         } returns supplier1()
 
-        val result = supplierController.createSupplier(input1())
+        val result = supplierController.createSupplier(createSupplierInput1())
         assertEquals(supplier1(), result)
     }
 
     @Test
-    fun `createSupplier test happy path - phone is null`() {
+    fun `updateSupplier test happy path`() {
         every {
-            supplierService.createSupplier(any())
-        } returns supplier1WithNullPhone()
-
-        val result = supplierController.createSupplier(input1WithNullPhone())
-        assertEquals(supplier1WithNullPhone(), result)
-    }
-
-    @Test
-    fun `createSupplier test happy path - email is null`() {
+            updateSupplierInputSanitizer.sanitize(any())
+        } returns updateSupplierInput1()
+        justRun { updateSupplierInputValidator.validate(any()) }
         every {
-            supplierService.createSupplier(any())
-        } returns supplier1WithNullEmail()
+            supplierService.updateSupplier(any())
+        } returns supplier1()
 
-        val result = supplierController.createSupplier(input1WithNullEmail())
-        assertEquals(supplier1WithNullEmail(), result)
+        val result = supplierController.updateSupplier(updateSupplierInput1())
+        assertEquals(supplier1(), result)
     }
 }

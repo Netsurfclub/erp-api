@@ -12,10 +12,6 @@ class SupplierTestObject {
     companion object {
         fun supplier1(): Supplier = build()
 
-        fun supplier1WithNullPhone(): Supplier = build(phone = null)
-
-        fun supplier1WithNullEmail(): Supplier = build(email = null)
-
         fun supplier2(): Supplier =
             build(
                 id = 2,

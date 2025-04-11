@@ -1,18 +1,13 @@
-﻿package hu.netsurf.erp.warehouse.util
+﻿package hu.netsurf.erp.warehouse.util.validation
 
-import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.common.exception.InvalidLengthException
 import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
-import hu.netsurf.erp.warehouse.input.CreateSupplierInput
+import hu.netsurf.erp.warehouse.input.UpdateSupplierInput
 import org.springframework.stereotype.Component
 
 @Component
-class SupplierInputValidator {
-    fun validate(input: CreateSupplierInput) {
-        if (input.nameIsEmpty()) {
-            throw EmptyFieldException()
-        }
-
+class UpdateSupplierInputValidator {
+    fun validate(input: UpdateSupplierInput) {
         if (
             input.nameIsShort() ||
             input.nameIsLong() ||

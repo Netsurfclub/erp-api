@@ -64,6 +64,14 @@ enum class LogEventConstants(
         eventName = "erp-api:supplierController:createSupplier:SuccessResponse",
         eventMessage = "Create supplier GraphQL mutation success response",
     ),
+    UPDATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED(
+        eventName = "erp-api:supplierController:updateSupplier:MutationReceived",
+        eventMessage = "Update supplier GraphQL mutation received",
+    ),
+    UPDATE_SUPPLIER_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:supplierController:updateSupplier:SuccessResponse",
+        eventMessage = "Update supplier GraphQL mutation success response",
+    ),
     PHOTO_FILE_VALIDATED_SUCCESSFULLY(
         eventName = "erp-api:productPhotoService:uploadPhoto",
         eventMessage = "PhotoFile validated successfully",
@@ -103,6 +111,10 @@ enum class LogEventConstants(
     SUPPLIER_SAVED_TO_DATABASE(
         eventName = "erp-api:supplierService:saveSupplier",
         eventMessage = "Supplier saved in database",
+    ),
+    SUPPLIER_UPDATED_IN_DATABASE(
+        eventName = "erp-api:supplierService:updateSupplier",
+        eventMessage = "Supplier updated in database",
     ),
     PHOTO_BYTES_READ_FROM_FILE_SYSTEM(
         eventName = "erp-api:fileSystemUtils:readAllBytes",
