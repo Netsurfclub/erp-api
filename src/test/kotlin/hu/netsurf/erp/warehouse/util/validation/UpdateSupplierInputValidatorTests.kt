@@ -1,7 +1,7 @@
 package hu.netsurf.erp.warehouse.util.validation
 
+import hu.netsurf.erp.common.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.common.exception.InvalidLengthException
-import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.warehouse.input.UpdateSupplierInput
 import hu.netsurf.erp.warehouse.testobject.UpdateSupplierInputTestObject.Companion.input1
 import hu.netsurf.erp.warehouse.testobject.UpdateSupplierInputTestObject.Companion.input1WithInvalidEmail

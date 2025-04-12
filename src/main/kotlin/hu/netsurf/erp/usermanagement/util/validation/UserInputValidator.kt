@@ -1,8 +1,8 @@
 ﻿package hu.netsurf.erp.usermanagement.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
+import hu.netsurf.erp.common.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.common.exception.InvalidLengthException
-import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.input.CreateUserInput
