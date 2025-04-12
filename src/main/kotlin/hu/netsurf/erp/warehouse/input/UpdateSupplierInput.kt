@@ -22,11 +22,11 @@ data class UpdateSupplierInput(
 
     fun phoneIsLong(): Boolean = phone!!.length > PHONE_MAX_LENGTH
 
-    fun emailAddressIsValid(): Boolean = email!!.matches(Regex(EMAIL_ADDRESS_REGEX))
-
     fun emailIsShort(): Boolean = email!!.length <= EMAIL_MIN_LENGTH
 
     fun emailIsLong(): Boolean = email!!.length > EMAIL_MAX_LENGTH
+
+    fun emailAddressIsValid(): Boolean = email!!.matches(Regex(EMAIL_ADDRESS_REGEX))
 
     fun toSupplier() =
         Supplier(
