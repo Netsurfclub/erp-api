@@ -9,8 +9,8 @@ import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER_INPUT
 import hu.netsurf.erp.usermanagement.input.CreateUserInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.service.UserService
-import hu.netsurf.erp.usermanagement.util.UserInputSanitizer
-import hu.netsurf.erp.usermanagement.util.UserInputValidator
+import hu.netsurf.erp.usermanagement.util.sanitization.UserInputSanitizer
+import hu.netsurf.erp.usermanagement.util.validation.UserInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument

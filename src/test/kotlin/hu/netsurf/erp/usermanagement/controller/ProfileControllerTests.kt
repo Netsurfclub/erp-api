@@ -2,10 +2,10 @@ package hu.netsurf.erp.usermanagement.controller
 
 import hu.netsurf.erp.usermanagement.service.ProfileService
 import hu.netsurf.erp.usermanagement.testobject.ProfileTestObject.Companion.profile1
-import hu.netsurf.erp.usermanagement.util.ProfileInputSanitizer
-import hu.netsurf.erp.usermanagement.util.ProfileInputValidator
-import hu.netsurf.erp.usermanagement.util.UpdateProfilePasswordInputSanitizer
-import hu.netsurf.erp.usermanagement.util.UpdateProfilePasswordInputValidator
+import hu.netsurf.erp.usermanagement.util.sanitization.ProfileInputSanitizer
+import hu.netsurf.erp.usermanagement.util.sanitization.UpdateProfilePasswordInputSanitizer
+import hu.netsurf.erp.usermanagement.util.validation.ProfileInputValidator
+import hu.netsurf.erp.usermanagement.util.validation.UpdateProfilePasswordInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk

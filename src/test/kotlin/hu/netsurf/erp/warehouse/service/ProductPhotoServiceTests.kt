@@ -8,8 +8,8 @@ import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedExceptio
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product1WithPhoto
-import hu.netsurf.erp.warehouse.util.FileUtils
-import hu.netsurf.erp.warehouse.util.FileValidator
+import hu.netsurf.erp.warehouse.util.file.FileUtils
+import hu.netsurf.erp.warehouse.util.validation.FileValidator
 import hu.netsurf.erp.warehouse.wrapper.PhotoFile
 import io.mockk.every
 import io.mockk.justRun

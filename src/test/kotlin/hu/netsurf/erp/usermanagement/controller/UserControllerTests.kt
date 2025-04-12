@@ -2,8 +2,8 @@ package hu.netsurf.erp.usermanagement.controller
 
 import hu.netsurf.erp.usermanagement.service.UserService
 import hu.netsurf.erp.usermanagement.testobject.UserTestObject.Companion.user1
-import hu.netsurf.erp.usermanagement.util.UserInputSanitizer
-import hu.netsurf.erp.usermanagement.util.UserInputValidator
+import hu.netsurf.erp.usermanagement.util.sanitization.UserInputSanitizer
+import hu.netsurf.erp.usermanagement.util.validation.UserInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk

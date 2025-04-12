@@ -8,8 +8,8 @@ import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullEmail
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullPhone
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier2
-import hu.netsurf.erp.warehouse.util.SupplierInputSanitizer
-import hu.netsurf.erp.warehouse.util.SupplierInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.SupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk

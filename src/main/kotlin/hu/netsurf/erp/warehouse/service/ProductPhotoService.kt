@@ -6,8 +6,8 @@ import hu.netsurf.erp.warehouse.constant.LogEventConstants.PHOTO_FILE_VALIDATED_
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.PHOTO_FILE
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
-import hu.netsurf.erp.warehouse.util.FileUtils
-import hu.netsurf.erp.warehouse.util.FileValidator
+import hu.netsurf.erp.warehouse.util.file.FileUtils
+import hu.netsurf.erp.warehouse.util.validation.FileValidator
 import hu.netsurf.erp.warehouse.wrapper.PhotoFile
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

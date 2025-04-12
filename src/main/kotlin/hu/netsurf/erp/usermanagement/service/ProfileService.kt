@@ -12,7 +12,7 @@ import hu.netsurf.erp.usermanagement.exception.ProfileAlreadyExistException
 import hu.netsurf.erp.usermanagement.exception.ProfileNotFoundException
 import hu.netsurf.erp.usermanagement.model.Profile
 import hu.netsurf.erp.usermanagement.repository.ProfileRepository
-import hu.netsurf.erp.usermanagement.util.PasswordUtil
+import hu.netsurf.erp.usermanagement.util.password.PasswordUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
