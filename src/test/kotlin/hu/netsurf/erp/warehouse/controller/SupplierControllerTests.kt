@@ -4,8 +4,8 @@ import hu.netsurf.erp.warehouse.service.SupplierService
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier2
 import hu.netsurf.erp.warehouse.util.sanitization.SupplierInputSanitizer
-import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
 import hu.netsurf.erp.warehouse.util.sanitization.UpdateSupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
 import hu.netsurf.erp.warehouse.util.validation.UpdateSupplierInputValidator
 import io.mockk.every
 import io.mockk.justRun

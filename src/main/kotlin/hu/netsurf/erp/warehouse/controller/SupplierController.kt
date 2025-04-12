@@ -15,8 +15,8 @@ import hu.netsurf.erp.warehouse.input.UpdateSupplierInput
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.service.SupplierService
 import hu.netsurf.erp.warehouse.util.sanitization.SupplierInputSanitizer
-import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
 import hu.netsurf.erp.warehouse.util.sanitization.UpdateSupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
 import hu.netsurf.erp.warehouse.util.validation.UpdateSupplierInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
