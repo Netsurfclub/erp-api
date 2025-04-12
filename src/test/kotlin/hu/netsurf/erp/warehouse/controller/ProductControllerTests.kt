@@ -4,8 +4,8 @@ import hu.netsurf.erp.warehouse.service.ProductService
 import hu.netsurf.erp.warehouse.testobject.CreateProductInputTestObject.Companion.input1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product2
-import hu.netsurf.erp.warehouse.util.ProductInputSanitizer
-import hu.netsurf.erp.warehouse.util.ProductInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.ProductInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.ProductInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk

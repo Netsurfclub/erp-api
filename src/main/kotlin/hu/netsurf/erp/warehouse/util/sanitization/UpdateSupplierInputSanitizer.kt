@@ -1,6 +1,6 @@
 ﻿package hu.netsurf.erp.warehouse.util.sanitization
 
-import hu.netsurf.erp.common.util.InputSanitizer
+import hu.netsurf.erp.common.util.sanitization.InputSanitizer
 import hu.netsurf.erp.warehouse.input.UpdateSupplierInput
 import org.springframework.stereotype.Component
 

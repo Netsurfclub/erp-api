@@ -1,10 +1,10 @@
 package hu.netsurf.erp.warehouse.input
 
+import hu.netsurf.erp.common.constant.CommonConstants.EMAIL_MAX_LENGTH
+import hu.netsurf.erp.common.constant.CommonConstants.EMAIL_MIN_LENGTH
+import hu.netsurf.erp.common.constant.CommonConstants.NAME_MAX_LENGTH
+import hu.netsurf.erp.common.constant.CommonConstants.NAME_MIN_LENGTH
 import hu.netsurf.erp.common.constant.RegexPatterns.EMAIL_ADDRESS_REGEX
-import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.EMAIL_MAX_LENGTH
-import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.EMAIL_MIN_LENGTH
-import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.NAME_MAX_LENGTH
-import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.NAME_MIN_LENGTH
 import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.PHONE_MAX_LENGTH
 import hu.netsurf.erp.warehouse.constant.SupplierValidationConstants.PHONE_MIN_LENGTH
 import hu.netsurf.erp.warehouse.model.Supplier

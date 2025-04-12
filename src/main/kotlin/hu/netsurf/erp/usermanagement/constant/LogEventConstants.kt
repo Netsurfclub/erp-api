@@ -4,13 +4,41 @@ enum class LogEventConstants(
     val eventName: String,
     val eventMessage: String,
 ) {
-    USERS_GRAPHQL_QUERY_RECEIVED(
-        eventName = "erp-api:userController:users:QueryReceived",
-        eventMessage = "Users GraphQL query received",
+    CREATE_PROFILE_GRAPHQL_MUTATION_RECEIVED(
+        eventName = "erp-api:profileController:createProfile:MutationReceived",
+        eventMessage = "Create profile GraphQL mutation received",
     ),
-    USERS_GRAPHQL_QUERY_SUCCESS_RESPONSE(
-        eventName = "erp-api:userController:users:SuccessResponse",
-        eventMessage = "Users GraphQL query success response",
+    UPDATE_PROFILE_PASSWORD_GRAPHQL_MUTATION_RECEIVED(
+        eventName = "erp-api:profileController:updateProfilePassword:MutationReceived",
+        eventMessage = "Update profile password GraphQL mutation received",
+    ),
+    UPDATE_PROFILE_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:profileController:updateProfilePassword:SuccessResponse",
+        eventMessage = "Update profile password GraphQL mutation success response",
+    ),
+    DELETE_PROFILE_GRAPHQL_MUTATION_RECEIVED(
+        eventName = "erp-api:profileController:deleteProfile:MutationReceived",
+        eventMessage = "Delete profile GraphQL mutation received",
+    ),
+    DELETE_PROFILE_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
+        eventName = "erp-api:profileController:deleteProfile:SuccessResponse",
+        eventMessage = "Delete profile GraphQL mutation success response",
+    ),
+    PROFILE_SAVED_TO_DATABASE(
+        eventName = "erp-api:profileService:createProfile",
+        eventMessage = "Profile saved in database",
+    ),
+    PROFILE_RETRIEVED_FROM_DATABASE(
+        eventName = "erp-api:userService:getProfile",
+        eventMessage = "Profile retrieved from database",
+    ),
+    PROFILE_PASSWORD_UPDATED_IN_DATABASE(
+        eventName = "erp-api:profileService:updateProfilePassword",
+        eventMessage = "Profile password updated in database",
+    ),
+    PROFILE_DELETED_FROM_DATABASE(
+        eventName = "erp-api:profileService:deleteProfile",
+        eventMessage = "Profile deleted from database",
     ),
     CREATE_USER_GRAPHQL_MUTATION_RECEIVED(
         eventName = "erp-api:userController:createUser:MutationReceived",
@@ -20,44 +48,16 @@ enum class LogEventConstants(
         eventName = "erp-api:userController:createUser:SuccessResponse",
         eventMessage = "Create user GraphQL mutation success response",
     ),
-    UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_RECEIVED(
-        eventName = "erp-api:userController:updateUserPassword:MutationReceived",
-        eventMessage = "Update user password GraphQL mutation received",
-    ),
-    UPDATE_USER_PASSWORD_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
-        eventName = "erp-api:userController:updateUserPassword:SuccessResponse",
-        eventMessage = "Update user password GraphQL mutation success response",
-    ),
-    DELETE_USER_GRAPHQL_MUTATION_RECEIVED(
-        eventName = "erp-api:userController:deleteUser:MutationReceived",
-        eventMessage = "Delete user GraphQL mutation received",
-    ),
-    DELETE_USER_GRAPHQL_MUTATION_SUCCESS_RESPONSE(
-        eventName = "erp-api:userController:deleteUser:SuccessResponse",
-        eventMessage = "Delete user GraphQL mutation success response",
-    ),
-    USERS_RETRIEVED_FROM_DATABASE(
-        eventName = "erp-api:userService:getUsers",
-        eventMessage = "Users retrieved from database",
-    ),
     USER_INPUT_MAPPED_TO_USER(
         eventName = "erp-api:userService:createUser",
         eventMessage = "User input mapped to user",
     ),
     USER_SAVED_TO_DATABASE(
-        eventName = "erp-api:userService:saveUser",
+        eventName = "erp-api:userService:createUser",
         eventMessage = "User saved in database",
     ),
     USER_RETRIEVED_FROM_DATABASE(
         eventName = "erp-api:userService:getUser",
         eventMessage = "User retrieved from database",
-    ),
-    USER_PASSWORD_UPDATED_IN_DATABASE(
-        eventName = "erp-api:userService:updateUserPassword",
-        eventMessage = "User password updated in database",
-    ),
-    USER_DELETED_FROM_DATABASE(
-        eventName = "erp-api:userService:deleteUser",
-        eventMessage = "User deleted from database",
     ),
 }

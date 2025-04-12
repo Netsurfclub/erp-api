@@ -122,7 +122,7 @@
                         <exclude>hu/netsurf/erp/warehouse/config/**</exclude>
                         <exclude>hu/netsurf/erp/warehouse/constant/**</exclude>
                         <exclude>hu/netsurf/erp/warehouse/model/**</exclude>
-                        <exclude>hu/netsurf/erp/warehouse/util/FileSystemUtils*</exclude>
+                        <exclude>hu/netsurf/erp/warehouse/util/file/FileSystemUtils*</exclude>
                         <exclude>hu/netsurf/erp/warehouse/wrapper/**</exclude>
                         <exclude>hu/netsurf/erp/Application*</exclude>
                     </excludes>

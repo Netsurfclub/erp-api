@@ -1,6 +1,6 @@
 package hu.netsurf.erp.warehouse.util.sanitization
 
-import hu.netsurf.erp.common.util.InputSanitizer
+import hu.netsurf.erp.common.util.sanitization.InputSanitizer
 import hu.netsurf.erp.warehouse.constant.SupplierTestConstants.SUPPLIER_1_EMAIL
 import hu.netsurf.erp.warehouse.constant.SupplierTestConstants.SUPPLIER_1_NAME
 import hu.netsurf.erp.warehouse.constant.SupplierTestConstants.SUPPLIER_1_PHONE
