@@ -15,9 +15,9 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class SupplierInputSanitizerTests {
+class CreateSupplierInputSanitizerTests {
     private val inputSanitizer: InputSanitizer = InputSanitizer()
-    private val supplierInputSanitizer: SupplierInputSanitizer = SupplierInputSanitizer(inputSanitizer)
+    private val createSupplierInputSanitizer: CreateSupplierInputSanitizer = CreateSupplierInputSanitizer(inputSanitizer)
 
     companion object {
         @JvmStatic
@@ -65,7 +65,7 @@ class SupplierInputSanitizerTests {
                 email = email,
             )
 
-        val result = supplierInputSanitizer.sanitize(input)
+        val result = createSupplierInputSanitizer.sanitize(input)
 
         assertEquals(SUPPLIER_1_NAME, result.name)
         assertEquals(SUPPLIER_1_PHONE, result.phone)
@@ -74,7 +74,7 @@ class SupplierInputSanitizerTests {
 
     @Test
     fun `sanitize test - phone is null`() {
-        val result = supplierInputSanitizer.sanitize(input1WithNullPhone())
+        val result = createSupplierInputSanitizer.sanitize(input1WithNullPhone())
 
         assertEquals(SUPPLIER_1_NAME, result.name)
         assertNull(result.phone)
@@ -83,7 +83,7 @@ class SupplierInputSanitizerTests {
 
     @Test
     fun `sanitize test - email is null`() {
-        val result = supplierInputSanitizer.sanitize(input1WithNullEmail())
+        val result = createSupplierInputSanitizer.sanitize(input1WithNullEmail())
 
         assertEquals(SUPPLIER_1_NAME, result.name)
         assertEquals(SUPPLIER_1_PHONE, result.phone)

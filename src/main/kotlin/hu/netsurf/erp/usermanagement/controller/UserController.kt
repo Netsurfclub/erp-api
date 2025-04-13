@@ -9,8 +9,8 @@ import hu.netsurf.erp.usermanagement.constant.LoggerConstants.USER_INPUT
 import hu.netsurf.erp.usermanagement.input.CreateUserInput
 import hu.netsurf.erp.usermanagement.model.User
 import hu.netsurf.erp.usermanagement.service.UserService
-import hu.netsurf.erp.usermanagement.util.sanitization.UserInputSanitizer
-import hu.netsurf.erp.usermanagement.util.validation.UserInputValidator
+import hu.netsurf.erp.usermanagement.util.sanitization.CreateUserInputSanitizer
+import hu.netsurf.erp.usermanagement.util.validation.CreateUserInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class UserController(
     private val userService: UserService,
-    private val userInputSanitizer: UserInputSanitizer,
-    private val userInputValidator: UserInputValidator,
+    private val createUserInputSanitizer: CreateUserInputSanitizer,
+    private val createUserInputValidator: CreateUserInputValidator,
 ) {
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
@@ -31,15 +31,15 @@ class UserController(
     ): User {
         logger.logInfo(CREATE_USER_GRAPHQL_MUTATION_RECEIVED)
 
-        val sanitizedUserInput = userInputSanitizer.sanitize(input)
-        userInputValidator.validate(sanitizedUserInput)
+        val sanitizedInput = createUserInputSanitizer.sanitize(input)
+        createUserInputValidator.validate(sanitizedInput)
 
-        val user = sanitizedUserInput.toUser()
+        val user = sanitizedInput.toUser()
 
         logger.logInfo(
             USER_INPUT_MAPPED_TO_USER,
             mapOf(
-                USER_INPUT to sanitizedUserInput,
+                USER_INPUT to sanitizedInput,
                 USER to user,
             ),
         )

@@ -11,9 +11,9 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class UserInputSanitizerTests {
+class CreateUserInputSanitizerTests {
     private val inputSanitizer: InputSanitizer = InputSanitizer()
-    private val userInputSanitizer: UserInputSanitizer = UserInputSanitizer(inputSanitizer)
+    private val createUserInputSanitizer: CreateUserInputSanitizer = CreateUserInputSanitizer(inputSanitizer)
 
     companion object {
         @JvmStatic
@@ -61,7 +61,7 @@ class UserInputSanitizerTests {
                 email = email,
             )
 
-        val result = userInputSanitizer.sanitize(input)
+        val result = createUserInputSanitizer.sanitize(input)
 
         assertEquals(FIRST_NAME_1, result.firstName)
         assertEquals(LAST_NAME_1, result.lastName)

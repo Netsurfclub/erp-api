@@ -4,8 +4,8 @@ import hu.netsurf.erp.warehouse.service.ProductService
 import hu.netsurf.erp.warehouse.testobject.CreateProductInputTestObject.Companion.input1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product1
 import hu.netsurf.erp.warehouse.testobject.ProductTestObject.Companion.product2
-import hu.netsurf.erp.warehouse.util.sanitization.ProductInputSanitizer
-import hu.netsurf.erp.warehouse.util.validation.ProductInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.CreateProductInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.CreateProductInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
@@ -15,13 +15,13 @@ import org.junit.jupiter.api.Test
 
 class ProductControllerTests {
     private val productService: ProductService = mockk()
-    private val productInputSanitizer: ProductInputSanitizer = mockk()
-    private val productInputValidator: ProductInputValidator = mockk()
+    private val createProductInputSanitizer: CreateProductInputSanitizer = mockk()
+    private val createProductInputValidator: CreateProductInputValidator = mockk()
     private val productController: ProductController =
         ProductController(
             productService,
-            productInputSanitizer,
-            productInputValidator,
+            createProductInputSanitizer,
+            createProductInputValidator,
         )
 
     @Test
@@ -37,9 +37,9 @@ class ProductControllerTests {
     @Test
     fun `createProduct test happy path`() {
         every {
-            productInputSanitizer.sanitize(any())
+            createProductInputSanitizer.sanitize(any())
         } returns input1()
-        justRun { productInputValidator.validate(any()) }
+        justRun { createProductInputValidator.validate(any()) }
         every {
             productService.createProduct(any())
         } returns product1()

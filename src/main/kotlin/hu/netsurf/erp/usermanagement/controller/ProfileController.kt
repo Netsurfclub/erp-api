@@ -15,9 +15,9 @@ import hu.netsurf.erp.usermanagement.input.DeleteProfileInput
 import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
 import hu.netsurf.erp.usermanagement.model.Profile
 import hu.netsurf.erp.usermanagement.service.ProfileService
-import hu.netsurf.erp.usermanagement.util.sanitization.ProfileInputSanitizer
+import hu.netsurf.erp.usermanagement.util.sanitization.CreateProfileInputSanitizer
 import hu.netsurf.erp.usermanagement.util.sanitization.UpdateProfilePasswordInputSanitizer
-import hu.netsurf.erp.usermanagement.util.validation.ProfileInputValidator
+import hu.netsurf.erp.usermanagement.util.validation.CreateProfileInputValidator
 import hu.netsurf.erp.usermanagement.util.validation.UpdateProfilePasswordInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class ProfileController(
     private val profileService: ProfileService,
-    private val profileInputSanitizer: ProfileInputSanitizer,
-    private val profileInputValidator: ProfileInputValidator,
+    private val createProfileInputSanitizer: CreateProfileInputSanitizer,
+    private val createProfileInputValidator: CreateProfileInputValidator,
     private val updateProfilePasswordInputSanitizer: UpdateProfilePasswordInputSanitizer,
     private val updateProfilePasswordInputValidator: UpdateProfilePasswordInputValidator,
 ) {
@@ -41,15 +41,15 @@ class ProfileController(
     ): Profile {
         logger.logInfo(CREATE_PROFILE_GRAPHQL_MUTATION_RECEIVED)
 
-        val sanitizedProfileInput = profileInputSanitizer.sanitize(input)
-        profileInputValidator.validate(sanitizedProfileInput)
+        val sanitizedInput = createProfileInputSanitizer.sanitize(input)
+        createProfileInputValidator.validate(sanitizedInput)
 
-        val profile = sanitizedProfileInput.toProfile()
+        val profile = sanitizedInput.toProfile()
 
         logger.logInfo(
             USER_INPUT_MAPPED_TO_USER,
             mapOf(
-                PROFILE_INPUT to sanitizedProfileInput,
+                PROFILE_INPUT to sanitizedInput,
                 PROFILE to profile,
             ),
         )
