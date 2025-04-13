@@ -10,9 +10,9 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class ProductInputSanitizerTests {
+class CreateProductInputSanitizerTests {
     private val inputSanitizer: InputSanitizer = InputSanitizer()
-    private val productInputSanitizer: ProductInputSanitizer = ProductInputSanitizer(inputSanitizer)
+    private val createSupplierInputSanitizer: CreateProductInputSanitizer = CreateProductInputSanitizer(inputSanitizer)
 
     companion object {
         @JvmStatic
@@ -57,7 +57,7 @@ class ProductInputSanitizerTests {
                 onStock = 1,
             )
 
-        val result = productInputSanitizer.sanitize(input)
+        val result = createSupplierInputSanitizer.sanitize(input)
 
         assertEquals(PRODUCT_1_NAME, result.name)
         assertEquals(PRODUCT_1_UNIT, result.unit)

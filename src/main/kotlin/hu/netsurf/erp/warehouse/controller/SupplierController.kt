@@ -11,8 +11,8 @@ import hu.netsurf.erp.warehouse.constant.LoggerConstants.SUPPLIER_INPUT
 import hu.netsurf.erp.warehouse.input.CreateSupplierInput
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.service.SupplierService
-import hu.netsurf.erp.warehouse.util.sanitization.SupplierInputSanitizer
-import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.CreateSupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.CreateSupplierInputValidator
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.graphql.data.method.annotation.Argument
@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class SupplierController(
     private val supplierService: SupplierService,
-    private val supplierInputSanitizer: SupplierInputSanitizer,
-    private val supplierInputValidator: SupplierInputValidator,
+    private val createSupplierInputSanitizer: CreateSupplierInputSanitizer,
+    private val createSupplierInputValidator: CreateSupplierInputValidator,
 ) {
     val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
@@ -45,8 +45,8 @@ class SupplierController(
     ): Supplier {
         logger.logInfo(CREATE_SUPPLIER_GRAPHQL_MUTATION_RECEIVED)
 
-        val sanitizedSupplierInput = supplierInputSanitizer.sanitize(input)
-        supplierInputValidator.validate(sanitizedSupplierInput)
+        val sanitizedInput = createSupplierInputSanitizer.sanitize(input)
+        createSupplierInputValidator.validate(sanitizedInput)
 
         val supplier = input.toSupplier()
 

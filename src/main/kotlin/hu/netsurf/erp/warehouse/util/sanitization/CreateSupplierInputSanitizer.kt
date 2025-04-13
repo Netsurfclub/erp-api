@@ -5,7 +5,7 @@ import hu.netsurf.erp.warehouse.input.CreateSupplierInput
 import org.springframework.stereotype.Component
 
 @Component
-class SupplierInputSanitizer(
+class CreateSupplierInputSanitizer(
     private val inputSanitizer: InputSanitizer,
 ) {
     fun sanitize(input: CreateSupplierInput): CreateSupplierInput {
