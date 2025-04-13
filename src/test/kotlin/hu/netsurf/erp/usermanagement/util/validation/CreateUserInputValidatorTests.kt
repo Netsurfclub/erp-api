@@ -32,8 +32,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class UserInputValidatorTests {
-    private val userInputValidator: UserInputValidator = UserInputValidator()
+class CreateUserInputValidatorTests {
+    private val createUserInputValidator: CreateUserInputValidator = CreateUserInputValidator()
 
     companion object {
         @JvmStatic
@@ -73,7 +73,7 @@ class UserInputValidatorTests {
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            userInputValidator.validate(input1())
+            createUserInputValidator.validate(input1())
         }
     }
 
@@ -84,7 +84,7 @@ class UserInputValidatorTests {
         input: CreateUserInput,
     ) {
         assertThrows<EmptyFieldException> {
-            userInputValidator.validate(input)
+            createUserInputValidator.validate(input)
         }
     }
 
@@ -95,7 +95,7 @@ class UserInputValidatorTests {
         input: CreateUserInput,
     ) {
         assertThrows<InvalidLengthException> {
-            userInputValidator.validate(input)
+            createUserInputValidator.validate(input)
         }
     }
 
@@ -113,7 +113,7 @@ class UserInputValidatorTests {
             )
 
         assertThrows<InvalidFirstNameFormatException> {
-            userInputValidator.validate(input)
+            createUserInputValidator.validate(input)
         }
     }
 
@@ -131,14 +131,14 @@ class UserInputValidatorTests {
             )
 
         assertThrows<InvalidLastNameFormatException> {
-            userInputValidator.validate(input)
+            createUserInputValidator.validate(input)
         }
     }
 
     @Test
     fun `validate test unhappy path - invalid email address`() {
         assertThrows<InvalidEmailAddressFormatException> {
-            userInputValidator.validate(input1WithInvalidEmail())
+            createUserInputValidator.validate(input1WithInvalidEmail())
         }
     }
 }

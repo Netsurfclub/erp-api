@@ -5,7 +5,7 @@ import hu.netsurf.erp.usermanagement.input.CreateProfileInput
 import org.springframework.stereotype.Component
 
 @Component
-class ProfileInputSanitizer(
+class CreateProfileInputSanitizer(
     private val inputSanitizer: InputSanitizer,
 ) {
     fun sanitize(input: CreateProfileInput): CreateProfileInput =

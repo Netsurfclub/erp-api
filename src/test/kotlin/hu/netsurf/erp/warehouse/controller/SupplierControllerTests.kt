@@ -8,8 +8,8 @@ import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullEmail
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1WithNullPhone
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier2
-import hu.netsurf.erp.warehouse.util.sanitization.SupplierInputSanitizer
-import hu.netsurf.erp.warehouse.util.validation.SupplierInputValidator
+import hu.netsurf.erp.warehouse.util.sanitization.CreateSupplierInputSanitizer
+import hu.netsurf.erp.warehouse.util.validation.CreateSupplierInputValidator
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
@@ -20,22 +20,22 @@ import org.junit.jupiter.api.Test
 
 class SupplierControllerTests {
     private val supplierService: SupplierService = mockk()
-    private val supplierInputSanitizer: SupplierInputSanitizer = mockk()
-    private val supplierInputValidator: SupplierInputValidator = mockk()
+    private val createSupplierInputSanitizer: CreateSupplierInputSanitizer = mockk()
+    private val createSupplierInputValidator: CreateSupplierInputValidator = mockk()
 
     private val supplierController: SupplierController =
         SupplierController(
             supplierService,
-            supplierInputSanitizer,
-            supplierInputValidator,
+            createSupplierInputSanitizer,
+            createSupplierInputValidator,
         )
 
     @BeforeEach
     fun setup() {
         every {
-            supplierInputSanitizer.sanitize(any())
+            createSupplierInputSanitizer.sanitize(any())
         } returns input1()
-        justRun { supplierInputValidator.validate(any()) }
+        justRun { createSupplierInputValidator.validate(any()) }
     }
 
     @Test

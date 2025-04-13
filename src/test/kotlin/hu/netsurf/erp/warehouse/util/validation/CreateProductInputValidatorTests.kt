@@ -18,8 +18,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class ProductInputValidatorTests {
-    private val productInputValidator: ProductInputValidator = ProductInputValidator()
+class CreateProductInputValidatorTests {
+    private val createProductInputValidator: CreateProductInputValidator = CreateProductInputValidator()
 
     companion object {
         @JvmStatic
@@ -42,7 +42,7 @@ class ProductInputValidatorTests {
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            productInputValidator.validate(input1())
+            createProductInputValidator.validate(input1())
         }
     }
 
@@ -53,7 +53,7 @@ class ProductInputValidatorTests {
         input: CreateProductInput,
     ) {
         assertThrows<EmptyFieldException> {
-            productInputValidator.validate(input)
+            createProductInputValidator.validate(input)
         }
     }
 
@@ -64,7 +64,7 @@ class ProductInputValidatorTests {
         input: CreateProductInput,
     ) {
         assertThrows<InvalidLengthException> {
-            productInputValidator.validate(input)
+            createProductInputValidator.validate(input)
         }
     }
 }
