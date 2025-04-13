@@ -21,8 +21,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class SupplierInputValidatorTests {
-    private val supplierInputValidator: SupplierInputValidator = SupplierInputValidator()
+class CreateSupplierInputValidatorTests {
+    private val createSupplierInputValidator: CreateSupplierInputValidator = CreateSupplierInputValidator()
 
     companion object {
         @JvmStatic
@@ -46,7 +46,7 @@ class SupplierInputValidatorTests {
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            supplierInputValidator.validate(input1())
+            createSupplierInputValidator.validate(input1())
         }
     }
 
@@ -57,7 +57,7 @@ class SupplierInputValidatorTests {
         input: CreateSupplierInput,
     ) {
         assertThrows<EmptyFieldException> {
-            supplierInputValidator.validate(input)
+            createSupplierInputValidator.validate(input)
         }
     }
 
@@ -68,14 +68,14 @@ class SupplierInputValidatorTests {
         input: CreateSupplierInput,
     ) {
         assertThrows<InvalidLengthException> {
-            supplierInputValidator.validate(input)
+            createSupplierInputValidator.validate(input)
         }
     }
 
     @Test
     fun `validate test unhappy path - invalid email address`() {
         assertThrows<InvalidEmailAddressFormatException> {
-            supplierInputValidator.validate(input1WithInvalidEmail())
+            createSupplierInputValidator.validate(input1WithInvalidEmail())
         }
     }
 }

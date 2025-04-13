@@ -6,7 +6,7 @@ import hu.netsurf.erp.warehouse.input.CreateProductInput
 import org.springframework.stereotype.Component
 
 @Component
-class ProductInputValidator {
+class CreateProductInputValidator {
     fun validate(input: CreateProductInput) {
         if (
             input.nameIsEmpty() ||

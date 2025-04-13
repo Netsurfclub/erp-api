@@ -21,8 +21,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class ProfileInputValidatorTests {
-    private val profileInputValidator: ProfileInputValidator = ProfileInputValidator()
+class CreateProfileInputValidatorTests {
+    private val createProfileInputValidator: CreateProfileInputValidator = CreateProfileInputValidator()
 
     companion object {
         @JvmStatic
@@ -55,7 +55,7 @@ class ProfileInputValidatorTests {
     @Test
     fun `validate test happy path`() {
         assertDoesNotThrow {
-            profileInputValidator.validate(input1())
+            createProfileInputValidator.validate(input1())
         }
     }
 
@@ -66,7 +66,7 @@ class ProfileInputValidatorTests {
         input: CreateProfileInput,
     ) {
         assertThrows<EmptyFieldException> {
-            profileInputValidator.validate(input)
+            createProfileInputValidator.validate(input)
         }
     }
 
@@ -77,14 +77,14 @@ class ProfileInputValidatorTests {
         input: CreateProfileInput,
     ) {
         assertThrows<InvalidLengthException> {
-            profileInputValidator.validate(input)
+            createProfileInputValidator.validate(input)
         }
     }
 
     @Test
     fun `validate test unhappy path - password and confirm password not matches`() {
         assertThrows<PasswordAndConfirmPasswordNotMatchesException> {
-            profileInputValidator.validate(input1WithInvalidConfirmPassword())
+            createProfileInputValidator.validate(input1WithInvalidConfirmPassword())
         }
     }
 
@@ -103,7 +103,7 @@ class ProfileInputValidatorTests {
             )
 
         assertThrows<InvalidPasswordFormatException> {
-            profileInputValidator.validate(input)
+            createProfileInputValidator.validate(input)
         }
     }
 }

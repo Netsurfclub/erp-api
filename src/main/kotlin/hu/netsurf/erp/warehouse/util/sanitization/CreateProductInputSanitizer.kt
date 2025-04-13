@@ -5,7 +5,7 @@ import hu.netsurf.erp.warehouse.input.CreateProductInput
 import org.springframework.stereotype.Component
 
 @Component
-class ProductInputSanitizer(
+class CreateProductInputSanitizer(
     private val inputSanitizer: InputSanitizer,
 ) {
     fun sanitize(input: CreateProductInput): CreateProductInput =

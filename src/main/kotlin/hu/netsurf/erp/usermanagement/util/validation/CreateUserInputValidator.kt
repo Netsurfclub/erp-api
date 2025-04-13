@@ -9,7 +9,7 @@ import hu.netsurf.erp.usermanagement.input.CreateUserInput
 import org.springframework.stereotype.Component
 
 @Component
-class UserInputValidator {
+class CreateUserInputValidator {
     fun validate(input: CreateUserInput) {
         if (
             input.firstNameIsEmpty() ||

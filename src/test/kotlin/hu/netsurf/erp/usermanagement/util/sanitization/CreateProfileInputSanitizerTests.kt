@@ -10,9 +10,9 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
-class ProfileInputSanitizerTests {
+class CreateProfileInputSanitizerTests {
     private val inputSanitizer: InputSanitizer = InputSanitizer()
-    private val profileInputSanitizer: ProfileInputSanitizer = ProfileInputSanitizer(inputSanitizer)
+    private val createProfileInputSanitizer: CreateProfileInputSanitizer = CreateProfileInputSanitizer(inputSanitizer)
 
     companion object {
         @JvmStatic
@@ -61,7 +61,7 @@ class ProfileInputSanitizerTests {
                 confirmPassword = confirmPassword,
             )
 
-        val result = profileInputSanitizer.sanitize(input)
+        val result = createProfileInputSanitizer.sanitize(input)
 
         assertEquals(1, result.userId)
         assertEquals(USERNAME_1, result.username)

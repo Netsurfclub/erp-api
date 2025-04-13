@@ -2,9 +2,9 @@ package hu.netsurf.erp.usermanagement.controller
 
 import hu.netsurf.erp.usermanagement.service.ProfileService
 import hu.netsurf.erp.usermanagement.testobject.ProfileTestObject.Companion.profile1
-import hu.netsurf.erp.usermanagement.util.sanitization.ProfileInputSanitizer
+import hu.netsurf.erp.usermanagement.util.sanitization.CreateProfileInputSanitizer
 import hu.netsurf.erp.usermanagement.util.sanitization.UpdateProfilePasswordInputSanitizer
-import hu.netsurf.erp.usermanagement.util.validation.ProfileInputValidator
+import hu.netsurf.erp.usermanagement.util.validation.CreateProfileInputValidator
 import hu.netsurf.erp.usermanagement.util.validation.UpdateProfilePasswordInputValidator
 import io.mockk.every
 import io.mockk.justRun
@@ -17,15 +17,15 @@ import hu.netsurf.erp.usermanagement.testobject.UpdateProfilePasswordInputTestOb
 
 class ProfileControllerTests {
     private val profileService: ProfileService = mockk()
-    private val profileInputSanitizer: ProfileInputSanitizer = mockk()
-    private val profileInputValidator: ProfileInputValidator = mockk()
+    private val createProfileInputSanitizer: CreateProfileInputSanitizer = mockk()
+    private val createProfileInputValidator: CreateProfileInputValidator = mockk()
     private val updateProfilePasswordInputSanitizer: UpdateProfilePasswordInputSanitizer = mockk()
     private val updateProfilePasswordInputValidator: UpdateProfilePasswordInputValidator = mockk()
     private val profileController: ProfileController =
         ProfileController(
             profileService,
-            profileInputSanitizer,
-            profileInputValidator,
+            createProfileInputSanitizer,
+            createProfileInputValidator,
             updateProfilePasswordInputSanitizer,
             updateProfilePasswordInputValidator,
         )
@@ -33,9 +33,9 @@ class ProfileControllerTests {
     @Test
     fun `createProfile test happy path`() {
         every {
-            profileInputSanitizer.sanitize(any())
+            createProfileInputSanitizer.sanitize(any())
         } returns createProfileInput1()
-        justRun { profileInputValidator.validate(any()) }
+        justRun { createProfileInputValidator.validate(any()) }
         every {
             profileService.createProfile(any())
         } returns profile1()
