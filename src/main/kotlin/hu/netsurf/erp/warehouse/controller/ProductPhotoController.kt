@@ -89,7 +89,7 @@ class ProductPhotoController(
     }
 
     @PostMapping(path = ["/upload/{productId}"])
-    fun createProductPhoto(
+    fun uploadProductPhoto(
         @PathVariable productId: Int,
         @RequestParam("file") file: MultipartFile,
     ): ResponseEntity<*> {
