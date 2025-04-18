@@ -65,7 +65,7 @@ class ProductPhotoControllerTests {
         } returns PHOTO_FILE_NAME
 
         val result = productPhotoController.createProductPhoto(1, multipartFile())
-        assertEquals(HttpStatus.OK, result.statusCode)
+        assertEquals(HttpStatus.CREATED, result.statusCode)
         assertEquals(PHOTO_FILE_NAME, result.body)
     }
 

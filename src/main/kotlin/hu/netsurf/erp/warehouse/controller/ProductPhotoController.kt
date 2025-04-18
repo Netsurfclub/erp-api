@@ -122,7 +122,7 @@ class ProductPhotoController(
             )
 
             return ResponseEntity
-                .status(HttpStatus.OK)
+                .status(HttpStatus.CREATED)
                 .body(productPhotoFileName)
         } catch (exception: NotFoundException) {
             logger.logError(UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
