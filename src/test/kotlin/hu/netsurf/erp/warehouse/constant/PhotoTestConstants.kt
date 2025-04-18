@@ -14,6 +14,7 @@ object PhotoTestConstants {
     const val FILE_NAME_PNG = "file_name.$PNG"
     const val FILE_NAME_BMP = "file_name.$BMP"
     const val INVALID_FILE_NAME = "file_name.txt"
+    const val PRODUCT_PHOTO = "productPhoto"
     const val PHOTO_FILE_NAME = "7a759fbb-39d8-4b3b-af57-4266980901dc.jpeg"
     const val PHOTO_FILE_AS_STRING = "{originalFileName=$JPEG size=$FILE_SIZE contentType=$CONTENT_TYPE_IMAGE_JPEG}"
     const val UPLOADS_DIRECTORY_WITH_PHOTOS_SUBDIRECTORY_AND_CUSTOM_SUBDIRECTORY = "uploads/photos/products/"
