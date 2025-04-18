@@ -68,13 +68,22 @@ class ProductPhotoController(
                 ),
             )
 
-            return ResponseEntity(photo, headers, HttpStatus.OK)
+            return ResponseEntity
+                .status(HttpStatus.OK)
+                .headers(headers)
+                .body(photo)
         } catch (exception: NotFoundException) {
             logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
+
+            return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exception.message)
         } catch (exception: Exception) {
             logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
+
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.message)
         }
     }
 
@@ -112,13 +121,21 @@ class ProductPhotoController(
                 ),
             )
 
-            return ResponseEntity(productPhotoFileName, HttpStatus.OK)
+            return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(productPhotoFileName)
         } catch (exception: NotFoundException) {
             logger.logError(UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
+
+            return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exception.message)
         } catch (exception: Exception) {
             logger.logError(UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
+
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.message)
         }
     }
 }
