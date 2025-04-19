@@ -24,6 +24,10 @@ enum class LogEventConstants(
         eventName = "erp-api:productPhotoController:getProductPhoto:RequestReceived",
         eventMessage = "Product photo retrieval request received",
     ),
+    EXCEPTION_OCCURRED_DURING_RETRIEVING_PRODUCT_PHOTO_FROM_FILE_SYSTEM(
+        eventName = "erp-api:productPhotoService:getProductPhoto",
+        eventMessage = "Exception occurred during retrieving product photo from file system",
+    ),
     GET_PRODUCT_PHOTO_SUCCESS_RESPONSE(
         eventName = "erp-api:productPhotoController:getProductPhoto:SuccessResponse",
         eventMessage = "Product photo retrieval was successful",

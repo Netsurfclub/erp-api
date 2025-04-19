@@ -4,6 +4,7 @@ import hu.netsurf.erp.common.exception.NotFoundException
 import hu.netsurf.erp.common.extension.logError
 import hu.netsurf.erp.common.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.FileConstants.IMAGE
+import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCT_PHOTO
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.GET_PRODUCT_PHOTO_FAILURE_RESPONSE
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.GET_PRODUCT_PHOTO_REQUEST_RECEIVED
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.GET_PRODUCT_PHOTO_SUCCESS_RESPONSE
@@ -68,21 +69,30 @@ class ProductPhotoController(
                 ),
             )
 
-            return ResponseEntity(photo, headers, HttpStatus.OK)
+            return ResponseEntity
+                .status(HttpStatus.OK)
+                .headers(headers)
+                .body(photo)
         } catch (exception: NotFoundException) {
             logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
+
+            return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exception.message)
         } catch (exception: Exception) {
             logger.logError(GET_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
+
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.message)
         }
     }
 
     @PostMapping(path = ["/upload/{productId}"])
-    fun createProductPhoto(
+    fun uploadProductPhoto(
         @PathVariable productId: Int,
         @RequestParam("file") file: MultipartFile,
-    ): ResponseEntity<String> {
+    ): ResponseEntity<*> {
         try {
             logger.logInfo(
                 UPLOAD_PRODUCT_PHOTO_REQUEST_RECEIVED,
@@ -102,23 +112,31 @@ class ProductPhotoController(
                 ),
             )
 
-            val productPhotoFileName = productPhotoService.uploadProductPhoto(productId, photoFile)
+            val productPhotoFileName = productPhotoService.uploadProductPhoto(productId, photoFile).toString()
 
             logger.logInfo(
                 UPLOAD_PRODUCT_PHOTO_SUCCESS_RESPONSE,
                 mapOf(
                     PRODUCT_ID to productId,
-                    PRODUCT_PHOTO_FILE_NAME to productPhotoFileName.toString(),
+                    PRODUCT_PHOTO_FILE_NAME to productPhotoFileName,
                 ),
             )
 
-            return ResponseEntity(productPhotoFileName, HttpStatus.OK)
+            return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(mapOf(PRODUCT_PHOTO to productPhotoFileName))
         } catch (exception: NotFoundException) {
             logger.logError(UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
+
+            return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exception.message)
         } catch (exception: Exception) {
             logger.logError(UPLOAD_PRODUCT_PHOTO_FAILURE_RESPONSE, exception)
-            return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
+
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.message)
         }
     }
 }
