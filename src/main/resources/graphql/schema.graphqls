@@ -10,6 +10,7 @@ type Mutation {
     createUser(input: CreateUserInput!): User!
     createProduct(input: CreateProductInput!): Product!
     createSupplier(input: CreateSupplierInput!): Supplier!
+    updateSupplier(input: UpdateSupplierInput!): Supplier!
 }
 
 type Profile {
@@ -76,6 +77,12 @@ input CreateProductInput {
 
 input CreateSupplierInput {
     name: String!
+    phone: String
+    email: String
+}
+
+input UpdateSupplierInput {
+    name: String
     phone: String
     email: String
 }

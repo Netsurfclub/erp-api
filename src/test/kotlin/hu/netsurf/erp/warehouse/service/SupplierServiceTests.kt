@@ -64,4 +64,14 @@ class SupplierServiceTests {
         val result = supplierService.createSupplier(supplier1())
         assertEquals(supplier1(), result)
     }
+
+    @Test
+    fun `updateSupplier test happy path`() {
+        every {
+            supplierRepository.save(any())
+        } returns supplier1()
+
+        val result = supplierService.updateSupplier(supplier1())
+        assertEquals(supplier1(), result)
+    }
 }

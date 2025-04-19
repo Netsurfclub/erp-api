@@ -4,7 +4,9 @@ import hu.netsurf.erp.common.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.SUPPLIERS_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.SUPPLIER_RETRIEVED_FROM_DATABASE
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.SUPPLIER_SAVED_TO_DATABASE
+import hu.netsurf.erp.warehouse.constant.LogEventConstants.SUPPLIER_UPDATED_IN_DATABASE
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.SUPPLIER
+import hu.netsurf.erp.warehouse.constant.LoggerConstants.UPDATED_SUPPLIER
 import hu.netsurf.erp.warehouse.exception.SupplierNotFoundException
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.repository.SupplierRepository
@@ -47,6 +49,20 @@ class SupplierService(
             mapOf(SUPPLIER to supplier),
         )
 
-        return getSupplier(savedSupplier.id)
+        return savedSupplier
+    }
+
+    fun updateSupplier(supplier: Supplier): Supplier {
+        val updatedSupplier = supplierRepository.save(supplier)
+
+        logger.logInfo(
+            SUPPLIER_UPDATED_IN_DATABASE,
+            mapOf(
+                SUPPLIER to supplier,
+                UPDATED_SUPPLIER to updatedSupplier,
+            ),
+        )
+
+        return updatedSupplier
     }
 }
