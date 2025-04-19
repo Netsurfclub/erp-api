@@ -3,6 +3,7 @@ package hu.netsurf.erp.warehouse.controller
 import hu.netsurf.erp.warehouse.constant.PhotoTestConstants.CONTENT_TYPE_IMAGE_JPEG
 import hu.netsurf.erp.warehouse.constant.PhotoTestConstants.FILE_SIZE
 import hu.netsurf.erp.warehouse.constant.PhotoTestConstants.PHOTO_FILE_NAME
+import hu.netsurf.erp.warehouse.constant.PhotoTestConstants.PRODUCT_PHOTO
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
 import hu.netsurf.erp.warehouse.exception.ProductNotFoundException
 import hu.netsurf.erp.warehouse.exception.ProductPhotoNotFoundException
@@ -59,34 +60,34 @@ class ProductPhotoControllerTests {
     }
 
     @Test
-    fun `createProductPhoto test happy path`() {
+    fun `uploadProductPhoto test happy path`() {
         every {
             productPhotoService.uploadProductPhoto(any(), any())
         } returns PHOTO_FILE_NAME
 
-        val result = productPhotoController.createProductPhoto(1, multipartFile())
+        val result = productPhotoController.uploadProductPhoto(1, multipartFile())
         assertEquals(HttpStatus.CREATED, result.statusCode)
-        assertEquals(PHOTO_FILE_NAME, result.body)
+        assertEquals(mapOf(PRODUCT_PHOTO to PHOTO_FILE_NAME), result.body)
     }
 
     @Test
-    fun `createProductPhoto test unhappy path - product not found (HTTP 404)`() {
+    fun `uploadProductPhoto test unhappy path - product not found (HTTP 404)`() {
         every {
             productPhotoService.uploadProductPhoto(any(), any())
         } throws ProductNotFoundException(3)
 
-        val result = productPhotoController.createProductPhoto(3, multipartFile())
+        val result = productPhotoController.uploadProductPhoto(3, multipartFile())
         assertEquals(HttpStatus.NOT_FOUND, result.statusCode)
         assertEquals("Termék a következő azonosítóval: #3 nem található.", result.body)
     }
 
     @Test
-    fun `createProductPhoto test unhappy path - product already has photo uploaded (HTTP 400)`() {
+    fun `uploadProductPhoto test unhappy path - product already has photo uploaded (HTTP 400)`() {
         every {
             productPhotoService.uploadProductPhoto(any(), any())
         } throws ProductAlreadyHasPhotoUploadedException(1)
 
-        val result = productPhotoController.createProductPhoto(1, multipartFile())
+        val result = productPhotoController.uploadProductPhoto(1, multipartFile())
         assertEquals(HttpStatus.BAD_REQUEST, result.statusCode)
         assertEquals(
             "Termék a következő azonosítóval: #1 már rendelkezik feltöltött fényképpel.",

@@ -5,4 +5,5 @@ object FileConstants {
     const val PHOTOS_SUBDIRECTORY_NAME = "photos"
     const val PRODUCTS_SUBDIRECTORY_NAME = "products"
     const val IMAGE = "image"
+    const val PRODUCT_PHOTO = "productPhoto"
 }
