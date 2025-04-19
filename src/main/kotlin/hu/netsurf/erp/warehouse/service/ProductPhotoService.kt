@@ -1,7 +1,9 @@
 package hu.netsurf.erp.warehouse.service
 
+import hu.netsurf.erp.common.extension.logError
 import hu.netsurf.erp.common.extension.logInfo
 import hu.netsurf.erp.warehouse.constant.FileConstants.PRODUCTS_SUBDIRECTORY_NAME
+import hu.netsurf.erp.warehouse.constant.LogEventConstants.EXCEPTION_OCCURRED_DURING_RETRIEVING_PRODUCT_PHOTO_FROM_FILE_SYSTEM
 import hu.netsurf.erp.warehouse.constant.LogEventConstants.PHOTO_FILE_VALIDATED_SUCCESSFULLY
 import hu.netsurf.erp.warehouse.constant.LoggerConstants.PHOTO_FILE
 import hu.netsurf.erp.warehouse.exception.ProductAlreadyHasPhotoUploadedException
@@ -27,6 +29,11 @@ class ProductPhotoService(
         try {
             productPhoto = fileUtils.readAllBytes(PRODUCTS_SUBDIRECTORY_NAME, fileName)
         } catch (exception: Exception) {
+            logger.logError(
+                EXCEPTION_OCCURRED_DURING_RETRIEVING_PRODUCT_PHOTO_FROM_FILE_SYSTEM,
+                exception = exception,
+            )
+
             throw ProductPhotoNotFoundException(fileName)
         }
 
