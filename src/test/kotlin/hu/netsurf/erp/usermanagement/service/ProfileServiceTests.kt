@@ -1,8 +1,8 @@
 package hu.netsurf.erp.usermanagement.service
 
-import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.HASHED_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.NEW_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_HASHED_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_NEW_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_PASSWORD
 import hu.netsurf.erp.usermanagement.exception.CurrentPasswordAndPasswordInDatabaseNotMatchesException
 import hu.netsurf.erp.usermanagement.exception.ProfileAlreadyExistException
 import hu.netsurf.erp.usermanagement.exception.ProfileNotFoundException
@@ -23,7 +23,7 @@ class ProfileServiceTests {
     private val profileRepository: ProfileRepository = mockk()
     private val passwordUtil: PasswordUtil = mockk()
     private val profileService: ProfileService = ProfileService(profileRepository, passwordUtil)
-    private val currentAndNewPassword: Pair<String, String> = Pair(PASSWORD, NEW_PASSWORD)
+    private val currentAndNewPassword: Pair<String, String> = Pair(PROFILE_1_PASSWORD, PROFILE_1_NEW_PASSWORD)
 
     @Test
     fun `getProfile test happy path`() {
@@ -54,7 +54,7 @@ class ProfileServiceTests {
         } returns Optional.empty()
         every {
             passwordUtil.encode(any())
-        } returns HASHED_PASSWORD
+        } returns PROFILE_1_HASHED_PASSWORD
         every {
             profileRepository.save(any())
         } returns profile1()
@@ -88,7 +88,7 @@ class ProfileServiceTests {
         } returns true
         every {
             passwordUtil.encode(any())
-        } returns HASHED_PASSWORD
+        } returns PROFILE_1_HASHED_PASSWORD
         every {
             profileRepository.save(any())
         } returns profile1()
