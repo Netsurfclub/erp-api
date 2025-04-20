@@ -1,6 +1,7 @@
 package hu.netsurf.erp.usermanagement.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
+import hu.netsurf.erp.common.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.common.exception.InvalidLengthException
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.EMAIL_1
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.FIRST_NAME_1
@@ -9,7 +10,6 @@ import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_FIRST_NA
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_LAST_NAME_CONTAINS_DIGIT
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
 import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LAST_NAME_1
-import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.input.CreateUserInput
