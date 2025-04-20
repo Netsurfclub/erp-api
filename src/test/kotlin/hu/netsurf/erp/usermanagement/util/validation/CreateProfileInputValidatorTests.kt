@@ -2,7 +2,7 @@ package hu.netsurf.erp.usermanagement.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
 import hu.netsurf.erp.common.exception.InvalidLengthException
-import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.USERNAME_1
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_USERNAME
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.PasswordAndConfirmPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.input.CreateProfileInput
@@ -97,7 +97,7 @@ class CreateProfileInputValidatorTests {
         val input =
             CreateProfileInput(
                 userId = 1,
-                username = USERNAME_1,
+                username = PROFILE_1_USERNAME,
                 password = password,
                 confirmPassword = password,
             )

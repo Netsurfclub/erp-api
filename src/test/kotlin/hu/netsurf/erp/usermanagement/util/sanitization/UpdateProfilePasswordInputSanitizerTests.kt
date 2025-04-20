@@ -1,8 +1,8 @@
 package hu.netsurf.erp.usermanagement.util.sanitization
 
 import hu.netsurf.erp.common.util.sanitization.InputSanitizer
-import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.NEW_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_NEW_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_PASSWORD
 import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
@@ -19,10 +19,30 @@ class UpdateProfilePasswordInputSanitizerTests {
         @JvmStatic
         fun updateUserPasswordInputParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("no whitespace", PASSWORD, NEW_PASSWORD, NEW_PASSWORD),
-                Arguments.of("one whitespace on left side", " $PASSWORD", " $NEW_PASSWORD", " $NEW_PASSWORD"),
-                Arguments.of("one whitespace on right side", "$PASSWORD ", "$NEW_PASSWORD ", "$NEW_PASSWORD "),
-                Arguments.of("whitespaces on both right and left side", " $PASSWORD ", " $NEW_PASSWORD ", " $NEW_PASSWORD "),
+                Arguments.of(
+                    "no whitespace",
+                    PROFILE_1_PASSWORD,
+                    PROFILE_1_NEW_PASSWORD,
+                    PROFILE_1_NEW_PASSWORD,
+                ),
+                Arguments.of(
+                    "one whitespace on left side",
+                    " $PROFILE_1_PASSWORD",
+                    " $PROFILE_1_NEW_PASSWORD",
+                    " $PROFILE_1_NEW_PASSWORD",
+                ),
+                Arguments.of(
+                    "one whitespace on right side",
+                    "$PROFILE_1_PASSWORD ",
+                    "$PROFILE_1_NEW_PASSWORD ",
+                    "$PROFILE_1_NEW_PASSWORD ",
+                ),
+                Arguments.of(
+                    "whitespaces on both right and left side",
+                    " $PROFILE_1_PASSWORD ",
+                    " $PROFILE_1_NEW_PASSWORD ",
+                    " $PROFILE_1_NEW_PASSWORD ",
+                ),
             )
     }
 
@@ -44,8 +64,8 @@ class UpdateProfilePasswordInputSanitizerTests {
 
         val result = updateProfilePasswordInputSanitizer.sanitize(input)
 
-        assertEquals(PASSWORD, result.currentPassword)
-        assertEquals(NEW_PASSWORD, result.newPassword)
-        assertEquals(NEW_PASSWORD, result.confirmNewPassword)
+        assertEquals(PROFILE_1_PASSWORD, result.currentPassword)
+        assertEquals(PROFILE_1_NEW_PASSWORD, result.newPassword)
+        assertEquals(PROFILE_1_NEW_PASSWORD, result.confirmNewPassword)
     }
 }
