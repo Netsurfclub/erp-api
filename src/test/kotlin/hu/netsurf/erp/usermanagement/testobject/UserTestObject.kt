@@ -1,8 +1,8 @@
 package hu.netsurf.erp.usermanagement.testobject
 
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.EMAIL_1
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.FIRST_NAME_1
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LAST_NAME_1
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_EMAIL
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_FIRST_NAME
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_LAST_NAME
 import hu.netsurf.erp.usermanagement.model.User
 
 class UserTestObject {
@@ -11,9 +11,9 @@ class UserTestObject {
 
         private fun build(
             id: Int = 1,
-            firstName: String = FIRST_NAME_1,
-            lastName: String = LAST_NAME_1,
-            email: String = EMAIL_1,
+            firstName: String = USER_1_FIRST_NAME,
+            lastName: String = USER_1_LAST_NAME,
+            email: String = USER_1_EMAIL,
         ): User =
             User(
                 id = id,

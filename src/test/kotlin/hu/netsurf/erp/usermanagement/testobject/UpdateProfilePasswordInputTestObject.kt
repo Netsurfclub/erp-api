@@ -1,9 +1,9 @@
 package hu.netsurf.erp.usermanagement.testobject
 
 import hu.netsurf.erp.common.constant.CommonTestConstants.EMPTY_STRING
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_NEW_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.NEW_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_INVALID_NEW_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_NEW_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_PASSWORD
 import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
 
 class UpdateProfilePasswordInputTestObject {
@@ -16,13 +16,13 @@ class UpdateProfilePasswordInputTestObject {
 
         fun input1WithEmptyConfirmNewPassword(): UpdateProfilePasswordInput = build(confirmNewPassword = EMPTY_STRING)
 
-        fun input1WithInvalidConfirmNewPassword(): UpdateProfilePasswordInput = build(confirmNewPassword = INVALID_NEW_PASSWORD)
+        fun input1WithInvalidConfirmNewPassword(): UpdateProfilePasswordInput = build(confirmNewPassword = PROFILE_1_INVALID_NEW_PASSWORD)
 
         private fun build(
             id: Int = 1,
-            currentPassword: String = PASSWORD,
-            newPassword: String = NEW_PASSWORD,
-            confirmNewPassword: String = NEW_PASSWORD,
+            currentPassword: String = PROFILE_1_PASSWORD,
+            newPassword: String = PROFILE_1_NEW_PASSWORD,
+            confirmNewPassword: String = PROFILE_1_NEW_PASSWORD,
         ): UpdateProfilePasswordInput =
             UpdateProfilePasswordInput(
                 id = id,

@@ -1,15 +1,15 @@
 package hu.netsurf.erp.usermanagement.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
+import hu.netsurf.erp.common.exception.InvalidEmailAddressFormatException
 import hu.netsurf.erp.common.exception.InvalidLengthException
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.EMAIL_1
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.FIRST_NAME_1
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_FIRST_NAME_CONTAINS_DIGIT
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_LAST_NAME_CONTAINS_DIGIT
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.LAST_NAME_1
-import hu.netsurf.erp.usermanagement.exception.InvalidEmailAddressFormatException
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_EMAIL
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_FIRST_NAME
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_INVALID_FIRST_NAME_CONTAINS_DIGIT
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_INVALID_LAST_NAME_CONTAINS_DIGIT
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER
+import hu.netsurf.erp.usermanagement.constant.UserTestConstants.USER_1_LAST_NAME
 import hu.netsurf.erp.usermanagement.exception.InvalidFirstNameFormatException
 import hu.netsurf.erp.usermanagement.exception.InvalidLastNameFormatException
 import hu.netsurf.erp.usermanagement.input.CreateUserInput
@@ -58,15 +58,15 @@ class CreateUserInputValidatorTests {
         @JvmStatic
         fun firstNameParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("bence", INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
-                Arguments.of("F1rstName", INVALID_FIRST_NAME_CONTAINS_DIGIT),
+                Arguments.of("bence", USER_1_INVALID_FIRST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
+                Arguments.of("F1rstName", USER_1_INVALID_FIRST_NAME_CONTAINS_DIGIT),
             )
 
         @JvmStatic
         fun lastNameParams(): Stream<Arguments> =
             Stream.of(
-                Arguments.of("juhász", INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
-                Arguments.of("LastNam3", INVALID_LAST_NAME_CONTAINS_DIGIT),
+                Arguments.of("juhász", USER_1_INVALID_LAST_NAME_STARTS_WITH_LOWERCASE_CHARACTER),
+                Arguments.of("LastNam3", USER_1_INVALID_LAST_NAME_CONTAINS_DIGIT),
             )
     }
 
@@ -108,8 +108,8 @@ class CreateUserInputValidatorTests {
         val input =
             CreateUserInput(
                 firstName = firstName,
-                lastName = LAST_NAME_1,
-                email = EMAIL_1,
+                lastName = USER_1_LAST_NAME,
+                email = USER_1_EMAIL,
             )
 
         assertThrows<InvalidFirstNameFormatException> {
@@ -125,9 +125,9 @@ class CreateUserInputValidatorTests {
     ) {
         val input =
             CreateUserInput(
-                firstName = FIRST_NAME_1,
+                firstName = USER_1_FIRST_NAME,
                 lastName = lastName,
-                email = EMAIL_1,
+                email = USER_1_EMAIL,
             )
 
         assertThrows<InvalidLastNameFormatException> {

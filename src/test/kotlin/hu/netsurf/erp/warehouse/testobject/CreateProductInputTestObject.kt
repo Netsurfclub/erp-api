@@ -1,10 +1,10 @@
 package hu.netsurf.erp.warehouse.testobject
 
 import hu.netsurf.erp.common.constant.CommonTestConstants.EMPTY_STRING
+import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_LONG_NAME
+import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_LONG_UNIT
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_NAME
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_UNIT
-import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_LONG_NAME
-import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_LONG_UNIT
 import hu.netsurf.erp.warehouse.input.CreateProductInput
 
 class CreateProductInputTestObject {
@@ -15,13 +15,13 @@ class CreateProductInputTestObject {
 
         fun input1WithShortName(): CreateProductInput = build(name = "a")
 
-        fun input1WithLongName(): CreateProductInput = build(name = PRODUCT_LONG_NAME)
+        fun input1WithLongName(): CreateProductInput = build(name = PRODUCT_1_LONG_NAME)
 
         fun input1WithEmptyUnit(): CreateProductInput = build(unit = EMPTY_STRING)
 
         fun input1WithShortUnit(): CreateProductInput = build(unit = "a")
 
-        fun input1WithLongUnit(): CreateProductInput = build(unit = PRODUCT_LONG_UNIT)
+        fun input1WithLongUnit(): CreateProductInput = build(unit = PRODUCT_1_LONG_UNIT)
 
         private fun build(
             name: String = PRODUCT_1_NAME,
