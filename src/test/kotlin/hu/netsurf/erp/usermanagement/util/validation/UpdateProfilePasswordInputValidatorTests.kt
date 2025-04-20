@@ -1,7 +1,7 @@
 package hu.netsurf.erp.usermanagement.util.validation
 
 import hu.netsurf.erp.common.exception.EmptyFieldException
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_PASSWORD
 import hu.netsurf.erp.usermanagement.exception.InvalidPasswordFormatException
 import hu.netsurf.erp.usermanagement.exception.NewPasswordAndConfirmNewPasswordNotMatchesException
 import hu.netsurf.erp.usermanagement.input.UpdateProfilePasswordInput
@@ -69,7 +69,7 @@ class UpdateProfilePasswordInputValidatorTests {
         val input =
             UpdateProfilePasswordInput(
                 id = 1,
-                currentPassword = PASSWORD,
+                currentPassword = PROFILE_1_PASSWORD,
                 newPassword = newPassword,
                 confirmNewPassword = newPassword,
             )

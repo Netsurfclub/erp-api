@@ -1,7 +1,7 @@
 package hu.netsurf.erp.usermanagement.util.password
 
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.HASHED_PASSWORD
-import hu.netsurf.erp.usermanagement.constant.UserTestConstants.PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_HASHED_PASSWORD
+import hu.netsurf.erp.usermanagement.constant.ProfileTestConstants.PROFILE_1_PASSWORD
 import io.mockk.coEvery
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -18,10 +18,10 @@ class PasswordUtilTests {
     fun `encode test`() {
         coEvery {
             passwordEncoder.encode(any())
-        } returns HASHED_PASSWORD
+        } returns PROFILE_1_HASHED_PASSWORD
 
-        val result = passwordUtil.encode(PASSWORD)
-        assertEquals(HASHED_PASSWORD, result)
+        val result = passwordUtil.encode(PROFILE_1_PASSWORD)
+        assertEquals(PROFILE_1_HASHED_PASSWORD, result)
     }
 
     @Test
@@ -30,7 +30,7 @@ class PasswordUtilTests {
             passwordEncoder.matches(any(), any())
         } returns true
 
-        val result = passwordUtil.verify(PASSWORD, HASHED_PASSWORD)
+        val result = passwordUtil.verify(PROFILE_1_PASSWORD, PROFILE_1_HASHED_PASSWORD)
         assertTrue(result)
     }
 
@@ -40,7 +40,7 @@ class PasswordUtilTests {
             passwordEncoder.matches(any(), any())
         } returns false
 
-        val result = passwordUtil.verify(PASSWORD, HASHED_PASSWORD)
+        val result = passwordUtil.verify(PROFILE_1_PASSWORD, PROFILE_1_HASHED_PASSWORD)
         assertFalse(result)
     }
 }
