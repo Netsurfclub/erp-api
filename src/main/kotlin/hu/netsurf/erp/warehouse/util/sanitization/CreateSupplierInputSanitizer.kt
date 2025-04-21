@@ -8,22 +8,10 @@ import org.springframework.stereotype.Component
 class CreateSupplierInputSanitizer(
     private val inputSanitizer: InputSanitizer,
 ) {
-    fun sanitize(input: CreateSupplierInput): CreateSupplierInput {
-        var phone: String? = null
-        var email: String? = null
-
-        if (input.phone != null) {
-            phone = inputSanitizer.sanitize(input.phone)
-        }
-
-        if (input.email != null) {
-            email = inputSanitizer.sanitize(input.email)
-        }
-
-        return CreateSupplierInput(
+    fun sanitize(input: CreateSupplierInput): CreateSupplierInput =
+        CreateSupplierInput(
             name = inputSanitizer.sanitize(input.name),
-            phone = phone,
-            email = email,
+            phone = input.phone?.let { inputSanitizer.sanitize(it) },
+            email = input.email?.let { inputSanitizer.sanitize(it) },
         )
-    }
 }

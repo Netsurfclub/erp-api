@@ -16,10 +16,10 @@ class CreateSupplierInputValidator {
         if (
             input.nameIsShort() ||
             input.nameIsLong() ||
-            input.emailIsShort() ||
-            input.emailIsLong() ||
             input.phoneIsShort() ||
-            input.phoneIsLong()
+            input.phoneIsLong() ||
+            input.emailIsShort() ||
+            input.emailIsLong()
         ) {
             throw InvalidLengthException()
         }
