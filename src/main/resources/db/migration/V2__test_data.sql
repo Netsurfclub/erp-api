@@ -3,10 +3,10 @@ VALUES ('Lipták Fivérek Kft.', '+36-66-441-611', NULL),
        ('MikroTik', NULL, NULL);
 
 INSERT INTO products (name, supplier_id, price, unit, photo, on_stock)
-VALUES ('6-os csavar', 1, 120, 'darab', NULL, 1000),
-       ('Mimo-Omni', 2, 150000, 'darab', NULL, 2),
-       ('Sárgaréz', 1, 5000, 'kilogramm', NULL, 2000),
-       ('Vörösréz', 1, 3000, 'kilogramm', NULL, 3000);
+VALUES ('6-os csavar', 1, 120.00, 'darab', NULL, 1000),
+       ('Mimo-Omni', 2, 150000.00, 'darab', NULL, 2),
+       ('Sárgaréz', 1, 5000.00, 'kilogramm', NULL, 2000),
+       ('Vörösréz', 1, 3000.00, 'kilogramm', NULL, 3000);
 
 INSERT INTO users (first_name, last_name, email)
 VALUES ('Bence', 'Juhász', 'juhasz.bence@netsurfclub.hu'),
