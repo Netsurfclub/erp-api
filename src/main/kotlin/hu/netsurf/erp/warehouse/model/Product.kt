@@ -8,6 +8,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "products")
@@ -19,7 +20,7 @@ data class Product(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     var supplier: Supplier = Supplier(),
-    var price: Double = 0.0,
+    var price: BigDecimal = BigDecimal(0.00),
     var unit: String = "",
     var photo: String? = null,
     var onStock: Int = 0,

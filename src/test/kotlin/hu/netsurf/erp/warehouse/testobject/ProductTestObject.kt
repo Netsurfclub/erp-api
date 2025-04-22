@@ -7,6 +7,7 @@ import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_2_NAME
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.Supplier
 import hu.netsurf.erp.warehouse.testobject.SupplierTestObject.Companion.supplier1
+import java.math.BigDecimal
 
 class ProductTestObject {
     companion object {
@@ -18,7 +19,7 @@ class ProductTestObject {
             build(
                 id = 2,
                 name = PRODUCT_2_NAME,
-                price = 20000.0,
+                price = BigDecimal(20000.00),
                 onStock = 20,
             )
 
@@ -26,7 +27,7 @@ class ProductTestObject {
             id: Int = 1,
             name: String = PRODUCT_1_NAME,
             supplier: Supplier = supplier1(),
-            price: Double = 10000.0,
+            price: BigDecimal = BigDecimal(10000.00),
             unit: String = PRODUCT_1_UNIT,
             photo: String? = null,
             onStock: Int = 10,

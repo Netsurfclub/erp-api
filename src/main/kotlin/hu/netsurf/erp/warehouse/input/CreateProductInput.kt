@@ -6,11 +6,12 @@ import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.UNIT_MAX_LEN
 import hu.netsurf.erp.warehouse.constant.ProductValidationConstants.UNIT_MIN_LENGTH
 import hu.netsurf.erp.warehouse.model.Product
 import hu.netsurf.erp.warehouse.model.Supplier
+import java.math.BigDecimal
 
 data class CreateProductInput(
     val name: String,
     val supplierId: Int,
-    val price: Double,
+    val price: BigDecimal,
     val unit: String,
     val onStock: Int,
 ) {

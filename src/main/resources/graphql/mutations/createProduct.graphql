@@ -1,6 +1,6 @@
 mutation {
     createProduct(
-        input: {name: "", supplierId: 0, price: 0, unit: "", onStock: 0}
+        input: {name: "", supplierId: 0, price: 0.00, unit: "", onStock: 0}
     ) {
         id
         name

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import java.math.BigDecimal
 import java.util.stream.Stream
 
 class CreateProductInputSanitizerTests {
@@ -52,7 +53,7 @@ class CreateProductInputSanitizerTests {
             CreateProductInput(
                 name = name,
                 supplierId = 1,
-                price = 100.0,
+                price = BigDecimal(100.00),
                 unit = unit,
                 onStock = 1,
             )
