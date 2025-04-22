@@ -10,7 +10,7 @@ import java.math.BigDecimal
 
 data class CreateProductInput(
     val name: String,
-    val supplierId: Int,
+    val supplierId: Long,
     val price: BigDecimal,
     val unit: String,
     val onStock: Int,

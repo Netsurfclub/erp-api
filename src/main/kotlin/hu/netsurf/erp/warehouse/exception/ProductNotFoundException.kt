@@ -3,5 +3,5 @@ package hu.netsurf.erp.warehouse.exception
 import hu.netsurf.erp.common.exception.NotFoundException
 
 class ProductNotFoundException(
-    id: Int,
+    id: Long,
 ) : NotFoundException("Termék a következő azonosítóval: #$id nem található.")

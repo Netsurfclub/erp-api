@@ -7,7 +7,7 @@ import hu.netsurf.erp.usermanagement.model.Profile
 import hu.netsurf.erp.usermanagement.model.User
 
 data class CreateProfileInput(
-    val userId: Int,
+    val userId: Long,
     val username: String,
     val password: String,
     val confirmPassword: String,

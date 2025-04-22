@@ -43,9 +43,9 @@ class ProfileService(
         return savedProfile
     }
 
-    private fun isProfileAlreadyExists(userId: Int): Boolean = profileRepository.findByUserId(userId).isPresent
+    private fun isProfileAlreadyExists(userId: Long): Boolean = profileRepository.findByUserId(userId).isPresent
 
-    fun getProfile(id: Int): Profile {
+    fun getProfile(id: Long): Profile {
         val profile = profileRepository.findById(id)
 
         if (profile.isEmpty) {
@@ -61,7 +61,7 @@ class ProfileService(
     }
 
     fun updateProfilePassword(
-        id: Int,
+        id: Long,
         currentAndNewPassword: Pair<String, String>,
     ): Profile {
         val profileToUpdate = getProfile(id)
@@ -91,7 +91,7 @@ class ProfileService(
         return updatedProfile
     }
 
-    fun deleteProfile(id: Int): Profile {
+    fun deleteProfile(id: Long): Profile {
         val profileToDelete = getProfile(id)
 
         if (profileToDelete.isDeleted) {

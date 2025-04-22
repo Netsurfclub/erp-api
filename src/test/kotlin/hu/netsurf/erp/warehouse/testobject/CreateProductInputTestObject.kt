@@ -26,7 +26,7 @@ class CreateProductInputTestObject {
 
         private fun build(
             name: String = PRODUCT_1_NAME,
-            supplierId: Int = 1,
+            supplierId: Long = 1,
             price: BigDecimal = BigDecimal(10000.00),
             unit: String = PRODUCT_1_UNIT,
             onStock: Int = 10,

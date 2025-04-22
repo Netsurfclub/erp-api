@@ -41,7 +41,7 @@ class ProductPhotoService(
     }
 
     fun uploadProductPhoto(
-        productId: Int,
+        productId: Long,
         file: PhotoFile,
     ): String? {
         fileValidator.validate(file)

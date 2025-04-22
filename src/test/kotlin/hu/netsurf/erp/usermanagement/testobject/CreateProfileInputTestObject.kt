@@ -24,7 +24,7 @@ class CreateProfileInputTestObject {
         fun input1WithInvalidConfirmPassword(): CreateProfileInput = build(confirmPassword = PROFILE_1_INVALID_CONFIRM_PASSWORD)
 
         private fun build(
-            userId: Int = 1,
+            userId: Long = 1,
             username: String = PROFILE_1_USERNAME,
             password: String = PROFILE_1_PASSWORD,
             confirmPassword: String = PROFILE_1_PASSWORD,

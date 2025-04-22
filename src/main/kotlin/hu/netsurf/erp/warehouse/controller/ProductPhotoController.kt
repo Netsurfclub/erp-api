@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
+import java.util.UUID
 
 @RestController
 @CrossOrigin
@@ -90,7 +91,7 @@ class ProductPhotoController(
 
     @PostMapping(path = ["/upload/{productId}"])
     fun uploadProductPhoto(
-        @PathVariable productId: Int,
+        @PathVariable productId: Long,
         @RequestParam("file") file: MultipartFile,
     ): ResponseEntity<*> {
         try {

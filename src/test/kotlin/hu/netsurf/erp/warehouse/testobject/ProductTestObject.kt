@@ -24,7 +24,7 @@ class ProductTestObject {
             )
 
         private fun build(
-            id: Int = 1,
+            id: Long = 1,
             name: String = PRODUCT_1_NAME,
             supplier: Supplier = supplier1(),
             price: BigDecimal = BigDecimal(10000.00),

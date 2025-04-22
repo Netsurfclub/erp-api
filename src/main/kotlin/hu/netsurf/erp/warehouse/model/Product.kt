@@ -15,7 +15,7 @@ import java.math.BigDecimal
 data class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int = 0,
+    var id: Long = 0,
     var name: String = "",
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")

@@ -11,7 +11,7 @@ import jakarta.persistence.Table
 data class Supplier(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int = 0,
+    var id: Long = 0,
     var name: String = "",
     var phone: String? = null,
     var email: String? = null,
