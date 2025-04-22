@@ -28,7 +28,7 @@ class UserService(
         return savedUser
     }
 
-    fun getUser(id: Int): User {
+    fun getUser(id: Long): User {
         val user = userRepository.findById(id)
 
         if (user.isEmpty) {

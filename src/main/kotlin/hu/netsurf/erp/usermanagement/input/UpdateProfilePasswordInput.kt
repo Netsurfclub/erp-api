@@ -3,7 +3,7 @@ package hu.netsurf.erp.usermanagement.input
 import hu.netsurf.erp.usermanagement.constant.RegexPatterns.PASSWORD_REGEX
 
 data class UpdateProfilePasswordInput(
-    val id: Int,
+    val id: Long,
     val currentPassword: String,
     val newPassword: String,
     val confirmNewPassword: String,

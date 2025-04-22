@@ -25,7 +25,7 @@ class SupplierTestObject {
             )
 
         private fun build(
-            id: Int = 1,
+            id: Long = 1,
             name: String = SUPPLIER_1_NAME,
             phone: String? = SUPPLIER_1_PHONE,
             email: String? = SUPPLIER_1_EMAIL,

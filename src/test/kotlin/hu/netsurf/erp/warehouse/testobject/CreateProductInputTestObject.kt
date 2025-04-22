@@ -6,6 +6,7 @@ import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_LONG_UNI
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_NAME
 import hu.netsurf.erp.warehouse.constant.ProductTestConstants.PRODUCT_1_UNIT
 import hu.netsurf.erp.warehouse.input.CreateProductInput
+import java.math.BigDecimal
 
 class CreateProductInputTestObject {
     companion object {
@@ -25,8 +26,8 @@ class CreateProductInputTestObject {
 
         private fun build(
             name: String = PRODUCT_1_NAME,
-            supplierId: Int = 1,
-            price: Double = 10000.0,
+            supplierId: Long = 1,
+            price: BigDecimal = BigDecimal(10000.00),
             unit: String = PRODUCT_1_UNIT,
             onStock: Int = 10,
         ): CreateProductInput =

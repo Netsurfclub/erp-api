@@ -24,7 +24,7 @@ class SupplierService(
         return supplierRepository.findAll()
     }
 
-    fun getSupplier(id: Int): Supplier {
+    fun getSupplier(id: Long): Supplier {
         val supplier = supplierRepository.findById(id)
 
         if (supplier.isEmpty) {

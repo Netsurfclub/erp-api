@@ -10,7 +10,7 @@ class UserTestObject {
         fun user1(): User = build()
 
         private fun build(
-            id: Int = 1,
+            id: Long = 1,
             firstName: String = USER_1_FIRST_NAME,
             lastName: String = USER_1_LAST_NAME,
             email: String = USER_1_EMAIL,

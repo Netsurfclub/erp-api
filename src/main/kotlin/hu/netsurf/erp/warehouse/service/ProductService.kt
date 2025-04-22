@@ -27,7 +27,7 @@ class ProductService(
         return productRepository.findAll()
     }
 
-    fun getProduct(id: Int): Product {
+    fun getProduct(id: Long): Product {
         val product = productRepository.findById(id)
 
         if (product.isEmpty) {

@@ -19,7 +19,7 @@ class UpdateProfilePasswordInputTestObject {
         fun input1WithInvalidConfirmNewPassword(): UpdateProfilePasswordInput = build(confirmNewPassword = PROFILE_1_INVALID_NEW_PASSWORD)
 
         private fun build(
-            id: Int = 1,
+            id: Long = 1,
             currentPassword: String = PROFILE_1_PASSWORD,
             newPassword: String = PROFILE_1_NEW_PASSWORD,
             confirmNewPassword: String = PROFILE_1_NEW_PASSWORD,

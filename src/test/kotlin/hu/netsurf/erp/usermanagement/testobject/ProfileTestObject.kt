@@ -11,7 +11,7 @@ class ProfileTestObject {
         fun profile1IsDeleted(): Profile = build(isDeleted = true)
 
         private fun build(
-            id: Int = 1,
+            id: Long = 1,
             username: String = PROFILE_1_USERNAME,
             password: String = PROFILE_1_HASHED_PASSWORD,
             isDeleted: Boolean = false,
