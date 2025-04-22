@@ -17,7 +17,7 @@ data class Product(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0,
     var name: String = "",
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "supplier_id")
     var supplier: Supplier = Supplier(),
     var price: BigDecimal = BigDecimal(0.00),

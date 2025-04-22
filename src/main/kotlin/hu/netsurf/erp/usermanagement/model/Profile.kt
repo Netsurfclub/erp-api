@@ -17,7 +17,7 @@ data class Profile(
     var id: Long = 0,
     var username: String = "",
     var password: String = "",
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "user_id")
     var user: User = User(),
     var isDeleted: Boolean = false,
