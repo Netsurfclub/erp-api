@@ -1,9 +1,8 @@
 spring:
   application:
     name: erp-api
-  config:
-    activate:
-      on-profile: dev
+  profiles:
+    active: dev
   datasource:
     url: jdbc:mysql://erp_database:3306/erp
     username: root

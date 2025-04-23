@@ -1,9 +1,8 @@
 spring:
   application:
     name: erp-api
-  config:
-    activate:
-      on-profile: default
+  profiles:
+    active: default
   datasource:
     url: jdbc:h2:mem:erp
     username: root
